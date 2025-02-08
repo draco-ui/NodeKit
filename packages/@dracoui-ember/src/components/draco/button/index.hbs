@@ -1,3 +1,4 @@
+{{!-- packages/core/src/components/interactive/template.hbs --}}
 <Draco::Interactive
   class={{this.classNames}}
   @current-when={{@current-when}}
@@ -12,30 +13,30 @@
   aria-label={{if this.isIconOnly this.text null}}
 >
   {{#if this.isIconOnly}}
-    {{#if this.icon}}
-      <span class="draco-button__icon">
-        <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} @stretched={{true}} />
+    {{#if @icon}}
+      <span class={{this.iconWrapperClass}}>
+        <IconifyIcon @icon={{@icon}} class={{this.iconClass}} />
       </span>
     {{/if}}
   {{else}}
-     {{#if this.icon}}
+     {{#if @icon}}
       {{#if (eq this.iconPosition "leading")}}
-        <span class="draco-button__icon">
-          <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} @stretched={{true}} />
+        <span class={{this.iconWrapperClass}}>
+          <IconifyIcon @icon={{@icon}} class={{this.iconClass}} />
         </span>
-        <span class="draco-button__text">
+        <span class={{this.textClass}}>
           {{this.text}}
         </span>
       {{else}}
-        <span class="draco-button__text">
+        <span class={{this.textClass}}>
           {{this.text}}
         </span>
-        <span class="draco-button__icon">
-          <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} @stretched={{true}} />
+        <span class={{this.iconWrapperClass}}>
+          <IconifyIcon @icon={{@icon}} class={{this.iconClass}} />
         </span>
       {{/if}}
     {{else}}
-      <span class="draco-button__text">
+      <span class={{this.textClass}}>
         {{this.text}}
       </span>
     {{/if}}

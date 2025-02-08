@@ -1,0 +1,18 @@
+{
+  "name": "dracoui",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build --parallel",
+    "dev:@dracoui/ember": "turbo run build --filter=@dracoui/ember --parallel"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "turbo": "^2.4.0"
+  },
+  "packageManager": "pnpm@9.15.3"
+}
