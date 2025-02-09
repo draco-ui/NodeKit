@@ -5,9 +5,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "turbo run dev",
+    "dev:tester": "turbo run dev --filter=tester",
     "build": "turbo run build --parallel",
-    "dev:@dracoui/ember": "turbo run build --filter=@dracoui/ember --parallel"
+    "build:@dracoui/ember": "turbo run build --filter=@dracoui/ember --parallel"
   },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
