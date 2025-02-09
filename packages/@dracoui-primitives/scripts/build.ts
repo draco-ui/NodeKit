@@ -136,8 +136,6 @@ StyleDictionary.registerFormat({
     },
 });
 
-// DYNAMIC CONFIG
-
 const targets = {
     'colors': {
         'source': [
@@ -167,7 +165,7 @@ function getStyleDictionaryConfig({ target }: { target: string }): Config {
     if (platforms.includes('web/css-variables')) {
         config.platforms['web/css-variables'] = {
             transformGroup,
-            "buildPath": `dist/${target}/css/`,
+            "buildPath": `dist/css/`,
             "prefix": "token",
             "basePxFontSize": 16,
             "files": [

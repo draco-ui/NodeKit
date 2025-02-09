@@ -21,7 +21,7 @@ const plugins = [
     '**/*.{js,ts}',
     'index.js',
     'template-registry.js',
-    'styles/@hashicorp/design-system-components.scss',
+    'styles/@dracoui/components.scss',
   ]),
 
   // These are the modules that should get reexported into the traditional
@@ -41,8 +41,7 @@ const plugins = [
   scss({
     fileName: 'styles/@dracoui/components.css',
     includePaths: [
-      '../../node_modules/@dracoui/primitives/dist/colors/css',
-      '../../node_modules/@dracoui/primitives/dist/borders/css',
+      '../../node_modules/@dracoui/primitives/dist/css',
     ],
   }),
 

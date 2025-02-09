@@ -15,8 +15,8 @@ importers:
   packages/@dracoui-ember:
     dependencies:
       '@dracoui/primitives':
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.1.4
+        version: 0.1.4
       '@embroider/addon-dev':
         specifier: ^7.1.1
         version: 7.1.1(@glint/template@1.5.2)(rollup@4.34.6)
@@ -756,8 +756,8 @@ packages:
     resolution: {integrity: sha512-UJnjoFsmxfKUdNYdWgOB0mWUypuLvAfQPH1+pyvRJs6euowbFkFC6P13w1l8mJyi3vxYMxc9kld5jZEGRQs6bw==}
     engines: {node: '>=18'}
 
-  '@dracoui/primitives@0.1.2':
-    resolution: {integrity: sha512-OtTb+qYUZjbr0b/3OfVaFZ5Ssamf85CRj3GkgVEa8bu9Rl6MIIekSJhBLsl520RXFMZ00omnzYxsfwuvQaYNMw==}
+  '@dracoui/primitives@0.1.4':
+    resolution: {integrity: sha512-fnRv4gvVlUJXUDnxzlta1zsvtJlFEoyti7dWLZOUTWKKa6JC7BL4P7zMicyYYL1+4EalZsmZJIh8XxCSJ32CmQ==}
 
   '@ember-data/rfc395-data@0.0.4':
     resolution: {integrity: sha512-tGRdvgC9/QMQSuSuJV45xoyhI0Pzjm7A9o/MVVA3HakXIImJbbzx/k/6dO9CUEQXIyS2y0fW6C1XaYOG7rY0FQ==}
@@ -7372,7 +7372,7 @@ snapshots:
 
   '@csstools/css-tokenizer@3.0.3': {}
 
-  '@dracoui/primitives@0.1.2': {}
+  '@dracoui/primitives@0.1.4': {}
 
   '@ember-data/rfc395-data@0.0.4': {}
 
