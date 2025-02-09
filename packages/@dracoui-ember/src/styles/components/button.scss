@@ -1,0 +1,15 @@
+.draco-button {
+  @at-root a#{&} {
+    width: fit-content;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.mock-hover,
+    &.mock-focus,
+    &.mock-active {
+      text-decoration: underline;
+      background-color: var(--token-color-palette-blue-950);
+    }
+  }
+}

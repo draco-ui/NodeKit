@@ -1,6 +1,12 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { Addon } from '@embroider/addon-dev/rollup';
 import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
+import scss from 'rollup-plugin-scss';
 import process from 'process';
 
 const addon = new Addon({
@@ -24,17 +30,25 @@ const plugins = [
   addon.appReexports(
     [
       'components/**/!(*types).js',
-    ],
+    ]
   ),
 
   // Follow the V2 Addon rules about dependencies. Your code can import from
   // `dependencies` and `peerDependencies` as well as standard Ember-provided
   // package names.
   addon.dependencies(),
+
+  scss({
+    fileName: 'styles/@dracoui/components.css',
+    includePaths: [
+      '../../node_modules/@dracoui/primitives/dist/colors/css',
+      '../../node_modules/@dracoui/primitives/dist/borders/css',
+    ],
+  }),
+
   // Ensure that standalone .hbs files are properly integrated as Javascript.
   addon.hbs(),
 
-  // Ensure that .gjs files are properly integrated as Javascript
   addon.gjs(),
 
   // This babel config should *not* apply presets or compile away ES modules.
@@ -71,4 +85,5 @@ export default {
   // You can augment this if you need to.
   output: addon.output(),
   plugins: plugins,
+  external: ['ember-modifier', 'prismjs'],
 };

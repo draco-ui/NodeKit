@@ -1,0 +1,28 @@
+name: License Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  license-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check License Header
+        uses: apache/skywalking-eyes@main
+        with:
+          config: .licenserc.yaml
+          log: debug
+          mode: fix
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit changes
+        if: steps.license.outputs.changed == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Add missing license headers"
+          branch: ${{ github.head_ref || github.ref_name }}

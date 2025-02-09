@@ -3,27 +3,47 @@
   "version": "0.1.3",
   "scripts": {
     "build:js": "rollup --config",
-    "build:types": "glint --declaration"
+    "build:types": "glint"
   },
   "dependencies": {
+    "@dracoui/primitives": "^0.1.2",
     "@embroider/addon-dev": "^7.1.1",
+    "@embroider/addon-shim": "^1.9.0",
     "@glimmer/component": "^2.0.0",
     "@glimmer/debug": "^0.92.4",
     "@glimmer/tracking": "^1.1.2",
     "@glint/template": "^1.5.2",
     "@iconify/ember": "^2.1.0",
     "@rollup/plugin-babel": "^6.0.4",
+    "@tsconfig/ember": "^3.0.9",
+    "@types/ember__object": "^4.0.12",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
     "decorator-transforms": "^2.3.0",
+    "ember": "^1.1.1",
+    "ember-cli": "^6.2.0",
     "ember-concurrency": "^4.0.2",
+    "glint": "^0.0.25",
+    "postcss": "^8.5.1",
     "process": "^0.11.10",
+    "rollup": "^4.34.6",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-scss": "^4.0.1"
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-scss": "^4.0.1",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "sass": "^1.84.0"
   },
   "packageManager": "pnpm@9.15.3",
+  "peerDependencies": {
+    "ember-source": "^3.28.0 || ^4.0.0 || ^5.3.0"
+  },
+  "ember": {
+    "edition": "octane"
+  },
   "ember-addon": {
     "app-js": {
       "./components/draco/button/index.js": "./dist/_app_/components/draco/button/index.js",
-      "./components/draco/tabs/index.js": "./dist/_app_/components/draco/tabs/index.js"
+      "./components/draco/interactive/index.js": "./dist/_app_/components/draco/interactive/index.js"
     }
   },
   "exports": {

@@ -1,0 +1,29 @@
+{{~#if @route~}}
+  {{~#if this.isRouteExternal~}}
+    <LinkToExternal
+      @current-when={{@current-when}}
+      @models={{draco-link-to-models @model @models}}
+      @query={{draco-link-to-query @query}}
+      @replace={{@replace}}
+      @route={{@route}}
+      ...attributes
+    >{{yield}}</LinkToExternal>
+  {{~else~}}
+    <LinkTo
+      @current-when={{@current-when}}
+      @models={{draco-link-to-models @model @models}}
+      @query={{draco-link-to-query @query}}
+      @replace={{@replace}}
+      @route={{@route}}
+      ...attributes
+    >{{yield}}</LinkTo>
+  {{~/if~}}
+{{~else if @href~}}
+  {{~#if this.isHrefExternal~}}
+    <a target="_blank" rel="noopener noreferrer" ...attributes href={{@href}} {{on "keyup" this.onKeyUp}}>{{yield}}</a>
+  {{~else~}}
+    <a ...attributes href={{@href}} {{on "keyup" this.onKeyUp}}>{{yield}}</a>
+  {{~/if~}}
+{{~else~}}
+  <button type="button" ...attributes>{{yield}}</button>
+{{~/if~}}
