@@ -1,3 +1,17 @@
-<span class={{this.textClass}}>
-  {{this.text}}
-</span>
+<Draco::Interactive
+  class={{this.classNames}}
+  @current-when={{@current-when}}
+  @models={{@model}}
+  @query={{@query}}
+  @replace={{@replace}}
+  @route={{@route}}
+  @isRouteExternal={{@isRouteExternal}}
+  @href={{@href}}
+  @isHrefExternal={{@isHrefExternal}}
+  ...attributes
+  aria-label={{if this.isIconOnly this.text null}}
+>
+  <span class="draco-button__text">
+    {{this.text}}
+  </span>
+</Draco::Interactive>
