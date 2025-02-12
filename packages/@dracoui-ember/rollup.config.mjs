@@ -29,7 +29,7 @@ const plugins = [
   // not everything in publicEntrypoints necessarily needs to go here.
   addon.appReexports(
     [
-      'components/**/!(*types).js',
+      'components/**/!(*types).js'
     ]
   ),
 
@@ -43,6 +43,10 @@ const plugins = [
     includePaths: [
       '../../node_modules/@dracoui/primitives/dist/css',
     ],
+  }),
+
+  scss({
+    output: './main.cs'
   }),
 
   // Ensure that standalone .hbs files are properly integrated as Javascript.
