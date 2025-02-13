@@ -11,3 +11,7 @@
     <img src="https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=000000">
   </a>
 </p>
+
+## Getting Started
+
+Visit [https://dracoui.dev/start](https://dracoui.dev/start) to get started with Draco. If you want to use Draco in Figma, please refer to [https://dracoui.dev/docs/figma](https://dracoui.dev/docs/figma)
