@@ -1,0 +1,54 @@
+@use "sass:map";
+
+$draco-button-sizes: ( "small", "medium", "large" );
+
+$hds-button-size-props: (
+  "small": (
+    "min-height": 24px,
+    "padding-vertical": 4px,
+    "padding-horizontal": 8px,
+    "font-size": 14px,
+    "line-height": 1.5,
+  ),
+  "medium": (
+    "min-height": 32px,
+    "padding-vertical": 8px,
+    "padding-horizontal": 16px,
+    "font-size": 16px,
+    "line-height": 1.5,
+  ),
+  "large": (
+    "min-height": 40px,
+    "padding-vertical": 12px,
+    "padding-horizontal": 24px,
+    "font-size": 18px,
+    "line-height": 1.5,
+  ),
+);
+
+.draco-button {
+  @each $size in $draco-button-sizes {
+    &.draco-button--size-#{$size} {
+      min-height: map.get($hds-button-size-props, $size, "min-height");
+      padding: map.get($hds-button-size-props, $size, "padding-vertical") map.get($hds-button-size-props, $size, "padding-horizontal");
+      font-size: map.get($hds-button-size-props, $size, "font-size");
+      line-height: map.get($hds-button-size-props, $size, "line-height");
+
+
+      &.draco-button--is-icon-only {
+        min-width: map.get($hds-button-size-props, $size, "min-height");
+        padding-right: map.get($hds-button-size-props, $size, "padding-vertical");
+        padding-left: map.get($hds-button-size-props, $size, "padding-vertical");
+      }
+    }
+  }
+
+  &.draco-button--width-full {
+    width: 100%;
+    max-width: 100%;
+
+    .draco-button__text {
+      flex: 0 0 auto;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.draco-button {
+  &:hover,
+  &.mock-hover {
+    &.draco-button--color-primary {
+      color: var(--token-color-foreground-high-contrast);
+      background-color: var(--token-color-palette-neutral-200);
+      border-color: var(--token-color-palette-neutral-200);
+      cursor: pointer;
+    }
+  }
+
+  &:focus,
+  &.mock-focus {
+    &.draco-button--color-primary {
+      color: var(--token-color-foreground-high-contrast);
+      background-color: var(--token-color-palette-neutral-200);
+      border-color: var(--token-color-focus-action-internal);
+
+      &::before {
+        $shift: 1px + 3px + 2px;
+        top: -$shift;
+        right: -$shift;
+        bottom: -$shift;
+        left: -$shift;
+        border-color: var(--token-color-focus-action-external);
+        border-radius: calc(var(--token-border-radius-small) + 3px + 2px);
+        opacity: 1;
+      }
+    }
+  }
+
+  &:active,
+  &.mock-active {
+    will-change: transform, box-shadow;
+    box-shadow: none;
+    transform: scale(0.98);
+  }
+
+  &:disabled,
+  &[disabled],
+  &.mock-disabled,
+  &:disabled:focus,
+  &[disabled]:focus,
+  &.mock-disabled:focus,
+  &:disabled:hover,
+  &[disabled]:hover,
+  &.mock-disabled:hover {
+    color: var(--token-color-palette-neutral-400);
+    background-color: var(--token-color-palette-neutral-950);
+    border-color: var(--token-color-palette-neutral-50);
+    box-shadow: none;
+    cursor: not-allowed;
+
+    &::before {
+      border-color: transparent;
+    }
+  }
+}

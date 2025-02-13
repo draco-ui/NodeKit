@@ -1,8 +1,3 @@
-/**
- * Copyright (c) HashiCorp, Inc.
- * SPDX-License-Identifier: MPL-2.0
- */
-
 import { Addon } from '@embroider/addon-dev/rollup';
 import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
@@ -41,7 +36,7 @@ const plugins = [
   scss({
     fileName: 'styles/@dracoui/components.css',
     includePaths: [
-      '../../node_modules/@dracoui/primitives/dist/css',
+      './node_modules/@dracoui/primitives/dist/css',
     ],
   }),
 

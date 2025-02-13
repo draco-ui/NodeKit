@@ -1,0 +1,35 @@
+@use "sizes";
+@use "colors";
+@use "states";
+
+.draco-button {
+  cursor: pointer;
+  border-radius: var(--token-border-radius-small);
+  border-width: 1px;
+  border-style: solid;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.1s, border-color 0.1s, box-shadow 0.1s, color 0.1s, transform 0.2s;
+  font-weight: 600;
+
+  @at-root a#{&} {
+    width: fit-content;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.mock-hover,
+    &.mock-focus,
+    &.mock-active {
+      text-decoration: underline;
+    }
+  }
+
+  .draco-button__text {
+    display: block;
+    flex: 1 0 0;
+    text-align: center;
+  }
+}

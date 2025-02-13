@@ -1,0 +1,7 @@
+.draco-button {
+  &.draco-button--color-primary {
+    background-color: var(--token-color-palette-neutral-100);
+    border-color: var(--token-color-palette-neutral-100);
+    box-shadow: var(--token-elevation-low-box-shadow);
+  }
+}

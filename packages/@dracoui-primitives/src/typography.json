@@ -1,0 +1,57 @@
+{
+  "typography": {
+    "font-stack": {
+      "sans": {
+        "display": {
+          "macOS": {
+            "value": "-apple-system, BlinkMacSystemFont",
+            "private": "true"
+          },
+          "windows": {
+            "value": "Segoe UI",
+            "private": "true"
+          },
+          "sans": {
+            "value": "Helvetica, Arial, sans-serif",
+            "private": "true"
+          },
+          "emoji": {
+            "value": "Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+            "private": "true"
+          }
+        },
+        "text": {
+          "macOS": {
+            "value": "-apple-system, BlinkMacSystemFont",
+            "private": "true"
+          },
+          "windows": {
+            "value": "Segoe UI",
+            "private": "true"
+          },
+          "emoji": {
+            "value": "Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+            "private": "true"
+          }
+        }
+      }
+    },
+    "font-weight": {
+      "light": {
+        "value": "300"
+      },
+      "regular": {
+        "value": "400"
+      },
+      "medium": {
+        "value": "500"
+      },
+      "semiBold": {
+        "value": "600"
+      },
+      "bold": {
+        "value": "700"
+      }
+    }
+  }
+}
