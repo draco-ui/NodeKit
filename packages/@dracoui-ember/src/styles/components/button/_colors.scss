@@ -26,4 +26,10 @@
     border-color: var(--token-color-palette-red-500);
     box-shadow: var(--token-elevation-low-box-shadow);
   }
+
+  &.draco-button--color-tertiary {
+    background-color: transparent;
+    color: var(--token-color-palette-neutral-100);
+    box-shadow: var(--token-elevation-low-box-shadow);
+  }
 }

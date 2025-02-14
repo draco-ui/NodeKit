@@ -3,8 +3,9 @@
 @use "typography";
 
 // Component styles loader
+@use "../components/avatar";
 @use "../components/button";
-@use "../components/loading";
+@use "../components/loading-dots";
 
 // Vercel's Geist font loaders
 @font-face {

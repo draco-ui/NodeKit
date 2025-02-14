@@ -6,6 +6,6 @@ export interface DracoLoadingSignature {
   };
 }
 
-const DracoLoading = TemplateOnlyComponent<DracoLoadingSignature>();
+const DracoLoadingDots = TemplateOnlyComponent<DracoLoadingSignature>();
 
-export default DracoLoading;
+export default DracoLoadingDots;

@@ -1,0 +1,12 @@
+.draco-avatar {
+  display: flex;
+  object-fit: cover;
+
+  &.draco-avatar--shape-circle {
+    border-radius: var(--token-border-radius-full);
+  }
+
+  &.draco-avatar--shape-square {
+    border-radius: var(--token-border-radius-small);
+  }
+}

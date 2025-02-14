@@ -4,13 +4,11 @@
     &.draco-button--color-primary {
       background-color: var(--token-color-palette-neutral-200);
       border-color: var(--token-color-palette-neutral-200);
-      cursor: pointer;
     }
 
     &.draco-button--color-secondary {
       background-color: var(--token-color-palette-neutral-800);
       border-color: var(--token-color-palette-neutral-700);
-      cursor: pointer;
     }
 
     &.draco-button--color-warning {
@@ -23,7 +21,9 @@
     &.draco-button--color-error {
       background-color: var(--token-color-palette-red-400);
       border-color: var(--token-color-palette-red-400);
-      cursor: pointer;
+    }
+    &.draco-button--color-tertiary {
+      background-color: var(--token-color-palette-neutral-900);
     }
   }
 
