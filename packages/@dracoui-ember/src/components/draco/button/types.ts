@@ -3,7 +3,6 @@ export enum DracoButtonSizeValues {
   Medium = 'medium',
   Large = 'large'
 };
-
 export type DracoButtonSizes = `${DracoButtonSizeValues}`;
 
 export enum DracoButtonColorValues {
@@ -13,12 +12,17 @@ export enum DracoButtonColorValues {
   Warning = 'warning',
   Error = 'error'
 };
-
 export type DracoButtonColors = `${DracoButtonColorValues}`;
 
 export enum DracoButtonIconPositionValues {
   Leading = 'leading',
   Trailing = 'trailing'
 };
-
 export type DracoButtonIconPositions = `${DracoButtonColorValues}`;
+
+export enum DracoButtonShapeValues {
+  Square = 'square',
+  Circle = 'circle',
+  Rounded = 'rounded'
+};
+export type DracoButtonShapes = `${DracoButtonShapeValues}`;

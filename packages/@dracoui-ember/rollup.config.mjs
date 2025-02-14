@@ -2,6 +2,7 @@ import { Addon } from '@embroider/addon-dev/rollup';
 import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
+import cssnano from 'rollup-plugin-cssnano';
 import process from 'process';
 
 const addon = new Addon({
@@ -37,11 +38,8 @@ const plugins = [
     fileName: 'styles/@dracoui/components.css',
     includePaths: [
       './node_modules/@dracoui/primitives/dist/css',
+      './node_modules/@dracoui/primitives/dist/fonts'
     ],
-  }),
-
-  scss({
-    output: './main.cs'
   }),
 
   // Ensure that standalone .hbs files are properly integrated as Javascript.
@@ -69,8 +67,9 @@ const plugins = [
     targets: [
       { src: 'README.md', dest: 'dist' },
       { src: 'LICENSE.md', dest: 'dist' },
-    ],
-  }),
+      { src: './node_modules/geist/dist/fonts/geist-sans/Geist-variable.woff2', dest: 'dist/styles/fonts' },
+    ]
+  })
 ];
 
 if (!process.env.development) {

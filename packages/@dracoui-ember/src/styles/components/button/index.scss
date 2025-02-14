@@ -4,7 +4,8 @@
 
 .draco-button {
   cursor: pointer;
-  border-radius: var(--token-border-radius-small);
+  font-family: var(--token-typography-display-400-font-family);
+  border-radius: var(--token-border-radius-large);
   border-width: 1px;
   border-style: solid;
   display: inline-flex;
@@ -12,7 +13,21 @@
   justify-content: center;
   position: relative;
   transition: background-color 0.1s, border-color 0.1s, box-shadow 0.1s, color 0.1s, transform 0.2s;
-  font-weight: 600;
+
+  &.draco-button--size-small {
+    font-weight: var(--token-typography-font-weight-light);
+  }
+
+  &.draco-button--size-medium,
+  &.draco-button--size-large {
+    font-weight: var(--token-typography-font-weight-regular);
+  }
+
+  // Handle border radius shapes
+  &.draco-button--shape-circle,
+  &.draco-button--shape-rounded {
+    border-radius: var(--token-border-radius-full);
+  }
 
   @at-root a#{&} {
     width: fit-content;

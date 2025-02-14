@@ -6,6 +6,25 @@
       border-color: var(--token-color-palette-neutral-200);
       cursor: pointer;
     }
+
+    &.draco-button--color-secondary {
+      background-color: var(--token-color-palette-neutral-800);
+      border-color: var(--token-color-palette-neutral-700);
+      cursor: pointer;
+    }
+
+    &.draco-button--color-warning {
+      color: var(--token-color-palette-neutral-950);
+      background-color: var(--token-color-palette-orange-600);
+      border-color: var(--token-color-palette-orange-600);
+      box-shadow: var(--token-elevation-low-box-shadow);
+    }
+
+    &.draco-button--color-error {
+      background-color: var(--token-color-palette-red-400);
+      border-color: var(--token-color-palette-red-400);
+      cursor: pointer;
+    }
   }
 
   &:focus,
@@ -43,11 +62,15 @@
   &:disabled:hover,
   &[disabled]:hover,
   &.mock-disabled:hover {
+    cursor: not-allowed;
     color: var(--token-color-palette-neutral-400);
-    background-color: var(--token-color-palette-neutral-950);
-    border-color: var(--token-color-palette-neutral-50);
+    background-color: var(--token-color-palette-neutral-900);
+    border-color: var(--token-color-palette-neutral-800);
     box-shadow: none;
     cursor: not-allowed;
+
+    transform: none !important;
+    will-change: auto !important;
 
     &::before {
       border-color: transparent;

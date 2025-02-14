@@ -1,0 +1,99 @@
+$draco-loading-color: var(--token-color-palette-neutral-500);
+$draco-loading-space-ratio: 1;
+
+@keyframes draco-loading-blink {
+  0% {
+    opacity: 0.2;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.draco-loading {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  // Assuming SCALES and theme are defined elsewhere (e.g., in variables or functions)
+  // Replace these with actual values or functions
+  font-size: scale-font(1); // Example function usage
+  width: scale-width(1, 100%); // Example function usage
+  height: scale-height(1, 100%); // Example function usage
+  min-height: 1em;
+  padding: scale-pt(0) scale-pr(0) scale-pb(0) scale-pl(0);
+  margin: scale-mt(0) scale-mr(0) scale-mb(0) scale-ml(0);
+  background-color: transparent; // Make background transparent
+
+  i {
+    width: 0.25em;
+    height: 0.25em;
+    border-radius: 50%;
+    background-color: $draco-loading-color;
+    margin: 0 calc(0.25em / 2 * $draco-loading-space-ratio);
+    display: inline-block;
+    animation: draco-loading-blink 1.4s infinite both;
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+// Example usage (replace with your actual theme and scaling functions)
+@function scale-font($scale) {
+  @return 1rem * $scale; // Example implementation
+}
+
+@function scale-width($scale, $percentage) {
+  @return $percentage; // Example implementation
+}
+
+@function scale-height($scale, $percentage) {
+  @return $percentage; // Example implementation
+}
+
+@function scale-pt($scale) {
+  @return 0; // Example implementation
+}
+
+@function scale-pr($scale) {
+  @return 0; // Example implementation
+}
+
+@function scale-pb($scale) {
+  @return 0; // Example implementation
+}
+
+@function scale-pl($scale) {
+  @return 0; // Example implementation
+}
+
+@function scale-mt($scale) {
+  @return 0; // Example implementation
+}
+
+@function scale-mr($scale) {
+  @return 0; // Example implementation
+}
+
+@function scale-mb($scale) {
+  @return 0; // Example implementation
+}
+
+@function scale-ml($scale) {
+  @return 0; // Example implementation
+}
+
+@function theme-color($color-name) {
+  @return gray; // Example implementation
+}

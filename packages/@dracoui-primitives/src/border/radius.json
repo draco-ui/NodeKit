@@ -14,7 +14,11 @@
         "type": "size"
       },
       "large": {
-        "value": "6",
+        "value": "8",
+        "type": "size"
+      },
+      "full": {
+        "value": "calc(infinity * 1px)",
         "type": "size"
       }
     }

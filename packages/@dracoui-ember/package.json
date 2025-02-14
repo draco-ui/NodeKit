@@ -24,7 +24,7 @@
     "@codemirror/legacy-modes": "^6.4.2",
     "@codemirror/state": "^6.5.0",
     "@codemirror/view": "^6.36.2",
-    "@dracoui/primitives": "^0.1.4",
+    "@dracoui/primitives": "^0.1.12",
     "@ember/render-modifiers": "^2.1.0",
     "@ember/string": "^3.1.1",
     "@ember/test-waiters": "^3.1.0",
@@ -46,6 +46,8 @@
     "ember-stargate": "^0.4.3",
     "ember-style-modifier": "^4.4.0",
     "ember-truth-helpers": "^4.0.3",
+    "geist": "^1.3.1",
+    "jetbrains-mono": "^1.0.6",
     "luxon": "^2.3.2 || ^3.4.2",
     "prismjs": "^1.29.0",
     "sass": "^1.83.0",
@@ -93,6 +95,7 @@
     "prettier": "^3.4.2",
     "rollup": "^4.28.1",
     "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-cssnano": "^1.0.0",
     "rollup-plugin-scss": "^4.0.1",
     "rollup-plugin-ts": "^3.4.5",
     "stylelint": "^16.12.0",
@@ -112,7 +115,11 @@
     "version": 2,
     "app-js": {
       "./components/draco/button/index.js": "./dist/_app_/components/draco/button/index.js",
-      "./components/draco/interactive/index.js": "./dist/_app_/components/draco/interactive/index.js"
+      "./components/draco/interactive/index.js": "./dist/_app_/components/draco/interactive/index.js",
+      "./components/draco/loading/index.js": "./dist/_app_/components/draco/loading/index.js"
+    },
+    "public-assets": {
+      "./dist/styles/fonts/Geist-Variable.woff2": "assets/fonts/Geist-Variable.woff2"
     }
   },
   "exports": {

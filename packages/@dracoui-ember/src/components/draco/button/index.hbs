@@ -11,7 +11,13 @@
   ...attributes
   aria-label={{if this.isIconOnly this.text null}}
 >
-  <span class="draco-button__text">
-    {{this.text}}
-  </span>
+  {{#if this.loading}}
+    <Draco::Loading />
+  {{else}}
+    <span class="draco-button__text">
+      {{this.text}}
+    </span>
+
+    {{yield}}
+  {{/if}}
 </Draco::Interactive>

@@ -7,6 +7,7 @@ import {
 } from './types.ts';
 import type {
   DracoButtonSizes,
+  DracoButtonShapes,
   DracoButtonColors,
 } from './types.ts';
 import type { DracoInteractiveSignature } from '../interactive/';
@@ -20,10 +21,16 @@ export const DEFAULT_COLOR = DracoButtonColorValues.Primary;
 export interface DracoButtonSignature {
     Args: DracoInteractiveSignature['Args'] & {
       size?: DracoButtonSizes;
-      color?: DracoButtonColors;
-      text: string;
+      loading?: boolean,
+      text?: string;
       isFullWidth?: boolean;
       isInline?: boolean;
+      shape?: DracoButtonShapes | undefined,
+
+      // Allow calling of color from @variant, @type or @color
+      type?: DracoButtonColors;
+      color?: DracoButtonColors;
+      variant?: DracoButtonColors;
     };
     Element: DracoInteractiveSignature['Element'];
   }
@@ -32,12 +39,7 @@ export default class DracoButton extends Component<DracoButtonSignature> {
   get text(): string {
     const { text } = this.args;
 
-    assert(
-      '@text for "Draco::Button" must have a valid value',
-      text !== undefined
-    );
-
-    return text;
+    return text ?? '';
   }
 
   get size(): DracoButtonSizes {
@@ -54,7 +56,7 @@ export default class DracoButton extends Component<DracoButtonSignature> {
   }
 
   get color(): DracoButtonColors {
-    const { color = DEFAULT_COLOR } = this.args;
+    const color = this.args.color || this.args.variant || this.args.type || DEFAULT_COLOR;
 
     assert(
       `@color for "Draco::Button" must be one of the following: ${COLORS.join(
@@ -64,6 +66,21 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     );
 
     return color;
+  }
+
+  get loading(): boolean {
+    return this.args.loading ?? false;
+  }
+
+  get shape(): DracoButtonShapes {
+    const { shape = 'square' } = this.args;
+
+    assert(
+      `@shape for "Draco::Button" must be one of the following: "square", "circle", "rounded"; received: ${shape}`,
+      shape === undefined || ['square', 'circle', 'rounded'].includes(shape)
+    );
+
+    return shape;
   }
 
   get isFullWidth(): boolean {
@@ -84,6 +101,14 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     // add a class based on the @isInline argument
     if (this.args.isInline) {
       classes.push('draco-button--is-inline');
+    }
+
+    // Add shape parameters
+    classes.push(`draco-button--shape-${this.shape}`);
+
+    // Add mock disabled state for loading
+    if (this.loading) {
+      classes.push('mock-disabled');
     }
 
     // add a class based on the @size argument

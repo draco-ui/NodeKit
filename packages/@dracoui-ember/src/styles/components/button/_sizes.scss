@@ -4,23 +4,23 @@ $draco-button-sizes: ( "small", "medium", "large" );
 
 $hds-button-size-props: (
   "small": (
-    "min-height": 24px,
+    "min-height": 31px,
     "padding-vertical": 4px,
-    "padding-horizontal": 8px,
+    "padding-horizontal": 10px,
     "font-size": 14px,
     "line-height": 1.5,
   ),
   "medium": (
-    "min-height": 32px,
-    "padding-vertical": 8px,
-    "padding-horizontal": 16px,
+    "min-height": 40px,
+    "padding-vertical": 6px,
+    "padding-horizontal": 12px,
     "font-size": 16px,
     "line-height": 1.5,
   ),
   "large": (
-    "min-height": 40px,
-    "padding-vertical": 12px,
-    "padding-horizontal": 24px,
+    "min-height": 48px,
+    "padding-vertical": 9px,
+    "padding-horizontal": 17px,
     "font-size": 18px,
     "line-height": 1.5,
   ),

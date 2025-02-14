@@ -25,17 +25,27 @@ const transformPxToRem: Transform['transform'] = (token, platform) => {
 }
 
 StyleDictionary.registerTransform({
-    name: 'size/px',
-    type: 'value',
-    filter: function(token) {
-        return token.type === 'size';
-    },
-    transform: function (token) {
-        const val = parseFloat(token.value);
-        if (isNaN(val)) throw `Invalid Number: '${token.name}: ${token.value}' is not a valid number, cannot transform to 'px'.\n`;
+  name: 'size/px',
+  type: 'value',
+  filter: function(token) {
+    return token.type === 'size';
+  },
+  transform: function (token) {
+    const isBorder = token?.attributes?.category === 'border';
+
+    if (isBorder) {
+      if (/^\d*\.?\d+$/.test(token.value)) {
         return `${token.value}px`;
+      }
+      return token.value;
     }
+
+    const val = parseFloat(token.value);
+    if (isNaN(val)) throw `Invalid Number: '${token.name}: ${token.value}' is not a valid number, cannot transform to 'px'.\n`;
+    return `${token.value}px`;
+  }
 });
+
 
 StyleDictionary.registerTransform({
   name: 'border/px',
@@ -46,10 +56,13 @@ StyleDictionary.registerTransform({
   transform: function (token) {
       const val = parseFloat(token.value);
       if (isNaN(val)) return token.value;
-      return `${token.value}px`;
+
+      if (/^\d*\.?\d+$/.test(token.value)) {
+          return `${token.value}px`;
+      }
+      return token.value;
   }
 });
-
 
 StyleDictionary.registerTransform({
     name: 'font-size/rem',
@@ -102,18 +115,7 @@ StyleDictionary.registerTransform({
 });
 
 StyleDictionary.registerTransformGroup({
-    name: 'products/web',
-    transforms: ['attribute/cti', 'name/kebab', 'font-size/rem', 'size/px', 'color/css', 'color/with-alpha', 'time/sec']
-});
-
-StyleDictionary.registerTransformGroup({
-    name: 'products/email',
-    // notice: for emails we need the font-size in `px` (not `rem`)
-    transforms: ['attribute/cti', 'name/kebab', 'font-size/px', 'size/px', 'color/css', 'color/with-alpha', 'time/sec']
-});
-
-StyleDictionary.registerTransformGroup({
-    name: 'marketing/web',
+    name: 'web',
     transforms: ['attribute/cti', 'name/kebab', 'font-size/rem', 'size/px', 'color/css', 'color/with-alpha', 'time/sec']
 });
 
@@ -141,16 +143,23 @@ const targets = {
         'source': [
             `src/color/**/*.json`,
         ],
-        'transformGroup': 'products/web',
+        'transformGroup': 'web',
         'platforms': ['web/css-variables', 'docs/json']
     },
     'borders': {
       'source': [
           `src/border/**/*.json`,
       ],
-      'transformGroup': 'products/web',
+      'transformGroup': 'web',
       'platforms': ['web/css-variables', 'docs/json']
-  },
+    },
+    'typography': {
+      'source': [
+          `src/typography.json`,
+      ],
+      'transformGroup': 'web',
+      'platforms': ['web/css-variables', 'docs/json']
+    },
 };
 
 function getStyleDictionaryConfig({ target }: { target: string }): Config {
@@ -219,24 +228,22 @@ function getStyleDictionaryConfig({ target }: { target: string }): Config {
     return config;
 }
 
-// PROCESS THE DESIGN TOKENS
-
+// PROCESS THE DESIGN TOKENS and call copyFonts
 console.log('Build started...');
 console.log('\n==============================================');
 
-// empty the dist folder
 console.log(`\nCleaning up dist folder`);
 fs.emptyDirSync(distFolder);
+
 
 for (const target of Object.keys(targets)) {
     const StyleDictionaryInstance = new StyleDictionary(getStyleDictionaryConfig({ target }));
 
     console.log(`\nProcessing target "${target}"...`);
     await StyleDictionaryInstance.hasInitialized;
-    await StyleDictionaryInstance.buildAllPlatforms()
+    await StyleDictionaryInstance.buildAllPlatforms();
     console.log('\nEnd processing');
 }
-
 
 console.log('\n==============================================');
 console.log('\nBuild completed!');
