@@ -21,6 +21,24 @@
   }
 }
 
+.draco-avatar-group {
+  display: flex;
+  position: relative;
+
+  .draco-avatar {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--token-color-palette-neutral-700);
+    position: relative;
+    margin-left: -10px;
+
+    &:last-child {
+      z-index: 1;
+      margin-left: 0;
+    }
+  }
+}
+
 .draco-avatar-group--remaining-count {
   border-radius: 100%;
   align-items: center;

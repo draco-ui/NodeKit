@@ -1,11 +1,21 @@
-<div ...attributes>
+<div class="draco-avatar-group" ...attributes>
   {{#if this.members.length}}
     {{#if (not (eq this.limit 0))}}
       {{#each this.members as |member index|}}
         {{#if (lt index this.limit)}}
-          <span>
-            {{member.username}}
-          </span>
+          {{#if member.provider}}
+            {{#if (eq member.provider "github")}}
+              <Draco::Avatar::Github @username={{member.username}} @size={{this.size}} />
+            {{else if (eq member.provider "gitlab")}}
+              <span>gitlab</span>
+            {{else if (eq member.provider "bitbucket")}}
+              <span>Bitbucket</span>
+            {{/if}}
+          {{/if}}
+
+          {{#if member.src}}
+            <Draco::Avatar @src={{member.src}} @size={{this.size}} />
+          {{/if}}
         {{/if}}
       {{/each}}
       {{#if (gt this.members.length this.limit)}}
