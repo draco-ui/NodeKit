@@ -10,6 +10,7 @@ import type {
   DracoAvatarShapes
 } from "./types.ts";
 
+export const DEFAULT_SIZE = 32;
 export const DEFAULT_SHAPE = 'circle';
 export const AVAILABLE_SHAPES = [
   DracoAvatarShapeValues.Circle,
@@ -42,7 +43,7 @@ export default class DracoAvatar extends Component<DracoAvatarSignature> {
   }
 
   get size(): number {
-    const { size = 32 } = this.args;
+    const { size = DEFAULT_SIZE } = this.args;
 
     assert(
       `@size for "Draco::Avatar" must be a valid number; received: ${size}`,

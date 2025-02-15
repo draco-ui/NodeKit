@@ -19,6 +19,10 @@ import type DracoLoadingDotsComponent from './components/draco/button';
 // Interactive Component
 import type DracoInteractiveComponent from "./components/draco/interactive";
 
+// Helpers
+import type DracoEqHelper from './helpers/draco-eq.ts';
+import type DracoSubtractHelper from './helpers/draco-subtract.ts';
+
 export default interface DracoComponentsRegistry {
   // Avatar
   'Draco::Avatar': typeof DracoAvatarComponent;
@@ -47,4 +51,8 @@ export default interface DracoComponentsRegistry {
   // Interactive
   'Draco::Interactive': typeof DracoInteractiveComponent;
   'draco/interactive': typeof DracoInteractiveComponent;
+
+  // Helpers
+  'draco-eq': typeof DracoEqHelper;
+  'draco-subtract': typeof DracoSubtractHelper;
 };

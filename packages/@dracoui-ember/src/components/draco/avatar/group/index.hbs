@@ -1,9 +1,27 @@
-<div>
+<div ...attributes>
   {{#if this.members.length}}
-    {{#each this.members as |member|}}
-      <span>
-        {{member.username}}
-      </span>
-    {{/each}}
+    {{#if (not (eq this.limit 0))}}
+      {{#each this.members as |member index|}}
+        {{#if (lt index this.limit)}}
+          <span>
+            {{member.username}}
+          </span>
+        {{/if}}
+      {{/each}}
+      {{#if (gt this.members.length this.limit)}}
+        <span
+          class="draco-avatar-group--remaining-count"
+          {{style width=(concat this.size "px") height=(concat this.size "px")}}
+        >
+          +{{draco-subtract this.members.length this.limit}}
+        </span>
+      {{/if}}
+    {{else}}
+      {{#each this.members as |member index|}}
+        <span>
+          {{member.username}}
+        </span>
+      {{/each}}
+    {{/if}}
   {{/if}}
 </div>

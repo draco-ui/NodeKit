@@ -25,6 +25,7 @@ const plugins = [
   // not everything in publicEntrypoints necessarily needs to go here.
   addon.appReexports(
     [
+      'helpers/**/*.js',
       'components/**/!(*types).js'
     ]
   ),

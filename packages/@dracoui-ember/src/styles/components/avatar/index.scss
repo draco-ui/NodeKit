@@ -20,3 +20,19 @@
     border-radius: var(--token-border-radius-small);
   }
 }
+
+.draco-avatar-group--remaining-count {
+  border-radius: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-align: center;
+  font-family: var(--token-typography-display-400-font-family);
+  font-weight: var(--token-typography-font-weight-light);
+  border-width: 1px;
+  border-style: solid;
+  display: inline-flex;
+  background-color: var( --token-color-palette-neutral-900);
+  color: var(--token-color-palette-neutral-100);
+  border-color: var(--token-color-palette-neutral-800);
+}
