@@ -1,8 +1,14 @@
 // Avatar
 import type DracoAvatarComponent from "./components/draco/avatar";
 
+// Avatar Group
+import type DracoAvatarGroupComponent from "./components/draco/avatar/group";
+
 // Avatar Github
 import type DracoAvatarGithubComponent from "./components/draco/avatar/github";
+
+// Icon
+import type DracoIconComponent from "./components/draco/icon"
 
 // Button Component
 import type DracoButtonComponent from './components/draco/button';
@@ -18,9 +24,17 @@ export default interface DracoComponentsRegistry {
   'Draco::Avatar': typeof DracoAvatarComponent;
   'draco/avatar': typeof DracoAvatarComponent;
 
+  // Avatar Group
+  'Draco::Avatar::Group': typeof DracoAvatarGroupComponent;
+  'draco/avatar/group': typeof DracoAvatarGroupComponent;
+
   // Avatar Github
   'Draco::Avatar::Github': typeof DracoAvatarGithubComponent;
   'draco/avatar/github': typeof DracoAvatarGithubComponent;
+
+  // Icon
+  'Draco::Icon': typeof DracoIconComponent;
+  'draco/icon': typeof DracoIconComponent;
 
   // Button
   'Draco::Button': typeof DracoButtonComponent;

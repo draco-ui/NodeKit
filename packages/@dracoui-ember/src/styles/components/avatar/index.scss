@@ -1,0 +1,22 @@
+@use '_group';
+
+.draco-avatar {
+  object-fit: cover;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  img {
+    display: block;
+    position: relative;
+  }
+
+  &.draco-avatar--shape-circle {
+    border-radius: 100%;
+  }
+
+  &.draco-avatar--shape-square {
+    border-radius: var(--token-border-radius-small);
+  }
+}

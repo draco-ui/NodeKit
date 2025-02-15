@@ -76,7 +76,7 @@ export default class DracoAvatar extends Component<DracoAvatarSignature> {
     const classes = ['draco-avatar'];
 
     // add a class based on the @size argument
-    classes.push(`draco-button--shape-${this.shape}`);
+    classes.push(`draco-avatar--shape-${this.shape}`);
 
     return classes.join(' ');
   }
