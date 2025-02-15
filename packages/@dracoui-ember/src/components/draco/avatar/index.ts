@@ -1,26 +1,25 @@
+import {
+  DracoAvatarSizeValues,
+  DracoAvatarShapeValues
+} from "./types.ts";
 import { assert } from '@ember/debug';
 import { isPresent } from '@ember/utils';
 import Component from "@glimmer/component";
 
-import {
-  DracoAvatarShapeValues
-} from "./types.ts";
-
 import type {
+  DracoAvatarSizes,
   DracoAvatarShapes
 } from "./types.ts";
 
-export const DEFAULT_SIZE = 32;
-export const DEFAULT_SHAPE = 'circle';
-export const AVAILABLE_SHAPES = [
-  DracoAvatarShapeValues.Circle,
-  DracoAvatarShapeValues.Square
-];
+export const DEFAULT_SIZE = DracoAvatarSizeValues.Medium;
+export const DEFAULT_SHAPE = DracoAvatarShapeValues.Circle;
+export const AVAILABLE_SIZES: string[] = Object.values(DracoAvatarSizeValues);
+export const AVAILABLE_SHAPES: string[] = Object.values(DracoAvatarShapeValues);
 
 export interface DracoAvatarSignature {
   Args: {
-    size?: number;
     src?: string,
+    size?: DracoAvatarSizes;
     shape?: DracoAvatarShapes;
   },
   Blocks: {
@@ -28,7 +27,7 @@ export interface DracoAvatarSignature {
   }
 }
 
-export default class DracoAvatar extends Component<DracoAvatarSignature> {
+export default class DracoAvatar<T extends DracoAvatarSignature = DracoAvatarSignature> extends Component<T> {
   get shape(): DracoAvatarShapes {
     const { shape = DEFAULT_SHAPE } = this.args;
 
@@ -42,12 +41,14 @@ export default class DracoAvatar extends Component<DracoAvatarSignature> {
     return shape;
   }
 
-  get size(): number {
+  get size(): string {
     const { size = DEFAULT_SIZE } = this.args;
 
     assert(
-      `@size for "Draco::Avatar" must be a valid number; received: ${size}`,
-      typeof size === 'number'
+      `@size for "Draco::Avatar" must be one of the following ${AVAILABLE_SIZES.join(
+        ', '
+      )}; received: ${size}`,
+      AVAILABLE_SIZES.includes(size)
     );
 
     return size;
@@ -77,6 +78,9 @@ export default class DracoAvatar extends Component<DracoAvatarSignature> {
     const classes = ['draco-avatar'];
 
     // add a class based on the @size argument
+    classes.push(`draco-avatar--size-${this.size}`);
+
+    // add a class based on the @shape argument
     classes.push(`draco-avatar--shape-${this.shape}`);
 
     return classes.join(' ');

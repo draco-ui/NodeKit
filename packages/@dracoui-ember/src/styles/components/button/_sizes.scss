@@ -2,7 +2,7 @@
 
 $draco-button-sizes: ( "small", "medium", "large" );
 
-$hds-button-size-props: (
+$draco-button-size-props: (
   "small": (
     "min-height": 31px,
     "padding-vertical": 4px,
@@ -29,16 +29,16 @@ $hds-button-size-props: (
 .draco-button {
   @each $size in $draco-button-sizes {
     &.draco-button--size-#{$size} {
-      min-height: map.get($hds-button-size-props, $size, "min-height");
-      padding: map.get($hds-button-size-props, $size, "padding-vertical") map.get($hds-button-size-props, $size, "padding-horizontal");
-      font-size: map.get($hds-button-size-props, $size, "font-size");
-      line-height: map.get($hds-button-size-props, $size, "line-height");
+      min-height: map.get($draco-button-size-props, $size, "min-height");
+      padding: map.get($draco-button-size-props, $size, "padding-vertical") map.get($draco-button-size-props, $size, "padding-horizontal");
+      font-size: map.get($draco-button-size-props, $size, "font-size");
+      line-height: map.get($draco-button-size-props, $size, "line-height");
 
 
       &.draco-button--is-icon-only {
-        min-width: map.get($hds-button-size-props, $size, "min-height");
-        padding-right: map.get($hds-button-size-props, $size, "padding-vertical");
-        padding-left: map.get($hds-button-size-props, $size, "padding-vertical");
+        min-width: map.get($draco-button-size-props, $size, "min-height");
+        padding-right: map.get($draco-button-size-props, $size, "padding-vertical");
+        padding-left: map.get($draco-button-size-props, $size, "padding-vertical");
       }
     }
   }
