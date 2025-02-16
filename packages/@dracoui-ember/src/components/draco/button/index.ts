@@ -17,7 +17,6 @@ export const COLORS: string[] = Object.values(DracoButtonColorValues);
 export const DEFAULT_SIZE = DracoButtonSizeValues.Medium;
 export const DEFAULT_COLOR = DracoButtonColorValues.Primary;
 
-
 export interface DracoButtonSignature {
     Args: DracoInteractiveSignature['Args'] & {
       size?: DracoButtonSizes;
