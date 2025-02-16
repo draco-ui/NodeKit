@@ -1,6 +1,8 @@
-<IconifyIcon
-  @icon={{this.name}}
-  @width={{this.size}}
-  @height={{this.size}}
-  @style={{if this.color (concat "color: " this.color ";")}}
-/>
+<span class={{this.classNames}} ...attributes>
+  <IconifyIcon
+    @icon={{this.name}}
+    @width={{this.size}}
+    @height={{this.size}}
+    {{style color=(if this.color this.color)}}
+  />
+</span>

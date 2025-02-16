@@ -7,6 +7,12 @@ import type DracoAvatarGroupComponent from "./components/draco/avatar/group";
 // Avatar Github
 import type DracoAvatarGithubComponent from "./components/draco/avatar/github";
 
+// Avatar Gitlab
+import type DracoAvatarGitlabComponent from "./components/draco/avatar/gitlab";
+
+// Avatar Bitbucket
+import type DracoAvatarBitbucketComponent from "./components/draco/avatar/bitbucket";
+
 // Icon
 import type DracoIconComponent from "./components/draco/icon"
 
@@ -35,6 +41,14 @@ export default interface DracoComponentsRegistry {
   // Avatar Github
   'Draco::Avatar::Github': typeof DracoAvatarGithubComponent;
   'draco/avatar/github': typeof DracoAvatarGithubComponent;
+
+  // Avatar Gitlab
+  'Draco::Avatar::Gitlab': typeof DracoAvatarGitlabComponent;
+  'draco/avatar/gitlab': typeof DracoAvatarGitlabComponent;
+
+  // Avatar Bitbucket
+  'Draco::Avatar::Bitbucket': typeof DracoAvatarBitbucketComponent;
+  'draco/avatar/bitbucket': typeof DracoAvatarBitbucketComponent;
 
   // Icon
   'Draco::Icon': typeof DracoIconComponent;

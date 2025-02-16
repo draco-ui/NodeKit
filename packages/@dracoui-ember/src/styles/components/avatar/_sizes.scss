@@ -4,33 +4,31 @@ $draco-avatar-sizes: ( "small", "medium", "large" );
 
 $draco-avatar-size-props: (
   "small": (
-    "width": 30px
+    "width": 30px,
     "height": 30px,
-    "font-size": 12px,
+    "font-size": 11px,
     "line-height": 1.5,
   ),
   "medium": (
-    "width": 39px
+    "width": 39px,
     "height": 39px,
-    "font-size": 16px,
+    "font-size": 12px,
     "line-height": 1.5,
   ),
   "large": (
-    "width": 47px
+    "width": 47px,
     "height": 47px,
-    "font-size": 18px,
+    "font-size": 15px,
     "line-height": 1.5,
   ),
 );
 
-.draco-avatar {
-  @each $size in $draco-avatr-sizes {
-    &.draco-avatar--size-#{$size},
-    &.draco-avatar-remaining--size-#{$size} {
-      width: map.get($draco-button-size-props, $size, "width");
-      height: map.get($draco-button-size-props, $size, "height");
-      font-size: map.get($draco-button-size-props, $size, "font-size");
-      line-height: map.get($draco-button-size-props, $size, "line-height")
-    }
+@each $size in $draco-avatar-sizes {
+  .draco-avatar.draco-avatar--size-#{$size},
+  .draco-avatar-group--remaining-count.draco-avatar-remaining--size-#{$size} {
+    width: map.get($draco-avatar-size-props, $size, "width");
+    height: map.get($draco-avatar-size-props, $size, "height");
+    font-size: map.get($draco-avatar-size-props, $size, "font-size");
+    line-height: map.get($draco-avatar-size-props, $size, "line-height");
   }
 }

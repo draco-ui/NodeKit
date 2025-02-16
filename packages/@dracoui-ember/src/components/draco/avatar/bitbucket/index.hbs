@@ -1,0 +1,12 @@
+<div class="draco-avatar-bitbucket" ...attributes>
+  <Draco::Avatar @src={{this.src}} @size={{this.size}} @shape={{this.shape}} />
+
+  <Draco::Icon
+    @name="mdi:bitbucket"
+    @size={{if (eq this.size "small") 10
+      (if (eq this.size "medium") 12 16)
+    }}
+    @color="white"
+    class={{this.classNames}}
+  />
+</div>

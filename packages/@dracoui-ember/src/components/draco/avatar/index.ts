@@ -21,9 +21,6 @@ export interface DracoAvatarSignature {
     src?: string,
     size?: DracoAvatarSizes;
     shape?: DracoAvatarShapes;
-  },
-  Blocks: {
-    default: []
   }
 }
 
@@ -55,23 +52,7 @@ export default class DracoAvatar<T extends DracoAvatarSignature = DracoAvatarSig
   }
 
   get src(): string {
-    const src = this.args.src;
-
-    if (!isPresent(src)) {
-      return '';
-    }
-
-    try {
-      new URL(src);
-      return src;
-    } catch (error) {
-      assert(
-        `@src "${src}" for "Draco::Avatar" is not a valid URL and cannot be used as a relative path.
-        Please provide a valid URL or ensure the relative path is correct. Error: ${error}`,
-        false
-      );
-      return '';
-    }
+    return isPresent(this.args.src) ? this.args.src : '';
   }
 
   get classNames(): string {

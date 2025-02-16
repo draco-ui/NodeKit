@@ -1,37 +1,48 @@
-<div class="draco-avatar-group" ...attributes>
+<div class={{this.classNames}} ...attributes>
   {{#if this.members.length}}
-    {{#if (not (eq this.limit 0))}}
-      {{#each this.members as |member index|}}
-        {{#if (lt index this.limit)}}
-          {{#if member.provider}}
-            {{#if (eq member.provider "github")}}
-              <Draco::Avatar::Github @username={{member.username}} @size={{this.size}} />
-            {{else if (eq member.provider "gitlab")}}
-              <span>gitlab</span>
-            {{else if (eq member.provider "bitbucket")}}
-              <span>Bitbucket</span>
-            {{/if}}
-          {{/if}}
-
-          {{#if member.src}}
-            <Draco::Avatar @src={{member.src}} @size={{this.size}} />
+    {{#each this.members as |member index|}}
+      {{#if (or (eq this.limit 0) (lt index this.limit))}}
+        {{#if member.provider}}
+          {{#if (eq member.provider "github")}}
+            <Draco::Avatar::Github
+              @size={{this.size}}
+              @shape={{this.shape}}
+              @username={{member.username}}
+            />
+          {{else if (eq member.provider "gitlab")}}
+            <Draco::Avatar::Gitlab
+              @size={{this.size}}
+              @shape={{this.shape}}
+              @username={{member.username}}
+            />
+          {{else if (eq member.provider "bitbucket")}}
+            <Draco::Avatar::Bitbucket
+              @size={{this.size}}
+              @shape={{this.shape}}
+              @username={{member.username}}
+            />
           {{/if}}
         {{/if}}
-      {{/each}}
-      {{#if (gt this.members.length this.limit)}}
-        <span
-          class="draco-avatar-group--remaining-count"
-          {{style width=(concat this.size "px") height=(concat this.size "px")}}
-        >
-          +{{draco-subtract this.members.length this.limit}}
-        </span>
+
+        {{#if member.src}}
+          <Draco::Avatar
+            @size={{this.size}}
+            @src={{member.src}}
+            @shape={{this.shape}}
+          />
+        {{/if}}
       {{/if}}
-    {{else}}
-      {{#each this.members as |member index|}}
-        <span>
-          {{member.username}}
-        </span>
-      {{/each}}
+    {{/each}}
+
+    {{#if (and (not (eq this.limit 0)) (gt this.members.length this.limit))}}
+      <span class={{concat
+        "draco-avatar-group--remaining-count "
+        "draco-avatar-remaining--size-" this.size
+      }}>
+        +{{draco-subtract this.members.length this.limit}}
+      </span>
     {{/if}}
+  {{else}}
+    {{yield}}
   {{/if}}
 </div>

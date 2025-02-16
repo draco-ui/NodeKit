@@ -47,4 +47,10 @@ export default class DracoIcon extends Component<DracoIconSignature> {
     // @ts-ignore
     return color;
   }
+
+  get classNames(): string {
+    const classes = ['draco-icon'];
+
+    return classes.join(' ');
+  }
 };

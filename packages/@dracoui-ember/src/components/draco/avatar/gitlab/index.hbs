@@ -1,0 +1,11 @@
+<div class="draco-avatar-gitlab" ...attributes>
+  <Draco::Avatar @src={{this.userProfilePicture}} @size={{this.size}} @shape={{this.shape}} />
+
+  <Draco::Icon
+    @name="devicon:gitlab"
+    @size={{if (eq this.size "small") 10
+      (if (eq this.size "medium") 12 16)
+    }}
+    class={{this.classNames}}
+  />
+</div>

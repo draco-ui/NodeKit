@@ -8,7 +8,12 @@ export { default as DracoAvatarGroup } from "./components/draco/avatar/group/ind
 
 // Github Avatar
 export { default as DracoAvatarGithub } from "./components/draco/avatar/github/index.ts";
-// export * from './components/draco/avatar/types.ts';
+
+// Gitlab Avatar
+export { default as DracoAvatarGitlab } from "./components/draco/avatar/gitlab/index.ts";
+
+// Bitbucket Avatar
+export { default as DracoAvatarBitbucket} from "./components/draco/avatar/bitbucket/index.ts";
 
 export { default as DracoIcon } from "./components/draco/icon/index.ts";
 // export * from './components/draco/avatar/types.ts';

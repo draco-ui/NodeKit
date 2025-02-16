@@ -30,6 +30,7 @@
     "@ember/test-waiters": "^3.1.0",
     "@embroider/addon-shim": "^1.9.0",
     "@floating-ui/dom": "^1.6.12",
+    "@gitbeaker/rest": "^42.1.0",
     "@iconify/ember": "^2.1.0",
     "@octokit/rest": "^21.1.1",
     "autoprefixer": "^10.4.20",
@@ -117,7 +118,9 @@
     "type": "addon",
     "version": 2,
     "app-js": {
+      "./components/draco/avatar/bitbucket/index.js": "./dist/_app_/components/draco/avatar/bitbucket/index.js",
       "./components/draco/avatar/github/index.js": "./dist/_app_/components/draco/avatar/github/index.js",
+      "./components/draco/avatar/gitlab/index.js": "./dist/_app_/components/draco/avatar/gitlab/index.js",
       "./components/draco/avatar/group/index.js": "./dist/_app_/components/draco/avatar/group/index.js",
       "./components/draco/avatar/index.js": "./dist/_app_/components/draco/avatar/index.js",
       "./components/draco/button/index.js": "./dist/_app_/components/draco/button/index.js",

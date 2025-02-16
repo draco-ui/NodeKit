@@ -1,3 +1,5 @@
-<span class="draco-avatar-github">
-  <Draco::Avatar @src={{this.userProfilePicture}} ...attributes />
-</span>
+<div class="draco-avatar-github" ...attributes>
+  <Draco::Avatar @src={{this.userProfilePicture}} @size={{this.size}} @shape={{this.shape}} />
+
+  <Draco::Icon @name="mdi:github" @size={{28}} @color="white" class={{this.classNames}} />
+</div>

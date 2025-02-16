@@ -1,8 +1,8 @@
 import {
   DracoAvatarGroupProviderValues
 } from "./types.ts";
-import DracoAvatar from "../index.ts";
 import { assert } from '@ember/debug';
+import DracoAvatar from "../index.ts";
 
 import type { DracoAvatarSignature } from "../index.ts";
 import type { DracoAvatarGroupProviders } from "./types.ts";
@@ -20,9 +20,6 @@ export interface DracoAvatarGroupSignature extends DracoAvatarSignature {
   Args: DracoAvatarSignature['Args'] & {
     limit?: number;
     members?: Member[];
-  };
-  Blocks: {
-    default: [];
   };
 }
 
@@ -47,5 +44,11 @@ export default class DracoAvatarGroup extends DracoAvatar<DracoAvatarGroupSignat
     });
 
     return members;
+  }
+
+  get classNames(): string {
+    const classes = ['draco-avatar-group'];
+
+    return classes.join(' ');
   }
 }

@@ -1,4 +1,10 @@
-@use '_group';
+@use '_sizes';
+@use '_icons';
+
+%shared-border-styles {
+  border: 1px solid var(--token-color-palette-neutral-700);
+  position: relative;
+}
 
 .draco-avatar {
   object-fit: cover;
@@ -6,6 +12,7 @@
   display: inline-block;
   box-sizing: border-box;
   overflow: hidden;
+  @extend %shared-border-styles;
 
   img {
     display: block;
@@ -24,33 +31,24 @@
 .draco-avatar-group {
   display: flex;
   position: relative;
+  margin-left: 10px;
 
-  .draco-avatar {
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--token-color-palette-neutral-700);
-    position: relative;
+  .draco-avatar,
+  .draco-avatar-group--remaining-count {
     margin-left: -10px;
-
-    &:last-child {
-      z-index: 1;
-      margin-left: 0;
-    }
   }
-}
 
-.draco-avatar-group--remaining-count {
-  border-radius: 100%;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  text-align: center;
-  font-family: var(--token-typography-display-400-font-family);
-  font-weight: var(--token-typography-font-weight-regular);
-  border-width: 1px;
-  border-style: solid;
-  display: inline-flex;
-  background-color: var( --token-color-palette-neutral-900);
-  color: var(--token-color-palette-neutral-100);
-  border-color: var(--token-color-palette-neutral-800);
+  &--remaining-count {
+    @extend %shared-border-styles;
+    border-color: var(--token-color-palette-neutral-800);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: var(--token-typography-display-400-font-family);
+    font-weight: var(--token-typography-font-weight-regular);
+    background-color: var(--token-color-palette-neutral-900);
+    color: var(--token-color-palette-neutral-100);
+  }
 }
