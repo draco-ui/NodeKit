@@ -7,7 +7,7 @@
   }
 
   &.draco-button--color-secondary {
-    color: var(--token-color-palette-neutral-100);
+    color: var(--token-color-palette-neutral-200);
     background-color: var(--token-color-palette-neutral-950);
     border-color: var(--token-color-palette-neutral-700);
     box-shadow: var(--token-elevation-low-box-shadow);
@@ -29,7 +29,7 @@
 
   &.draco-button--color-tertiary {
     background-color: transparent;
-    color: var(--token-color-palette-neutral-100);
-    box-shadow: var(--token-elevation-low-box-shadow);
+    border-color: transparent;
+    color: var(--token-color-palette-neutral-400);
   }
 }

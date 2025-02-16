@@ -4,7 +4,7 @@ import Component from "@glimmer/component";
 import type Owner from '@ember/owner';
 import type { IconifyIcon } from "@iconify/types"
 
-export const DEFAULT_SIZE = 32;
+export const DEFAULT_SIZE = 24;
 
 export interface DracoIconSignature {
   Args: {

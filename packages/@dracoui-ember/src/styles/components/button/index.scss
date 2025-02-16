@@ -5,23 +5,15 @@
 .draco-button {
   cursor: pointer;
   font-family: var(--token-typography-display-400-font-family);
-  border-radius: var(--token-border-radius-large);
+  font-weight: var(--token-typography-font-weight-regular);
+  border-radius: var(--token-border-radius-medium);
   border-width: 1px;
   border-style: solid;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: background-color 0.1s, border-color 0.1s, box-shadow 0.1s, color 0.1s, transform 0.2s;
-
-  &.draco-button--size-small {
-    font-weight: var(--token-typography-font-weight-light);
-  }
-
-  &.draco-button--size-medium,
-  &.draco-button--size-large {
-    font-weight: var(--token-typography-font-weight-regular);
-  }
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, color 0.2s, transform 0.2s;
 
   // Handle border radius shapes
   &.draco-button--shape-circle,
@@ -43,8 +35,8 @@
   }
 
   .draco-button__text {
-    display: block;
     flex: 1 0 0;
+    display: flex;
     text-align: center;
   }
 }

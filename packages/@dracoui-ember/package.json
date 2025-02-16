@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/ember",
-  "version": "0.1.6",
+  "version": "0.1.10",
   "description": "Draco Design System for Ember",
   "keywords": [
     "corinvo",
@@ -126,6 +126,7 @@
       "./components/draco/button/index.js": "./dist/_app_/components/draco/button/index.js",
       "./components/draco/icon/index.js": "./dist/_app_/components/draco/icon/index.js",
       "./components/draco/interactive/index.js": "./dist/_app_/components/draco/interactive/index.js",
+      "./components/draco/kbd/index.js": "./dist/_app_/components/draco/kbd/index.js",
       "./components/draco/loading-dots/index.js": "./dist/_app_/components/draco/loading-dots/index.js",
       "./helpers/draco-eq.js": "./dist/_app_/helpers/draco-eq.js",
       "./helpers/draco-subtract.js": "./dist/_app_/helpers/draco-subtract.js"

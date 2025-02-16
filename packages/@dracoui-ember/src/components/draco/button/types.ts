@@ -18,7 +18,7 @@ export enum DracoButtonIconPositionValues {
   Leading = 'leading',
   Trailing = 'trailing'
 };
-export type DracoButtonIconPositions = `${DracoButtonColorValues}`;
+export type DracoButtonIconPositions = `${DracoButtonIconPositionValues}`;
 
 export enum DracoButtonShapeValues {
   Square = 'square',
