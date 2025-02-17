@@ -1,0 +1,33 @@
+@use "sass:map";
+
+$draco-skeleton-sizes: ("small", "medium", "large");
+
+$draco-skeleton-size-props: (
+  "small": (
+    "width": 30px,
+    "height": 30px,
+    "font-size": 11px,
+    "line-height": 1.5,
+  ),
+  "medium": (
+    "width": 39px,
+    "height": 39px,
+    "font-size": 12px,
+    "line-height": 1.5,
+  ),
+  "large": (
+    "width": 47px,
+    "height": 47px,
+    "font-size": 15px,
+    "line-height": 1.5,
+  ),
+);
+
+@each $size in $draco-skeleton-sizes {
+  .draco-skeleton--size-#{$size} {
+    width: map.get($draco-skeleton-size-props, $size, "width");
+    height: map.get($draco-skeleton-size-props, $size, "height");
+    font-size: map.get($draco-skeleton-size-props, $size, "font-size");
+    line-height: map.get($draco-skeleton-size-props, $size, "line-height");
+  }
+}

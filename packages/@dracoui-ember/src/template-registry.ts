@@ -14,20 +14,29 @@ import type DracoAvatarGitlabComponent from "./components/draco/avatar/gitlab";
 import type DracoAvatarBitbucketComponent from "./components/draco/avatar/bitbucket";
 
 // Icon
-import type DracoIconComponent from "./components/draco/icon"
+import type DracoIconComponent from "./components/draco/icon";
+
+// Skeleton
+import type DracoSkeletonComponent from "./components/draco/skeleton";
+
+// Draco Mark
+import type DracoMarkComponent from "./components/draco/mark";
 
 // Button Component
-import type DracoButtonComponent from './components/draco/button';
+import type DracoButtonComponent from "./components/draco/button";
 
-//Loading Component
-import type DracoLoadingDotsComponent from './components/draco/button';
+// Loading Component
+import type DracoLoadingDotsComponent from "./components/draco/button";
 
 // Interactive Component
 import type DracoInteractiveComponent from "./components/draco/interactive";
 
+// Keyboard Input
+import type DracoKbdComponent from "./components/draco/kbd";
+
 // Helpers
-import type DracoEqHelper from './helpers/draco-eq.ts';
-import type DracoSubtractHelper from './helpers/draco-subtract.ts';
+import type DracoEqHelper from "./helpers/draco-eq.ts";
+import type DracoSubtractHelper from "./helpers/draco-subtract.ts";
 
 export default interface DracoComponentsRegistry {
   // Avatar
@@ -54,6 +63,14 @@ export default interface DracoComponentsRegistry {
   'Draco::Icon': typeof DracoIconComponent;
   'draco/icon': typeof DracoIconComponent;
 
+  // Skeleton
+  'Draco::Skeleton': typeof DracoSkeletonComponent;
+  'draco/skeleton': typeof DracoSkeletonComponent;
+
+  // Draco Mark
+  'Draco::Mark': typeof DracoMarkComponent;
+  'draco/Mark': typeof DracoMarkComponent;
+
   // Button
   'Draco::Button': typeof DracoButtonComponent;
   'draco/button': typeof DracoButtonComponent;
@@ -66,7 +83,11 @@ export default interface DracoComponentsRegistry {
   'Draco::Interactive': typeof DracoInteractiveComponent;
   'draco/interactive': typeof DracoInteractiveComponent;
 
+  // Keyboard Input
+  'Draco::Kbd': typeof DracoKbdComponent;
+  'draco/kbd': typeof DracoKbdComponent;
+
   // Helpers
   'draco-eq': typeof DracoEqHelper;
   'draco-subtract': typeof DracoSubtractHelper;
-};
+}

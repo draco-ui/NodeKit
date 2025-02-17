@@ -5,18 +5,21 @@
         {{#if member.provider}}
           {{#if (eq member.provider "github")}}
             <Draco::Avatar::Github
+              @alt={{member.username}}
               @size={{this.size}}
               @shape={{this.shape}}
               @username={{member.username}}
             />
           {{else if (eq member.provider "gitlab")}}
             <Draco::Avatar::Gitlab
+              @alt={{member.username}}
               @size={{this.size}}
               @shape={{this.shape}}
               @username={{member.username}}
             />
           {{else if (eq member.provider "bitbucket")}}
             <Draco::Avatar::Bitbucket
+              @alt={{member.username}}
               @size={{this.size}}
               @shape={{this.shape}}
               @username={{member.username}}

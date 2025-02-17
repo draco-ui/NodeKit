@@ -1,5 +1,5 @@
-<div class="draco-avatar-bitbucket" ...attributes>
-  <Draco::Avatar @src={{this.src}} @size={{this.size}} @shape={{this.shape}} />
+<div class="draco-avatar-bitbucket" aria-label={{concat "Avatar for " this.username}} ...attributes>
+  <Draco::Avatar @src={{this.src}} @size={{this.size}} @shape={{this.shape}} @alt={{this.alt}} />
 
   <Draco::Icon
     @name="mdi:bitbucket"

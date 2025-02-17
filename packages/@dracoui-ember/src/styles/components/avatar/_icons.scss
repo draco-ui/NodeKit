@@ -1,23 +1,38 @@
 @use "sass:map";
 
-$draco-avatar-sizes: ( "small", "medium", "large" );
+$draco-avatar-sizes: ("small", "medium", "large");
 
-$draco-icon-container-props: (
+$draco-icon-container-default-props: (
   "small": (
     "width": 14px,
     "height": 14px,
-    "bottom": -4px,
-    "left": -12px,
+    "bottom": -2px,
+    "left": -5px,
   ),
   "medium": (
     "width": 18px,
     "height": 18px,
-    "bottom": -5px,
-    "left": -14px,
+    "bottom": -4px,
+    "left": -5.5px,
   ),
   "large": (
     "width": 24px,
     "height": 24px,
+    "bottom": -4px,
+    "left": -14px,
+  ),
+);
+
+$draco-icon-container-group-offset: (
+  "small": (
+    "bottom": -4px,
+    "left": -12px,
+  ),
+  "medium": (
+    "bottom": -5px,
+    "left": -14px,
+  ),
+  "large": (
     "bottom": -6px,
     "left": -16px,
   ),
@@ -54,10 +69,21 @@ $draco-provider-colors: (
       &.draco-icon-github--size-#{$size},
       &.draco-icon-gitlab--size-#{$size},
       &.draco-icon-bitbucket--size-#{$size} {
-        bottom: map.get($draco-icon-container-props, $size, "bottom");
-        left: map.get($draco-icon-container-props, $size, "left");
-        width: map.get($draco-icon-container-props, $size, "width");
-        height: map.get($draco-icon-container-props, $size, "height");
+        bottom: map.get($draco-icon-container-default-props, $size, "bottom");
+        left: map.get($draco-icon-container-default-props, $size, "left");
+        width: map.get($draco-icon-container-default-props, $size, "width");
+        height: map.get($draco-icon-container-default-props, $size, "height");
+      }
+    }
+
+    .draco-avatar-group & {
+      @each $size in $draco-avatar-sizes {
+        &.draco-icon-github--size-#{$size},
+        &.draco-icon-gitlab--size-#{$size},
+        &.draco-icon-bitbucket--size-#{$size} {
+          bottom: map.get($draco-icon-container-group-offset, $size, "bottom");
+          left: map.get($draco-icon-container-group-offset, $size, "left");
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 <p align="center">
   <img src="assets/draco.webp" height="128">
-  <h1 align="center">Draco Desgin System</h1>
+  <h1 align="center">Draco Design System</h1>
 </p>
 
 <p align="center">

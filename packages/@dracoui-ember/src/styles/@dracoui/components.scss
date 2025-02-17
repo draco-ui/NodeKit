@@ -3,9 +3,11 @@
 @use "typography";
 
 // Component styles loader
+@use "../components/kbd";
 @use "../components/icon";
 @use "../components/avatar";
 @use "../components/button";
+@use "../components/skeleton";
 @use "../components/loading-dots";
 
 // Vercel's Geist font loaders

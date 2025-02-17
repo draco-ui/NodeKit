@@ -3,8 +3,10 @@ import {
   DracoAvatarShapeValues
 } from "./types.ts";
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 import { isPresent } from '@ember/utils';
 import Component from "@glimmer/component";
+import { tracked } from '@glimmer/tracking';
 
 import type {
   DracoAvatarSizes,
@@ -18,13 +20,30 @@ export const AVAILABLE_SHAPES: string[] = Object.values(DracoAvatarShapeValues);
 
 export interface DracoAvatarSignature {
   Args: {
+    alt?: string,
     src?: string,
     size?: DracoAvatarSizes;
     shape?: DracoAvatarShapes;
-  }
+  },
+
 }
 
 export default class DracoAvatar<T extends DracoAvatarSignature = DracoAvatarSignature> extends Component<T> {
+  @tracked hasError = false;
+  @tracked isLoading = true;
+
+  @action
+  handleImageLoad() {
+    this.isLoading = false;
+    this.hasError = false;
+  }
+
+  @action
+  handleImageError() {
+    this.isLoading = false;
+    this.hasError = true;
+  }
+
   get shape(): DracoAvatarShapes {
     const { shape = DEFAULT_SHAPE } = this.args;
 
@@ -36,6 +55,14 @@ export default class DracoAvatar<T extends DracoAvatarSignature = DracoAvatarSig
     );
 
     return shape;
+  }
+
+  get alt(): string {
+    const { alt } = this.args;
+
+    if (!alt) return '';
+
+    return alt.replace('@', '').slice(0, 2).toUpperCase();
   }
 
   get size(): string {

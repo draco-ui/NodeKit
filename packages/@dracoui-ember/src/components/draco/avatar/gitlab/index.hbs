@@ -1,5 +1,5 @@
-<div class="draco-avatar-gitlab" ...attributes>
-  <Draco::Avatar @src={{this.userProfilePicture}} @size={{this.size}} @shape={{this.shape}} />
+<div class="draco-avatar-gitlab" aria-label={{concat "Avatar for " this.username}} ...attributes>
+  <Draco::Avatar @src={{this.userProfilePicture}} @size={{this.size}} @shape={{this.shape}} @alt={{this.alt}} />
 
   <Draco::Icon
     @name="devicon:gitlab"

@@ -1,8 +1,3 @@
-/**
- * Copyright (c) {year} Corinvo, LLC. and affiliates.
- * Licensed under the MIT License
- */
-
 import Component from '@glimmer/component';
 import { action } from "@ember/object";
 

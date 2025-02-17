@@ -4,5 +4,20 @@
     draggable={{false}}
     width={{if (eq this.size "small") 30 (if (eq this.size "medium") 39 47)}}
     height={{if (eq this.size "small") 30 (if (eq this.size "medium") 39 47)}}
+    {{on "load" this.handleImageLoad}}
+    {{on "error" this.handleImageError}}
+    style={{if this.hasError "display: none;"}}
+    class={{if this.isLoading "draco-avatar__image--loading"}}
   />
+
+  {{#if (or this.isLoading this.hasError)}}
+    <span class="draco-avatar__placeholder">
+      {{#if this.hasError}}
+        <span class="draco-avatar__error">{{this.alt}}</span>
+      {{else}}
+        {{! Loading placeholder }}
+        <span class="draco-avatar__loading">Loading...</span>
+      {{/if}}
+    </span>
+  {{/if}}
 </span>
