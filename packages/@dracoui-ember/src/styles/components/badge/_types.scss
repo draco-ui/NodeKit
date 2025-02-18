@@ -2,4 +2,50 @@
   &.draco-badge--type-pill {
     border-radius: var(--token-border-radius-full);
   }
+
+  &.draco-badge--type-chip {
+    position: relative;
+    margin-right: auto;
+    margin-top: calc(3/16 * 1rem);
+    display: inline-flex;
+    padding: 0 0.1875rem;
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+    font-weight: 500;
+
+    .draco-badge--dashed-border {
+      position: absolute;
+      display: block;
+      transform: translateZ(0);
+      opacity: 0.7;
+
+      &--top {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0px;
+        height: 1px;
+        width: 140%;
+      }
+
+      &--bottom {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0px;
+        height: 1px;
+        width: 140%;
+      }
+
+      &--left {
+        left: 0px;
+        width: 1px;
+        height: 150%;
+      }
+
+      &--right {
+        right: 0px;
+        width: 1px;
+        height: 150%;
+      }
+    }
+  }
 }

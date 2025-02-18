@@ -3,9 +3,45 @@
   ...attributes
 >
   {{#if this.badgeText}}
-    <span class="draco-badge__text">
-      {{this.badgeText}}
-    </span>
+    {{#if this.icon}}
+      {{#if (eq this.iconPosition "leading")}}
+        <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
+
+        <span class="draco-badge__text">
+          {{this.badgeText}}
+        </span>
+      {{else}}
+        <span class="draco-badge__text">
+          {{this.badgeText}}
+        </span>
+
+        <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
+      {{/if}}
+    {{else}}
+      <span class="draco-badge__text">
+        {{this.badgeText}}
+      </span>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq this.type "chip")}}
+    {{#each (array "top" "bottom" "left" "right") as |side|}}
+      <svg
+        width={{if (or (eq side "top") (eq side "bottom")) "100%" "1"}}
+        height={{if (or (eq side "left") (eq side "right")) "100%" "1"}}
+        stroke="currentColor"
+        stroke-dasharray="3.3 1"
+        aria-hidden="true"
+        class="draco-badge--dashed-border draco-badge--dashed-border--{{side}}"
+      >
+        <line
+          x1={{if (or (eq side "top") (eq side "bottom")) "0" "0.5"}}
+          y1={{if (or (eq side "left") (eq side "right")) "0" "0.5"}}
+          x2={{if (or (eq side "top") (eq side "bottom")) "100%" "0.5"}}
+          y2={{if (or (eq side "left") (eq side "right")) "100%" "0.5"}}
+        ></line>
+      </svg>
+    {{/each}}
   {{/if}}
 
   {{yield}}

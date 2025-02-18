@@ -5,6 +5,12 @@ export enum DracoBadgeSizeValues {
 };
 export type DracoBadgeSizes = `${DracoBadgeSizeValues}`;
 
+export enum DracoBadgeIconPositionValues {
+  Leading = 'leading',
+  Trailing = 'trailing'
+};
+export type DracoBadgeIconPositions = `${DracoBadgeIconPositionValues}`;
+
 export enum DracoBadgeColorValues {
   // Grays
   Gray = 'gray',

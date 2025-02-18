@@ -27,48 +27,48 @@ $draco-colors: (
       "text": var(--token-color-palette-neutral-200)
     ),
     "subtle": (
-      "background": var(--color-purple-100),
-      "text": var(--color-purple-700)
+      "background": var(--token-color-palette-purple-950),
+      "text": var(--token-color-palette-purple-500)
     )
   ),
   "amber": (
     "regular": (
-      "background": var(--color-amber-500),
-      "text": var(--color-amber-50)
+      "background": var(--token-color-palette-orange-500),
+      "text": black
     ),
     "subtle": (
-      "background": var(--color-amber-100),
-      "text": var(--color-amber-700)
+      "background": var(--token-color-palette-orange-950),
+      "text": var(--token-color-palette-orange-400)
     )
   ),
   "red": (
     "regular": (
-      "background": var(--color-red-500),
-      "text": var(--color-red-50)
+      "background": var(--token-color-palette-red-500),
+      "text": var(--token-color-palette-neutral-200)
     ),
     "subtle": (
-      "background": var(--color-red-100),
-      "text": var(--color-red-700)
+      "background": var(--token-color-palette-red-950),
+      "text": var(--token-color-palette-red-500)
     )
   ),
   "pink": (
     "regular": (
-      "background": var(--color-pink-500),
-      "text": var(--color-pink-50)
+      "background": var(--token-color-palette-pink-500),
+      "text": var(--token-color-palette-neutral-200)
     ),
     "subtle": (
-      "background": var(--color-pink-100),
-      "text": var(--color-pink-700)
+      "background": var(--token-color-palette-pink-950),
+      "text": var(--token-color-palette-pink-500)
     )
   ),
   "green": (
     "regular": (
-      "background": var(--color-green-500),
-      "text": var(--color-green-50)
+      "background": var(--token-color-palette-green-600),
+      "text": var(--token-color-palette-neutral-200)
     ),
     "subtle": (
-      "background": var(--color-green-100),
-      "text": var(--color-green-700)
+      "background": var(--token-color-palette-green-950),
+      "text": var(--token-color-palette-green-500)
     )
   ),
   "teal": (
