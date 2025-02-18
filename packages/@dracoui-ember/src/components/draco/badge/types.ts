@@ -40,12 +40,12 @@ export enum DracoBadgeColorValues {
 
   // Specials
   Inverted = 'inverted'
-  
+
 };
 export type DracoBadgeColors = `${DracoBadgeColorValues}`;
 
-export enum DracoBadgeStyleValues {
+export enum DracoBadgeTypeValues {
   Pill = 'pill',
   Chip = 'chip'
 };
-export type DracoBadgeStyles = `${DracoBadgeStyleValues}`;
+export type DracoBadgeTypes = `${DracoBadgeTypeValues}`;

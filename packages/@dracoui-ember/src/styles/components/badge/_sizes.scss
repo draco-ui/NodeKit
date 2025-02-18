@@ -1,0 +1,51 @@
+@use "sass:map";
+
+$draco-badge-sizes: ("small", "medium", "large");
+
+$draco-badge-size-props: (
+  "small": (
+    "font-size": 11px,
+    "gap": 6px,
+    "height": 20px,
+    "icon-size": 0.75rem,
+    "padding-vertical": 0,
+    "padding-horizontal": 6px
+  ),
+  "medium": (
+    "font-size": 12px,
+    "gap": 6px,
+    "height": 24px,
+    "icon-size": 0.75rem,
+    "padding-vertical": 0,
+    "padding-horizontal": 10px
+  ),
+  "large": (
+    "font-size": 14px,
+    "gap": 6px,
+    "height": 32px,
+    "icon-size": 0.75rem,
+    "padding-vertical": 0,
+    "padding-horizontal": 12px
+  )
+);
+
+.draco-badge {
+  @each $size in $draco-badge-sizes {
+    &.draco-badge--size-#{$size} {
+      gap: map.get($draco-badge-size-props, $size, "gap");
+      min-height: map.get($draco-badge-size-props, $size, "height");
+      padding: map.get($draco-badge-size-props, $size, "padding-vertical")
+               map.get($draco-badge-size-props, $size, "padding-horizontal");
+
+      .draco-badge__icon {
+        width: map.get($draco-badge-size-props, $size, "icon-size");
+        height: map.get($draco-badge-size-props, $size, "icon-size");
+      }
+
+      .draco-badge__text {
+        font-size: map.get($draco-badge-size-props, $size, "font-size");
+        line-height: map.get($draco-badge-size-props, $size, "line-height");
+      }
+    }
+  }
+}

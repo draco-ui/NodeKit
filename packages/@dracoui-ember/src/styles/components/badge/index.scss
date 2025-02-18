@@ -1,0 +1,18 @@
+@use "_types";
+@use "_sizes";
+@use "_colors";
+
+.draco-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  vertical-align: middle;
+  font-family: var(--token-typography-display-400-font-family);
+  font-weight: var(--token-typography-font-weight-regular);
+
+  .draco-badge__text {
+    flex: 1 0 0;
+    display: flex;
+    text-align: center;
+  }
+}

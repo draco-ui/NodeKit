@@ -1,0 +1,108 @@
+@use "sass:map";
+
+$draco-colors: (
+  "gray": (
+    "regular": (
+      "background": var(--token-color-palette-neutral-500),
+      "text": var(--token-color-palette-neutral-200)
+    ),
+    "subtle": (
+      "background": var(--token-color-palette-neutral-800),
+      "text": var(--token-color-palette-neutral-200)
+    )
+  ),
+  "blue": (
+    "regular": (
+      "background": var(--token-color-palette-blue-600),
+      "text": var(--token-color-palette-neutral-200)
+    ),
+    "subtle": (
+      "background": var(--token-color-palette-blue-950),
+      "text": var(--token-color-palette-blue-400)
+    )
+  ),
+  "purple": (
+    "regular": (
+      "background": var(--token-color-palette-purple-600),
+      "text": var(--token-color-palette-neutral-200)
+    ),
+    "subtle": (
+      "background": var(--color-purple-100),
+      "text": var(--color-purple-700)
+    )
+  ),
+  "amber": (
+    "regular": (
+      "background": var(--color-amber-500),
+      "text": var(--color-amber-50)
+    ),
+    "subtle": (
+      "background": var(--color-amber-100),
+      "text": var(--color-amber-700)
+    )
+  ),
+  "red": (
+    "regular": (
+      "background": var(--color-red-500),
+      "text": var(--color-red-50)
+    ),
+    "subtle": (
+      "background": var(--color-red-100),
+      "text": var(--color-red-700)
+    )
+  ),
+  "pink": (
+    "regular": (
+      "background": var(--color-pink-500),
+      "text": var(--color-pink-50)
+    ),
+    "subtle": (
+      "background": var(--color-pink-100),
+      "text": var(--color-pink-700)
+    )
+  ),
+  "green": (
+    "regular": (
+      "background": var(--color-green-500),
+      "text": var(--color-green-50)
+    ),
+    "subtle": (
+      "background": var(--color-green-100),
+      "text": var(--color-green-700)
+    )
+  ),
+  "teal": (
+    "regular": (
+      "background": var(--color-teal-500),
+      "text": var(--color-teal-50)
+    ),
+    "subtle": (
+      "background": var(--color-teal-100),
+      "text": var(--color-teal-700)
+    )
+  ),
+  "inverted": (
+    "regular": (
+      "background": var(--color-white),
+      "text": var(--color-black)
+    )
+  )
+);
+
+.draco-badge {
+  @each $color-name, $variants in $draco-colors {
+    // Regular color variant
+    &--color-#{$color-name} {
+      background-color: map.get($variants, "regular", "background");
+      color: map.get($variants, "regular", "text");
+    }
+
+    // Subtle variant (except for inverted)
+    @if $color-name != "inverted" {
+      &--color-#{$color-name}-subtle {
+        background-color: map.get($variants, "subtle", "background");
+        color: map.get($variants, "subtle", "text");
+      }
+    }
+  }
+}

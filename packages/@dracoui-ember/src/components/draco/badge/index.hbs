@@ -2,5 +2,11 @@
   class={{this.classNames}}
   ...attributes
 >
+  {{#if this.badgeText}}
+    <span class="draco-badge__text">
+      {{this.badgeText}}
+    </span>
+  {{/if}}
+
   {{yield}}
 </span>
