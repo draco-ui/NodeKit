@@ -25,6 +25,9 @@ import type DracoMarkComponent from "./components/draco/mark";
 // Button Component
 import type DracoButtonComponent from "./components/draco/button";
 
+// Badge Component
+import type DracoBadgeComponent from "./components/draco/badge";
+
 // Loading Component
 import type DracoLoadingDotsComponent from "./components/draco/button";
 
@@ -36,6 +39,7 @@ import type DracoKbdComponent from "./components/draco/kbd";
 
 // Helpers
 import type DracoEqHelper from "./helpers/draco-eq.ts";
+import type DracoTypeofHelper from "./helpers/draco-typeof.ts";
 import type DracoSubtractHelper from "./helpers/draco-subtract.ts";
 
 export default interface DracoComponentsRegistry {
@@ -75,6 +79,10 @@ export default interface DracoComponentsRegistry {
   'Draco::Button': typeof DracoButtonComponent;
   'draco/button': typeof DracoButtonComponent;
 
+  // Badge
+  'Draco::Badge': typeof DracoBadgeComponent;
+  'draco/badge': typeof DracoBadgeComponent;
+
   // Loading
   'Draco::LoadingDots': typeof DracoLoadingDotsComponent;
   'draco/loading-dots': typeof DracoLoadingDotsComponent;
@@ -89,5 +97,6 @@ export default interface DracoComponentsRegistry {
 
   // Helpers
   'draco-eq': typeof DracoEqHelper;
+  'draco-typeof': typeof DracoTypeofHelper;
   'draco-subtract': typeof DracoSubtractHelper;
 }

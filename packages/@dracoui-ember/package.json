@@ -24,7 +24,7 @@
     "@codemirror/legacy-modes": "^6.4.2",
     "@codemirror/state": "^6.5.0",
     "@codemirror/view": "^6.36.2",
-    "@dracoui/primitives": "^0.1.12",
+    "@dracoui/primitives": "^0.1.13",
     "@ember/render-modifiers": "^2.1.0",
     "@ember/string": "^3.1.1",
     "@ember/test-waiters": "^3.1.0",
@@ -124,6 +124,7 @@
       "./components/draco/avatar/gitlab/index.js": "./dist/_app_/components/draco/avatar/gitlab/index.js",
       "./components/draco/avatar/group/index.js": "./dist/_app_/components/draco/avatar/group/index.js",
       "./components/draco/avatar/index.js": "./dist/_app_/components/draco/avatar/index.js",
+      "./components/draco/badge/index.js": "./dist/_app_/components/draco/badge/index.js",
       "./components/draco/button/index.js": "./dist/_app_/components/draco/button/index.js",
       "./components/draco/icon/index.js": "./dist/_app_/components/draco/icon/index.js",
       "./components/draco/interactive/index.js": "./dist/_app_/components/draco/interactive/index.js",
@@ -132,7 +133,8 @@
       "./components/draco/mark/index.js": "./dist/_app_/components/draco/mark/index.js",
       "./components/draco/skeleton/index.js": "./dist/_app_/components/draco/skeleton/index.js",
       "./helpers/draco-eq.js": "./dist/_app_/helpers/draco-eq.js",
-      "./helpers/draco-subtract.js": "./dist/_app_/helpers/draco-subtract.js"
+      "./helpers/draco-subtract.js": "./dist/_app_/helpers/draco-subtract.js",
+      "./helpers/draco-typeof.js": "./dist/_app_/helpers/draco-typeof.js"
     },
     "public-assets": {
       "./dist/styles/fonts/Geist-Variable.woff2": "assets/fonts/Geist-Variable.woff2"

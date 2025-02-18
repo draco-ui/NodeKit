@@ -23,11 +23,18 @@ $draco-skeleton-size-props: (
   ),
 );
 
-@each $size in $draco-skeleton-sizes {
-  .draco-skeleton--size-#{$size} {
-    width: map.get($draco-skeleton-size-props, $size, "width");
-    height: map.get($draco-skeleton-size-props, $size, "height");
-    font-size: map.get($draco-skeleton-size-props, $size, "font-size");
-    line-height: map.get($draco-skeleton-size-props, $size, "line-height");
+.draco-skeleton {
+  @each $size in $draco-skeleton-sizes {
+    &.draco-skeleton--size-#{$size} {
+      width: map.get($draco-skeleton-size-props, $size, "width");
+      height: map.get($draco-skeleton-size-props, $size, "height");
+      font-size: map.get($draco-skeleton-size-props, $size, "font-size");
+      line-height: map.get($draco-skeleton-size-props, $size, "line-height");
+    }
+  }
+
+  &.draco-skeleton--width-full {
+    width: 100%;
+    max-width: 100%;
   }
 }

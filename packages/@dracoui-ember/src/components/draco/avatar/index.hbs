@@ -15,8 +15,7 @@
       {{#if this.hasError}}
         <span class="draco-avatar__error">{{this.alt}}</span>
       {{else}}
-        {{! Loading placeholder }}
-        <span class="draco-avatar__loading">Loading...</span>
+        <Draco::Skeleton @size={{this.size}} />
       {{/if}}
     </span>
   {{/if}}

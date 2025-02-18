@@ -1,4 +1,26 @@
 <span
   class={{this.classNames}}
+  {{style
+    width=(if
+      (or
+        (and (eq (draco-typeof this.size) "number") (not this.args.width))
+        this.args.width
+      )
+      (concat
+        (if this.args.width this.args.width this.size)
+        "px"
+      )
+    )
+    height=(if
+      (or
+        (and (eq (draco-typeof this.size) "number") (not this.args.height))
+        this.args.height
+      )
+      (concat
+        (if this.args.height this.args.height this.size)
+        "px"
+      )
+    )
+  }}
   ...attributes
 />

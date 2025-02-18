@@ -1,0 +1,61 @@
+{
+  "color": {
+    "palette": {
+      "rose-950": {
+        "value": "#4c0519",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-900": {
+        "value": "#881337",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-800": {
+        "value": "#9f1239",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-700": {
+        "value": "#be123c",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-600": {
+        "value": "#e11d48",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-500": {
+        "value": "#f43f5e",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-400": {
+        "value": "#fb7185",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-300": {
+        "value": "#fda4af",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-200": {
+        "value": "#fecdd3",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-100": {
+        "value": "#ffe4e6",
+        "type": "color",
+        "group": "palette"
+      },
+      "rose-50": {
+        "value": "#fff1f2",
+        "type": "color",
+        "group": "palette"
+      }
+    }
+  }
+}

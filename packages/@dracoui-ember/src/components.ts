@@ -25,6 +25,9 @@ export { default as DracoIcon } from "./components/draco/icon/index.ts";
 // Keyboard Input
 export { default as DracoKbd } from "./components/draco/kbd/index.ts";
 
+// Badge
+export { default as DracoBadge } from "./components/draco/badge/index.ts";
+
 // Skeleton
 export { default as DracoSkeleton } from "./components/draco/skeleton/index.ts";
 

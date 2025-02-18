@@ -10,3 +10,10 @@ export enum DracoSkeletonSizeValues {
   Large = 'large'
 };
 export type DracoSkeletonSizes = `${DracoSkeletonSizeValues}`;
+
+export enum DracoSkeletonShapeValues {
+  Square = 'square',
+  Circle = 'circle',
+  Rounded = 'pill'
+};
+export type DracoSkeletonShapes = `${DracoSkeletonShapeValues}`;
