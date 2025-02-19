@@ -21,19 +21,6 @@
     border-radius: var(--token-border-radius-full);
   }
 
-  @at-root a#{&} {
-    width: fit-content;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.mock-hover,
-    &.mock-focus,
-    &.mock-active {
-      text-decoration: underline;
-    }
-  }
-
   .draco-button__text {
     flex: 1 0 0;
     display: flex;
