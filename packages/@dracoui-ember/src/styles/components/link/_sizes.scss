@@ -1,0 +1,31 @@
+@use "sass:map";
+
+$draco-link-sizes: ( "small", "medium", "large" );
+
+$draco-link-size-props: (
+  "small": (
+    "gap": 8px,
+    "font-size": 12px,
+    "line-height": 1.5,
+  ),
+  "medium": (
+    "gap": 10px,
+    "font-size": 14px,
+    "line-height": 10px,
+  ),
+  "large": (
+    "gap": 14px,
+    "font-size": 16px,
+    "line-height": 1.5,
+  ),
+);
+
+.draco-link {
+  @each $size in $draco-link-sizes {
+    &.draco-link--size-#{$size} {
+      gap: map.get($draco-link-size-props, $size, "gap");
+      font-size: map.get($draco-link-size-props, $size, "font-size");
+      line-height: map.get($draco-link-size-props, $size, "line-height");
+    }
+  }
+}

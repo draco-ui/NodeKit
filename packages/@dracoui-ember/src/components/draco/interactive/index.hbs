@@ -1,6 +1,7 @@
 {{~#if @route~}}
   {{~#if this.isRouteExternal~}}
     <LinkToExternal
+      draggable={{false}}
       @current-when={{@current-when}}
       @models={{draco-link-to-models @model @models}}
       @query={{draco-link-to-query @query}}
@@ -10,6 +11,7 @@
     >{{yield}}</LinkToExternal>
   {{~else~}}
     <LinkTo
+      draggable={{false}}
       @current-when={{@current-when}}
       @models={{draco-link-to-models @model @models}}
       @query={{draco-link-to-query @query}}

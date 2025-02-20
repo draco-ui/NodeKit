@@ -1,0 +1,23 @@
+<Draco::Interactive
+  class={{this.classNames}}
+  @current-when={{@current-when}}
+  @models={{draco-link-to-models @model}}
+  @query={{draco-link-to-query @query}}
+  @replace={{@replace}}
+  @route={{@route}}
+  @isRouteExternal={{@isRouteExternal}}
+  @href={{@href}}
+  @isHrefExternal={{@isHrefExternal}}
+  ...attributes
+  aria-label={{if this.isIconOnly this.text null}}
+>
+  {{#if this.text}}
+    <span class="draco-link__text {{if this.underline 'draco-link--underline'}}">
+      {{this.text}}
+    </span>
+  {{else}}
+    <span class="{{if this.underline 'draco-link--underline'}}">
+      {{yield}}
+    </span>
+  {{/if}}
+</Draco::Interactive>

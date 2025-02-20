@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/ember",
-  "version": "0.1.10",
+  "version": "0.1.16",
   "description": "Draco Design System for Ember",
   "keywords": [
     "corinvo",
@@ -129,10 +129,15 @@
       "./components/draco/icon/index.js": "./dist/_app_/components/draco/icon/index.js",
       "./components/draco/interactive/index.js": "./dist/_app_/components/draco/interactive/index.js",
       "./components/draco/kbd/index.js": "./dist/_app_/components/draco/kbd/index.js",
+      "./components/draco/link/index.js": "./dist/_app_/components/draco/link/index.js",
       "./components/draco/loading-dots/index.js": "./dist/_app_/components/draco/loading-dots/index.js",
       "./components/draco/mark/index.js": "./dist/_app_/components/draco/mark/index.js",
       "./components/draco/skeleton/index.js": "./dist/_app_/components/draco/skeleton/index.js",
+      "./components/draco/switch/index.js": "./dist/_app_/components/draco/switch/index.js",
+      "./components/draco/toggle/index.js": "./dist/_app_/components/draco/toggle/index.js",
       "./helpers/draco-eq.js": "./dist/_app_/helpers/draco-eq.js",
+      "./helpers/draco-link-to-models.js": "./dist/_app_/helpers/draco-link-to-models.js",
+      "./helpers/draco-link-to-query.js": "./dist/_app_/helpers/draco-link-to-query.js",
       "./helpers/draco-subtract.js": "./dist/_app_/helpers/draco-subtract.js",
       "./helpers/draco-typeof.js": "./dist/_app_/helpers/draco-typeof.js"
     },

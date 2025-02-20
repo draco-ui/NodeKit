@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../../assets/draco.webp" height="128">
+   <img src="https://github.com/user-attachments/assets/74d97252-e64e-44a7-b0b7-26e554393bc4" height="128">
   <h1 align="center">Draco Design System - Ember SDK</h1>
 </p>
 

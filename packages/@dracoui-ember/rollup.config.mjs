@@ -68,7 +68,7 @@ const plugins = [
     targets: [
       { src: 'README.md', dest: 'dist' },
       { src: 'LICENSE.md', dest: 'dist' },
-      { src: './node_modules/geist/dist/fonts/geist-sans/Geist-variable.woff2', dest: 'dist/styles/fonts' },
+      { src: './node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2', dest: 'dist/styles/fonts' },
     ]
   })
 ];

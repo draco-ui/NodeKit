@@ -41,6 +41,8 @@ import type DracoKbdComponent from "./components/draco/kbd";
 import type DracoEqHelper from "./helpers/draco-eq.ts";
 import type DracoTypeofHelper from "./helpers/draco-typeof.ts";
 import type DracoSubtractHelper from "./helpers/draco-subtract.ts";
+import type DracoLinkToQueryHelper from "./helpers/draco-link-to-query.ts";
+import type DracoLinkToModelsHelper from "./helpers/draco-link-to-models.ts";
 
 export default interface DracoComponentsRegistry {
   // Avatar
@@ -99,4 +101,6 @@ export default interface DracoComponentsRegistry {
   'draco-eq': typeof DracoEqHelper;
   'draco-typeof': typeof DracoTypeofHelper;
   'draco-subtract': typeof DracoSubtractHelper;
+  'draco-link-to-query': typeof DracoLinkToQueryHelper;
+  'draco-link-to-models': typeof DracoLinkToModelsHelper;
 }

@@ -1,7 +1,8 @@
 import {
   DracoButtonSizeValues,
+  DracoButtonShapeValues,
   DracoButtonColorValues,
-  DracoButtonIconPositionValues
+  DracoButtonIconPositionValues,
 } from './types.ts';
 import { assert } from "@ember/debug";
 import Component from "@glimmer/component";
@@ -16,11 +17,13 @@ import type { DracoIconSignature } from "../icon";
 import type { DracoInteractiveSignature } from '../interactive/';
 
 export const DEFAULT_SIZE = DracoButtonSizeValues.Medium;
+export const DEFAULT_SHAPE = DracoButtonShapeValues.Square;
 export const DEFAULT_COLOR = DracoButtonColorValues.Primary;
 export const DEFAULT_ICON_POSITION = DracoButtonIconPositionValues.Leading;
 
 export const AVAILABLE_SIZES: string[] = Object.values(DracoButtonSizeValues);
 export const AVAILABLE_COLORS: string[] = Object.values(DracoButtonColorValues);
+export const AVAILABLE_SHAPES: string[] = Object.values(DracoButtonShapeValues);
 export const AVAILABLE_ICON_POSITIONS: string[] = Object.values(DracoButtonIconPositionValues);
 
 export interface DracoButtonSignature {
@@ -82,11 +85,13 @@ export default class DracoButton extends Component<DracoButtonSignature> {
   }
 
   get shape(): DracoButtonShapes {
-    const { shape = 'square' } = this.args;
+    const { shape = DEFAULT_SHAPE } = this.args;
 
     assert(
-      `@shape for "Draco::Button" must be one of the following: "square", "circle", "rounded"; received: ${shape}`,
-      shape === undefined || ['square', 'circle', 'rounded'].includes(shape)
+      `@shape for "Draco::Button" must be one of the following: ${AVAILABLE_SHAPES.join(
+        ', '
+      )}; received: ${shape}`,
+      AVAILABLE_SHAPES.includes(shape)
     );
 
     return shape;
@@ -97,11 +102,6 @@ export default class DracoButton extends Component<DracoButtonSignature> {
   }
 
   get icon(): DracoIconSignature['Args']['name'] | undefined {
-    assert(
-      `When "Draco::Button" @type, @variant or @color is "tertiary" an @icon or @text is required`,
-      !(this.color === 'tertiary' && !this.args.icon)
-    );
-
     return this.args.icon ?? undefined;
   }
 
