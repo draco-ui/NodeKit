@@ -9,7 +9,7 @@ export enum DracoButtonColorValues {
   Primary = 'primary',
   Secondary = 'secondary',
   Tertiary = 'tertiary',
-  Warning = 'warning',
+  Amber = 'amber',
   Error = 'error'
 };
 export type DracoButtonColors = `${DracoButtonColorValues}`;
