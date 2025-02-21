@@ -34,6 +34,9 @@ import type DracoLoadingDotsComponent from "./components/draco/button";
 // Interactive Component
 import type DracoInteractiveComponent from "./components/draco/interactive";
 
+// Toggle Component
+import type DracoToggleComponent from "./components/draco/toggle";
+
 // Keyboard Input
 import type DracoKbdComponent from "./components/draco/kbd";
 
@@ -68,6 +71,10 @@ export default interface DracoComponentsRegistry {
   // Icon
   'Draco::Icon': typeof DracoIconComponent;
   'draco/icon': typeof DracoIconComponent;
+
+  // Toggle
+  'Draco::Toggle': typeof DracoToggleComponent;
+  'draco/toggle': typeof DracoToggleComponent;
 
   // Skeleton
   'Draco::Skeleton': typeof DracoSkeletonComponent;

@@ -2,6 +2,7 @@ import { Addon } from '@embroider/addon-dev/rollup';
 import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
+import { terser } from 'rollup-plugin-terser';
 import cssnano from 'rollup-plugin-cssnano';
 import process from 'process';
 
@@ -47,6 +48,18 @@ const plugins = [
   addon.hbs(),
 
   addon.gjs(),
+
+  terser({
+    module: true,
+    compress: {
+      dead_code: true,
+      conditionals: true,
+      booleans: true,
+    },
+    format: {
+      comments: false,
+    },
+  }),
 
   // This babel config should *not* apply presets or compile away ES modules.
   // It exists only to provide development niceties for you, like automatic

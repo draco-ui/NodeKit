@@ -18,6 +18,9 @@ export { default as DracoAvatarBitbucket } from "./components/draco/avatar/bitbu
 // Draco Mark
 export { default as DracoMark } from "./components/draco/mark/index.ts";
 
+// Draco Toggle
+export { default as DracoToggle } from "./components/draco/toggle/index.ts";
+
 // Draco Icon
 export { default as DracoIcon } from "./components/draco/icon/index.ts";
 // export * from './components/draco/avatar/types.ts';
