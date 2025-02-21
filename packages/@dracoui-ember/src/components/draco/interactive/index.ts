@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from "@ember/object";
+import { assert } from '@ember/debug';
 
 export interface DracoInteractiveSignature {
   Args: {
@@ -21,11 +22,56 @@ export interface DracoInteractiveSignature {
 
 export default class DracoInteractive extends Component<DracoInteractiveSignature> {
   get isHrefExternal(): boolean {
-    return this.args.isHrefExternal ?? true;
+    const { isHrefExternal, href } = this.args;
+
+    assert(
+      `@isHrefExternal for "DracoInteractive" must be a valid 'boolean'; received: ${isHrefExternal}`,
+      isHrefExternal === undefined || typeof isHrefExternal === 'boolean'
+    );
+
+    assert(
+      `@href for "DracoInteractive" must be a valid 'string'; received: ${href}`,
+      href === undefined || typeof href === 'string'
+    );
+
+    if (typeof isHrefExternal === 'boolean') {
+      return isHrefExternal;
+    }
+
+    if (href) {
+      try {
+        const url = new URL(href, window.location.origin);
+        return url.origin !== window.location.origin;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    return false;
   }
 
   get isRouteExternal(): boolean {
-    return this.args.isRouteExternal ?? false;
+    const { isRouteExternal, route } = this.args;
+
+    assert(
+      `@isRouteExternal for "Draco::Interactive" must be a valid 'boolean'; received: ${isRouteExternal}`,
+      isRouteExternal === undefined || typeof isRouteExternal === 'boolean'
+    );
+
+    assert(
+      `@route for "Draco::Interactive" must be a valid 'string'; received: ${route}`,
+      route === undefined || typeof route === 'string'
+    );
+
+    if (typeof isRouteExternal === 'boolean') {
+      return isRouteExternal;
+    }
+
+    if (route) {
+      return false;
+    }
+
+    return false;
   }
 
   @action
@@ -35,4 +81,3 @@ export default class DracoInteractive extends Component<DracoInteractiveSignatur
     }
   }
 }
-

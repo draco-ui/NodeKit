@@ -3,6 +3,7 @@
     <LinkToExternal
       draggable={{false}}
       @current-when={{@current-when}}
+      @isRouteExternal={{this.isRouteExternal}}
       @models={{draco-link-to-models @model @models}}
       @query={{draco-link-to-query @query}}
       @replace={{@replace}}
@@ -22,10 +23,10 @@
   {{~/if~}}
 {{~else if @href~}}
   {{~#if this.isHrefExternal~}}
-    <a target="_blank" rel="noopener noreferrer" ...attributes href={{@href}} {{on "keyup" this.onKeyUp}}>{{yield}}</a>
+    <a draggable={{false}} target="_blank" rel="noopener noreferrer" ...attributes href={{@href}} {{on "keyup" this.onKeyUp}}>{{yield}}</a>
   {{~else~}}
-    <a ...attributes href={{@href}} {{on "keyup" this.onKeyUp}}>{{yield}}</a>
+    <a draggable={{false}} ...attributes href={{@href}} {{on "keyup" this.onKeyUp}}>{{yield}}</a>
   {{~/if~}}
 {{~else~}}
-  <button type="button" ...attributes>{{yield}}</button>
+  <button type="button" draggable={{false}} ...attributes>{{yield}}</button>
 {{~/if~}}

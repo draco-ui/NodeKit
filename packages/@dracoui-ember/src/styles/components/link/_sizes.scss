@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:math";
 
 $draco-link-sizes: ( "small", "medium", "large" );
 
@@ -26,6 +27,12 @@ $draco-link-size-props: (
       gap: map.get($draco-link-size-props, $size, "gap");
       font-size: map.get($draco-link-size-props, $size, "font-size");
       line-height: map.get($draco-link-size-props, $size, "line-height");
+    }
+
+    .draco-link--external-indicator {
+      $gap: map.get($draco-link-size-props, $size, "gap");
+
+      transform: translateX(-#{math.div($gap, 2)});
     }
   }
 }

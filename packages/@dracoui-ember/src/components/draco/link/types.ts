@@ -4,3 +4,9 @@ export enum DracoLinkSizeValues {
   Large = 'large'
 };
 export type DracoLinkSizes = `${DracoLinkSizeValues}`;
+
+export enum DracoLinkIconPositionValues {
+  Leading = 'leading',
+  Trailing = 'trailing'
+};
+export type DracoLinkIconPositions = `${DracoLinkIconPositionValues}`;
