@@ -1,3 +1,4 @@
+@use "_sizes";
 @use "_colors";
 @use "_states";
 
@@ -27,6 +28,22 @@
 
     &:disabled {
       cursor: not-allowed;
+    }
+  }
+
+  .draco-toggle__thumb {
+    position: relative;
+    display: block;
+    border-radius: var(--token-border-radius-full);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition-timing-function: var(--token-form-toggle-transition-timing-function);
+      transition-duration: var(--token-form-toggle-transition-duration);
+      transition-property: all;
+    }
+
+    &::after {
+      
     }
   }
 }

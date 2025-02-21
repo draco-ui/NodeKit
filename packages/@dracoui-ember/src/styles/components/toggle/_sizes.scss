@@ -1,0 +1,27 @@
+@use "sass:map";
+
+$draco-toggle-sizes: ( "small", "medium", "large" );
+
+$draco-toggle-size-props: (
+  "small": (
+    "height": 14px,
+    "width": 28px
+  ),
+  "medium": (
+    "height": 10px,
+    "width": 24px
+  ),
+  "large": (
+    "height": 14px,
+    "width": 24px
+  ),
+);
+
+.draco-toggle {
+  @each $size in $draco-toggle-sizes {
+    .draco-toggle--size-#{$size} {
+      height: map.get($draco-toggle-size-props, $size, "height");
+      width: map.get($draco-toggle-size-props, $size, "width");
+    }
+  }
+}
