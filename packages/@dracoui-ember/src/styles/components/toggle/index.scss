@@ -37,13 +37,57 @@
     border-radius: var(--token-border-radius-full);
 
     @media (prefers-reduced-motion: no-preference) {
-      transition-timing-function: var(--token-form-toggle-transition-timing-function);
-      transition-duration: var(--token-form-toggle-transition-duration);
+      transition-timing-function: ease-in-out;
+      transition-duration: 0.3s;
       transition-property: all;
     }
 
     &::after {
-      
+      position: absolute;
+      top: calc(1 * -1);
+      left: calc(1 * -1);
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: var(--token-border-radius-full);
+      transform: translate3d(0, 0, 0);
+      content: "";
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.3s;
+        transition-property: all;
+      }
     }
+
+    &::before {
+      $draco-outline-width: 3px;
+      $draco-outline-offset: 1px;
+      $draco-shift: $draco-outline-width + $draco-outline-offset + 1px;
+      position: absolute;
+      top: -$draco-shift;
+      right: -$draco-shift;
+      bottom: -$draco-shift;
+      left: -$draco-shift;
+      margin: auto;
+      border-width: $draco-outline-width;
+      border-radius: calc(10px / 2 + $draco-outline-width + $draco-outline-offset);
+      content: "";
+    }
+  }
+
+  // When the control (checkbox) is not checked, style the thumb accordingly.
+  .draco-toggle__control:not(:checked) + .draco-toggle__thumb {
+    background-color: green;
+  }
+
+  // When the control is checked, style the thumb differently.
+  .draco-toggle__control:checked + .draco-toggle__thumb {
+    background-color: blue;
+  }
+
+  // When the control is checked, move the thumb's ::after accordingly.
+  .draco-toggle__control:checked + .draco-toggle__thumb::after {
+    transform: translate3d(calc(10px - 12px), 0, 0);
   }
 }

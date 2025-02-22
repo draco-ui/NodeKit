@@ -9,6 +9,7 @@ export interface DracoKbdSignature {
     meta?: boolean;
     ctrl?: boolean;
     shift?: boolean;
+    single?: boolean;
   },
   Blocks: {
     default: [];
@@ -22,7 +23,7 @@ export default class DracoKbd extends Component<DracoKbdSignature> {
     platform.os?.family === 'iOS' ||
     platform.os?.family === 'iPadOS';
 
-  private modifierMap: Record<keyof DracoKbdSignature['Args'], ModifierKey> = {
+  private modifierMap: Record<Exclude<keyof DracoKbdSignature['Args'], 'single'>, ModifierKey> = {
     alt: {
       symbol: this.isMac ? '⌥' : 'Alt',
       label: 'Alt'
@@ -44,11 +45,17 @@ export default class DracoKbd extends Component<DracoKbdSignature> {
   get modifiers(): ModifierKey[] {
     return Object.entries(this.args)
       .filter(([key, value]) => value === true)
-      .map(([key]) => this.modifierMap[key as keyof DracoKbdSignature['Args']]);
+      .filter(([key]) => key !== 'single')
+      .map(([key]) => this.modifierMap[key as Exclude<keyof DracoKbdSignature['Args'], 'single'>]);
   }
 
   get className(): string {
     const classes = ['draco-kbd'];
+
+    // add single modifier
+    if (this.args.single) {
+      classes.push('draco-kbd--single');
+    }
 
     return classes.join(' ');
   }
