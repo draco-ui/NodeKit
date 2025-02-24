@@ -1,4 +1,42 @@
-<span class="draco-toggle">
-  <input class="draco-toggle__control" type="checkbox" ...attributes role="switch" />
-  <span class={{this.classNames}} />
+<span class="draco-toggle-warper">
+  <input
+    class="draco-toggle__control"
+    type="checkbox"
+    checked={{this.toggleState}}
+    disabled={{this.disabled}}
+    {{on "click" this.handleToggle}}
+    ...attributes
+    role="switch"
+  />
+
+  {{#let
+    (or (eq this.direction "text-first") (eq this.direction "toggle-last"))
+    as |isTextFirst|
+  }}
+    {{#if isTextFirst}}
+      {{#if this.text}}
+        <span class="draco-toggle__text">
+          {{this.text}}
+          {{yield}}
+        </span>
+      {{/if}}
+    {{/if}}
+
+    <span class={{this.classNames}}>
+      <div class={{concat "draco-toggle__thumb" (if this.checkedState " draco-toggle__checked")}}>
+        {{#if this.icon}}
+          <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
+        {{/if}}
+      </div>
+    </span>
+
+    {{#unless isTextFirst}}
+      {{#if this.text}}
+        <span class="draco-toggle__text">
+          {{this.text}}
+          {{yield}}
+        </span>
+      {{/if}}
+    {{/unless}}
+  {{/let}}
 </span>

@@ -1,0 +1,100 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html, body {
+  background-color: #FAFAFA;
+  color: #000000;
+  font-family: "Geist", serif;
+  font-optical-sizing: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #050505;
+    color: #ffffff;
+  }
+}
+
+.grain-overlay {
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity:.5
+}
+
+
+.careers_root__PB4wl {
+    height: 100vh;
+    max-height: 700px;
+    overflow: hidden;
+    position: relative;
+    width:100vw
+}
+
+.careers_root__PB4wl:before {
+    background: linear-gradient(180deg, #050505, transparent);
+    top: 0;
+    z-index:1
+}
+
+.careers_root__PB4wl:after, .careers_root__PB4wl:before {
+    content: "";
+    height: 30vh;
+    left: 0;
+    max-height: 400px;
+    pointer-events: none;
+    position: absolute;
+    width:100%
+}
+
+.careers_root__PB4wl:after {
+    background: linear-gradient(0deg, #050505, transparent);
+    bottom:0
+}
+
+
+.careers_container__9htdv {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content:start
+}
+
+.careers_container__9htdv:after {
+    background: radial-gradient(50% 50% at 50% 50%, #fff 0, #fff0);
+    bottom: 0;
+    content: "";
+    height: 100%;
+    opacity: .08;
+    pointer-events: none;
+    position: absolute;
+    transform: rotate(-45deg);
+    width: 150%
+}
+
+.grid-partial-border-1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Left and Right Borders */
+.grid-partial-border-1::before,
+.grid-partial-border-1::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 80%;
+  background-color: #242424;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.grid-partial-border-1::before {
+  left: 0;
+}
+
+.grid-partial-border-1::after {
+  right: 0;
+}

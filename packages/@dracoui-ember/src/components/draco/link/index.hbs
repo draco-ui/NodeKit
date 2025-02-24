@@ -18,12 +18,12 @@
       {{/if}}
     {{/if}}
 
+    {{yield}}
+
     {{#if this.text}}
       <span class="draco-link__text {{if this.underline "draco-link--underline"}}">
         {{this.text}}
       </span>
-    {{else}}
-      {{yield}}
     {{/if}}
 
     {{#if (eq this.iconPosition "trailing")}}
@@ -32,7 +32,7 @@
       {{/if}}
     {{/if}}
 
-    {{#if (and this.displayExternalIcon external)}}
+    {{#if (and (and this.displayExternalIcon external) (eq this.iconPosition "leading"))}}
       <Draco::Icon
         @size={{11}}
         @name="lucide:external-link"

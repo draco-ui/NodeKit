@@ -1,7 +1,15 @@
-.draco-toggle {
-  .draco-toggle--color-primary {
-    border-width: 1px;
-    border-style: solid;
+.draco-toggle-warper {
+  .draco-toggle__text {
+    color: var(--token-color-palette-neutral-500);
+  }
+
+  .draco-toggle {
     border-color: var(--token-color-palette-neutral-700);
+    background-color: var(--token-color-palette-neutral-900);
+
+    .draco-toggle__thumb {
+      color: var(--token-color-palette-neutral-950);
+      background-color: var(--token-color-palette-neutral-200);
+    }
   }
 }

@@ -1,0 +1,33 @@
+.draco-toggle {
+  &--checked {
+    &.draco-toggle--color {
+      &-primary {
+        background-color: var(--token-color-palette-neutral-200);
+
+        .draco-toggle__thumb {
+          color: var(--token-color-palette-neutral-200);
+          background-color: var(--token-color-palette-neutral-900);
+        }
+      }
+
+      &-secondary {
+        background-color: var(--token-color-palette-neutral-800);
+      }
+
+      &-amber {
+        color: var(--token-color-palette-neutral-950);
+        background-color: var(--token-color-palette-orange-500);
+      }
+    }
+
+    &.draco-toggle--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

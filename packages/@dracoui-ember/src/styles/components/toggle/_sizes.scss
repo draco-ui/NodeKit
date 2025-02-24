@@ -1,27 +1,55 @@
 @use "sass:map";
 
-$draco-toggle-sizes: ( "small", "medium", "large" );
+$draco-toggle-sizes: ("small", "medium", "large");
 
 $draco-toggle-size-props: (
   "small": (
-    "height": 14px,
-    "width": 28px
+    "width": 32px,
+    "height": 20px,
+    "padding": 2px,
+    "thumb-size": 14px
   ),
   "medium": (
-    "height": 10px,
-    "width": 24px
+    "width": 40px,
+    "height": 26px,
+    "padding": 2px,
+    "thumb-size": 20px
   ),
   "large": (
-    "height": 14px,
-    "width": 24px
+    "width": 50px,
+    "height": 34px,
+    "padding": 3px,
+    "thumb-size": 26px
   ),
 );
 
-.draco-toggle {
-  @each $size in $draco-toggle-sizes {
-    .draco-toggle--size-#{$size} {
-      height: map.get($draco-toggle-size-props, $size, "height");
-      width: map.get($draco-toggle-size-props, $size, "width");
+.draco-toggle-warper {
+  .draco-toggle__text {
+    font-size: 12px;
+  }
+
+  .draco-toggle {
+    @each $size in $draco-toggle-sizes {
+      &.draco-toggle--size-#{$size} {
+        $width: map.get($draco-toggle-size-props, $size, "width");
+        $padding: map.get($draco-toggle-size-props, $size, "padding");
+        $thumb-size: map.get($draco-toggle-size-props, $size, "thumb-size");
+        $translate-distance: $width - $thumb-size - ($padding * 2.7);
+
+        width: $width;
+        height: map.get($draco-toggle-size-props, $size, "height");
+
+        .draco-toggle__thumb {
+          top: $padding;
+          left: $padding;
+          width: $thumb-size;
+          height: $thumb-size;
+
+          &.draco-toggle__checked {
+            transform: translateX($translate-distance);
+          }
+        }
+      }
     }
   }
 }

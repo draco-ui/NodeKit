@@ -1,0 +1,31 @@
+<header class="flex top-0 z-50 w-full px-[40px] dark:bg-[#050505] bg-[#FAFAFA] backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container-wrapper mx-auto flex w-full justify-between items-center">
+    <div class="flex h-14 items-center">
+      <div class="flex mr-4 space-x-3 hidden md:flex items-center h-full">
+          <LinkTo
+            @route="index"
+            draggable={{false}}
+            class="flex items-center gap-3 mr-1"
+          >
+            <Draco::Mark class="flex transform -translate-y-[1px]" />
+            <span class="font-[500] text-[16px] dark:text-[#EDEDED]">Draco</span>
+          </LinkTo>
+
+          <span class="flex w-[1px] h-[40%] dark:bg-[#242424]" />
+
+          <nav class="flex items-center text-sm gap-1">
+            <Header::NavItem @label="About" @route="about" @currentTopRoute={{@currentTopRoute}} />
+            <Header::NavItem @label="Foundations" @route="foundations" @currentTopRoute={{@currentTopRoute}} />
+            <Header::NavItem @label="Components" @route="components" @currentTopRoute={{@currentTopRoute}} />
+            <Header::NavItem @label="Brands" @route="brands" @currentTopRoute={{@currentTopRoute}} />
+            <Header::NavItem @label="Colors" @route="colors" @currentTopRoute={{@currentTopRoute}} />
+            <Header::NavItem @label="Blocks" @route="blocks" @currentTopRoute={{@currentTopRoute}} />
+          </nav>
+      </div>
+    </div>
+
+    <div>
+      <Draco::Button @isIconOnly={{true}} @color="tertiary" @icon="mdi:github" @iconSize={{18}} @href="https://github.com/corinvo/dracoui" />
+    </div>
+  </div>
+</header>

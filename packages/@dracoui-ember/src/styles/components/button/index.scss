@@ -21,6 +21,10 @@
     border-radius: var(--token-border-radius-full);
   }
 
+  .draco-button__icon {
+    display: flex;
+  }
+
   .draco-button__text {
     flex: 1 0 0;
     display: flex;

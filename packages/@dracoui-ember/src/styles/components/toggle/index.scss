@@ -2,92 +2,69 @@
 @use "_colors";
 @use "_states";
 
-.draco-toggle {
+.draco-toggle-warper {
+  gap: 8px;
   position: relative;
   isolation: isolate;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   display: inline-flex;
+  font-family: var(--token-typography-display-400-font-family);
+  font-weight: var(--token-typography-font-weight-regular);
 
-  .draco-toggle__control {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    display: block;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    color: transparent;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    opacity: 0;
-    appearance: none;
-
-    &:disabled {
-      cursor: not-allowed;
-    }
-  }
-
-  .draco-toggle__thumb {
+  .draco-toggle__text {
     position: relative;
-    display: block;
-    border-radius: var(--token-border-radius-full);
+    display: flex;
+  }
+}
 
-    @media (prefers-reduced-motion: no-preference) {
-      transition-timing-function: ease-in-out;
-      transition-duration: 0.3s;
-      transition-property: all;
-    }
+.draco-toggle__control {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0;
+  appearance: none;
+}
 
-    &::after {
-      position: absolute;
-      top: calc(1 * -1);
-      left: calc(1 * -1);
-      width: 10px;
-      height: 10px;
-      background-color: red;
-      border-radius: var(--token-border-radius-full);
-      transform: translate3d(0, 0, 0);
-      content: "";
+.draco-toggle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: var(--token-border-radius-full);
 
-      @media (prefers-reduced-motion: no-preference) {
-        transition-timing-function: ease-in-out;
-        transition-duration: 0.3s;
-        transition-property: all;
-      }
-    }
-
-    &::before {
-      $draco-outline-width: 3px;
-      $draco-outline-offset: 1px;
-      $draco-shift: $draco-outline-width + $draco-outline-offset + 1px;
-      position: absolute;
-      top: -$draco-shift;
-      right: -$draco-shift;
-      bottom: -$draco-shift;
-      left: -$draco-shift;
-      margin: auto;
-      border-width: $draco-outline-width;
-      border-radius: calc(10px / 2 + $draco-outline-width + $draco-outline-offset);
-      content: "";
+  @media (prefers-reduced-motion: no-preference) {
+    transition: {
+      property: background-color;
+      duration: 0.2s;
+      timing-function: ease;
     }
   }
+}
 
-  // When the control (checkbox) is not checked, style the thumb accordingly.
-  .draco-toggle__control:not(:checked) + .draco-toggle__thumb {
-    background-color: green;
-  }
+.draco-toggle__thumb {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--token-border-radius-full);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
-  // When the control is checked, style the thumb differently.
-  .draco-toggle__control:checked + .draco-toggle__thumb {
-    background-color: blue;
-  }
-
-  // When the control is checked, move the thumb's ::after accordingly.
-  .draco-toggle__control:checked + .draco-toggle__thumb::after {
-    transform: translate3d(calc(10px - 12px), 0, 0);
+  @media (prefers-reduced-motion: no-preference) {
+    transition: {
+      duration: 0.2s;
+      property: transform;
+      timing-function: ease;
+    }
   }
 }
