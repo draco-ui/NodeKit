@@ -14,18 +14,23 @@
           <span class="flex w-[1px] h-[40%] dark:bg-[#242424]" />
 
           <nav class="flex items-center text-sm gap-1">
-            <Header::NavItem @label="About" @route="about" @currentTopRoute={{@currentTopRoute}} />
-            <Header::NavItem @label="Foundations" @route="foundations" @currentTopRoute={{@currentTopRoute}} />
-            <Header::NavItem @label="Components" @route="components" @currentTopRoute={{@currentTopRoute}} />
-            <Header::NavItem @label="Brands" @route="brands" @currentTopRoute={{@currentTopRoute}} />
-            <Header::NavItem @label="Colors" @route="colors" @currentTopRoute={{@currentTopRoute}} />
-            <Header::NavItem @label="Blocks" @route="blocks" @currentTopRoute={{@currentTopRoute}} />
+            {{#each this.navItems as |item|}}
+              <Draco::Button
+                @size="small"
+                @route={{item.route}}
+                @color="tertiary"
+                @text={{item.label}}
+                draggable={{false}}
+                class="{{if (eq @currentTopRoute @route) 'dark:text-white'}}"
+              />
+            {{/each}}
           </nav>
       </div>
     </div>
 
-    <div>
-      <Draco::Button @isIconOnly={{true}} @color="tertiary" @icon="mdi:github" @iconSize={{18}} @href="https://github.com/corinvo/dracoui" />
+    <div class="flex gap-x-[6px]">
+      <Draco::Button @text="Sign in" @size="small" />
+      <Draco::Button @isIconOnly={{true}} @size="small" @color="tertiary" @icon="mdi:github" @iconSize={{18}} @href="https://github.com/corinvo/dracoui" />
     </div>
   </div>
 </header>

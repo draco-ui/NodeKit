@@ -28,6 +28,13 @@
   .draco-button__text {
     flex: 1 0 0;
     display: flex;
+    position: relative;
     text-align: center;
+  }
+
+  .draco-button--external-indicator {
+    display: inline-flex;
+    color: currentColor;
+    transform: translateY(-1px);
   }
 }

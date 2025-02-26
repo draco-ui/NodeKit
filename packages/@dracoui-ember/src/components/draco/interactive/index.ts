@@ -2,6 +2,8 @@ import Component from '@glimmer/component';
 import { action } from "@ember/object";
 import { assert } from '@ember/debug';
 
+import type Owner from '@ember/owner';
+
 export interface DracoInteractiveSignature {
   Args: {
     href?: string;
@@ -21,16 +23,25 @@ export interface DracoInteractiveSignature {
 }
 
 export default class DracoInteractive extends Component<DracoInteractiveSignature> {
+  constructor(owner: Owner, args: DracoInteractiveSignature['Args']) {
+    super(owner, args);
+
+    assert(
+      `@href and @route for "Draco::Interactive" cannot be set at the same time.`,
+      !(args.href && args.route)
+    );
+  }
+
   get isHrefExternal(): boolean {
     const { isHrefExternal, href } = this.args;
 
     assert(
-      `@isHrefExternal for "DracoInteractive" must be a valid 'boolean'; received: ${isHrefExternal}`,
+      `@isHrefExternal for "Draco::Interactive" must be a valid 'boolean'; received: ${isHrefExternal}`,
       isHrefExternal === undefined || typeof isHrefExternal === 'boolean'
     );
 
     assert(
-      `@href for "DracoInteractive" must be a valid 'string'; received: ${href}`,
+      `@href for "Draco::Interactive" must be a valid 'string'; received: ${href}`,
       href === undefined || typeof href === 'string'
     );
 

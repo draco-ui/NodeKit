@@ -11,16 +11,27 @@
         >
           <Draco::Mark @size={{14}} />
         </Draco::Link>
-        <h1 class="text-2xl font-[500] leading-tight tracking-tighter md:text-4xl">{{this.title}}</h1>
-        <p class="max-w-2xl text-md font-[400] dark:text-[#A1A1A1]">{{this.description}}</p>
-        <div class="flex flex-col w-full items-start space-y-[10px] pt-2">
-          <div class="gap-2 flex">
-            <Draco::Button @text="Learn More" @route="foundations" />
-            <Draco::Button @text="Browse Components" @route="components" @type="tertiary" />
-          </div>
-          <div class="">
-            <Draco::Button @text="Project Licensed Under Apache 2.0" @route="components" @type="secondary" />
-          </div>
+
+        <h1 class="text-2xl font-[500] leading-tight tracking-tighter md:text-4xl">
+          {{#if @title}}
+            {{this.title}}
+          {{else}}
+            {{yield to='title'}}
+          {{/if}}
+        </h1>
+
+        <p class="max-w-2xl text-[14px] font-[400] dark:text-[#A1A1A1]">
+          {{#if @description}}
+            {{this.description}}
+          {{else}}
+            {{yield to='description'}}
+          {{/if}}
+        </p>
+
+        <div class="flex gap-2.5 w-full items-start pt-2">
+          <Draco::Button @text="Get Started" @route="foundations" />
+          <Draco::Button @text="Browse Components" @route="components" @type="secondary" />
+          <Draco::Button @text="Licensed Under MIT" @type="tertiary" @href="https://github.com/corinvo/dracoui/blob/main/LICENSE" />
         </div>
       </div>
     </div>

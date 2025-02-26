@@ -1,5 +1,5 @@
 <div class="absolute inset-0 w-full h-full grid grid-cols-6 grid-rows-6 z-[100]">
-  {{#each (range 0 6) as |row|}}
+  {{#each (range 0 7) as |row|}}
     {{#each (range 0 6) as |col|}}
       {{#if (and (eq row 1) (or (eq col 1) (eq col 2)))}}
         <div class="w-full h-full" />
@@ -7,95 +7,99 @@
 
       {{#if (and (eq row 1) (eq col 3))}}
         <div class="w-full h-full relative">
-            <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#272633]" />
-
-            <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#272633]" />
-
-            <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#272633]" />
-
-            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#272633]" />
+            <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424]" />
+            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424]" />
         </div>
       {{/if}}
 
       {{#if (and (eq row 1) (eq col 4))}}
         <div class="w-full h-full relative">
-          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#272633] z-0" />
-          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#272633] z-0" />
-          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#272633] z-0" />
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
 
-          <div class="relative flex flex-col space-y-[15px] h-full w-full justify-center items-center">
-            <div class="flex items-center justify-center space-x-[10px] z-10">
-              <Draco::Toggle @size="small" @checked={{true}} />
-              <Draco::Toggle @size="small" @icon="healthicons:artificial-intelligence" />
+          <div class="relative flex h-full w-full justify-center items-center p-[15px]">
+            <div class="dark:bg-[#242424] rounded-[5px] flex w-full h-full items-center justify-center p-[20px]">
+              <Draco::Icon @name="uit:triangle" @color="#969696" @size={{38}} class="flex transform rotate-[180deg]" />
             </div>
-
-            <Draco::Toggle @checked={{true}} @color="amber" @iconSize={{12}} @icon={{array
-              (hash checked="heroicons:lock-closed-solid")
-              (hash unchecked="heroicons:lock-open-solid")
-            }} class="z-10" />
           </div>
         </div>
       {{/if}}
 
       {{#if (and (eq row 1) (eq col 5))}}
         <div class="w-full h-full relative">
-          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#272633]" />
-
-          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#272633]" />
+          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424]" />
         </div>
       {{/if}}
 
       {{#if (and (eq row 1) (eq col 5))}}
         <div class="w-full h-full relative">
-          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] border-t-2 border-dashed border-[#9EA2AC] z-0" />
-          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 border-r-2 border-dashed border-[#9EA2AC] z-0" />
-          <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 border-r-2 border-dashed border-[#9EA2AC] z-0" />
-          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] border-b-2 border-dashed border-[#9EA2AC] z-0" />
+          <span class="absolute left-0 top-[45%] transform -translate-y-1/2 w-[2px] h-[65%] bg-[#242424]" />
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424]" />
+          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424]" />
+          <span class="absolute bottom-0 left-[57%] transform -translate-x-1/2 w-[68%] h-[2px] bg-[#242424]" />
 
-          <div class="relative flex flex-col space-y-[15px] h-full w-full justify-center items-center">
-            <Draco::Avatar::Group
-              @size="small"
-              @members={{array
-                (hash username="botond-szabo" provider="github")
-                (hash username="unknown" provider="bitbucket")
-                (hash username="gitlab" provider="gitlab")
-              }}
-            />
+          <div class="relative flex h-full w-full justify-center items-center">
+            <span class="w-[40px] h-[40px] bg-gradient-to-tr from-[#3a8ec1] to-[#6bb9f0] rounded-full" />
           </div>
         </div>
       {{/if}}
 
-        {{#if (and (eq row 2) (eq col 1))}}
+      {{#if (and (eq row 2 ) (eq col 1))}}
         <div class="w-full h-full relative col-span-2">
-          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#272633] z-0" />
-          <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#272633] z-0" />
-          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-[2px] bg-[#272633] z-0" />
-          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[90%] h-[2px] bg-[#272633] z-0" />
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+          <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-[2px] bg-[#242424] z-0" />
+          <span class="absolute bottom-0 left-[25%] transform -translate-x-1/2 w-[40%] h-[2px] bg-[#242424] z-0" />
 
           <div class="relative flex flex-row space-x-[15px] h-full w-full justify-center items-center px-[20px]">
-            <Draco::Skeleton @shape="square" @isFullWidth={{true}} />
             <div>
               <Draco::Skeleton />
             </div>
+            <div class="w-full flex flex-col space-y-[10px]">
+              <Draco::Skeleton @shape="square" @height={{12}} @width={{50}} @isFullWidth={{false}} />
+              <Draco::Skeleton @shape="square" @height={{12}} @isFullWidth={{true}} />
+            </div>
           </div>
         </div>
       {{/if}}
 
-      {{#if (and (eq row 2) (or (eq col 1) (eq col 2)))}}
+      {{#if (and (eq row 2) (eq col 1))}}
         <div class="w-full h-full relative">
-          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#272633] z-0" />
-          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#272633] z-0" />
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+
+          <div class="relative flex w-full h-full justify-center items-center">
+            <span class="w-[40px] h-[40px] bg-gradient-to-tl from-[#4caf50] to-[#81c784] rounded-[3px]" />
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if (and (eq row 2) (eq col 2))}}
+        <div class="w-full h-full relative">
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
         </div>
       {{/if}}
 
       {{#if (and (eq row 3) (eq col 1))}}
-        <div class="w-full h-full border-b-2 border-r-2 dark:border-[#242424] flex justify-center items-center">
-          <Draco::LoadingDots @size="large" />
+        <div class="w-full h-full relative">
+          <span class="absolute w-[25px] h-[25px] rounded-full bg-[#E4E4E7] -top-3 -right-3 z-[50]" />
+
+          <span class="absolute top-0 left-[43%] transform -translate-x-1/2 w-[65%] h-[2px] border-t-2 border-dashed border-[#969696] z-0" />
+          <span class="absolute right-0 top-[55%] transform -translate-y-1/2 w-[2px] h-[60%] border-r-2 border-dashed border-[#969696] z-0" />
+          <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 border-r-2 border-dashed border-[#969696] z-0" />
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] border-b-2 border-dashed border-[#969696] z-0" />
+
+          <div class="flex w-full h-full items-center justify-center">
+            <span class="w-[40px] transform rotate-[45deg] h-[40px] bg-[radial-gradient(#499BCE_1px,transparent_1px)] [background-size:8px_8px]"/>
+          </div>
         </div>
       {{/if}}
 
       {{#if (and (eq row 3) (eq col 2))}}
-        <div class="w-full h-full border-b-2 border-r-2 dark:border-[#242424]" />
+        <div class="w-full h-full relative">
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+        </div>
       {{/if}}
 
       {{#if (and (eq row 4) (eq col 1))}}
@@ -103,19 +107,46 @@
       {{/if}}
 
       {{#if (and (eq row 4) (eq col 1))}}
-        <div class="w-full h-full border-l-2 border-b-2 col-span-2 row-span-2 dark:border-[#242424]" />
+       <div class="w-full h-full col-span-2 row-span-2 border-2 dark:border-[#969696] p-[15px]">
+          <div class="w-full h-full grid grid-cols-3 grid-rows-3 gap-3.5">
+            {{#each (range 0 3) as |row|}}
+              {{#each (range 0 3) as |col|}}
+                {{#if (and (eq row 0) (eq col 0))}}
+                  <div class="flex rounded-full bg-gradient-to-br from-[#7a3dad] to-[#ff85b4]" />
+                {{else if (and (eq row 1) (eq col 1))}}
+                  <div class="flex rounded-full bg-gradient-to-br from-[#ff85b4] to-[#ff7045]" />
+                {{else}}
+                  <div class="flex dark:bg-[#242424] rounded-[5px]" />
+                {{/if}}
+              {{/each}}
+            {{/each}}
+          </div>
+        </div>
       {{/if}}
 
       {{#if (and (eq row 4) (eq col 5))}}
-        <div class="w-full h-full border-x-2 border-b-2 dark:border-[#242424]" />
+         <div class="w-full h-full relative">
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+        </div>
       {{/if}}
 
       {{#if (and (eq row 4) (eq col 5))}}
-        <div class="w-full h-full border-r-2 border-b-2 dark:border-[#242424]" />
+         <div class="w-full h-full relative">
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+        </div>
       {{/if}}
 
       {{#if (and (eq row 4) (eq col 5))}}
-        <div class="w-full h-full border-r-2 border-b-2 dark:border-[#242424]" />
+        <div class="w-full h-full relative">
+          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+
+
+          <div class="relative flex h-full w-full justify-center items-center p-[15px]">
+            <div class="dark:bg-[#242424] rounded-[5px] flex w-full h-full items-center justify-center p-[20px]" />
+          </div>
+        </div>
       {{/if}}
 
       {{#if (and (eq row 5) (eq col 1))}}
@@ -123,15 +154,66 @@
       {{/if}}
 
       {{#if (and (eq row 5) (eq col 4))}}
-        <div class="w-full h-full border-x-2 border-b-2 row-span-2 dark:border-[#242424] flex flex-col items-center justify-center space-y-[10px]">
-          <Draco::Badge @text="Red" @size="small" @color="red" />
-          <Draco::Badge @text="Pink" @size="small" @color="pink" />
-          <Draco::Badge @text="Amber" @size="small" @color="amber" />
-          <Draco::Badge @text="Green" @size="small" @color="green" />
-          <Draco::Badge @text="Blue" @icon="lucide:badge-info" @iconSize={{13}} @size="small" @color="blue-subtle" />
-          <Draco::Badge @text="Purple" @size="small" @icon="lucide:git-pull-request-arrow" @iconSize={{12}} @color="purple-subtle" />
+        <div class="w-full h-full row-span-2 relative ">
+          <span class="absolute right-0 top-[75%] transform translate-x-[2px] -translate-y-1/2 w-[2px] h-[40%] bg-[#969696] z-0" />
+          <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+          <span class="absolute left-0 top-[75%] transform -translate-x-[1px] -translate-y-1/2 w-[2px] h-[40%] bg-[#242424] z-0" />
+
+         <div class="flex h-full w-full p-[15px]">
+            <div class="flex dark:bg-[#242424] h-full w-full rounded-[4px] flex-col gap-3 p-3">
+              <div class="h-full w-full bg-gradient-to-tr from-[#3b993b] to-[#5fa65f] rounded" />
+              <div class="h-full w-full bg-gradient-to-tr from-[#5fa65f] to-[#7fbf7f] rounded" />
+              <div class="h-full w-full bg-gradient-to-tr from-[#7fbf7f] to-[#a8d1a8] rounded" />
+              <div class="h-full w-full bg-gradient-to-tr from-[#a8d1a8] to-[#d9f2d9] rounded" />
+              <div class="h-full w-full bg-gradient-to-tr from-[#d9f2d9] to-[#ffffff] rounded" />
+            </div>
+          </div>
         </div>
       {{/if}}
+
+      {{#if (and (eq row 5) (eq col 5))}}
+        <div class="w-full h-full relative">
+          <span class="absolute w-[25px] h-[25px] rounded-full bg-gradient-to-tr from-[#3a8ec1] to-[#6bb9f0] -bottom-3 -right-3 z-[50]" />
+
+          <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+          <span class="absolute right-0 top-[43%] transform -translate-y-1/2 w-[2px] h-[65%] border-r-2 border-dashed border-[#969696] z-0" />
+          <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+          <span class="absolute bottom-0 left-[43%] transform -translate-x-1/2 w-[65%] h-[2px] bg-[#242424] z-0" />
+
+          <div class="relative flex h-full w-full justify-center items-center p-[15px]">
+            <div class="dark:bg-[#242424] rounded-[5px] flex w-full h-full items-center justify-center p-[20px]">
+              <span class="flex transform rotate-[45deg] bg-gradient-to-r from-[#7a3dad] to-[#ff85b4] rounded-[4px] h-full w-full" />
+            </div>
+          </div>
+        </div>
+      {{/if}}
+
+      <div class="w-full h-full relative row-start-5 col-start-5">
+        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+        <span class="absolute right-0 top-[55%] transform -translate-y-1/2 w-[2px] h-[60%] border-r-2 border-dashed border-[#969696] z-0" />
+      </div>
+
+       <div class="w-full h-full relative row-start-6 col-start-5">
+        <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 border-r-2 border-dashed border-[#969696] z-0" />
+        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+
+        <div class="flex h-full w-full items-center justify-center p-[20px]">
+          <span class="w-full h-full bg-[radial-gradient(#69BB6B_1px,transparent_1px)] [background-size:8px_8px]"/>
+        </div>
+      </div>
+
+      <div class="w-full h-full relative row-start-6 col-start-6">
+        <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+        <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-[2px] h-4/5 bg-[#242424] z-0" />
+        <span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[2px] bg-[#242424] z-0" />
+
+        <div class="relative flex h-full w-full justify-center items-center p-[15px]">
+          <div class="dark:bg-[#242424] rounded-[5px] flex w-full h-full items-center justify-center p-[20px]">
+            <span class="dark:border-[#969696] border p-[15px] rounded-[4px]" />
+          </div>
+        </div>
+      </div>
     {{/each}}
   {{/each}}
 </div>

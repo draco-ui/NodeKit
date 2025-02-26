@@ -1,49 +1,59 @@
-<Draco::Interactive
-  class={{this.classNames}}
-  @current-when={{@current-when}}
-  @models={{@model}}
-  @query={{@query}}
-  @replace={{@replace}}
-  @route={{@route}}
-  @isRouteExternal={{@isRouteExternal}}
-  @href={{@href}}
-  @isHrefExternal={{@isHrefExternal}}
-  ...attributes
-  aria-label={{if this.isIconOnly this.text null}}
->
-  {{#if this.loading}}
-    <Draco::LoadingDots />
-  {{else}}
-    {{#if this.isIconOnly}}
-      {{#if this.icon}}
-        <span class="draco-button__icon">
-          <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
-        </span>
-      {{/if}}
+{{#let (or @isRouteExternal this.isExternal) as |external|}}
+  <Draco::Interactive
+    class={{this.classNames}}
+    @current-when={{@current-when}}
+    @models={{@model}}
+    @query={{@query}}
+    @replace={{@replace}}
+    @route={{@route}}
+    @isRouteExternal={{@isRouteExternal}}
+    @href={{@href}}
+    @isHrefExternal={{@isHrefExternal}}
+    ...attributes
+    aria-label={{if this.isIconOnly this.text null}}
+  >
+    {{#if this.loading}}
+      <Draco::LoadingDots />
     {{else}}
-      {{#if this.icon}}
-        {{#if (eq this.iconPosition "leading")}}
-          <span class="draco-button__icon">
-            <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
-          </span>
-          <span class="draco-button__text">
-            {{this.text}}
-          </span>
-        {{else}}
-          <span class="draco-button__text">
-            {{this.text}}
-          </span>
+      {{#if this.isIconOnly}}
+        {{#if this.icon}}
           <span class="draco-button__icon">
             <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
           </span>
         {{/if}}
       {{else}}
-        <span class="draco-button__text">
-          {{this.text}}
-        </span>
+        {{#if this.icon}}
+          {{#if (eq this.iconPosition "leading")}}
+            <span class="draco-button__icon">
+              <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
+            </span>
+            <span class="draco-button__text">
+              {{this.text}}
+            </span>
+          {{else}}
+            <span class="draco-button__text">
+              {{this.text}}
+            </span>
+            <span class="draco-button__icon">
+              <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
+            </span>
+          {{/if}}
+        {{else}}
+          <span class="draco-button__text">
+            {{this.text}}
+          </span>
+        {{/if}}
+      {{/if}}
+
+      {{yield}}
+
+      {{#if (and (and (not this.isIconOnly) this.displayExternalIcon) (and external (eq this.iconPosition "leading")))}}
+        <Draco::Icon
+          @size={{11}}
+          @name="lucide:external-link"
+          class="draco-button--external-indicator"
+        />
       {{/if}}
     {{/if}}
-
-    {{yield}}
-  {{/if}}
-</Draco::Interactive>
+  </Draco::Interactive>
+{{/let}}

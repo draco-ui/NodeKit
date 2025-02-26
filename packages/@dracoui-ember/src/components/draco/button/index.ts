@@ -34,6 +34,7 @@ export interface DracoButtonSignature {
       isIconOnly?: boolean;
       isFullWidth?: boolean;
       size?: DracoButtonSizes;
+      displayExternalIcon?: boolean;
       shape?: DracoButtonShapes | undefined;
       iconPosition?: DracoButtonIconPositions;
       icon?: DracoIconSignature['Args']['name'];
@@ -65,6 +66,17 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     );
 
     return size;
+  }
+
+  get displayExternalIcon() : boolean {
+    const { displayExternalIcon = true } = this.args;
+
+    assert(
+      `@route for "Draco::Button" must be a valid 'boolean'; received: ${displayExternalIcon}`,
+      typeof displayExternalIcon === 'boolean'
+    );
+
+    return displayExternalIcon;
   }
 
   get color(): DracoButtonColors {
@@ -145,6 +157,23 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     );
 
     return iconPosition;
+  }
+
+  get isExternal(): boolean {
+    if (this.args.route && !this.args.href) {
+      return false;
+    }
+
+    if (this.args.href) {
+      try {
+        const url = new URL(this.args.href, window.location.origin);
+        return url.origin !== window.location.origin;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    return false;
   }
 
   get classNames(): string {

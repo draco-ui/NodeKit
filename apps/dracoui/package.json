@@ -48,6 +48,7 @@
     "ember-cli-postcss": "^8.2.0",
     "ember-cli-showdown": "^9.0.1",
     "ember-cli-sri": "^2.1.1",
+    "ember-cli-string-helpers": "^6.1.0",
     "ember-cli-terser": "^4.0.2",
     "ember-data": "~5.3.9",
     "ember-fetch": "^8.1.2",
@@ -98,6 +99,7 @@
     "ember-truth-helpers": "^4.0.3",
     "ember-window-mock": "^1.0.2",
     "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^10.1.5",
     "postcss-scss": "^4.0.9",
     "showdown": "^2.1.0",
     "tm-themes": "^1.9.13"
