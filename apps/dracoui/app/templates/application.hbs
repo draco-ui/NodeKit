@@ -3,9 +3,11 @@
 
 <ProgressBar/>
 
-<Header
-  @currentTopRoute={{this.currentTopRoute}}
-/>
+<Header @currentTopRoute={{this.currentTopRoute}} />
 
-{{outlet}}
+<main class="flex flex-1 flex-col w-full pt-[3.5rem]">
+  {{outlet}}
+</main>
 
+
+<Footer @currentTopRoute={{this.currentTopRoute}} />

@@ -1,4 +1,7 @@
-<header class="flex top-0 z-50 w-full px-[40px] dark:bg-[#050505] bg-[#FAFAFA] backdrop-blur supports-[backdrop-filter]:bg-background/60">
+<header
+  {{scroll-tracker this.updateScrollPosition}}
+  class="fixed flex top-0 z-[1000] w-full px-[40px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 {{if this.isAtTop '' 'border-b dark:border-[#242424] border-[#e5e5e5]'}}"
+>
   <div class="container-wrapper mx-auto flex w-full justify-between items-center">
     <div class="flex h-14 items-center">
       <div class="flex mr-4 space-x-3 hidden md:flex items-center h-full">
@@ -21,7 +24,7 @@
                 @color="tertiary"
                 @text={{item.label}}
                 draggable={{false}}
-                class="{{if (eq @currentTopRoute @route) 'dark:text-white'}}"
+                class="{{if (eq @currentTopRoute item.route) 'dark:text-white'}}"
               />
             {{/each}}
           </nav>

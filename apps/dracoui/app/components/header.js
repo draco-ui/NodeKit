@@ -1,4 +1,6 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 export default class Header extends Component {
   navItems = [
@@ -9,4 +11,13 @@ export default class Header extends Component {
     { label: 'Colors', route: 'colors' },
     { label: 'Blocks', route: 'blocks' }
   ];
-};
+
+  @tracked isAtTop = true;
+  @tracked scrollPosition = 0;
+
+  @action
+  updateScrollPosition(scrollY) {
+    this.scrollPosition = scrollY;
+    this.isAtTop = scrollY === 0;
+  }
+}

@@ -1,49 +1,51 @@
-<main class="flex flex-1 flex-col w-full">
-  <Page::Home::Hero
-    @title="Draco Design System"
-    @links={{array
-      (hash label="Learn More" route="foundations")
-      (hash label="Browse Components" route="components")
-      (hash label="Licensed Under MIT" href="https://github.com/corinvo/dracoui/blob/main/LICENSE")
-    }}
-  >
-    <:description>
-      A bold and simple modular design system, based on
-      <Draco::Link @text="Sprocket UI" @href="https://sprocketui.com" @displayExternalIcon={{false}} />. <br>
-      Draco offers beautifully crafted and accessible components, empowering <br>
-      limitless creativity for engineers and designers.
-    </:description>
-  </Page::Home::Hero>
+<Page::Home::Hero
+  @title="Draco Design System"
+  @links={{array
+    (hash label="Learn More" route="foundations")
+    (hash label="Browse Components" route="components")
+    (hash label="Licensed Under MIT" href="https://github.com/corinvo/dracoui/blob/main/LICENSE")
+  }}
+>
+  <:description>
+    A bold and simple modular design system, based on
+    <Draco::Link @text="Sprocket UI" @href="https://sprocketui.com" @displayExternalIcon={{false}} />. <br>
+    Draco offers beautifully crafted and accessible components, empowering <br>
+    limitless creativity for engineers and designers.
+  </:description>
+</Page::Home::Hero>
 
-  <section class="max-w-[1200px] w-full mx-auto flex flex-col justify-between mt-[200px] space-y-[30px]">
-    <ul class="relative flex flex-row w-full justify-between gap-6" role="list" aria-label="the cornerstones of the draco design system">
-      {{#each this.cards as |card|}}
-        <LinkTo
-          draggable={{false}}
-          @route={{card.route}}
-          class="group/card transition-all cursor-pointer relative rounded-lg p-6 border dark:border-[#3F3F46] dark:hover:border-[#969696] dark:bg-[#0A0A0A]"
-        >
-          <div class="mb-3 text-gray-400 transition group-hover/card:text-gray-950 dark:text-gray-500 dark:group-hover/card:text-gray-300 [&>svg]:h-8 [&>svg]:w-auto">
-            <Draco::Icon @name={{card.icon}} @size={{28}} />
-          </div>
+<section class="max-w-[1200px] w-full mx-auto flex flex-col justify-between mt-[150px] space-y-[30px]">
+  <ul class="relative flex flex-row w-full justify-between gap-6" role="list" aria-label="the cornerstones of the draco design system">
+    {{#each this.cards as |card|}}
+      <LinkTo
+        draggable={{false}}
+        @route={{card.route}}
+        class="group/card active:scale-[0.98] transition-all will-change-transform transform-gpu antialiased cursor-pointer relative rounded-lg p-6 border dark:border-[#3F3F46] dark:hover:border-[#969696] dark:bg-[#0A0A0A]"
+      >
+        <div class="mb-3 text-gray-400 transition group-hover/card:text-gray-950 dark:text-gray-500 dark:group-hover/card:text-gray-300 [&>svg]:h-8 [&>svg]:w-auto">
+          <Draco::Icon @name={{card.icon}} @size={{28}} />
+        </div>
 
-          <div>
-            <div class="relative flex items-center text-center mx-auto mb-2">
-              <h2 class="text-[0.875rem] leading-5 font-medium text-gray-950 dark:text-white">
-                {{capitalize card.title}}
-              </h2>
-               <Draco::Icon
-                  @size={{15}}
-                  @name="lucide:arrow-right"
-                  class="ml-1 flex transform opacity-0 translate-x-0 transition-all duration-300 ease-out group-hover/card:opacity-100 group-hover/card:translate-x-1"
-                />
-            </div>
-            <div class="text-[0.875rem]/5 dark:text-[#A1A1A1]">
-              <p>{{card.description}}</p>
-            </div>
+        <div>
+          <div class="relative flex items-center text-center mx-auto mb-2">
+            <h2 class="text-[0.875rem] leading-5 font-medium text-gray-950 dark:text-white">
+              {{capitalize card.title}}
+            </h2>
+              <Draco::Icon
+                @size={{15}}
+                @name="lucide:arrow-right"
+                class="ml-1 flex transform opacity-0 translate-x-0 transition-all duration-300 ease-out group-hover/card:opacity-100 group-hover/card:translate-x-1"
+              />
           </div>
-        </LinkTo>
-      {{/each}}
-    </ul>
-  </section>
-</main>
+          <div class="text-[0.875rem]/5 dark:text-[#A1A1A1]">
+            <p>{{card.description}}</p>
+          </div>
+        </div>
+      </LinkTo>
+    {{/each}}
+  </ul>
+</section>
+
+{{!-- Spacing element between last section item and footer --}}
+
+<div class="flex h-[200px] w-full" />

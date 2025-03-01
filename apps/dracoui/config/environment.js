@@ -34,6 +34,11 @@ module.exports = function (environment) {
       // when it is created
     },
 
+    'ember-moment': {
+      allowEmpty: true,
+      outputFormat: 'LLLL',
+    },
+
     'ember-meta': {
       description: 'Design System',
       siteName: 'Draco Design System',
