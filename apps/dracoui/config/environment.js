@@ -7,7 +7,7 @@ module.exports = function (environment) {
     'ember-showdown-shiki': {
       bundledThemes: ['houston'],
       theme: 'houston',
-      languages: ['javascript', 'handlebars', 'go'],
+      languages: ['javascript', 'handlebars', 'go', 'bash'],
       colorReplacements: {
         '#24292e': '#1c1e24',
         '#1C1E23': '#0a0a0a'

@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/ember",
-  "version": "0.1.20",
+  "version": "0.1.22",
   "description": "Draco Design System for Ember",
   "keywords": [
     "corinvo",
@@ -127,6 +127,8 @@
       "./components/draco/avatar/index.js": "./dist/_app_/components/draco/avatar/index.js",
       "./components/draco/badge/index.js": "./dist/_app_/components/draco/badge/index.js",
       "./components/draco/button/index.js": "./dist/_app_/components/draco/button/index.js",
+      "./components/draco/copy/button/index.js": "./dist/_app_/components/draco/copy/button/index.js",
+      "./components/draco/copy/snippet/index.js": "./dist/_app_/components/draco/copy/snippet/index.js",
       "./components/draco/icon/index.js": "./dist/_app_/components/draco/icon/index.js",
       "./components/draco/interactive/index.js": "./dist/_app_/components/draco/interactive/index.js",
       "./components/draco/kbd/index.js": "./dist/_app_/components/draco/kbd/index.js",
@@ -135,12 +137,17 @@
       "./components/draco/mark/index.js": "./dist/_app_/components/draco/mark/index.js",
       "./components/draco/skeleton/index.js": "./dist/_app_/components/draco/skeleton/index.js",
       "./components/draco/switch/index.js": "./dist/_app_/components/draco/switch/index.js",
+      "./components/draco/tabs/index.js": "./dist/_app_/components/draco/tabs/index.js",
+      "./components/draco/tabs/panel.js": "./dist/_app_/components/draco/tabs/panel.js",
+      "./components/draco/tabs/tab.js": "./dist/_app_/components/draco/tabs/tab.js",
       "./components/draco/toggle/index.js": "./dist/_app_/components/draco/toggle/index.js",
       "./helpers/draco-eq.js": "./dist/_app_/helpers/draco-eq.js",
       "./helpers/draco-link-to-models.js": "./dist/_app_/helpers/draco-link-to-models.js",
       "./helpers/draco-link-to-query.js": "./dist/_app_/helpers/draco-link-to-query.js",
       "./helpers/draco-subtract.js": "./dist/_app_/helpers/draco-subtract.js",
-      "./helpers/draco-typeof.js": "./dist/_app_/helpers/draco-typeof.js"
+      "./helpers/draco-truncate.js": "./dist/_app_/helpers/draco-truncate.js",
+      "./helpers/draco-typeof.js": "./dist/_app_/helpers/draco-typeof.js",
+      "./modifiers/draco-clipboard.js": "./dist/_app_/modifiers/draco-clipboard.js"
     },
     "public-assets": {
       "./dist/styles/fonts/Geist-Variable.woff2": "assets/fonts/Geist-Variable.woff2"

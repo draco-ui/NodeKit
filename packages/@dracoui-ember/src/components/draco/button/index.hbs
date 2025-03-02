@@ -27,21 +27,27 @@
             <span class="draco-button__icon">
               <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
             </span>
-            <span class="draco-button__text">
-              {{this.text}}
-            </span>
+            {{#if this.text}}
+              <span class="draco-button__text">
+                {{this.text}}
+              </span>
+            {{/if}}
           {{else}}
-            <span class="draco-button__text">
-              {{this.text}}
-            </span>
+            {{#if this.text}}
+              <span class="draco-button__text">
+                {{this.text}}
+              </span>
+            {{/if}}
             <span class="draco-button__icon">
               <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
             </span>
           {{/if}}
         {{else}}
-          <span class="draco-button__text">
-            {{this.text}}
-          </span>
+          {{#if this.text}}
+            <span class="draco-button__text">
+              {{this.text}}
+            </span>
+          {{/if}}
         {{/if}}
       {{/if}}
 

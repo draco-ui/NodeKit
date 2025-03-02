@@ -37,8 +37,16 @@ import type DracoInteractiveComponent from "./components/draco/interactive";
 // Toggle Component
 import type DracoToggleComponent from "./components/draco/toggle";
 
-// Keyboard Input
+// Keyboard Input Component
 import type DracoKbdComponent from "./components/draco/kbd";
+
+// Copy Snippet Component
+import type DracoCopySnippetComponent from "./components/draco/copy/snippet";
+
+// Tabs Component
+import type DracoTabsComponent from "./components/draco/tabs";
+import type DracoTabsTabComponent from "./components/draco/tabs/tab";
+import type DracoTabsPanelComponent from "./components/draco/tabs/panel";
 
 // Helpers
 import type DracoEqHelper from "./helpers/draco-eq.ts";
@@ -46,6 +54,9 @@ import type DracoTypeofHelper from "./helpers/draco-typeof.ts";
 import type DracoSubtractHelper from "./helpers/draco-subtract.ts";
 import type DracoLinkToQueryHelper from "./helpers/draco-link-to-query.ts";
 import type DracoLinkToModelsHelper from "./helpers/draco-link-to-models.ts";
+
+// Modifiers
+import type DracoClipboardModifier from "./modifiers/draco-clipboard.ts";
 
 export default interface DracoComponentsRegistry {
   // Avatar
@@ -84,6 +95,20 @@ export default interface DracoComponentsRegistry {
   'Draco::Mark': typeof DracoMarkComponent;
   'draco/Mark': typeof DracoMarkComponent;
 
+  // Draco Copy Snippet
+  'Draco::Copy::Snippet': typeof DracoCopySnippetComponent;
+  'draco/copy/snippet': typeof DracoCopySnippetComponent;
+
+  // Tabs
+  'Draco::Tabs': typeof DracoTabsComponent;
+  'draco/tabs': typeof DracoTabsComponent;
+
+  'Draco::Tabs::Tab': typeof DracoTabsTabComponent;
+  'draco/tabs/tab': typeof DracoTabsTabComponent;
+
+  'Draco::Tabs::Panel': typeof DracoTabsPanelComponent;
+  'draco/tabs/panel': typeof DracoTabsPanelComponent;
+
   // Button
   'Draco::Button': typeof DracoButtonComponent;
   'draco/button': typeof DracoButtonComponent;
@@ -110,4 +135,7 @@ export default interface DracoComponentsRegistry {
   'draco-subtract': typeof DracoSubtractHelper;
   'draco-link-to-query': typeof DracoLinkToQueryHelper;
   'draco-link-to-models': typeof DracoLinkToModelsHelper;
+
+  // Modifiers
+  'draco-clipboard': typeof DracoClipboardModifier;
 }

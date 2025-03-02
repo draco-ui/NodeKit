@@ -1,7 +1,39 @@
 <div
   class={{this.classNames}}
   {{did-insert this.didInsert}}
+  {{did-update this.didUpdateSelectedTabId this._selectedTabId}}
   ...attributes
 >
+  <div class="draco-tabs__tablist-wrapper">
+    <ul class="draco-tabs__tablist" role="tablist">
+      {{yield
+        (hash
+          Tab=(component
+            "draco/tabs/tab"
+            didInsertNode=this.didInsertTab
+            didUpdateNode=this.didUpdateTab
+            willDestroyNode=this.willDestroyTab
+            tabIds=this._tabIds
+            panelIds=this._panelIds
+            selectedTabIndex=this.selectedTabIndex
+            onClick=this.onClick
+            onKeyUp=this.onKeyUp
+          )
+        )
+      }}
+    </ul>
+  </div>
 
+  {{yield
+    (hash
+      Panel=(component
+        "draco/tabs/panel"
+        didInsertNode=this.didInsertPanel
+        willDestroyNode=this.willDestroyPanel
+        tabIds=this._tabIds
+        panelIds=this._panelIds
+        selectedTabIndex=this.selectedTabIndex
+      )
+    )
+  }}
 </div>

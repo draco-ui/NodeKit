@@ -1,0 +1,33 @@
+@use "sass:map";
+
+$draco-tabs-sizes: ( "medium", "large" );
+
+$draco-tabs-size-props: (
+  "medium": (
+    "tab-height": 40px,
+    "tab-padding-horizontal": 16px,
+    "tab-font-size": 14px
+  ),
+  "large": (
+    "tab-height": 48px,
+    "tab-padding-horizontal": 24px,
+    "tab-font-size": 16px
+  )
+);
+
+@each $size in $draco-tabs-sizes {
+  .draco-tabs--size-#{$size} {
+    .draco-tabs__tab {
+      height: map.get($draco-tabs-size-props, $size, "tab-height");
+    }
+
+    .draco-tabs__tab-button {
+      font-size: map.get($draco-tabs-size-props, $size, "tab-font-size");
+    }
+  }
+}
+
+.draco-tabs--width-full {
+  width: 100%;
+  max-width: 100%;
+}

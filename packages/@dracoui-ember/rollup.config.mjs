@@ -27,8 +27,14 @@ const plugins = [
   addon.appReexports(
     [
       'helpers/**/*.js',
+      'modifiers/**/*.js',
       'components/**/!(*types).js'
-    ]
+    ],
+    {
+      exclude: [
+        'modifiers/**/types.js',
+      ],
+    }
   ),
 
   // Follow the V2 Addon rules about dependencies. Your code can import from

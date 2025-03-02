@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import Component from "@glimmer/component";
 import { tracked } from '@glimmer/tracking';
 import { assert, warn } from '@ember/debug';
-import { DracoTabsSizeValues } from "./types";
+import { DracoTabsSizeValues } from "./types.ts";
 import { next, schedule } from '@ember/runloop';
 
 import type {
@@ -10,7 +10,7 @@ import type {
   DracoTabsTabIds,
   DracoTabsTabProp,
   DracoTabsPanelIds
-} from './types';
+} from './types.ts';
 import type Owner from '@ember/owner';
 import type { DracoTabsTabSignature } from "./tab";
 import type { ComponentLike } from '@glint/template';
@@ -23,8 +23,11 @@ export const AVAILABLE_SIZES: string[] = Object.values(DracoTabsSizeValues);
 export interface DracoTabsSignature {
   Args: {
     size?: DracoTabsSizes;
+    isFullWidth?: boolean;
     tabs?: DracoTabsTabProp;
+    onClickTab: (event: MouseEvent, tabIndex: number) => void;
     selectedTabIndex?: DracoTabsTabSignature['Args']['selectedTabIndex'];
+    isParentVisible: boolean;
   };
   Blocks: {
     default: [
@@ -79,10 +82,18 @@ export default class DracoTabs extends Component<DracoTabsSignature> {
     }
   }
 
+  get isFullWidth(): boolean {
+    return this.args.isFullWidth ?? true;
+  }
+
   get classNames(): string {
     const classes = ['draco-tabs'];
 
     classes.push(`draco-tabs--size-${this.size}`);
+
+    if (this.isFullWidth) {
+      classes.push('draco-tabs--width-full');
+    }
 
     return classes.join(' ');
   }
@@ -94,12 +105,72 @@ export default class DracoTabs extends Component<DracoTabsSignature> {
       this._tabNodes.length === this._panelNodes.length
     );
 
-    if (this._selectedTabIndex) {
+    if (this._selectedTabId) {
       this.selectedTabIndex = this._tabIds.indexOf(this._selectedTabId);
     }
+  }
 
-    schedule('afterRender', (): void => {
-      this.setTabIndicator();
-    });
+  @action
+  didUpdateSelectedTabId(): void {
+    // if the selected tab is set dynamically (eg. in a `each` loop)
+    // the `Tab` nodes will be re-inserted/rendered, which means the `this.selectedTabId` variable changes
+    // but the parent `Tabs` component has already been rendered/inserted but doesn't re-render
+    // so the value of the `selectedTabIndex` is not updated, unless we trigger a recalculation
+    // using the `did-update` modifier that checks for changes in the `this.selectedTabId` variable
+    if (this._selectedTabId) {
+      this.selectedTabIndex = this._tabIds.indexOf(this._selectedTabId);
+    }
+  }
+
+  @action
+  didInsertTab(element: HTMLButtonElement, isSelected?: boolean): void {
+    this._tabNodes = [...this._tabNodes, element];
+    this._tabIds = [...this._tabIds, element.id];
+    if (isSelected) {
+      this._selectedTabId = element.id;
+    }
+  }
+
+  @action
+  didUpdateTab(tabIndex: number, isSelected?: boolean): void {
+    if (isSelected) {
+      this.selectedTabIndex = tabIndex;
+    }
+  }
+
+  @action
+  willDestroyTab(element: HTMLButtonElement): void {
+    this._tabNodes = this._tabNodes.filter(
+      (node): boolean => node.id !== element.id
+    );
+    this._tabIds = this._tabIds.filter(
+      (tabId): boolean => tabId !== element.id
+    );
+  }
+
+  @action
+  didInsertPanel(element: HTMLElement, panelId: string): void {
+    this._panelNodes = [...this._panelNodes, element];
+    this._panelIds = [...this._panelIds, panelId];
+  }
+
+  @action
+  willDestroyPanel(element: HTMLElement): void {
+    this._panelNodes = this._panelNodes.filter(
+      (node): boolean => node.id !== element.id
+    );
+    this._panelIds = this._panelIds.filter(
+      (panelId): boolean => panelId !== element.id
+    );
+  }
+
+  @action
+  onClick(event: MouseEvent, tabIndex: number): void {
+    this.selectedTabIndex = tabIndex;
+
+    // invoke the callback function if it's provided as argument
+    if (typeof this.args.onClickTab === 'function') {
+      this.args.onClickTab(event, tabIndex);
+    }
   }
 };

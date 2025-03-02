@@ -31,6 +31,16 @@ export { default as DracoKbd } from "./components/draco/kbd/index.ts";
 // Badge
 export { default as DracoBadge } from "./components/draco/badge/index.ts";
 
+// CopySnippet
+export { default as DracoCopySnippet } from "./components/draco/copy/snippet/index.ts";
+export * from "./components/draco/copy/snippet/types.ts";
+
+// Tabs
+export { default as DracoTabs } from "./components/draco/tabs/index.ts";
+export { default as DracoTabsTab } from "./components/draco/tabs/tab.ts";
+export { default as DracoTabsPanel } from "./components/draco/tabs/panel.ts";
+export * from "./components/draco/tabs/types.ts";
+
 // Skeleton
 export { default as DracoSkeleton } from "./components/draco/skeleton/index.ts";
 

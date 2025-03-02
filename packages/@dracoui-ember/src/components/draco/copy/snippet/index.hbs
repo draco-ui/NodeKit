@@ -1,0 +1,17 @@
+<Draco::Button
+  @size="small"
+  @iconSize={{14}}
+  @icon={{this.icon}}
+  @color={{this.color}}
+  @iconPosition="trailing"
+  class={{this.classNames}}
+  @isFullWidth={{this.isFullWidth}}
+  aria-label={{concat "copy " @textToCopy}}
+  title={{@textToCopy}}
+  @text={{if this.isTruncated (truncate this.textToShow 14) this.textToShow}}
+  {{draco-clipboard
+    text=@textToCopy
+    onSuccess=this.onSuccess
+    onError=this.onError}}
+  ...attributes
+/>
