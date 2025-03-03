@@ -25,7 +25,7 @@ export interface DracoAvatarSignature {
     size?: DracoAvatarSizes;
     shape?: DracoAvatarShapes;
   },
-
+  Element: HTMLImageElement;
 }
 
 export default class DracoAvatar<T extends DracoAvatarSignature = DracoAvatarSignature> extends Component<T> {

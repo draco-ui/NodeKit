@@ -48,7 +48,9 @@ export interface DracoButtonSignature {
     Element: DracoInteractiveSignature['Element'];
   }
 
-export default class DracoButton extends Component<DracoButtonSignature> {
+export default class DracoButton<T extends DracoButtonSignature = DracoButtonSignature> extends Component<T> {
+  protected componentName = 'Draco::Button';
+
   get text(): string {
     const { text } = this.args;
 
@@ -59,7 +61,7 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     const { size = DEFAULT_SIZE } = this.args;
 
     assert(
-      `@size for "Draco::Button" must be one of the following ${AVAILABLE_SIZES.join(
+      `@size for "${this.componentName}" must be one of the following ${AVAILABLE_SIZES.join(
         ', '
       )}; received: ${size}`,
       AVAILABLE_SIZES.includes(size)
@@ -72,7 +74,7 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     const { displayExternalIcon = true } = this.args;
 
     assert(
-      `@route for "Draco::Button" must be a valid 'boolean'; received: ${displayExternalIcon}`,
+      `@route for "${this.componentName}" must be a valid 'boolean'; received: ${displayExternalIcon}`,
       typeof displayExternalIcon === 'boolean'
     );
 
@@ -83,7 +85,7 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     const color = this.args.color || this.args.variant || this.args.type || DEFAULT_COLOR;
 
     assert(
-      `@color for "Draco::Button" must be one of the following: ${AVAILABLE_COLORS.join(
+      `@color for "${this.componentName}" must be one of the following: ${AVAILABLE_COLORS.join(
         ', '
       )}; received: ${color}`,
       AVAILABLE_COLORS.includes(color)
@@ -100,7 +102,7 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     const { shape = DEFAULT_SHAPE } = this.args;
 
     assert(
-      `@shape for "Draco::Button" must be one of the following: ${AVAILABLE_SHAPES.join(
+      `@shape for "${this.componentName}" must be one of the following: ${AVAILABLE_SHAPES.join(
         ', '
       )}; received: ${shape}`,
       AVAILABLE_SHAPES.includes(shape)
@@ -145,12 +147,12 @@ export default class DracoButton extends Component<DracoButtonSignature> {
     const { iconPosition = DEFAULT_ICON_POSITION } = this.args;
 
     assert(
-      `@iconPosition for "Draco::Button" can't be used if @isIconOnly is '${this.args.isIconOnly}'`,
+      `@iconPosition for "${this.componentName}" can't be used if @isIconOnly is '${this.args.isIconOnly}'`,
       !(this.args.iconPosition && this.args.isIconOnly)
     );
 
     assert(
-      `@iconPosition for "Draco::Button" must be one of the following: ${AVAILABLE_ICON_POSITIONS.join(
+      `@iconPosition for "${this.componentName}" must be one of the following: ${AVAILABLE_ICON_POSITIONS.join(
         ', '
       )}; received: ${iconPosition}`,
       AVAILABLE_ICON_POSITIONS.includes(iconPosition)

@@ -363,6 +363,9 @@ importers:
       tippy.js:
         specifier: ^6.3.7
         version: 6.3.7
+      truncate:
+        specifier: ^3.0.0
+        version: 3.0.0
     devDependencies:
       '@babel/core':
         specifier: ^7.26.0
@@ -9910,6 +9913,9 @@ packages:
   trough@1.0.5:
     resolution: {integrity: sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==}
 
+  truncate@3.0.0:
+    resolution: {integrity: sha512-C+0Xojw7wZPl6MDq5UjMTuxZvBPK04mtdFet7k+GSZPINcvLZFCXg+15kWIL4wAqDB7CksIsKiRLbQ1wa7rKdw==}
+
   ts-api-utils@2.0.1:
     resolution: {integrity: sha512-dnlgjFSVetynI8nzgJ+qF62efpglpWRk8isUEWZGWlJYySCTD6aKvbUDu+zbPeDakk3bg5H4XpitHukgfL1m9w==}
     engines: {node: '>=18.12'}
@@ -13550,27 +13556,6 @@ snapshots:
       - ember-source
       - supports-color
 
-  '@types/ember@4.0.11':
-    dependencies:
-      '@types/ember__application': 4.0.11(@babel/core@7.26.7)
-      '@types/ember__array': 4.0.10(@babel/core@7.26.7)
-      '@types/ember__component': 4.0.22(@babel/core@7.26.7)
-      '@types/ember__controller': 4.0.12(@babel/core@7.26.7)
-      '@types/ember__debug': 4.0.8(@babel/core@7.26.7)
-      '@types/ember__engine': 4.0.11(@babel/core@7.26.7)
-      '@types/ember__error': 4.0.6
-      '@types/ember__object': 4.0.12(@babel/core@7.26.7)
-      '@types/ember__polyfills': 4.0.6
-      '@types/ember__routing': 4.0.22(@babel/core@7.26.7)
-      '@types/ember__runloop': 4.0.10
-      '@types/ember__service': 4.0.9(@babel/core@7.26.7)
-      '@types/ember__string': 3.0.15
-      '@types/ember__template': 4.0.7
-      '@types/ember__test': 4.0.6(@babel/core@7.26.7)
-      '@types/ember__utils': 4.0.7
-      '@types/rsvp': 4.0.9
-    optional: true
-
   '@types/ember@4.0.11(@babel/core@7.26.7)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.26.7)
@@ -13598,7 +13583,7 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.26.7)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.26.7)
-      '@types/ember': 4.0.11
+      '@types/ember': 4.0.11(@babel/core@7.26.7)
       '@types/ember__engine': 4.0.11(@babel/core@7.26.7)
       '@types/ember__object': 4.0.12(@babel/core@7.26.7)
       '@types/ember__owner': 4.0.9
@@ -13683,11 +13668,6 @@ snapshots:
       - supports-color
     optional: true
 
-  '@types/ember__runloop@4.0.10':
-    dependencies:
-      '@types/ember': 4.0.11
-    optional: true
-
   '@types/ember__runloop@4.0.10(@babel/core@7.26.7)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.26.7)
@@ -13716,11 +13696,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-    optional: true
-
-  '@types/ember__utils@4.0.7':
-    dependencies:
-      '@types/ember': 4.0.11
     optional: true
 
   '@types/ember__utils@4.0.7(@babel/core@7.26.7)':
@@ -22756,6 +22731,8 @@ snapshots:
   trim@0.0.1: {}
 
   trough@1.0.5: {}
+
+  truncate@3.0.0: {}
 
   ts-api-utils@2.0.1(typescript@5.7.3):
     dependencies:

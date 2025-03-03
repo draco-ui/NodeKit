@@ -1,0 +1,95 @@
+.draco-copy-snippet {
+  font-family: 'Geist Mono', monospace !important;
+
+  // Icon base styles and animation
+  .draco-copy-snippet__icon {
+    transition: opacity 0.15s ease, transform 0.15s ease, color 0.15s ease;
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); // Bouncy easing
+    transform-origin: center; // Ensure zoom happens from center
+  }
+
+  // Status variants with animations
+  &--status-success .draco-copy-snippet__icon {
+    color: var(--token-color-palette-green-400);
+    animation-name: iconChangeSuccess;
+  }
+
+  &--status-error .draco-copy-snippet__icon {
+    color: var(--token-color-palette-red-400);
+    animation-name: iconChangeError;
+  }
+
+  &--status-idle .draco-copy-snippet__icon {
+    animation-name: iconChangeIdle;
+  }
+
+  // Primary color variant
+  &.draco-button--color-primary {
+    &.draco-copy-snippet--status-success .draco-copy-snippet__icon {
+      color: var(--token-color-palette-green-600);
+    }
+
+    &.draco-copy-snippet--status-error .draco-copy-snippet__icon {
+      color: var(--token-color-palette-red-600);
+    }
+  }
+}
+
+// Enhanced zoom animations for the icons
+@keyframes iconChangeSuccess {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.6) rotate(-10deg);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes iconChangeError {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.6) rotate(10deg);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.15) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes iconChangeIdle {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -22,43 +22,52 @@
           </span>
         {{/if}}
       {{else}}
-        {{#if this.icon}}
-          {{#if (eq this.iconPosition "leading")}}
-            <span class="draco-button__icon">
-              <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
-            </span>
-            {{#if this.text}}
-              <span class="draco-button__text">
-                {{this.text}}
-              </span>
-            {{/if}}
-          {{else}}
-            {{#if this.text}}
-              <span class="draco-button__text">
-                {{this.text}}
-              </span>
-            {{/if}}
+        {{#if (eq this.iconPosition "leading")}}
+          {{#if this.icon}}
             <span class="draco-button__icon">
               <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
             </span>
           {{/if}}
-        {{else}}
+
           {{#if this.text}}
             <span class="draco-button__text">
               {{this.text}}
             </span>
           {{/if}}
+
+          {{yield}}
+
+          {{#if (and this.displayExternalIcon external)}}
+            <Draco::Icon
+              @size={{11}}
+              @name="lucide:external-link"
+              class="draco-button--external-indicator"
+            />
+          {{/if}}
+        {{else}}
+
+          {{yield}}
+
+          {{#if this.text}}
+            <span class="draco-button__text">
+              {{this.text}}
+            </span>
+          {{/if}}
+
+          {{#if this.icon}}
+            <span class="draco-button__icon">
+              <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
+            </span>
+          {{/if}}
+
+          {{#if (and this.displayExternalIcon external)}}
+            <Draco::Icon
+              @size={{11}}
+              @name="lucide:external-link"
+              class="draco-button--external-indicator"
+            />
+          {{/if}}
         {{/if}}
-      {{/if}}
-
-      {{yield}}
-
-      {{#if (and (and (not this.isIconOnly) this.displayExternalIcon) (and external (eq this.iconPosition "leading")))}}
-        <Draco::Icon
-          @size={{11}}
-          @name="lucide:external-link"
-          class="draco-button--external-indicator"
-        />
       {{/if}}
     {{/if}}
   </Draco::Interactive>

@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/ember",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Draco Design System for Ember",
   "keywords": [
     "corinvo",
@@ -56,7 +56,8 @@
     "prismjs": "^1.29.0",
     "sass": "^1.83.0",
     "tabbable": "^6.2.0",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "truncate": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -140,17 +141,21 @@
       "./components/draco/tabs/index.js": "./dist/_app_/components/draco/tabs/index.js",
       "./components/draco/tabs/panel.js": "./dist/_app_/components/draco/tabs/panel.js",
       "./components/draco/tabs/tab.js": "./dist/_app_/components/draco/tabs/tab.js",
+      "./components/draco/text/body.js": "./dist/_app_/components/draco/text/body.js",
+      "./components/draco/text/code.js": "./dist/_app_/components/draco/text/code.js",
+      "./components/draco/text/display.js": "./dist/_app_/components/draco/text/display.js",
+      "./components/draco/text/index.js": "./dist/_app_/components/draco/text/index.js",
       "./components/draco/toggle/index.js": "./dist/_app_/components/draco/toggle/index.js",
       "./helpers/draco-eq.js": "./dist/_app_/helpers/draco-eq.js",
       "./helpers/draco-link-to-models.js": "./dist/_app_/helpers/draco-link-to-models.js",
       "./helpers/draco-link-to-query.js": "./dist/_app_/helpers/draco-link-to-query.js",
       "./helpers/draco-subtract.js": "./dist/_app_/helpers/draco-subtract.js",
-      "./helpers/draco-truncate.js": "./dist/_app_/helpers/draco-truncate.js",
       "./helpers/draco-typeof.js": "./dist/_app_/helpers/draco-typeof.js",
       "./modifiers/draco-clipboard.js": "./dist/_app_/modifiers/draco-clipboard.js"
     },
     "public-assets": {
-      "./dist/styles/fonts/Geist-Variable.woff2": "assets/fonts/Geist-Variable.woff2"
+      "./dist/styles/fonts/Geist-Variable.woff2": "assets/fonts/Geist-Variable.woff2",
+      "./dist/styles/fonts/GeistMono-Variable.woff2": "assets/fonts/GeistMono-Variable.woff2"
     }
   },
   "exports": {
