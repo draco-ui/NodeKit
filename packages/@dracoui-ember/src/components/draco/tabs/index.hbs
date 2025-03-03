@@ -6,34 +6,69 @@
 >
   <div class="draco-tabs__tablist-wrapper">
     <ul class="draco-tabs__tablist" role="tablist">
-      {{yield
-        (hash
-          Tab=(component
-            "draco/tabs/tab"
-            didInsertNode=this.didInsertTab
-            didUpdateNode=this.didUpdateTab
-            willDestroyNode=this.willDestroyTab
-            tabIds=this._tabIds
-            panelIds=this._panelIds
-            selectedTabIndex=this.selectedTabIndex
-            onClick=this.onClick
-            onKeyUp=this.onKeyUp
+
+      {{!-- If a non‑empty tabs array is provided, render tabs from it --}}
+      {{#if this.tabs.length}}
+        {{#each this.tabs as |tab index|}}
+          <li role="tab">
+            {{component "draco/tabs/tab"
+              didInsertNode=this.didInsertTab
+              didUpdateNode=this.didUpdateTab
+              willDestroyNode=this.willDestroyTab
+              tabIds=this._tabIds
+              panelIds=this._panelIds
+              selectedTabIndex=this.selectedTabIndex
+              onClick=this.onClick
+              onKeyUp=this.onKeyUp
+              title=tab.title
+              icon=tab.icon
+              index=index
+            }}
+          </li>
+        {{/each}}
+
+      {{!-- Otherwise, yield the block (yielding the Tab and Panel subcomponents) --}}
+      {{else}}
+        {{yield
+          (hash
+            Tab=(component "draco/tabs/tab"
+              didInsertNode=this.didInsertTab
+              didUpdateNode=this.didUpdateTab
+              willDestroyNode=this.willDestroyTab
+              tabIds=this._tabIds
+              panelIds=this._panelIds
+              selectedTabIndex=this.selectedTabIndex
+              onClick=this.onClick
+              onKeyUp=this.onKeyUp
+            )
+            Panel=(component "draco/tabs/panel"
+              didInsertNode=this.didInsertPanel
+              willDestroyNode=this.willDestroyPanel
+              tabIds=this._tabIds
+              panelIds=this._panelIds
+              selectedTabIndex=this.selectedTabIndex
+            )
           )
-        )
-      }}
+        }}
+      {{/if}}
+
     </ul>
   </div>
 
-  {{yield
-    (hash
-      Panel=(component
-        "draco/tabs/panel"
-        didInsertNode=this.didInsertPanel
-        willDestroyNode=this.willDestroyPanel
-        tabIds=this._tabIds
-        panelIds=this._panelIds
-        selectedTabIndex=this.selectedTabIndex
-      )
-    )
-  }}
+  {{!-- For panels: if tabs array exists, render panels accordingly --}}
+  {{#if this.tabs.length}}
+    <div class="draco-tabs__tabpanel-wrapper">
+      {{#each this.tabs as |tab index|}}
+        {{component "draco/tabs/panel"
+          didInsertNode=this.didInsertPanel
+          willDestroyNode=this.willDestroyPanel
+          tabIds=this._tabIds
+          panelIds=this._panelIds
+          selectedTabIndex=this.selectedTabIndex
+          content=tab.content
+          index=index
+        }}
+      {{/each}}
+    </div>
+  {{/if}}
 </div>

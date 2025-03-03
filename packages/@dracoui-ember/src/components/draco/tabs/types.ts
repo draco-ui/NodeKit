@@ -4,12 +4,19 @@ export enum DracoTabsSizeValues {
 };
 export type DracoTabsSizes = `${DracoTabsSizeValues}`;
 
+export enum DracoTabsVariantValues {
+  Primary = 'primary',
+  Secondary = 'secondary'
+};
+export type DracoTabsVariants = `${DracoTabsVariantValues}`;
+
 export interface DracoTabsTabPropValues {
   title: string;
+  content?: any;
   value?: string;
-  disabled?: boolean;
   tooltip?: string;
-}
+  disabled?: boolean;
+};
 export type DracoTabsTabProp = DracoTabsTabPropValues[];
 
 export type DracoTabsPanelIds = string[];

@@ -16,10 +16,10 @@ import type {
 import type { DracoIconSignature } from "../icon";
 import type { DracoInteractiveSignature } from '../interactive/';
 
-export const DEFAULT_SIZE = DracoButtonSizeValues.Medium;
-export const DEFAULT_SHAPE = DracoButtonShapeValues.Square;
-export const DEFAULT_COLOR = DracoButtonColorValues.Primary;
-export const DEFAULT_ICON_POSITION = DracoButtonIconPositionValues.Leading;
+export const DEFAULT_SIZE: DracoButtonSizes = DracoButtonSizeValues.Medium as const;
+export const DEFAULT_SHAPE: DracoButtonShapes = DracoButtonShapeValues.Square as const;
+export const DEFAULT_COLOR: DracoButtonColors = DracoButtonColorValues.Primary as const;
+export const DEFAULT_ICON_POSITION: DracoButtonIconPositions = DracoButtonIconPositionValues.Leading as const;
 
 export const AVAILABLE_SIZES: string[] = Object.values(DracoButtonSizeValues);
 export const AVAILABLE_COLORS: string[] = Object.values(DracoButtonColorValues);

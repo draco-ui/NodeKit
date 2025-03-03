@@ -1,15 +1,18 @@
+import {
+  DracoTabsSizeValues,
+  DracoTabsVariantValues
+} from "./types.ts";
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from "@glimmer/component";
 import { tracked } from '@glimmer/tracking';
-import { assert, warn } from '@ember/debug';
-import { DracoTabsSizeValues } from "./types.ts";
-import { next, schedule } from '@ember/runloop';
 
 import type {
   DracoTabsSizes,
   DracoTabsTabIds,
   DracoTabsTabProp,
-  DracoTabsPanelIds
+  DracoTabsPanelIds,
+  DracoTabsVariants
 } from './types.ts';
 import type Owner from '@ember/owner';
 import type { DracoTabsTabSignature } from "./tab";
@@ -17,17 +20,22 @@ import type { ComponentLike } from '@glint/template';
 import type { DracoTabsPanelSignature } from "./panel";
 
 export const DEFAULT_SIZE: DracoTabsSizes = DracoTabsSizeValues.Medium as const;
+export const DEFAULT_VARIANT: DracoTabsVariants = DracoTabsVariantValues.Primary as const;
 
 export const AVAILABLE_SIZES: string[] = Object.values(DracoTabsSizeValues);
+export const AVAILABLE_VARIANTS: string[] = Object.values(DracoTabsVariantValues);
 
 export interface DracoTabsSignature {
   Args: {
     size?: DracoTabsSizes;
     isFullWidth?: boolean;
     tabs?: DracoTabsTabProp;
-    onClickTab: (event: MouseEvent, tabIndex: number) => void;
-    selectedTabIndex?: DracoTabsTabSignature['Args']['selectedTabIndex'];
     isParentVisible: boolean;
+    variant?: DracoTabsVariants;
+    selectedTabIndex?: DracoTabsTabSignature['Args']['selectedTabIndex'];
+
+    // Callback Functions
+    onClickTab: (event: MouseEvent, tabIndex: number) => void;
   };
   Blocks: {
     default: [
@@ -39,6 +47,8 @@ export interface DracoTabsSignature {
 };
 
 export default class DracoTabs extends Component<DracoTabsSignature> {
+  protected componentName = 'Draco::Tabs';
+
   @tracked private _isControlled: boolean;
   @tracked private _selectedTabId?: string;
   @tracked private _selectedTabIndex: number;
@@ -59,7 +69,7 @@ export default class DracoTabs extends Component<DracoTabsSignature> {
     const { size = DEFAULT_SIZE } = this.args;
 
     assert(
-      `@size for "Draco::Tabs" must be one of the following: ${AVAILABLE_SIZES.join(
+      `@size for "${this.componentName}" must be one of the following: ${AVAILABLE_SIZES.join(
         ', '
       )}; received: ${size}`,
       AVAILABLE_SIZES.includes(size)
@@ -67,6 +77,20 @@ export default class DracoTabs extends Component<DracoTabsSignature> {
 
     return size;
   }
+
+   get tabs(): DracoTabsTabProp[] {
+      const { tabs = [] } = this.args;
+
+      // Validate the tabs for titles, icons and disabled props
+      tabs.forEach(tab => {
+         assert(
+          `@tabs member 'title' for "${this.componentName}" must be a 'string' value; received: ${typeof tab.title}`,
+          typeof tab.title === 'string'
+        );
+      });
+
+      return tabs;
+    }
 
   get selectedTabIndex(): number {
     if (this._isControlled) {

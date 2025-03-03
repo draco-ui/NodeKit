@@ -6,14 +6,14 @@ import type { DracoTabsPanelIds, DracoTabsTabIds } from "./types";
 
 export interface DracoTabsTabSignature {
   Args: {
-    tabIds?: DracoTabsTabIds;
-    selectedTabIndex?: number;
     count?: string;
     isSelected?: boolean;
+    tabIds?: DracoTabsTabIds;
+    selectedTabIndex?: number;
     panelIds?: DracoTabsPanelIds;
 
 
-    // TODO: Make these private instance vars of tabs instead of args
+    // Callback Functions
     didInsertNode?: (element: HTMLButtonElement, isSelected?: boolean) => void;
     didUpdateNode?: (nodeIndex: number, isSelected?: boolean) => void;
     willDestroyNode?: (element: HTMLButtonElement) => void;
