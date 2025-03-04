@@ -10,6 +10,7 @@ export interface DracoTabsTabSignature {
     isSelected?: boolean;
     tabIds?: DracoTabsTabIds;
     selectedTabIndex?: number;
+    text?: string | undefined;
     panelIds?: DracoTabsPanelIds;
 
 
@@ -38,6 +39,10 @@ export default class DracoTabsTab extends Component<DracoTabsTabSignature> {
       this.nodeIndex !== undefined &&
       this.nodeIndex === this.args.selectedTabIndex
     );
+  }
+
+  get text(): string | undefined {
+    return this.args.text ?? undefined;
   }
 
   get coupledPanelId(): string | undefined {

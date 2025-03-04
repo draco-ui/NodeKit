@@ -50,6 +50,7 @@ import type DracoTabsPanelComponent from "./components/draco/tabs/panel";
 
 // Helpers
 import type DracoEqHelper from "./helpers/draco-eq.ts";
+import type DracoAssertHelper from "./helpers/draco-assert.ts"
 import type DracoTypeofHelper from "./helpers/draco-typeof.ts";
 import type DracoSubtractHelper from "./helpers/draco-subtract.ts";
 import type DracoLinkToQueryHelper from "./helpers/draco-link-to-query.ts";
@@ -131,6 +132,7 @@ export default interface DracoComponentsRegistry {
 
   // Helpers
   'draco-eq': typeof DracoEqHelper;
+  'draco-assert': typeof DracoAssertHelper;
   'draco-typeof': typeof DracoTypeofHelper;
   'draco-subtract': typeof DracoSubtractHelper;
   'draco-link-to-query': typeof DracoLinkToQueryHelper;

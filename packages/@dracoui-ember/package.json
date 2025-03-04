@@ -146,6 +146,7 @@
       "./components/draco/text/display.js": "./dist/_app_/components/draco/text/display.js",
       "./components/draco/text/index.js": "./dist/_app_/components/draco/text/index.js",
       "./components/draco/toggle/index.js": "./dist/_app_/components/draco/toggle/index.js",
+      "./helpers/draco-assert.js": "./dist/_app_/helpers/draco-assert.js",
       "./helpers/draco-eq.js": "./dist/_app_/helpers/draco-eq.js",
       "./helpers/draco-link-to-models.js": "./dist/_app_/helpers/draco-link-to-models.js",
       "./helpers/draco-link-to-query.js": "./dist/_app_/helpers/draco-link-to-query.js",

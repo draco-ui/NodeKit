@@ -59,7 +59,7 @@ export default class DracoTabs extends Component<DracoTabsSignature> {
 
   constructor(owner: Owner, args: DracoTabsSignature['Args']) {
     super(owner, args);
-
+    
     // Allows tracking in costumers code or internal code
     this._isControlled = this.args.selectedTabIndex !== undefined;
     this._selectedTabIndex = this.args.selectedTabIndex ?? 0;
@@ -78,19 +78,21 @@ export default class DracoTabs extends Component<DracoTabsSignature> {
     return size;
   }
 
-   get tabs(): DracoTabsTabProp[] {
-      const { tabs = [] } = this.args;
+  get tabs(): DracoTabsTabProp[] {
+    const { tabs = [] } = this.args;
 
-      // Validate the tabs for titles, icons and disabled props
+    // Validate the tabs for titles, icons and disabled props
+    if (tabs) { // Only validate if tabs are provided
       tabs.forEach(tab => {
-         assert(
+          assert(
           `@tabs member 'title' for "${this.componentName}" must be a 'string' value; received: ${typeof tab.title}`,
           typeof tab.title === 'string'
         );
       });
-
-      return tabs;
     }
+
+    return tabs || [];
+  }
 
   get selectedTabIndex(): number {
     if (this._isControlled) {

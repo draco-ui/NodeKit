@@ -1,14 +1,10 @@
 {{page-title "Tabs Tester"}}
 
-<section class="flex w-full max-w-[1200px] mx-auto items-center justify-center">
-  <Draco::Copy::Snippet
-    @size="small"
-    @variant="secondary"
-    @textToCopy="corinvo-site-verification=m48ndsuf7h37h23bdjnnbsdc8sh723h2d3243"
-  />
-
-  <Draco::Button
-    @size="small"
-    @text="Hello"
+<section class="flex w-full max-w-[1200px] mx-auto items-center flex flex-col justify-center">
+  <Draco::Tabs
+    @tabs={{array
+      (hash title="npm" content="npm")
+      (hash title="yarn" content="yarn")
+    }}
   />
 </section>

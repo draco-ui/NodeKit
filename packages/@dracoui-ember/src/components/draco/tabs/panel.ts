@@ -8,6 +8,7 @@ import type { DracoTabsPanelIds, DracoTabsTabIds } from "./types";
 export interface DracoTabsPanelSignature {
   Args: {
     tabIds?: DracoTabsTabIds;
+    text?: string | undefined;
     panelIds?: DracoTabsPanelIds;
     selectedTabIndex?: DracoTabsTabSignature['Args']['selectedTabIndex'];
     didInsertNode?: (element: HTMLElement, elementId: string) => void;
@@ -35,6 +36,10 @@ export default class DracoTabsPanel extends Component<DracoTabsPanelSignature> {
 
   get isVisible(): boolean {
     return this.nodeIndex === this.args.selectedTabIndex;
+  }
+
+  get text(): string | undefined {
+    return this.args.text ?? undefined;
   }
 
   get coupledTabId(): string | undefined {

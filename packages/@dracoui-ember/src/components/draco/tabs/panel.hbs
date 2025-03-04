@@ -9,4 +9,10 @@
   {{will-destroy this.willDestroyNode}}
 >
   {{yield (hash isVisible=this.isVisible)}}
+
+  {{#if (and this.text this.isVisible)}}
+    <span class="draco-tabs__panel__text">
+      {{this.text}}
+    </span>
+  {{/if}}
 </section>

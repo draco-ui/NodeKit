@@ -20,6 +20,12 @@
 
     {{yield}}
 
+    {{#if this.text}}
+      <span class="draco-tabs__tab__text">
+        {{this.text}}
+      </span>
+    {{/if}}
+
     {{#if @count}}
       <span>Insert Count Element Here</span>
     {{/if}}
