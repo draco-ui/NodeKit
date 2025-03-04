@@ -2,7 +2,12 @@ import { action } from '@ember/object';
 import Component from "@glimmer/component";
 import { guidFor } from '@ember/object/internals';
 
-import type { DracoTabsPanelIds, DracoTabsTabIds } from "./types";
+import type {
+  DracoTabsTabIds,
+  DracoTabsTabIconPositions
+} from "./types";
+import type { DracoIconSignature } from "../../icon";
+import type { DracoTabsPanelIds } from "../panel/types.ts";
 
 export interface DracoTabsTabSignature {
   Args: {
@@ -12,14 +17,16 @@ export interface DracoTabsTabSignature {
     selectedTabIndex?: number;
     text?: string | undefined;
     panelIds?: DracoTabsPanelIds;
-
+    iconPosition?: DracoTabsTabIconPositions;
+    icon?: DracoIconSignature['Args']['name'];
+    iconSize?: DracoIconSignature['Args']['size'];
 
     // Callback Functions
-    didInsertNode?: (element: HTMLButtonElement, isSelected?: boolean) => void;
-    didUpdateNode?: (nodeIndex: number, isSelected?: boolean) => void;
     willDestroyNode?: (element: HTMLButtonElement) => void;
     onClick?: (event: MouseEvent, tabIndex: number) => void;
     onKeyUp?: (nodeINdex: number, event: KeyboardEvent) => void;
+    didUpdateNode?: (nodeIndex: number, isSelected?: boolean) => void;
+    didInsertNode?: (element: HTMLButtonElement, isSelected?: boolean) => void;
   };
   Block: {
     default: [];
@@ -28,10 +35,26 @@ export interface DracoTabsTabSignature {
 };
 
 export default class DracoTabsTab extends Component<DracoTabsTabSignature> {
+  protected componentName = "Draco::Tabs::Tab";
+
   private _tabId = 'tab-' + guidFor(this);
 
   get nodeIndex(): number | undefined {
     return this.args.tabIds?.indexOf(this._tabId);
+  }
+
+  get icon(): DracoIconSignature['Args']['name'] | undefined {
+    return this.args.icon ?? undefined;
+  }
+
+  get iconSize(): DracoIconSignature['Args']['size']  {
+    const { iconSize } = this.args;
+
+    return iconSize;
+  }
+
+  get disabled(): boolean {
+    return this.args.disabled ?? false;
   }
 
   get isSelected(): boolean {
@@ -53,6 +76,10 @@ export default class DracoTabsTab extends Component<DracoTabsTabSignature> {
 
   get classNames(): string {
     const classes = ['draco-tabs__tab'];
+
+    if (this.disabled) {
+      classes.push('draco-tabs__tab--disabled')
+    }
 
     if (this.isSelected) {
       classes.push(`draco-tabs__tab--selected`);

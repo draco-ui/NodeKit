@@ -2,8 +2,9 @@ import { action } from '@ember/object';
 import Component from "@glimmer/component";
 import { guidFor } from '@ember/object/internals';
 
-import type { DracoTabsTabSignature } from "./tab";
-import type { DracoTabsPanelIds, DracoTabsTabIds } from "./types";
+import type { DracoTabsPanelIds } from "./types.ts";
+import type { DracoTabsTabIds } from "../tab/types.ts";
+import type { DracoTabsTabSignature } from "../tab/index.ts";
 
 export interface DracoTabsPanelSignature {
   Args: {
@@ -25,6 +26,8 @@ export interface DracoTabsPanelSignature {
 }
 
 export default class DracoTabsPanel extends Component<DracoTabsPanelSignature> {
+  protected componentName = "Draco::Tabs::Panel";
+
   private _elementId?: string;
   private _panelId = 'panel-' + guidFor(this);
 

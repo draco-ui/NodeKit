@@ -1,3 +1,6 @@
+import type { DracoIconSignature } from "../icon";
+import type { DracoTabsTabIconPositions } from "./tab/types";
+
 export enum DracoTabsSizeValues {
   Medium = 'medium',
   Large = 'large',
@@ -16,9 +19,8 @@ export interface DracoTabsTabPropValues {
   value?: string;
   tooltip?: string;
   disabled?: boolean;
+  iconPosition?: DracoTabsTabIconPositions;
+  icon?: DracoIconSignature['Args']['name'];
+  iconSize?: DracoIconSignature['Args']['size'];
 };
 export type DracoTabsTabProp = DracoTabsTabPropValues[];
-
-export type DracoTabsPanelIds = string[];
-
-export type DracoTabsTabIds = string[];

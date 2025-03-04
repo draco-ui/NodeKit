@@ -1,9 +1,10 @@
 <li class={{this.classNames}} ...attributes role="presentation">
-  {{!-- Make this an Interactive Component --}}
+  {{!-- Make this a Draco::Button Component --}}
   <button
     role="tab"
     type="button"
     id={{this._tabId}}
+    disabled={{this.disabled}}
     class="draco-tabs__tab-button"
     aria-controls={{this.coupledPanelId}}
     aria-selected={{if this.isSelected "true" "false"}}
@@ -15,7 +16,7 @@
     {{on "keyup" this.onKeyUp}}
   >
     {{#if this.icon}}
-      <span>Icon Element Here</span>
+      <Draco::Icon @name={{this.icon}} @size={{this.iconSize}} />
     {{/if}}
 
     {{yield}}

@@ -37,8 +37,8 @@ export * from "./components/draco/copy/snippet/types.ts";
 
 // Tabs
 export { default as DracoTabs } from "./components/draco/tabs/index.ts";
-export { default as DracoTabsTab } from "./components/draco/tabs/tab.ts";
-export { default as DracoTabsPanel } from "./components/draco/tabs/panel.ts";
+export { default as DracoTabsTab } from "./components/draco/tabs/tab/index.ts";
+export { default as DracoTabsPanel } from "./components/draco/tabs/panel/index.ts";
 export * from "./components/draco/tabs/types.ts";
 
 // Skeleton

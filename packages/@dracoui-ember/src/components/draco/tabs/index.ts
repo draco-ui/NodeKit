@@ -9,15 +9,15 @@ import { tracked } from '@glimmer/tracking';
 
 import type {
   DracoTabsSizes,
-  DracoTabsTabIds,
   DracoTabsTabProp,
-  DracoTabsPanelIds,
   DracoTabsVariants
 } from './types.ts';
 import type Owner from '@ember/owner';
 import type { DracoTabsTabSignature } from "./tab";
 import type { ComponentLike } from '@glint/template';
+import type { DracoTabsTabIds } from "./tab/types.ts";
 import type { DracoTabsPanelSignature } from "./panel";
+import type { DracoTabsPanelIds } from "./panel/types.ts";
 
 export const DEFAULT_SIZE: DracoTabsSizes = DracoTabsSizeValues.Medium as const;
 export const DEFAULT_VARIANT: DracoTabsVariants = DracoTabsVariantValues.Primary as const;
@@ -59,7 +59,7 @@ export default class DracoTabs extends Component<DracoTabsSignature> {
 
   constructor(owner: Owner, args: DracoTabsSignature['Args']) {
     super(owner, args);
-    
+
     // Allows tracking in costumers code or internal code
     this._isControlled = this.args.selectedTabIndex !== undefined;
     this._selectedTabIndex = this.args.selectedTabIndex ?? 0;
