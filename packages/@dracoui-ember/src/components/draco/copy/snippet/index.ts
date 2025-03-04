@@ -66,7 +66,7 @@ export default class DracoCopySnippet extends DracoButton<DracoCopySnippetSignat
       [DracoCopySnippetStatusValues.Success]: 'lucide:clipboard-check' as unknown as DracoIconSignature['Args']['name']
     };
 
-    return iconMap[this._status] ?? iconMap[DracoCopySnippetStatusValues.Idle];
+    return iconMap[this._status] ?? iconMap[DEFAULT_STATUS];
   }
 
   /**
