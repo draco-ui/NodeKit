@@ -48,7 +48,7 @@ export default class DracoTabsTab extends Component<DracoTabsTabSignature> {
   }
 
   get iconSize(): DracoIconSignature['Args']['size']  {
-    const { iconSize } = this.args;
+    const { iconSize = 16 } = this.args;
 
     return iconSize;
   }

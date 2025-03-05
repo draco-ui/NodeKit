@@ -12,6 +12,8 @@ export interface DracoTabsPanelSignature {
     text?: string | undefined;
     panelIds?: DracoTabsPanelIds;
     selectedTabIndex?: DracoTabsTabSignature['Args']['selectedTabIndex'];
+
+    // Callback Functions
     didInsertNode?: (element: HTMLElement, elementId: string) => void;
     willDestroyNode?: (element: HTMLElement) => void;
   };
