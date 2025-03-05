@@ -6,6 +6,7 @@ import type {
   DracoTabsTabIds,
   DracoTabsTabIconPositions
 } from "./types";
+import type { DracoTabsSizes } from "../index.ts";
 import type { DracoIconSignature } from "../../icon";
 import type { DracoTabsPanelIds } from "../panel/types.ts";
 
@@ -13,6 +14,7 @@ export interface DracoTabsTabSignature {
   Args: {
     count?: string;
     isSelected?: boolean;
+    size?: DracoTabsSizes;
     tabIds?: DracoTabsTabIds;
     selectedTabIndex?: number;
     text?: string | undefined;
@@ -48,7 +50,16 @@ export default class DracoTabsTab extends Component<DracoTabsTabSignature> {
   }
 
   get iconSize(): DracoIconSignature['Args']['size']  {
-    const { iconSize = 16 } = this.args;
+    const { iconSize, size } = this.args;
+
+    if (!iconSize) {
+      switch(size) {
+        case 'medium':
+          return 16;
+        case 'large':
+          return 18;
+      }
+    }
 
     return iconSize;
   }

@@ -16,6 +16,7 @@
       {{#if this.tabs}}
         {{#each this.tabs as |tab index|}}
           {{draco/tabs/tab
+            size=this.size
             text=tab.title
             icon=tab.icon
             iconSize=tab.iconSize
@@ -36,6 +37,7 @@
             (hash
               Tab=(component
                 "draco/tabs/tab"
+                size=this.size
                 disabled=@disabled
                 didInsertNode=this.didInsertTab
                 didUpdateNode=this.didUpdateTab
