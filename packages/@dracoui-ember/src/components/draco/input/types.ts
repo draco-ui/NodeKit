@@ -10,3 +10,18 @@ export enum DracoInputIconPositionValues {
   Trailing = 'trailing'
 };
 export type DracoInputIconPositions = `${DracoInputIconPositionValues}`;
+
+export enum DracoInputTypeValues {
+  Tel = 'tel',
+  Url = 'url',
+  Date = 'date',
+  Week = 'week',
+  Time = 'time',
+  Text = 'text',
+  Email = 'email',
+  Month = 'month',
+  Search = 'search',
+  Password = 'password',
+  DateTimeLocal = 'datetime-local'
+};
+export type DracoInputTypes = `${DracoInputTypeValues}`;

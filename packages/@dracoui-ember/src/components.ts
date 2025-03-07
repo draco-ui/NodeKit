@@ -35,6 +35,10 @@ export { default as DracoBadge } from "./components/draco/badge/index.ts";
 export { default as DracoCopySnippet } from "./components/draco/copy/snippet/index.ts";
 export * from "./components/draco/copy/snippet/types.ts";
 
+// Input
+export { default as DracoInput } from "./components/draco/input/index.ts";
+export * from "./components/draco/input/types.ts";
+
 // Tabs
 export { default as DracoTabs } from "./components/draco/tabs/index.ts";
 export { default as DracoTabsTab } from "./components/draco/tabs/tab/index.ts";

@@ -666,6 +666,8 @@ importers:
         specifier: ^5.7.2
         version: 5.7.3
 
+  packages/@dracoui-icons: {}
+
   packages/@dracoui-primitives:
     dependencies:
       geist:

@@ -43,6 +43,9 @@ import type DracoKbdComponent from "./components/draco/kbd";
 // Copy Snippet Component
 import type DracoCopySnippetComponent from "./components/draco/copy/snippet";
 
+// Input Component
+import type DracoInputComponent from "./components/draco/input";
+
 // Tabs Component
 import type DracoTabsComponent from "./components/draco/tabs";
 import type DracoTabsTabComponent from "./components/draco/tabs/tab";
@@ -87,6 +90,10 @@ export default interface DracoComponentsRegistry {
   // Toggle
   'Draco::Toggle': typeof DracoToggleComponent;
   'draco/toggle': typeof DracoToggleComponent;
+
+  // Input
+  'Draco::Input': typeof DracoInputComponent;
+  'draco/input': typeof DracoInputComponent;
 
   // Skeleton
   'Draco::Skeleton': typeof DracoSkeletonComponent;

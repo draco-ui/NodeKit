@@ -1,5 +1,14 @@
+@use "sizes.scss";
 @use "states.scss";
+@use "colors.scss";
 
 .draco-input {
-
+  cursor: auto;
+  display: inline-flex;
+  width: 100%;
+  max-width: 100%;
+  border-style: solid;
+  font-family: var(--token-typography-display-400-font-family);
+  font-weight: var(--token-typography-font-weight-regular);
+  border-radius: var(--token-border-radius-medium);
 }

@@ -1,0 +1,31 @@
+@use "sass:map";
+
+$draco-input-sizes: ( "small", "medium", "large" );
+
+$draco-input-size-props: (
+  "small": (
+    "gap": 8px,
+    "min-height": 32px,
+    "font-size": 14px
+  ),
+  "medium": (
+    "gap": 10px,
+    "min-height": 30px,
+    "font-size": 14px
+  ),
+  "large": (
+    "gap": 14px,
+    "min-height": 46px,
+    "font-size": 16px
+  ),
+);
+
+.draco-input {
+  @each $size in $draco-input-sizes {
+    &.draco-input--size-#{$size} {
+      gap: map.get($draco-input-size-props, $size, "gap");
+      min-height: map.get($draco-input-size-props, $size, "min-height");
+      font-size: map.get($draco-input-size-props, $size, "font-size");
+    }
+  }
+}
