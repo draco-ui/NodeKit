@@ -1,0 +1,12 @@
+{
+  "name": "@dracoui-icons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:jsx": "svg-to-ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
