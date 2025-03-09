@@ -4,11 +4,12 @@
 
 .draco-input {
   cursor: auto;
-  display: inline-flex;
   width: 100%;
   max-width: 100%;
   border-style: solid;
+  border-width: 1px;
   font-family: var(--token-typography-display-400-font-family);
   font-weight: var(--token-typography-font-weight-regular);
   border-radius: var(--token-border-radius-medium);
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, color 0.2s, transform 0.2s;
 }

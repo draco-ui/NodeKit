@@ -4,6 +4,7 @@ import {
   DracoInputIconPositionValues
 } from "./types.ts";
 import { assert } from "@ember/debug";
+import { action } from '@ember/object';
 import Component from "@glimmer/component";
 
 import type {

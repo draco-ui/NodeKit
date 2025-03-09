@@ -1,0 +1,50 @@
+.draco-input {
+  &:hover,
+  &.mock-hover {
+    border-color: var(--token-color-palette-neutral-500);
+  }
+
+  &:focus,
+  &.mock-focus {
+    outline: none;
+    outline-offset: 0;
+    box-shadow: none;
+    border-color: var(--token-color-palette-neutral-500);
+    border-color: var(--token-color-palette-neutral-400);
+
+    &::before {
+      $shift: 1px + 3px + 2px;
+      top: -$shift;
+      right: -$shift;
+      bottom: -$shift;
+      left: -$shift;
+      border-color: var(--token-color-focus-action-external);
+      border-radius: calc(var(--token-border-radius-small) + 3px + 2px);
+      opacity: 1;
+    }
+  }
+
+  &:disabled,
+  &[disabled],
+  &.mock-disabled,
+  &:disabled:focus,
+  &[disabled]:focus,
+  &.mock-disabled:focus,
+  &:disabled:hover,
+  &[disabled]:hover,
+  &.mock-disabled:hover {
+    cursor: not-allowed;
+    color: var(--token-color-palette-neutral-400);
+    background-color: var(--token-color-palette-neutral-900);
+    border-color: var(--token-color-palette-neutral-800);
+    box-shadow: none;
+    cursor: not-allowed;
+
+    transform: none !important;
+    will-change: auto !important;
+
+    &::before {
+      border-color: transparent;
+    }
+  }
+}

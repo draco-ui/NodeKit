@@ -6,17 +6,23 @@ $draco-input-size-props: (
   "small": (
     "gap": 8px,
     "min-height": 32px,
-    "font-size": 14px
+    "font-size": 14px,
+    "horizontal-padding": 12px,
+    "horizontal-vertical": 12px
   ),
   "medium": (
     "gap": 10px,
-    "min-height": 30px,
-    "font-size": 14px
+    "min-height": 26px,
+    "font-size": 14px,
+    "horizontal-padding": 12px,
+    "horizontal-vertical": 4px
   ),
   "large": (
     "gap": 14px,
     "min-height": 46px,
-    "font-size": 16px
+    "font-size": 16px,
+    "horizontal-padding": 14px,
+    "horizontal-vertical": 4px
   ),
 );
 
@@ -26,6 +32,8 @@ $draco-input-size-props: (
       gap: map.get($draco-input-size-props, $size, "gap");
       min-height: map.get($draco-input-size-props, $size, "min-height");
       font-size: map.get($draco-input-size-props, $size, "font-size");
+      gap: map.get($draco-input-size-props, $size, "gap");
+      padding: map.get($draco-input-size-props, $size, "horizontal-vertical") map.get($draco-input-size-props, $size, "horizontal-padding");
     }
   }
 }

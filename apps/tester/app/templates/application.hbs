@@ -1,12 +1,14 @@
 {{page-title "Tester"}}
 
-<Draco::Tabs
-  @tabs={{array
-    (hash title="npm" content="npm" icon="mdi:home")
-    (hash title="yarn" content="yarn" disabled=false icon="mdi:github")
-  }}
-/>
+<div class="test">
+  <Draco::Tabs
+    @tabs={{array
+      (hash title="npm" content="npm" icon="mdi:home")
+      (hash title="yarn" content="yarn" disabled=false icon="mdi:github")
+    }}
+  />
 
-<Draco::Input />
+  <Draco::Input @placeholder="Email"/>
+</div>
 
 {{outlet}}
