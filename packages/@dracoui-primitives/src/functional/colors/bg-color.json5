@@ -1,7 +1,7 @@
 {
   bgColor: {
     default: {
-      $value: '{base.color.neutral.0}',
+      $value: '{base.color.blue.200}',
       $type: 'color',
     },
   }

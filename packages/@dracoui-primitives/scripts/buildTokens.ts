@@ -40,7 +40,8 @@ export const buildDesignTokens = async (buildOptions) => {
    * Colors
    * ----------------------------------- */
   try {
-    const colorsSD = await DracoStyleDictionary.extend(
+    // Build base colors
+    const baseColors = await DracoStyleDictionary.extend(
       getStyleDictionaryConfig(
         `base/colors`,
         ['src/base/colors/**/*.json5'],
@@ -48,7 +49,26 @@ export const buildDesignTokens = async (buildOptions) => {
         buildOptions
       )
     );
-    await colorsSD.buildAllPlatforms();
+    await baseColors.buildAllPlatforms();
+
+    // Build functional reference colors
+    const functionalColors = await DracoStyleDictionary.extend(
+      getStyleDictionaryConfig(
+        `functional/colors`,
+        ['src/functional/colors/**/*.json5'],
+        ['src/base/colors/**/*.json5'],
+        buildOptions,
+        {
+          css: css(
+            `css/functional/colors.css`,
+            buildOptions.prefix,
+            buildOptions.buildPath,
+            { options: { outputReferences: true } }
+          ),
+        }
+      )
+    );
+    await functionalColors.buildAllPlatforms();
   } catch (e) {
     console.error('🛑 Error trying to build colors tokens for code output:', e);
   }
