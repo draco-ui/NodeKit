@@ -1,0 +1,8 @@
+{
+  bgColor: {
+    default: {
+      $value: '{base.color.neutral.0}',
+      $type: 'color',
+    },
+  }
+}

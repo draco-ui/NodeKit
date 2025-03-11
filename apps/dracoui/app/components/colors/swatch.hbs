@@ -1,0 +1,89 @@
+<div class="relative flex overflow-hidden flex-row w-full border dark:border-[#202020] rounded-lg">
+  <div
+    class="group/color relative flex flex-shrink-0 h-full w-[120px] cursor-copy p-3 items-start justify-start"
+    {{style (hash background-color=this.hexValue)}}
+  >
+    {{#let (background-color-evaluator this.hexValue) as |evaluator|}}
+      <Draco::Icon
+        @size={{16}}
+        @name="lucide:clipboard-copy"
+        @color={{evaluator.contrast}}
+        class="flex transition-all opacity-0 group-hover/color:opacity-100"
+      />
+    {{/let}}
+  </div>
+
+  <div class="flex flex-col relative p-5 flex-1 overflow-hidden space-y-4">
+    <h3
+      {{style
+        (hash
+          font-family='"Geist Mono", sans-serif'
+          font-optical-sizing= "auto"
+          font-style="normal"
+        )
+      }}
+      class="text-[14px]"
+    >
+      {{this.colorName}}
+    </h3>
+
+    <ul class="grid gap-2">
+      <li class="grid grid-cols-[220px_1fr] items-center">
+        <span class="text-[12px] font-[400] dark:text-[#A1A1A1]">Hex:</span>
+        <div class="flex">
+          <Draco::Copy::Snippet
+            @size="small"
+            @isTruncated={{false}}
+            @textToCopy={{this.hexValue}}
+          />
+        </div>
+      </li>
+      <li class="grid grid-cols-[220px_1fr] items-center">
+        <span class="text-[12px] font-[400] dark:text-[#A1A1A1]">RGB:</span>
+        <div class="flex">
+          <Draco::Copy::Snippet
+            @size="small"
+            @isTruncated={{false}}
+            @textToCopy={{this.rgbValue}}
+          />
+        </div>
+      </li>
+      <li class="grid grid-cols-[220px_1fr] items-center">
+        <span class="text-[12px] font-[400] dark:text-[#A1A1A1]">HSL:</span>
+        <div class="flex">
+          <Draco::Copy::Snippet
+            @size="small"
+            @isTruncated={{false}}
+            @textToCopy={{this.hslValue}}
+          />
+        </div>
+      </li>
+      <li class="grid grid-cols-[220px_1fr] items-center">
+        <span class="text-[12px] font-[400] dark:text-[#A1A1A1]">OKLCH:</span>
+        <div class="flex">
+          <Draco::Copy::Snippet
+            @size="small"
+            @isTruncated={{false}}
+            @textToCopy={{this.oklchValue}}
+          />
+        </div>
+      </li>
+      <li class="grid grid-cols-[220px_1fr] items-center">
+        <span class="text-[12px] font-[400] dark:text-[#A1A1A1]">CSS Variable:</span>
+        <div class="flex">
+          <Draco::Copy::Snippet
+            @size="small"
+            @isTruncated={{false}}
+            @textToCopy={{this.cssVariable}}
+          />
+        </div>
+      </li>
+      <li class="grid grid-cols-[220px_1fr] items-center">
+        <span class="text-[12px] font-[400] dark:text-[#A1A1A1]">JavaScript Variable:</span>
+        <div class="flex">
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

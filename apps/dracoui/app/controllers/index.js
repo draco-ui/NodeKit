@@ -4,9 +4,9 @@ export default class IndexController extends Controller {
   cards = [
     {
       icon: 'material-symbols-light:book-5',
-      title: 'Foundations',
+      title: 'Docs',
       description: 'Design decisions and guidance for colors, icons, typography, and more.',
-      route: 'foundations',
+      route: 'docs',
     },
     {
       icon: 'ix:about-filled',
@@ -24,7 +24,7 @@ export default class IndexController extends Controller {
       icon: 'material-symbols:palette-outline',
       title: 'Colors',
       description: 'Guidelines and best practices for consistent and scalable interfaces.',
-      route: 'colors',
+      route: 'foundations/colors',
     },
   ];
 }

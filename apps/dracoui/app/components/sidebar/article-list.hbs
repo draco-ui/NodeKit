@@ -1,0 +1,29 @@
+<ul class="grid relative w-full gap-y-[2px]">
+  {{#each-in @structuredPageTree as |key item|}}
+  {{log item}}
+    <li class="">
+      {{#if item.pageURL}}
+        <LinkTo
+          class="doc-table-of-contents__link"
+          @route="show"
+          @model={{item.pageURL}}
+          @query={{hash tab=null searchQuery=null selectedGroupType=null selectedIconSize=null}}
+        >
+          <Draco::Button
+            @color="tertiary"
+            class="flex w-full dark:hover:bg-[#191919] {{if (eq @currentRoute.params.path item.pageURL) 'dark:hover:bg-[#262626] dark:bg-[#262626] dark:text-white'}}"
+            @text={{capitalize item.pageAttributes.title}}
+          />
+        </LinkTo>
+      {{else}}
+        {{#if (eq @depth 1)}}
+          <Sidebar::ArticleList
+            @depth={{add @depth 1}}
+            @currentRoute={{@currentRoute}}
+            @structuredPageTree={{item}}
+          />
+        {{/if}}
+      {{/if}}
+    </li>
+  {{/each-in}}
+</ul>

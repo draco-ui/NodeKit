@@ -1,0 +1,24 @@
+{{page-title this.title}}
+
+{{!-- <Doc::Page::Stage class={{if this.hasTabs "doc-page-stage--tabs"}}>
+  {{#if this.model.hasCover}}
+    <Doc::Page::Cover
+      @title={{this.title}}
+      @description={{this.description}}
+      @status={{this.status}}
+      @extra={{this.extra}}
+    />
+  {{/if}}
+  {{#if this.hasTabs}}
+    <Doc::Page::Tabs @tabs={{this.tabs}} />
+  {{/if}}
+
+  <Doc::Page::Content @breakthrough={{not this.model.hasSidecar}} id={{this.model.showContentId}}>
+    <DynamicTemplate @templateString={{this.renderedContent}} @componentId={{this.model.id}} />
+
+  </Doc::Page::Content>
+
+  {{#if this.model.hasSidecar}}
+    <Doc::Page::Sidecar @tocs={{this.tocs}} />
+  {{/if}}
+</Doc::Page::Stage> --}}

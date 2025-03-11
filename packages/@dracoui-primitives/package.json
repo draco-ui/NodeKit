@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/primitives",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Draco Design System Primitives",
   "keywords": [
     "corinvo",
@@ -15,7 +15,9 @@
   "scripts": {
     "typecheck": "yarn tsc --noEmit",
     "lint": "yarn eslint --quiet --ext .js,.ts",
-    "build": "tsx ./scripts/build"
+    "build": "npm run build:clean && npm run build:tokens",
+    "build:clean": "rm -rf ./dist",
+    "build:tokens": "tsx ./scripts/buildTokens.ts"
   },
   "files": [
     "dist"
@@ -27,7 +29,9 @@
     "@types/tinycolor2": "^1.4.6",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "@typescript-eslint/parser": "^8.18.1",
+    "colord": "^2.9.3",
     "eslint": "^8.57.1",
+    "fast-glob": "^3.3.3",
     "fs-extra": "^11.2.0",
     "lodash-es": "^4.17.21",
     "path": "^0.12.7",

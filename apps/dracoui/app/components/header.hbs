@@ -1,39 +1,37 @@
 <header
   {{scroll-tracker this.updateScrollPosition}}
-  class="fixed flex top-0 z-[1000] w-full px-[40px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 {{if this.isAtTop '' 'border-b dark:border-[#242424] border-[#e5e5e5]'}}"
+  class="transition-colors fixed flex top-0 z-[1000] w-full pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)] lg:bg-background/95 lg:bg-transparent lg:backdrop-blur backdrop-none bg-[#040404] supports-[backdrop-filter]:bg-background/60 border-b border-transparent {{if (or (eq @currentTopRoute 'components') (eq @currentTopRoute 'foundations') (not this.isAtTop)) 'dark:border-[#242424] border-[#e5e5e5]'}}"
 >
-  <div class="container-wrapper mx-auto flex w-full justify-between items-center">
-    <div class="flex h-14 items-center">
-      <div class="flex mr-4 space-x-3 hidden md:flex items-center h-full">
-          <LinkTo
-            @route="index"
-            draggable={{false}}
-            class="flex items-center gap-3 mr-1"
-          >
-            <Draco::Mark class="flex transform -translate-y-[1px]" />
-            <span class="font-[500] text-[16px] dark:text-[#EDEDED]">Draco</span>
-          </LinkTo>
-
-          <span class="flex w-[1px] h-[40%] dark:bg-[#242424]" />
-
-          <nav class="flex items-center text-sm gap-1">
-            {{#each this.navItems as |item|}}
-              <Draco::Button
-                @size="small"
-                @route={{item.route}}
-                @color="tertiary"
-                @text={{item.label}}
-                draggable={{false}}
-                class="{{if (eq @currentTopRoute item.route) 'dark:text-white'}}"
-              />
-            {{/each}}
-          </nav>
+  <div class="container-wrapper mx-auto flex w-full items-center h-14 relative">
+      <div class="flex z-10">
+        <LinkTo
+          @route="index"
+          draggable={{false}}
+          class="flex items-center gap-3 mr-1"
+        >
+          <Logo />
+          <span class="text-md font-medium dark:text-[#EDEDED]">Draco Design System</span>
+        </LinkTo>
       </div>
-    </div>
 
-    <div class="flex gap-x-[6px]">
-      <Draco::Button @text="Sign in" @size="small" />
-      <Draco::Button @isIconOnly={{true}} @size="small" @color="tertiary" @icon="mdi:github" @iconSize={{18}} @href="https://github.com/corinvo/dracoui" />
-    </div>
+      <nav class="hidden md:flex items-center text-sm gap-1 absolute left-1/2 transform -translate-x-1/2">
+        {{#each this.navItems as |item|}}
+          <Draco::Button
+            @route={{item.route}}
+            @color="tertiary"
+            @text={{item.label}}
+            draggable={{false}}
+            class="bg-transparent {{if (eq @currentTopRoute item.route) 'dark:text-white'}}"
+          />
+        {{/each}}
+      </nav>
+
+      <div class="flex gap-x-[10px] ml-auto z-10">
+        {{#if (and this.developerLoginEnabled this.isFirebaseReady)}}
+          <Draco::Button @text="Sign in" @color="secondary" />
+        {{/if}}
+
+        <Draco::Button @text="GitHub" @displayExternalIcon={{false}} @icon="mdi:github" @iconSize={{20}} @href="https://github.com/corinvo/dracoui" />
+      </div>
   </div>
 </header>

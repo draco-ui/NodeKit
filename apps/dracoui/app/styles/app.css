@@ -2,12 +2,15 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import "typography";
+
 ::-webkit-scrollbar {
   display: none;
 }
 
 html {
   scrollbar-width: none;
+   scroll-behavior: smooth;
   -ms-overflow-style: none;
 }
 
@@ -20,13 +23,15 @@ html, body {
   flex-direction: column;
   background-color: #FAFAFA;
   color: #000000;
-  font-family: "Geist", serif;
+  font-family: "Geist", sans-serif;
   font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @media (prefers-color-scheme: dark) {
   html, body {
-    background-color: #050505;
+    background-color: #040404;
     color: #ffffff;
   }
 }
@@ -46,7 +51,7 @@ html, body {
 }
 
 .careers_root__PB4wl:before {
-    background: linear-gradient(180deg, #050505, transparent);
+    background: linear-gradient(180deg, #040404, transparent);
     top: 0;
     z-index:1
 }
@@ -62,7 +67,7 @@ html, body {
 }
 
 .careers_root__PB4wl:after {
-    background: linear-gradient(0deg, #050505, transparent);
+    background: linear-gradient(0deg, #040404, transparent);
     bottom:0
 }
 
@@ -80,7 +85,7 @@ html, body {
     bottom: 0;
     content: "";
     height: 100%;
-    opacity: .08;
+    opacity: .06;
     pointer-events: none;
     position: absolute;
     transform: rotate(-45deg);

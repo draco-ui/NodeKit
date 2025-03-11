@@ -1,0 +1,51 @@
+<div id={{pluralize this.colorName}} class="flex flex-col relative space-y-4">
+  <div class="flex flex-col space-y-1">
+    <h2 class="flex-1 flex-shrink-0 text-[18px] font-medium">
+      {{capitalize (pluralize this.colorName)}}
+    </h2>
+    <p class="text-[14px] font-medium dark:text-[#A1A1A1]">
+      Blue indicates a current or active state. It communicates management, progress, connectivity, or organization.
+    </p>
+  </div>
+
+  <div class="rounded-lg border dark:border-[#202020] p-2">
+    <div class="flex flex-col gap-1 p-2 md:flex-row md:gap-2">
+      {{#each this.colors as |color|}}
+        <button
+          type="button"
+          class="group relative flex aspect-[3/1] w-full flex-1 flex-col gap-2 md:aspect-[2/3] md:h-auto md:w-auto"
+        >
+          <div
+            {{style
+              (hash background-color=color.value)
+            }}
+            class="w-full flex flex-1 rounded-md md:rounded-lg items-start justify-end p-3"
+          >
+            {{#let (background-color-evaluator color.value) as |evaluator|}}
+                <Draco::Icon
+                  @size={{16}}
+                  @name="lucide:clipboard-copy"
+                  @color={{evaluator.contrast}}
+                  class="flex transition-all opacity-0 group-hover:opacity-100"
+                />
+              {{/let}}
+          </div>
+          <div class="flex w-full flex-col items-center justify-center gap-1">
+            <span
+              {{style
+                (hash
+                  font-family='"Geist Mono", sans-serif'
+                  font-optical-sizing= "auto"
+                  font-style="normal"
+                )
+              }}
+              class="text-[12px] dark:text-[#A1A1A1] transition-colors group-hover:dark:text-white"
+            >
+              {{color.colorName}}
+            </span>
+          </div>
+        </button>
+      {{/each}}
+    </div>
+  </div>
+</div>

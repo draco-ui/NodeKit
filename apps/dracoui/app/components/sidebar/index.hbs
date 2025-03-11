@@ -1,0 +1,19 @@
+{{#if (or this.structuredPageTree this.isFiltered)}}
+  <aside class="flex flex-col dark:bg-[#060606] w-[270px] flex-shrink-0 mt-[57px] border-r dark:border-[#242424] justify-between" ...attributes>
+    {{#if this.hasTableOfContents}}
+      <div class="p-4">
+        <Sidebar::ArticleList
+          @depth={{1}}
+          @currentRoute={{@currentRoute}}
+          @structuredPageTree={{this.structuredPageTree}}
+        />
+      </div>
+    {{else}}
+      <p class="doc-text-body-small">No results found</p>
+    {{/if}}
+
+    <div class="relative flex p-3 border-t justify-end dark:border-[#242424]">
+      <Draco::Button @isIconOnly={{true}} @size="small" @color="tertiary" @icon="cuida:sidebar-expand-outline" @iconSize={{20}} />
+    </div>
+  </aside>
+{{/if}}
