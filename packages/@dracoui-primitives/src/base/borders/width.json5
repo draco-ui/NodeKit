@@ -1,0 +1,20 @@
+{
+  base: {
+    border: {
+      width: {
+        thin: {
+          $value: 1,
+          $type: "size",
+        },
+        thick: {
+          $value: 2,
+          $type: "size",
+        },
+        thicker: {
+          $value: 4,
+          $type: "size",
+        },
+      }
+    }
+  }
+}

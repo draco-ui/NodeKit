@@ -1,0 +1,11 @@
+{
+  "name": "@dracoui-styles",
+  "version": "1.0.0",
+  "description": "Global configurable styles for Corinvo's Draco Design System",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

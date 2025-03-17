@@ -1,0 +1,14 @@
+{
+  base: {
+    size: {
+      small: {
+        $value: 28,
+        $type: "size",
+      },
+      medium: {
+        $value: 32,
+        $type: "size",
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@ import {
   // namePathToCamelCase,
   // namePathToPascalCase,
   namePathToKebabCase,
+  numberToPixels,
   // namePathToSlashNotation,
   // namePathToFigma,
   // shadowToCss,
@@ -26,6 +27,7 @@ import {
   // floatToPixelUnitless,
   // colorAlphaToCss
 } from './scripts/style-dictionary/transformers/index.js';
+import { themeOverrides } from './scripts/style-dictionary/preprocessors/themeOverrides';
 
 // Create the StyleDictionary instance with default logging.
 export const DracoStyleDictionary = new StyleDictionary({
@@ -40,6 +42,7 @@ const transformers = [
   // colorToRgbAlpha,
   // colorToRgbaFloat,
   colorToHex,
+  numberToPixels,
   // cubicBezierToCss,
   // floatToPixel,
   // floatToPixelUnitless,
@@ -66,3 +69,5 @@ const transformers = [
 transformers.forEach((transformer) => {
   DracoStyleDictionary.registerTransform(transformer);
 });
+
+DracoStyleDictionary.registerPreprocessor(themeOverrides);

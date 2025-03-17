@@ -1,7 +1,7 @@
 {
   "name": "@dracoui/primitives",
   "version": "0.1.14",
-  "description": "Draco Design System Primitives",
+  "description": "Typography, spacing, and color primitives for Corinvo's Draco Design System",
   "keywords": [
     "corinvo",
     "draco",

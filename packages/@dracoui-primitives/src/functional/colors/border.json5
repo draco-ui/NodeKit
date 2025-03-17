@@ -1,0 +1,33 @@
+{
+  border: {
+    primary: {
+      $value: '{base.color.red.200}',
+      $type: 'color',
+      $extensions: {
+        'dev.dracoui.overrides': {
+          dark: '{base.color.green.200}',
+        }
+      }
+    },
+    success: {
+      emphasis: {
+       $value: '{base.color.green.200}',
+        $type: 'color',
+        $extensions: {
+          'dev.dracoui.overrides': {
+            dark: '{base.color.green.200}',
+          }
+        }
+      },
+      muted: {
+       $value: '{base.color.green.200}',
+        $type: 'color',
+        $extensions: {
+          'dev.dracoui.overrides': {
+            dark: '{base.color.green.200}',
+          }
+        }
+      }
+    },
+  }
+}

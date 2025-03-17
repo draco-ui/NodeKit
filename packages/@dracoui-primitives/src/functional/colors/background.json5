@@ -1,0 +1,31 @@
+{
+  background: {
+    primary: {
+      $value: '{base.color.neutral.100}',
+      $type: 'color',
+      $extensions: {
+        'dev.dracoui.overrides': {
+          dark: '{base.color.neutral.950}',
+        },
+      },
+    },
+    'primary-hovered': {
+      $value: '{base.color.neutral.200}',
+      $type: 'color',
+      $extensions: {
+        'dev.dracoui.overrides': {
+          dark: '{base.color.neutral.300}',
+        },
+      }
+    },
+    'primary-active': {
+      $value: '{base.color.neutral.200}',
+      $type: 'color',
+      $extensions: {
+        'dev.dracoui.overrides': {
+          dark: '{base.color.neutral.300}',
+        },
+      }
+    }
+  }
+}
