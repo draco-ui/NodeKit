@@ -1,8 +1,7 @@
 import { isSource } from '../filters/isSource.ts';
-import { isFromFile } from '../filters/isFromFile.ts';
 import { outputReferencesTransformed, outputReferencesFilter}  from 'style-dictionary/utils';
 
-import type {PlatformConfig } from 'style-dictionary/types';
+import type { PlatformConfig } from 'style-dictionary/types';
 
 const getCssSelectors = (outputFile: string) => {
   // check for dark in the beginning of the output filename

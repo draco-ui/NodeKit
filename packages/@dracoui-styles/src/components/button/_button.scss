@@ -1,0 +1,12 @@
+@use 'tokens' as *;
+
+@mixin button {
+  .draco-button {
+
+    // Reset intrinsic padding for Firefox
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+  }
+}

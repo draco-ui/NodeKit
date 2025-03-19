@@ -5,29 +5,9 @@
       $type: 'color',
       $extensions: {
         'dev.dracoui.overrides': {
-          dark: '{base.color.green.200}',
+          dark: '{base.color.neutral.700}',
         }
       }
-    },
-    success: {
-      emphasis: {
-       $value: '{base.color.green.200}',
-        $type: 'color',
-        $extensions: {
-          'dev.dracoui.overrides': {
-            dark: '{base.color.green.200}',
-          }
-        }
-      },
-      muted: {
-       $value: '{base.color.green.200}',
-        $type: 'color',
-        $extensions: {
-          'dev.dracoui.overrides': {
-            dark: '{base.color.green.200}',
-          }
-        }
-      }
-    },
+    }
   }
 }

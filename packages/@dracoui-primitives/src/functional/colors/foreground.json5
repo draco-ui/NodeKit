@@ -1,5 +1,5 @@
 {
-  background: {
+  foreground: {
     primary: {
       $value: '{base.color.neutral.900}',
       $type: 'color',
@@ -8,15 +8,6 @@
           dark: '{base.color.neutral.100}',
         },
       },
-    },
-    'primary-hovered': {
-      $value: '{base.color.neutral.700}',
-      $type: 'color',
-      $extensions: {
-        'dev.dracoui.overrides': {
-          dark: '{base.color.neutral.300}',
-        },
-      }
     },
     'primary-disabled': {
       $value: '{base.color.neutral.100}',

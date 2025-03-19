@@ -7,7 +7,7 @@
           $type: "color"
         },
         '900': {
-          $value: "#171717",
+          $value: "#121212",
           $type: "color"
         },
         '800': {
@@ -15,7 +15,7 @@
           $type: "color"
         },
         '700': {
-          $value: "#3f3f46",
+          $value: "#3f3f3f",
           $type: "color"
         },
         '600': {
@@ -31,7 +31,7 @@
           $type: "color"
         },
         '300': {
-          $value: "#d4d4d8",
+          $value: "#cccccc",
           $type: "color"
         },
         '200': {
@@ -39,7 +39,7 @@
           $type: "color"
         },
         '100': {
-          $value: "#f4f4f5",
+          $value: "#EDEDED",
           $type: "color"
         },
         '50': {

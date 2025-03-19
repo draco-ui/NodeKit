@@ -1,11 +1,34 @@
 {
   "name": "@dracoui-styles",
   "version": "1.0.0",
+  "type": "module",
   "description": "Global configurable styles for Corinvo's Draco Design System",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c --bundleConfigAsCjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
+  "keywords": [
+    "corinvo",
+    "draco",
+    "draco-design-system"
+  ],
+  "files": [
+    "css",
+    "scss",
+    "index.scss"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@dracoui/primitives": "workspace:*"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-normalize-charset": "^7.0.0",
+    "rollup": "^4.28.1",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sass": "^1.15.2"
+  }
 }
