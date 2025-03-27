@@ -89,8 +89,7 @@
   },
   "dependencies": {
     "@csstools/postcss-sass": "^5.1.1",
-    "@dracoui/ember": "workspace:*",
-    "@dracoui/primitives": "workspace:*",
+    "draco-monorepo": "workspace:*",
     "@embroider/compat": "^3.8.3",
     "@embroider/macros": "^1.16.11",
     "@embroider/webpack": "^4.1.0",

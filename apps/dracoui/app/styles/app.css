@@ -4,6 +4,8 @@
 
 @import "typography";
 
+@import
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -90,4 +92,14 @@ html, body {
     position: absolute;
     transform: rotate(-45deg);
     width: 150%
+}
+
+.bgts {
+  cursor: pointer;
+  background: var(--draco-base-color-neutral-100)
+}
+
+.bgts:hover {
+
+  background: var(--draco-base-color-neutral-300)
 }

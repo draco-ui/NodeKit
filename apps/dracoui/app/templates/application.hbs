@@ -1,21 +1,5 @@
 {{page-title "Draco Design System" separator=" - " prepend=true}}
-{{set-color-scheme this.colorScheme.scheme}}
 
-<div class="flex flex-col min-h-screen">
-  <Header @currentTopRoute={{this.currentTopRoute}} />
+<div class="w-[80px] items-center rounded-md mt-[200px] ml-[200px] h-[40px] bgts">
 
-  <div class="flex flex-1">
-    <Sidebar
-        @toc={{this.model.toc}}
-        @currentPath={{this.target.currentPath}}
-        @currentRoute={{this.target.currentRoute}}
-        @currentTopRoute={{this.currentTopRoute}}
-      />
-
-    <main id="main" class="flex-1 flex flex-col pt-[3.5rem]">
-      {{outlet}}
-    </main>
-  </div>
-
-  <Footer @currentTopRoute={{this.currentTopRoute}} />
 </div>

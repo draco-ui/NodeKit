@@ -23,5 +23,7 @@ module.exports = function (defaults) {
     },
   });
 
+  app.import('node_modules/draco-monorepo/dist/css/primitives.css');
+
   return app.toTree();
 };
