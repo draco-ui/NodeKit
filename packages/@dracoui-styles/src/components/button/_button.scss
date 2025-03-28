@@ -1,7 +1,10 @@
 @use 'tokens' as *;
+@use '@dracoui/primitives';
 
 @mixin button {
   .draco-button {
+    cursor: pointer;
+    font-family: primitives.$draco-base-font-sans;
 
     // Reset intrinsic padding for Firefox
     &::-moz-focus-inner {

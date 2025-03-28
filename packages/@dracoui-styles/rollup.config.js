@@ -2,6 +2,7 @@ import path from 'node:path';
 import cssnano from 'cssnano';
 import copy from 'rollup-plugin-copy';
 import autoprefixer from 'autoprefixer';
+import postcssImport from 'postcss-import';
 import postcss from 'rollup-plugin-postcss';
 import cleaner from 'rollup-plugin-cleaner';
 import flexbugs from 'postcss-flexbugs-fixes';
@@ -23,7 +24,11 @@ export default {
     }),
     postcss({
       extract: true,
-      use: ['sass'],
+      use: [
+        ['sass', {
+          includePaths: ['node_modules']
+        }]
+      ],
       extensions: ['.scss'],
       plugins: [
         autoprefixer(),
@@ -35,14 +40,6 @@ export default {
         //   ]
         // }),
       ],
-      sassOptions: {
-        includePaths: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'node_modules'),
-          path.resolve(__dirname, 'node_modules/@dracoui/primitives/dist/css/primitives'),
-        ],
-
-      },
     }),
     copy({
       targets: [
