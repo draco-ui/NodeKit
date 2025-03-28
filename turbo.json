@@ -1,31 +1,18 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "daemon": false,
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
-    },
-    "@dracoui/ember#build": {
-      "cache": false,
-      "dependsOn": ["^build"],
-      "outputs": [".dist/**"]
-    },
-    "lint": {
-      "outputs": []
-    },
-    "clean": {
-      "outputs": [],
+      "dependsOn": [
+        "build:dracoui-ember"
+      ],
       "cache": false
     },
-    "dev": {
-      "cache": false
-    },
-    "test": {
-      "cache": false
-    },
-    "typecheck": {
-      "dependsOn": ["^typecheck"],
-      "outputs": []
+    "build:dracoui-ember": {
+      "dependsOn": ["^build:dracoui-ember"],
+      "outputs": [
+        "dist/**"
+      ]
     }
   }
 }
