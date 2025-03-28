@@ -4,7 +4,8 @@
   "type": "module",
   "description": "Global configurable styles for Corinvo's Draco Design System",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs"
+    "build": "pnpm exec npm-run-all build:*",
+    "build:rollup": "rollup -c --bundleConfigAsCjs"
   },
   "keywords": [
     "corinvo",
@@ -18,13 +19,15 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@dracoui/primitives": "^0.2.6"
+    "@dracoui/primitives": "0.2.7-beta.2"
   },
   "devDependencies": {
-    "@dracoui/primitives": "^0.2.6",
+    "@dracoui/primitives": "0.2.7-beta.2",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
+    "npm-run-all": "^4.1.5",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.0",
     "postcss-normalize-charset": "^7.0.0",
     "rollup": "^4.28.1",
     "rollup-plugin-cleaner": "^1.0.0",

@@ -1,2 +1,11 @@
-$button-font-weight: var(--draco-base-weight-normal) !default;
-$button-primary: var(--draco-base-color-green-100) !default;
+@use '@dracoui/primitives';
+
+/// @type Number
+$button-font-weight: primitives.$draco-base-weight-normal !default;
+
+/// @type Number
+$button-font-size: primitives.$draco-text-size-body-small !default;
+
+/// @type Number
+$button-border-radius: primitives.$draco-border-radius-full !default;
+

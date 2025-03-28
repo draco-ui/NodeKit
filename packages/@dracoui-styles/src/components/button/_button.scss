@@ -4,7 +4,11 @@
 @mixin button {
   .draco-button {
     cursor: pointer;
-    font-family: primitives.$draco-base-font-sans;
+    font-weight: $button-font-weight;
+    font-family: primitives.$draco-font-sans-serif;
+    border-width: primitives.$draco-border-width-thin;
+    border-radius: $button-border-radius;
+
 
     // Reset intrinsic padding for Firefox
     &::-moz-focus-inner {

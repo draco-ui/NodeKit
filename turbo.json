@@ -9,10 +9,14 @@
       "cache": false
     },
     "build:dracoui-ember": {
+      "cache": false,
       "dependsOn": ["^build:dracoui-ember"],
-      "outputs": [
-        "dist/**"
-      ]
+      "outputs": ["dist/**"]
+    },
+    "build:dracoui-styles": {
+      "cache": false,
+      "dependsOn": ["^build:dracoui-styles"],
+      "outputs": ["dist/**"]
     }
   }
 }

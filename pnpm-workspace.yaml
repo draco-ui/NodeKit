@@ -1,3 +1,4 @@
 packages:
-  - packages/*
+  # The paps directory is strictly for testing please remove 
   - apps/*
+  - packages/*

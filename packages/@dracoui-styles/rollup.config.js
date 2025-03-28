@@ -32,6 +32,7 @@ export default {
       extensions: ['.scss'],
       plugins: [
         autoprefixer(),
+        postcssImport(),
         normalizeCharset(),
         flexbugs(),
         // cssnano({

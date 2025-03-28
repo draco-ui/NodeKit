@@ -1,4 +1,3 @@
-const path = require('path');
 const { addonV1Shim } = require('@embroider/addon-shim');
 
 module.exports = {
@@ -6,7 +5,7 @@ module.exports = {
   included(app) {
     this._super.included.apply(this, arguments);
 
-    // Include CSS files by default for styles
+    // Include Draco's style and primitives library by default.
     app.import('node_modules/@dracoui/ember/dist/styles/@dracoui/components.css');
   }
 };
