@@ -26,6 +26,8 @@
     -webkit-user-select: none;
     user-select: none;
 
+    font-size: primitives.$draco-text-size-body-small;
+
     &.draco-button--pill {
       $button-border-radius: primitives.$draco-border-radius-full;
       border-radius: $button-border-radius;
