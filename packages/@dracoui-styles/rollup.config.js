@@ -26,7 +26,11 @@ export default {
       extract: true,
       use: [
         ['sass', {
-          includePaths: ['node_modules']
+          resolveURLs: true,
+          includePaths: [
+            'node_modules',
+            'node_modules/normalize.css'
+          ]
         }]
       ],
       extensions: ['.scss'],
@@ -35,11 +39,11 @@ export default {
         postcssImport(),
         normalizeCharset(),
         flexbugs(),
-        // cssnano({
-        //   preset: [
-        //     'cssnano-preset-default', { discardComments: false }
-        //   ]
-        // }),
+        cssnano({
+          preset: [
+            'cssnano-preset-default', { discardComments: true }
+          ]
+        })
       ],
     }),
     copy({

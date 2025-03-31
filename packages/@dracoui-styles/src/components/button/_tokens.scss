@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 @use '@dracoui/primitives';
 
 /// @type Number
@@ -7,5 +14,11 @@ $button-font-weight: primitives.$draco-base-weight-normal !default;
 $button-font-size: primitives.$draco-text-size-body-small !default;
 
 /// @type Number
-$button-border-radius: primitives.$draco-border-radius-full !default;
+$button-border-radius: primitives.$draco-border-radius-medium !default;
 
+/// @type Number
+$button-border-width: primitives.$draco-border-width-thin !default;
+
+/// @type Number
+/// temp value
+$button-outline-width: 1px !default;

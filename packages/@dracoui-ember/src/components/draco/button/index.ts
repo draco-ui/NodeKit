@@ -182,7 +182,7 @@ export default class DracoButton<T extends DracoButtonSignature = DracoButtonSig
     const classes = ['draco-button'];
 
     // add a class based on the @color argument
-    classes.push(`draco-button--color-${this.color}`);
+    classes.push(`draco-button--${this.color}`);
 
     // add a class based on the @isFullWidth argument
     if (this.isFullWidth) {
@@ -199,7 +199,7 @@ export default class DracoButton<T extends DracoButtonSignature = DracoButtonSig
     }
 
     // Add shape parameters
-    classes.push(`draco-button--shape-${this.shape}`);
+    classes.push(`draco-button--${this.shape}`);
 
     // Add mock disabled state for loading
     if (this.loading) {
@@ -207,7 +207,7 @@ export default class DracoButton<T extends DracoButtonSignature = DracoButtonSig
     }
 
     // add a class based on the @size argument
-    classes.push(`draco-button--size-${this.size}`);
+    classes.push(`draco-button--${this.size}`);
 
     return classes.join(' ');
   }

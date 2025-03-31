@@ -1,0 +1,53 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '../../utilities/disabled-state' as *;
+@use '../../utilities/variant-selector' as *;
+
+@mixin button-variant($name, $background-color, $text-color: null, $border-color: none, $box-shadow: none) {
+  @include variant-selector($name) {
+    color: $text-color;
+    background-color: $background-color;
+    border-color: $border-color;
+
+    @include disabled-state {
+      box-shadow: none;
+      cursor: not-allowed;
+      color: var(--draco-button-text-#{$name}-disabled);
+      background-color: var(--draco-button-background-#{$name}-disabled);
+      border-color: var(--draco-button-border-#{$name}-disabled);
+
+      transform: none !important;
+      will-change: none !important;
+    }
+
+    &:not(:disabled):not([disabled]):not(.mock-disabled) {
+      &:hover {
+        background-color: var(--draco-button-background-#{$name}-hover);
+        border-color: var(--draco-button-border-#{$name}-hover);
+      }
+
+      &:active {
+        // Universal active animation
+        will-change: transform, box-shadow;
+        box-shadow: none;
+        transform: scale(0.98);
+
+        background-color: var(--draco-button-background-#{$name}-active);
+        border-color: var(--draco-button-border-#{$name}-active);
+      }
+    }
+  }
+}
+
+@mixin Button-Primary {
+  @include button-variant(
+    'primary',
+    var(--draco-button-background-primary),
+    black
+  );
+}

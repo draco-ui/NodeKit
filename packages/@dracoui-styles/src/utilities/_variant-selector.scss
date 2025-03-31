@@ -1,0 +1,8 @@
+@mixin variant-selector($variant-name) {
+  &--#{$variant-name},
+  &[data-variant="#{$variant-name}"],
+  &[data-color="#{$variant-name}"],
+  &[draco-variant="#{$variant-name}"] {
+    @content;
+  }
+}

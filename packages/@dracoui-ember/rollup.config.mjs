@@ -3,7 +3,6 @@ import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
 import { terser } from 'rollup-plugin-terser';
-import cssnano from 'rollup-plugin-cssnano';
 import process from 'process';
 
 const addon = new Addon({
@@ -45,8 +44,7 @@ const plugins = [
   scss({
     fileName: 'styles/@dracoui/components.css',
     includePaths: [
-      './node_modules/@dracoui/primitives/dist/css',
-      './node_modules/@dracoui/primitives/dist/fonts'
+      './node_modules'
     ],
   }),
 

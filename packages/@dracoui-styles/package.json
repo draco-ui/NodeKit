@@ -19,10 +19,9 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@dracoui/primitives": "0.2.7-beta.2"
+    "@dracoui/primitives": "0.2.9"
   },
   "devDependencies": {
-    "@dracoui/primitives": "0.2.7-beta.2",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
     "npm-run-all": "^4.1.5",
@@ -34,5 +33,8 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sass": "^1.15.2"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }

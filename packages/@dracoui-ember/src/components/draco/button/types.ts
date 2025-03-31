@@ -22,7 +22,7 @@ export type DracoButtonIconPositions = `${DracoButtonIconPositionValues}`;
 
 export enum DracoButtonShapeValues {
   Square = 'square',
-  Circle = 'circle',
+  Circle = 'pill',
   Rounded = 'rounded'
 };
 export type DracoButtonShapes = `${DracoButtonShapeValues}`;

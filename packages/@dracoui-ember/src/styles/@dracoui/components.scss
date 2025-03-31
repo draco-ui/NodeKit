@@ -1,24 +1,4 @@
-@use "colors";
-@use "borders";
-@use "typography";
-
-// Component styles loader
-@use "../components/kbd";
-@use "../components/copy";
-@use "../components/icon";
-@use "../components/tabs";
-@use "../components/link";
-@use "../components/badge";
-@use "../components/input";
-@use "../components/avatar";
-@use "../components/toggle";
-@use "../components/button";
-@use "../components/skeleton";
-@use "../components/loading-dots";
-
-
-// This import will be depicted in net major version.
-
+@use '@dracoui/styles' as *;
 
 // Vercel's Geist font loaders
 @font-face {
