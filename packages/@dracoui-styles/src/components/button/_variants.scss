@@ -17,6 +17,7 @@
     @include disabled-state {
       box-shadow: none;
       cursor: not-allowed;
+      border: none !important;
       color: var(--draco-button-text-#{$name}-disabled);
       background-color: var(--draco-button-background-#{$name}-disabled);
       border-color: var(--draco-button-border-#{$name}-disabled);
@@ -27,7 +28,7 @@
 
     &:not(:disabled):not([disabled]):not(.mock-disabled) {
       &:hover {
-        background-color: var(--draco-button-background-#{$name}-hover);
+        background-color: var(--draco-button-background-#{$name}-hovered);
         border-color: var(--draco-button-border-#{$name}-hover);
       }
 
