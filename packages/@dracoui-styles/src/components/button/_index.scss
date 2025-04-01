@@ -7,7 +7,9 @@
 
 @forward 'button';
 @forward 'tokens';
+@forward 'sizes';
 
+@use 'sizes';
 @use 'button';
 @use 'tokens';
 

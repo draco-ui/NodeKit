@@ -5,9 +5,9 @@
   "description": "",
   "scripts": {
     "dev": "turbo run dev",
-    "build": "turbo run build --parallel",
-    "build:ember": "turbo run build --filter=@dracoui/ember --parallel",
-    "build:styles": "turbo run build --filter=@dracoui/styles --parallel"
+    "build": "turbo run build",
+    "build:ember": "turbo run build --filter=@dracoui/ember",
+    "build:styles": "turbo run build --filter=@dracoui/styles"
   },
   "dependencies": {
     "turbo": "^2.4.0"

@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+@use 'sass:list';
 @use 'tokens' as *;
 @use 'variants' as *;
 @use '@dracoui/primitives';
@@ -19,8 +20,6 @@
     font-weight: $button-font-weight;
     text-align: center;
     text-decoration: none;
-    border-style: solid;
-    border-width: primitives.$draco-border-width-thin;
     outline: none;
     cursor: pointer;
     -webkit-user-select: none;
@@ -37,9 +36,17 @@
       border-radius: $button-border-radius;
     }
 
-    // Tale into account user motion preferences
+    // Allow users to specify their motions preferences
     @media (prefers-reduced-motion: no-preference) {
-      transition: #{background-color border-color box-shadow color transform} primitives.$draco-base-duration-200;
+      $properties: background-color, border-color, box-shadow, color, transform;
+      $duration: primitives.$draco-base-duration-200;
+
+      $transitions: ();
+      @each $prop in $properties {
+        $transitions: list.append($transitions, $prop $duration, comma);
+      }
+
+      transition: $transitions;
     }
 
     // Reset intrinsic padding for Firefox
@@ -53,5 +60,11 @@
     // @include Button-Warning;
     // @include Button-Tertiary;
     // @include Button-Secondary;
+
+    .draco-button__text {
+      box-sizing: border-box;
+      grid-area: text;
+      display: flex;
+    }
   }
 }

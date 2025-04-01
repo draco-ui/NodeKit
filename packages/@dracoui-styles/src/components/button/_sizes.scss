@@ -7,6 +7,10 @@
 
 @use 'sass:map';
 @use 'sass:list';
+@use '@dracoui/primitives';
 
-$draco-button-sizes: ( "small", "medium", "large" );
-
+.draco-button {
+  &.draco-button--small {
+    height: primitives.$draco-control-size-small;
+  }
+}

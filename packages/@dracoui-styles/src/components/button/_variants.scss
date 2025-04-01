@@ -5,14 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+@use '@dracoui/primitives';
 @use '../../utilities/disabled-state' as *;
 @use '../../utilities/variant-selector' as *;
 
-@mixin button-variant($name, $background-color, $text-color: null, $border-color: none, $box-shadow: none) {
+@mixin button-variant($name, $background-color, $text-color: null, $border-color: null, $box-shadow: none) {
   @include variant-selector($name) {
     color: $text-color;
     background-color: $background-color;
     border-color: $border-color;
+
+    @if $border-color != null {
+      border-style: solid;
+      border-width: primitives.$draco-border-width-thin;
+    } @else {
+      border: none;
+    }
 
     @include disabled-state {
       box-shadow: none;
@@ -37,9 +45,6 @@
         will-change: transform, box-shadow;
         box-shadow: none;
         transform: scale(0.98);
-
-        background-color: var(--draco-button-background-#{$name}-active);
-        border-color: var(--draco-button-border-#{$name}-active);
       }
     }
   }

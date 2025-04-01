@@ -10,13 +10,13 @@
     },
     "build:dracoui-ember": {
       "cache": false,
-      "dependsOn": ["^build:dracoui-ember"],
+      "dependsOn": ["build:dracoui-styles"],
       "outputs": ["dist/**"]
     },
     "build:dracoui-styles": {
       "cache": false,
-      "dependsOn": ["^build:dracoui-styles"],
       "outputs": ["dist/**"]
     }
-  }
+  },
+  "globalDependencies": ["!apps/**"]
 }
