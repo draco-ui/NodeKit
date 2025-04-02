@@ -5,78 +5,76 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+@use 'sass:map';
 @use '@dracoui/primitives';
 @use '../../utilities/disabled-state' as *;
 @use '../../utilities/variant-selector' as *;
 
-@mixin button-variant($name, $background-color, $text-color: null, $border-color: null, $box-shadow: none) {
-  @include variant-selector($name) {
-    color: $text-color;
-    background-color: $background-color;
-    border-color: $border-color;
+$button-variants: (
+  'primary': (
+    'background': var(--draco-button-primary-background),
+    'foreground': var(--draco-button-primary-foreground),
+    'border': null
+  ),
+  'secondary': (
+    'background': var(--draco-button-secondary-background),
+    'foreground': var(--draco-button-secondary-foreground),
+    'border': var(--draco-button-secondary-border)
+  ),
+  'tertiary': (
+    'background': transparent,
+    'foreground': var(--draco-button-tertiary-foreground),
+    'border': null
+  ),
+  'amber': (
+    'background': var(--draco-button-amber-background),
+    'foreground': var(--draco-button-amber-foreground),
+    'border': null
+  ),
+  'error': (
+    'background': var(--draco-button-error-background),
+    'foreground': var(--draco-button-error-foreground),
+    'border': null
+  )
+);
 
-    @if $border-color != null {
-      border-style: solid;
-      border-width: primitives.$draco-border-width-thin;
-    } @else {
-      border: none;
-    }
+.draco-button {
+  @each $name, $variant in $button-variants {
+    @include variant-selector($name) {
+      color: map.get($variant, 'foreground');
+      background-color: map.get($variant, 'background');
+      border-color: map.get($variant, 'border');
 
-    @include disabled-state {
-      box-shadow: none;
-      cursor: not-allowed;
-      border: none !important;
-      color: var(--draco-button-#{$name}-text-disabled);
-      background-color: var(--draco-button-#{$name}-background-disabled);
-      border-color: var(--draco-button-#{$name}-border-disabled);
-
-      transform: none !important;
-      will-change: none !important;
-    }
-
-    &:not(:disabled):not([disabled]):not(.mock-disabled) {
-      &:hover {
-        background-color: var(--draco-button-#{$name}-background-hovered);
+      @if map.get($variant, 'border') != null {
+        border-style: solid;
+        border-width: primitives.$draco-border-width-thin;
+      } @else {
+        border: none;
       }
 
-      &:active {
-        will-change: transform, box-shadow;
+      @include disabled-state {
         box-shadow: none;
-        transform: scale(0.96);
+        cursor: not-allowed;
+        border: none !important;
+        color: var(--draco-button-#{$name}-text-disabled);
+        background-color: var(--draco-button-#{$name}-background-disabled);
+        border-color: var(--draco-button-#{$name}-border-disabled);
+
+        transform: none !important;
+        will-change: none !important;
+      }
+
+      &:not(:disabled):not([disabled]):not(.mock-disabled) {
+        &:hover {
+          background-color: var(--draco-button-#{$name}-background-hovered);
+        }
+
+        &:active {
+          will-change: transform, box-shadow;
+          box-shadow: none;
+          transform: scale(0.96);
+        }
       }
     }
   }
-}
-
-.draco-button {
-  @include button-variant(
-    'primary',
-    var(--draco-button-primary-background),
-    var(--draco-button-primary-foreground)
-  );
-
-  @include button-variant(
-    'secondary',
-    var(--draco-button-secondary-background),
-    var(--draco-button-secondary-foreground),
-    var(--draco-button-secondary-border)
-  );
-
-  @include button-variant(
-    'tertiary',
-    transparent,
-    var(--draco-button-tertiary-foreground)
-  );
-
-  @include button-variant(
-    'amber',
-    var(--draco-button-amber-background),
-    var(--draco-button-amber-foreground),
-  );
-
-  @include button-variant(
-    'error',
-    var(--draco-button-error-background),
-    var(--draco-button-error-foreground),
-  );
 }
