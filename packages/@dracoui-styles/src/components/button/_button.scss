@@ -7,17 +7,20 @@
 
 @use 'sass:list';
 @use 'tokens' as *;
-@use 'variants' as *;
 @use '@dracoui/primitives';
 
 @mixin Button {
   .draco-button {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     flex-shrink: 0;
+    box-sizing: border-box;
     min-width: max-content;
+    appearance: none;
     font-family: primitives.$draco-font-sans-serif;
     font-weight: $button-font-weight;
+    align-items: center;
+    justify-content: space-between;
     text-align: center;
     text-decoration: none;
     outline: none;
@@ -25,13 +28,19 @@
     -webkit-user-select: none;
     user-select: none;
 
-    font-size: primitives.$draco-text-size-body-small;
+    // Disable buttons selection
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     &.draco-button--pill {
+      // Override defaults
       $button-border-radius: primitives.$draco-border-radius-full;
       border-radius: $button-border-radius;
     }
 
+    &.draco-button--square,
     &.draco-button--rounded {
       border-radius: $button-border-radius;
     }
@@ -55,14 +64,7 @@
       border: 0;
     }
 
-    // @include Button-Amber;
-    @include Button-Primary;
-    // @include Button-Warning;
-    // @include Button-Tertiary;
-    // @include Button-Secondary;
-
     .draco-button__text {
-      box-sizing: border-box;
       grid-area: text;
       display: flex;
     }

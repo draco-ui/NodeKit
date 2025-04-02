@@ -17,6 +17,9 @@ importers:
       '@dracoui/ember':
         specifier: workspace:*
         version: link:../../packages/@dracoui-ember
+      ember-cli-string-helpers:
+        specifier: ^6.1.0
+        version: 6.1.0
     devDependencies:
       '@babel/core':
         specifier: ^7.26.7
@@ -193,8 +196,8 @@ importers:
         specifier: ^6.36.2
         version: 6.36.4
       '@dracoui/primitives':
-        specifier: 0.2.10
-        version: 0.2.10
+        specifier: 0.2.13
+        version: 0.2.13
       '@dracoui/styles':
         specifier: workspace:*
         version: link:../@dracoui-styles
@@ -455,8 +458,8 @@ importers:
   packages/@dracoui-styles:
     dependencies:
       '@dracoui/primitives':
-        specifier: 0.2.10
-        version: 0.2.10
+        specifier: 0.2.13
+        version: 0.2.13
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
@@ -1166,8 +1169,8 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.0.0
 
-  '@dracoui/primitives@0.2.10':
-    resolution: {integrity: sha512-El6oAGk4zhxDp1fOL0C05oITzMciJnQAidAwClqg6jAh3NmbEfIDw6f+nHUFa0RXjj2h+w9x+R0r18XiDZ3J5A==}
+  '@dracoui/primitives@0.2.13':
+    resolution: {integrity: sha512-TbjIKfifHXoM+mLbpaqZ2kA8WRik8KbJbyFVH1uDF4AZbfYAUn4f2bB4Gornb+/i9r4BImynEAa7GdBCb+qFUA==}
 
   '@dual-bundle/import-meta-resolve@4.1.0':
     resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
@@ -4175,6 +4178,10 @@ packages:
   ember-cli-sri@2.1.1:
     resolution: {integrity: sha512-YG/lojDxkur9Bnskt7xB6gUOtJ6aPl/+JyGYm9HNDk3GECVHB3SMN3rlGhDKHa1ndS5NK2W2TSLb9bzRbGlMdg==}
     engines: {node: '>= 0.10.0'}
+
+  ember-cli-string-helpers@6.1.0:
+    resolution: {integrity: sha512-Lw8B6MJx2n8CNF2TSIKs+hWLw0FqSYjr2/NRPyquyYA05qsl137WJSYW3ZqTsLgoinHat0DGF2qaCXocLhLmyA==}
+    engines: {node: 10.* || >=12.*}
 
   ember-cli-string-utils@1.1.0:
     resolution: {integrity: sha512-PlJt4fUDyBrC/0X+4cOpaGCiMawaaB//qD85AXmDRikxhxVzfVdpuoec02HSiTGTTB85qCIzWBIh8lDOiMyyFg==}
@@ -10159,7 +10166,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
-  '@dracoui/primitives@0.2.10': {}
+  '@dracoui/primitives@0.2.13': {}
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 
@@ -13878,6 +13885,15 @@ snapshots:
   ember-cli-sri@2.1.1:
     dependencies:
       broccoli-sri-hash: 2.1.2
+    transitivePeerDependencies:
+      - supports-color
+
+  ember-cli-string-helpers@6.1.0:
+    dependencies:
+      '@babel/core': 7.26.9
+      broccoli-funnel: 3.0.8
+      ember-cli-babel: 7.26.11
+      resolve: 1.22.10
     transitivePeerDependencies:
       - supports-color
 

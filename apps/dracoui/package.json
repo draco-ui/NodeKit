@@ -75,7 +75,8 @@
     "webpack": "^5.97.1"
   },
   "dependencies": {
-    "@dracoui/ember": "workspace:*"
+    "@dracoui/ember": "workspace:*",
+    "ember-cli-string-helpers": "^6.1.0"
   },
   "engines": {
     "node": ">= 18"
