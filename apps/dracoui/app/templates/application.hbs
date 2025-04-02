@@ -2,6 +2,24 @@
 
 {{outlet}}
 
-{{#let "small" as |buttonSize|}}
-  <Draco::Button @text="Upload" @color="secondary" @shape="square" disabled={{false}} @size={{buttonSize}} />
-{{/let}}
+<div class="lte" style="gap: 10px; display: flex; flex-direction: column;">
+  <div style="display: flex; gap: 15px;">
+    {{#let "medium" as |buttonSize|}}
+      <Draco::Button @text="Golang" @color="secondary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+      <Draco::Button @text="Golang" @color="tertiary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+      <Draco::Button @text="Golang" @color="primary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+      <Draco::Button @text="Golang" @color="amber" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+      <Draco::Button @text="Golang" @color="error" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+    {{/let}}
+  </div>
+
+  <div style="display: flex; gap: 15px;">
+    {{#let "medium" as |buttonSize|}}
+      <Draco::Button @color="secondary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+      <Draco::Button @color="tertiary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+      <Draco::Button @color="primary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+      <Draco::Button @color="amber" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+      <Draco::Button @color="error" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+    {{/let}}
+  </div>
+</div>

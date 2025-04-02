@@ -15,8 +15,6 @@
     background-color: $background-color;
     border-color: $border-color;
 
-    color: white;
-
     @if $border-color != null {
       border-style: solid;
       border-width: primitives.$draco-border-width-thin;
@@ -39,7 +37,6 @@
     &:not(:disabled):not([disabled]):not(.mock-disabled) {
       &:hover {
         background-color: var(--draco-button-#{$name}-background-hovered);
-        //border-color: var(--draco-button-border-#{$name}-hover);
       }
 
       &:active {
@@ -63,5 +60,23 @@
     var(--draco-button-secondary-background),
     var(--draco-button-secondary-foreground),
     var(--draco-button-secondary-border)
+  );
+
+  @include button-variant(
+    'tertiary',
+    transparent,
+    var(--draco-button-tertiary-foreground)
+  );
+
+  @include button-variant(
+    'amber',
+    var(--draco-button-amber-background),
+    var(--draco-button-amber-foreground),
+  );
+
+  @include button-variant(
+    'error',
+    var(--draco-button-error-background),
+    var(--draco-button-error-foreground),
   );
 }

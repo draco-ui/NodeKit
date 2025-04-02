@@ -68,5 +68,14 @@
       grid-area: text;
       display: flex;
     }
+
+    .draco-button__icon {
+      margin: 0;
+      display: flex;
+      line-height: 1;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+    }
   }
 }

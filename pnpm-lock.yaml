@@ -196,8 +196,8 @@ importers:
         specifier: ^6.36.2
         version: 6.36.4
       '@dracoui/primitives':
-        specifier: 0.2.13
-        version: 0.2.13
+        specifier: 0.2.25
+        version: 0.2.25
       '@dracoui/styles':
         specifier: workspace:*
         version: link:../@dracoui-styles
@@ -458,8 +458,8 @@ importers:
   packages/@dracoui-styles:
     dependencies:
       '@dracoui/primitives':
-        specifier: 0.2.13
-        version: 0.2.13
+        specifier: 0.2.25
+        version: 0.2.25
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
@@ -1169,8 +1169,8 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.0.0
 
-  '@dracoui/primitives@0.2.13':
-    resolution: {integrity: sha512-TbjIKfifHXoM+mLbpaqZ2kA8WRik8KbJbyFVH1uDF4AZbfYAUn4f2bB4Gornb+/i9r4BImynEAa7GdBCb+qFUA==}
+  '@dracoui/primitives@0.2.25':
+    resolution: {integrity: sha512-iKAxP9+dTNm8O4zR2fBJJx+D5Tsz4th66F/u6NvyRn9JPuRYdNmiClTDV2V1dsm0JaxTkWsBOFg1G1fUol+LJw==}
 
   '@dual-bundle/import-meta-resolve@4.1.0':
     resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
@@ -10166,7 +10166,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
-  '@dracoui/primitives@0.2.13': {}
+  '@dracoui/primitives@0.2.25': {}
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 

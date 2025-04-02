@@ -13,17 +13,20 @@ $button-sizes: ( "small", "medium", "large" );
 
 $button-size-props: (
   "small": (
-    "height": primitives.$draco-control-small-size,
+    "gap": primitives.$draco-control-small-gap,
+    "size": primitives.$draco-control-small-size,
     "font-size": primitives.$draco-text-size-body-small,
-    "padding-horizontal": primitives.$draco-control-small-padding-condensed
+    "padding-horizontal": primitives.$draco-control-small-padding-condensed // TODO: see if condensed is too small.
     ),
   "medium": (
-    "height": primitives.$draco-control-medium-size,
-    "font-size": primitives.$draco-text-size-body-medium,
+    "gap": primitives.$draco-control-medium-gap,
+    "size": primitives.$draco-control-medium-size,
+    "font-size": primitives.$draco-text-size-body-small,
     "padding-horizontal": primitives.$draco-control-medium-padding-normal
   ),
   "large": (
-    "height": primitives.$draco-control-large-size,
+    "gap": primitives.$draco-control-large-gap,
+    "size": primitives.$draco-control-large-size,
     "font-size": primitives.$draco-text-size-body-medium,
     "padding-horizontal": primitives.$draco-control-large-padding-normal
   ),
@@ -32,9 +35,21 @@ $button-size-props: (
 .draco-button {
   @each $size in $button-sizes {
     &.draco-button--#{$size} {
+      gap: map.get($button-size-props, $size, "gap");
       font-size: map.get($button-size-props, $size, "font-size");
-      height: map.get($button-size-props, $size, "height");
-      padding: 0 map.get($button-size-props, $size, "padding-horizontal");
+      height: map.get($button-size-props, $size, "size");
+
+      &:not(.draco-button--icon-only) {
+        padding: 0 map.get($button-size-props, $size, "padding-horizontal");
+      }
+
+      &.draco-button--icon-only {
+        padding: 0;
+        width: map.get($button-size-props, $size, "size");
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       // Overwrite padding for small button on 'pill' shape
       @if $size == "small" {
