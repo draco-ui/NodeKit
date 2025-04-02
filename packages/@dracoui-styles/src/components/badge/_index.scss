@@ -5,6 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-@use 'icon';
+@forward 'badge';
+@forward 'tokens';
+
 @use 'badge';
-@use 'button';
+@use 'sizes';
+@use 'tokens';
+
+@include badge.Badge;

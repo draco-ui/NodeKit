@@ -5,6 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-@use 'icon';
-@use 'badge';
-@use 'button';
+@use '@dracoui/primitives';
+
+/// @type Number
+$badge-font-weight: primitives.$draco-base-weight-normal !default;
+
+/// @type Number
+$badge-font-size: primitives.$draco-text-size-body-small !default;

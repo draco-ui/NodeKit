@@ -1,0 +1,63 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use '@dracoui/primitives';
+
+$button-variants: (
+  'pink': (
+    'background': var(--draco-button-primary-background),
+    'foreground': var(--draco-button-primary-foreground),
+    'border': null
+  ),
+  'pink-subtle': (
+    'background': var(--draco-button-primary-background),
+    'foreground': var(--draco-button-primary-foreground),
+    'border': null
+  ),
+);
+
+.draco-badge {
+  @each $name, $variant in $button-variants {
+    @include variant-selector($name) {
+      color: map.get($variant, 'foreground');
+      background-color: map.get($variant, 'background');
+      border-color: map.get($variant, 'border');
+
+      @if map.get($variant, 'border') != null {
+        border-style: solid;
+        border-width: primitives.$draco-border-width-thin;
+      } @else {
+        border: none;
+      }
+
+      @include disabled-state {
+        box-shadow: none;
+        cursor: not-allowed;
+        border: none !important;
+        color: var(--draco-button-#{$name}-text-disabled);
+        background-color: var(--draco-button-#{$name}-background-disabled);
+        border-color: var(--draco-button-#{$name}-border-disabled);
+
+        transform: none !important;
+        will-change: none !important;
+      }
+
+      &:not(:disabled):not([disabled]):not(.mock-disabled) {
+        &:hover {
+          background-color: var(--draco-button-#{$name}-background-hovered);
+        }
+
+        &:active {
+          will-change: transform, box-shadow;
+          box-shadow: none;
+          transform: scale(0.96);
+        }
+      }
+    }
+  }
+}

@@ -143,13 +143,13 @@ export default class DracoBadge extends Component<DracoButtonSignature> {
     const classes = ['draco-badge'];
 
     // add a class based on the @size argument
-    classes.push(`draco-badge--size-${this.size}`);
+    classes.push(`draco-badge--${this.size}`);
 
     // add color class
-    classes.push(`draco-badge--color-${this.color}`);
+    classes.push(`draco-badge--${this.color}`);
 
     // add type class
-    classes.push(`draco-badge--type-${this.type}`);
+    classes.push(`draco-badge--${this.type}`);
 
     return classes.join(' ');
   };

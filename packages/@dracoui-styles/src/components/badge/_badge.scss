@@ -1,0 +1,25 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives';
+
+@mixin Badge {
+  .draco-badge {
+    display: flex;
+    align-items: center;
+    min-width: max-content;
+    vertical-align: middle;
+    font-family: primitives.$draco-font-sans-serif;
+    font-weight: $badge-font-weight;
+  }
+
+  .draco-button__text {
+    flex: 1 0 0;
+    display: flex;
+    text-align: center;
+  }
+}

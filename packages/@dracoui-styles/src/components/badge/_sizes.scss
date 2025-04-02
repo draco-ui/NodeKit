@@ -1,0 +1,37 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'sass:list';
+@use '@dracoui/primitives';
+
+$badge-sizes: ( "small", "medium", "large" );
+
+$badge-size-props: (
+  "small": (
+    "font-size": $bade-font-size,
+    ),
+  "medium": (
+    "font-size": $badge-font-size,
+  ),
+  "large": (
+    "font-size": $badge-font-size,
+  ),
+);
+
+.draco-badge {
+  @each $size in $badge-sizes {
+    @if $size == "large" {
+      $badge-font-size: primitives.$draco-text-size-body-medium;
+      font-size: $badge-font-size !important;
+    }
+
+    &.draco-badge--#{$size} {
+      font-size: map.get($badge-size-props, $size, "font-size");
+    }
+  }
+}
