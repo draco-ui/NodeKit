@@ -11,5 +11,6 @@
 @use 'badge';
 @use 'sizes';
 @use 'tokens';
+@use 'variants';
 
 @include badge.Badge;

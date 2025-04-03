@@ -17,7 +17,7 @@ import type { DracoIconSignature } from "../icon";
 
 export const DEFAULT_TYPE = DracoBadgeTypeValues.Pill;
 export const DEFAULT_SIZE = DracoBadgeSizeValues.Medium;
-export const DEFAULT_COLOR = DracoBadgeColorValues.Inverted;
+export const DEFAULT_COLOR = DracoBadgeColorValues.Primary;
 export const DEFAULT_ICON_POSITION = DracoBadgeIconPositionValues.Leading;
 
 export const AVAILABLE_SIZES: string[] = Object.values(DracoBadgeSizeValues);

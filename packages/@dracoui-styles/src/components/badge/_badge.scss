@@ -5,21 +5,35 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+@use 'tokens' as *;
 @use '@dracoui/primitives';
 
 @mixin Badge {
   .draco-badge {
-    display: flex;
+    line-height: 1;
+    display: inline-flex;
     align-items: center;
+    white-space: nowrap;
     min-width: max-content;
     vertical-align: middle;
     font-family: primitives.$draco-font-sans-serif;
     font-weight: $badge-font-weight;
-  }
 
-  .draco-button__text {
-    flex: 1 0 0;
-    display: flex;
-    text-align: center;
+    &.draco-badge--pill {
+      border-radius: $badge-border-radius;
+    }
+
+    &.draco-badge--square,
+    &.draco-badge--rounded {
+      // Override defaults
+      $badge-border-radius: primitives.$draco-border-radius-medium;
+      border-radius: $badge-border-radius;
+    }
+    
+    .draco-button__text {
+      flex: 1 0 0;
+      display: flex;
+      text-align: center;
+    }
   }
 }

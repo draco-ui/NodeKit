@@ -7,19 +7,26 @@
 
 @use 'sass:map';
 @use 'sass:list';
+@use 'tokens' as *;
 @use '@dracoui/primitives';
 
 $badge-sizes: ( "small", "medium", "large" );
 
 $badge-size-props: (
   "small": (
-    "font-size": $bade-font-size,
+    "font-size": $badge-font-size,
+    "size": primitives.$draco-base-size-16,
+    "padding-horizontal": primitives.$draco-base-size-6
     ),
   "medium": (
     "font-size": $badge-font-size,
+    "size": primitives.$draco-control-medium-size,
+    "padding-horizontal": primitives.$draco-control-medium-padding-normal
   ),
   "large": (
     "font-size": $badge-font-size,
+    "size": primitives.$draco-control-medium-size,
+    "padding-horizontal": primitives.$draco-control-medium-padding-normal
   ),
 );
 
@@ -27,11 +34,12 @@ $badge-size-props: (
   @each $size in $badge-sizes {
     @if $size == "large" {
       $badge-font-size: primitives.$draco-text-size-body-medium;
-      font-size: $badge-font-size !important;
     }
 
     &.draco-badge--#{$size} {
       font-size: map.get($badge-size-props, $size, "font-size");
+      height: map.get($badge-size-props, $size, "size");
+      padding: 0 map.get($badge-size-props, $size, "padding-horizontal");
     }
   }
 }

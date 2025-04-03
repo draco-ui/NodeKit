@@ -7,18 +7,13 @@
 
 @use 'sass:map';
 @use '@dracoui/primitives';
+@use '../../utilities/variant-selector' as *;
 
 $button-variants: (
-  'pink': (
-    'background': var(--draco-button-primary-background),
-    'foreground': var(--draco-button-primary-foreground),
-    'border': null
-  ),
-  'pink-subtle': (
-    'background': var(--draco-button-primary-background),
-    'foreground': var(--draco-button-primary-foreground),
-    'border': null
-  ),
+  'primary': (
+    'background': var(--draco-badge-primary-background),
+    'foreground': var(--draco-badge-primary-foreground),
+  )
 );
 
 .draco-badge {
@@ -26,38 +21,6 @@ $button-variants: (
     @include variant-selector($name) {
       color: map.get($variant, 'foreground');
       background-color: map.get($variant, 'background');
-      border-color: map.get($variant, 'border');
-
-      @if map.get($variant, 'border') != null {
-        border-style: solid;
-        border-width: primitives.$draco-border-width-thin;
-      } @else {
-        border: none;
-      }
-
-      @include disabled-state {
-        box-shadow: none;
-        cursor: not-allowed;
-        border: none !important;
-        color: var(--draco-button-#{$name}-text-disabled);
-        background-color: var(--draco-button-#{$name}-background-disabled);
-        border-color: var(--draco-button-#{$name}-border-disabled);
-
-        transform: none !important;
-        will-change: none !important;
-      }
-
-      &:not(:disabled):not([disabled]):not(.mock-disabled) {
-        &:hover {
-          background-color: var(--draco-button-#{$name}-background-hovered);
-        }
-
-        &:active {
-          will-change: transform, box-shadow;
-          box-shadow: none;
-          transform: scale(0.96);
-        }
-      }
     }
   }
 }

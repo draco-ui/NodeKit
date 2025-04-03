@@ -12,9 +12,7 @@ export enum DracoBadgeIconPositionValues {
 export type DracoBadgeIconPositions = `${DracoBadgeIconPositionValues}`;
 
 export enum DracoBadgeColorValues {
-  // Grays
-  Gray = 'gray',
-  GraySubtle = 'gray-subtle',
+  Primary = 'primary',
 
   // Blues
   Blue = 'blue',
