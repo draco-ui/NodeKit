@@ -14,17 +14,16 @@ $badge-sizes: ( "small", "medium", "large" );
 
 $badge-size-props: (
   "small": (
-    "font-size": $badge-font-size,
-    "size": primitives.$draco-base-size-16,
-    "padding-horizontal": primitives.$draco-base-size-6
+    "font-size": primitives.$draco-text-size-body-tiny,
+    "size": primitives.$draco-badge-small-size,
+    "padding-horizontal": primitives.$draco-badge-small-padding-normal
     ),
   "medium": (
-    "font-size": $badge-font-size,
-    "size": primitives.$draco-control-medium-size,
-    "padding-horizontal": primitives.$draco-control-medium-padding-normal
+    "size": primitives.$draco-badge-medium-size,
+    "padding-horizontal": primitives.$draco-badge-medium-padding-normal
   ),
   "large": (
-    "font-size": $badge-font-size,
+    "font-size": primitives.$draco-text-size-body-medium,
     "size": primitives.$draco-control-medium-size,
     "padding-horizontal": primitives.$draco-control-medium-padding-normal
   ),
@@ -32,12 +31,12 @@ $badge-size-props: (
 
 .draco-badge {
   @each $size in $badge-sizes {
-    @if $size == "large" {
-      $badge-font-size: primitives.$draco-text-size-body-medium;
-    }
-
     &.draco-badge--#{$size} {
-      font-size: map.get($badge-size-props, $size, "font-size");
+      font-size: if(
+        map.has-key($badge-size-props, $size) and map.has-key(map.get($badge-size-props, $size), "font-size"),
+        map.get($badge-size-props, $size, "font-size"),
+        $badge-font-size
+      );
       height: map.get($badge-size-props, $size, "size");
       padding: 0 map.get($badge-size-props, $size, "padding-horizontal");
     }

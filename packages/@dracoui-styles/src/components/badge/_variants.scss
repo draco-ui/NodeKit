@@ -6,21 +6,36 @@
  */
 
 @use 'sass:map';
+@use "sass:string";
 @use '@dracoui/primitives';
 @use '../../utilities/variant-selector' as *;
 
 $button-variants: (
-  'primary': (
-    'background': var(--draco-badge-primary-background),
-    'foreground': var(--draco-badge-primary-foreground),
-  )
+  'primary',
+  'secondary',
+  'secondary-subtle',
+  'info',
+  'info-subtle',
+  'tier',
+  'tier-subtle',
+  'amber',
+  'amber-subtle',
+  'danger',
+  'danger-subtle',
+  'sponsor',
+  'sponsor-subtle',
+  'success',
+  'success-subtle'
 );
 
 .draco-badge {
-  @each $name, $variant in $button-variants {
+  @each $name in $button-variants {
+    $is-subtle: string.index($name, '-subtle') != null;
+    $base-name: if($is-subtle, string.slice($name, 1, string.index($name, '-subtle') - 1), $name);
+
     @include variant-selector($name) {
-      color: map.get($variant, 'foreground');
-      background-color: map.get($variant, 'background');
+      color: var(--draco-badge-#{$base-name}#{if($is-subtle, '-subtle', '')}-foreground);
+      background-color: var(--draco-badge-#{$base-name}#{if($is-subtle, '-subtle', '')}-background);
     }
   }
 }

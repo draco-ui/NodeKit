@@ -1,3 +1,19 @@
 <div class="flex">
-  <Draco::Badge @text="Some Text" @size="small" @color="primary" />
+  {{#let "medium" as |badgeSize|}}
+    <Draco::Badge @text="Small" @size={{badgeSize}} @color="primary" />
+    <Draco::Badge @text="Secondary" @size={{badgeSize}} @color="secondary" />
+    <Draco::Badge @text="Secondary Subtle" @size={{badgeSize}} @color="secondary-subtle" />
+    <Draco::Badge @text="Blue" @size={{badgeSize}} @color="info" />
+    <Draco::Badge @text="Blue Subtle" @size={{badgeSize}} @color="info-subtle" />
+    <Draco::Badge @text="Tier" @size={{badgeSize}} @color="tier" />
+    <Draco::Badge @text="Tier Subtle" @size={{badgeSize}} @color="tier-subtle" />
+    <Draco::Badge @text="Amber" @size={{badgeSize}} @color="amber" />
+    <Draco::Badge @text="Amber Subtle" @size={{badgeSize}} @color="amber-subtle" />
+    <Draco::Badge @text="Danger" @size={{badgeSize}} @color="danger" />
+    <Draco::Badge @text="Danger Subtle" @size={{badgeSize}} @color="danger-subtle" />
+    <Draco::Badge @text="Sponsor" @size={{badgeSize}} @color="sponsor" />
+    <Draco::Badge @text="Sponsor Subtle" @size={{badgeSize}} @color="sponsor-subtle" />
+    <Draco::Badge @text="Success" @size={{badgeSize}} @color="success" />
+    <Draco::Badge @text="Success Subtle" @size={{badgeSize}} @color="success-subtle" />
+  {{/let}}
 </div>

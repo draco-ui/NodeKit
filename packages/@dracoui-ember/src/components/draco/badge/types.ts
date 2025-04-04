@@ -14,37 +14,26 @@ export type DracoBadgeIconPositions = `${DracoBadgeIconPositionValues}`;
 export enum DracoBadgeColorValues {
   Primary = 'primary',
 
-  // Blues
-  Blue = 'blue',
-  BlueSubtle = 'blue-subtle',
+  Secondary = 'secondary',
+  SecondarySubtle = 'secondary-subtle',
 
-  // Purples
-  Purple = 'purple',
-  PurpleSubtle = 'purple-subtle',
+  Info = 'info',
+  InfoSubtle = 'info-subtle',
 
-  // Oranges
+  Tier = 'tier',
+  TierSubtle = 'tier-subtle',
+
   Amber = 'amber',
   AmberSubtle = 'amber-subtle',
 
-  // Reds
-  Red = 'red',
-  RedSubtle = 'red-subtle',
+  Danger = 'danger',
+  DangerSubtle = 'danger-subtle',
 
-  // Pinks
-  Pink = 'pink',
-  PinkSubtle = 'pink-subtle',
+  Sponsor = 'sponsor',
+  SponsorSubtle = 'sponsor-subtle',
 
-  // Greens
-  Green = 'green',
-  GreenSubtle = 'green-subtle',
-
-  // Teal
-  Teal = 'teal',
-  TealSubtle = 'teal-subtle',
-
-  // Specials
-  Inverted = 'inverted'
-
+  Success = 'success',
+  SuccessSubtle = 'success-subtle',
 };
 export type DracoBadgeColors = `${DracoBadgeColorValues}`;
 
