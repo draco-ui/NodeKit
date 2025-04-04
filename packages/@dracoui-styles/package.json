@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/styles",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "Global configurable styles for Corinvo's Draco Design System",
   "scripts": {
@@ -13,9 +13,7 @@
     "draco-design-system"
   ],
   "files": [
-    "css",
-    "scss",
-    "index.scss"
+    "dist"
   ],
   "license": "MIT",
   "peerDependencies": {
