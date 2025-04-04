@@ -35,7 +35,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.1.2",
     "ember-auto-import": "^2.10.0",
-    "ember-cli": "~6.2.0",
+    "ember-cli": "~6.2.3",
     "ember-cli-app-version": "^7.0.0",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-clean-css": "^3.0.0",
@@ -75,7 +75,8 @@
   },
   "dependencies": {
     "@dracoui/ember": "workspace:*",
-    "ember-cli-string-helpers": "^6.1.0"
+    "ember-cli-string-helpers": "^6.1.0",
+    "ember-dark-mode": "1.0.0-beta.3"
   },
   "engines": {
     "node": ">= 18"

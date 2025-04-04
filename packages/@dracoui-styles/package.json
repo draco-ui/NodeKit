@@ -17,7 +17,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@dracoui/primitives": "0.2.37"
+    "@dracoui/primitives": "0.2.38"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
