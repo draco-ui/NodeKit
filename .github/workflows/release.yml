@@ -26,7 +26,10 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-          run_install: true
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm build
@@ -35,10 +38,10 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: pnpm run changeset version
+          version: pnpm changeset version
           commit: 'chore: version packages'
           title: 'chore: version packages'
-          publish: pnpm publish -r --access public --no-git-checks
+          publish: pnpm changeset publish
           setupGitUser: true
           createGithubReleases: true
         env:
