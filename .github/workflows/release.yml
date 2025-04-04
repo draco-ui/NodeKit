@@ -6,8 +6,33 @@ on:
       - main
 
 jobs:
+  check-for-changesets:
+    name: Check for Changesets
+    runs-on: ubuntu-latest
+    outputs:
+      has-changesets: ${{ steps.check-changesets.outputs.has-changesets }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for Changesets
+        id: check-changesets
+        run: |
+          if [ -n "$(ls -A .changeset/*.md 2>/dev/null)" ]; then
+            echo "has-changesets=true" >> $GITHUB_OUTPUT
+            echo "Changesets found, will proceed with release process"
+          else
+            echo "has-changesets=false" >> $GITHUB_OUTPUT
+            echo "No changesets found, skipping release process"
+          fi
+
   release:
     name: Release
+    needs: check-for-changesets
+    if: needs.check-for-changesets.outputs.has-changesets == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -15,6 +40,11 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -50,9 +80,9 @@ jobs:
 
   auto-merge:
     name: Auto-merge Version PR
-    needs: release
+    needs: [check-for-changesets, release]
+    if: needs.check-for-changesets.outputs.has-changesets == 'true' && needs.release.outputs.pullRequestNumber != ''
     runs-on: ubuntu-latest
-    if: needs.release.outputs.pullRequestNumber != ''
     steps:
       - name: Approve PR
         uses: hmarr/auto-approve-action@v3
