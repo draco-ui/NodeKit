@@ -1,17 +1,17 @@
 // Avatar
-import type DracoAvatarComponent from "./components/draco/avatar";
+// import type DracoAvatarComponent from "./components/draco/avatar";
 
 // Avatar Group
-import type DracoAvatarGroupComponent from "./components/draco/avatar/group";
+// import type DracoAvatarGroupComponent from "./components/draco/avatar/group";
 
 // Avatar Github
-import type DracoAvatarGithubComponent from "./components/draco/avatar/github";
+// import type DracoAvatarGithubComponent from "./components/draco/avatar/github";
 
 // Avatar Gitlab
-import type DracoAvatarGitlabComponent from "./components/draco/avatar/gitlab";
+// import type DracoAvatarGitlabComponent from "./components/draco/avatar/gitlab";
 
 // Avatar Bitbucket
-import type DracoAvatarBitbucketComponent from "./components/draco/avatar/bitbucket";
+// import type DracoAvatarBitbucketComponent from "./components/draco/avatar/bitbucket";
 
 // Icon
 import type DracoIconComponent from "./components/draco/icon";
@@ -64,24 +64,24 @@ import type DracoClipboardModifier from "./modifiers/draco-clipboard.ts";
 
 export default interface DracoComponentsRegistry {
   // Avatar
-  'Draco::Avatar': typeof DracoAvatarComponent;
-  'draco/avatar': typeof DracoAvatarComponent;
+  // 'Draco::Avatar': typeof DracoAvatarComponent;
+  // 'draco/avatar': typeof DracoAvatarComponent;
 
   // Avatar Group
-  'Draco::Avatar::Group': typeof DracoAvatarGroupComponent;
-  'draco/avatar/group': typeof DracoAvatarGroupComponent;
+  // 'Draco::Avatar::Group': typeof DracoAvatarGroupComponent;
+  // 'draco/avatar/group': typeof DracoAvatarGroupComponent;
 
   // Avatar Github
-  'Draco::Avatar::Github': typeof DracoAvatarGithubComponent;
-  'draco/avatar/github': typeof DracoAvatarGithubComponent;
+  // 'Draco::Avatar::Github': typeof DracoAvatarGithubComponent;
+  // 'draco/avatar/github': typeof DracoAvatarGithubComponent;
 
   // Avatar Gitlab
-  'Draco::Avatar::Gitlab': typeof DracoAvatarGitlabComponent;
-  'draco/avatar/gitlab': typeof DracoAvatarGitlabComponent;
+  // 'Draco::Avatar::Gitlab': typeof DracoAvatarGitlabComponent;
+  // 'draco/avatar/gitlab': typeof DracoAvatarGitlabComponent;
 
   // Avatar Bitbucket
-  'Draco::Avatar::Bitbucket': typeof DracoAvatarBitbucketComponent;
-  'draco/avatar/bitbucket': typeof DracoAvatarBitbucketComponent;
+  // 'Draco::Avatar::Bitbucket': typeof DracoAvatarBitbucketComponent;
+  // 'draco/avatar/bitbucket': typeof DracoAvatarBitbucketComponent;
 
   // Icon
   'Draco::Icon': typeof DracoIconComponent;

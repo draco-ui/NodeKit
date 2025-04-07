@@ -6,6 +6,11 @@ header:
       Copyright (c) {year} Corinvo, LLC. and affiliates.
       Licensed under the MIT License
 
+  commentStyle:
+    start: "/*"
+    end: "*/"
+    line: "//"
+
   paths:
     - '**/*.ts'
     - '**/*.tsx'
@@ -20,27 +25,3 @@ header:
     - 'node_modules/**'
     - '**/*.d.ts'
     - '**/template-registry.ts'
-
-  language:
-    TypeScript:
-      extensions:
-        - '.ts'
-        - '.tsx'
-      comment_style_id: SlashAsterisk
-
-    JavaScript:
-      extensions:
-        - '.js'
-        - '.jsx'
-      comment_style_id: SlashAsterisk
-
-    CSS:
-      extensions:
-        - '.css'
-        - '.scss'
-      comment_style_id: SlashSlash
-
-    Handlebars:
-      extensions:
-        - '.hbs'
-      comment_style_id: HTMLComment
