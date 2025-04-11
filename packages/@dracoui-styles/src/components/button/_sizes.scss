@@ -9,15 +9,21 @@
 @use 'sass:list';
 @use '@dracoui/primitives';
 
-$button-sizes: ( "small", "medium", "large" );
+$button-sizes: ( "xsmall", "small", "medium", "large" );
 
 $button-size-props: (
+  "xsmall": (
+    "gap": primitives.$draco-control-small-gap,
+    "size": 24px,
+    "font-size": primitives.$draco-text-size-body-tiny,
+    "padding-horizontal": primitives.$draco-control-small-padding-condensed
+  ),
   "small": (
     "gap": primitives.$draco-control-small-gap,
     "size": primitives.$draco-control-small-size,
     "font-size": primitives.$draco-text-size-body-small,
     "padding-horizontal": primitives.$draco-control-small-padding-condensed // TODO: see if condensed is too small.
-    ),
+  ),
   "medium": (
     "gap": primitives.$draco-control-medium-gap,
     "size": primitives.$draco-control-medium-size,

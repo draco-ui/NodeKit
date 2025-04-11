@@ -131,6 +131,7 @@
       "./components/draco/avatar/index.js": "./dist/_app_/components/draco/avatar/index.js",
       "./components/draco/badge/index.js": "./dist/_app_/components/draco/badge/index.js",
       "./components/draco/button/index.js": "./dist/_app_/components/draco/button/index.js",
+      "./components/draco/collapse/index.js": "./dist/_app_/components/draco/collapse/index.js",
       "./components/draco/combobox/index.js": "./dist/_app_/components/draco/combobox/index.js",
       "./components/draco/copy/button/index.js": "./dist/_app_/components/draco/copy/button/index.js",
       "./components/draco/copy/snippet/index.js": "./dist/_app_/components/draco/copy/snippet/index.js",

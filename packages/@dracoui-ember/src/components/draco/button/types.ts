@@ -1,4 +1,5 @@
 export enum DracoButtonSizeValues {
+  XSmall = 'xsmall',
   Small = 'small',
   Medium = 'medium',
   Large = 'large'

@@ -1,0 +1,22 @@
+<div class="flex">
+  {{#let "small" as |buttonSize|}}
+    <div class="lte" style="gap: 10px; display: flex; flex-direction: column;">
+      <h3 style="color: white; font-family: 'Gesit Sans', sans-serif;">{{capitalize buttonSize}} Buttons</h3>
+      <div style="display: flex; gap: 15px;">
+        <Draco::Button @text="Golang" @color="secondary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+        <Draco::Button @text="Golang" @color="tertiary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+        <Draco::Button @text="Golang" @color="primary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+        <Draco::Button @text="Golang" @color="amber" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+        <Draco::Button @text="Golang" @color="error" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="fa6-brands:golang" @iconSize={{23}} @iconPosition="leading" />
+      </div>
+
+      <div style="display: flex; gap: 15px;">
+        <Draco::Button @color="secondary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+        <Draco::Button @color="tertiary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+        <Draco::Button @color="primary" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+        <Draco::Button @color="amber" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+        <Draco::Button @color="error" @shape="square" disabled={{false}} @size={{buttonSize}} @icon="mdi:github" @iconSize={{16}} @isIconOnly={{true}} />
+      </div>
+    </div>
+  {{/let}}
+</div>
