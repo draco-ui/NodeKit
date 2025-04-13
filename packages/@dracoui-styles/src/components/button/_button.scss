@@ -34,17 +34,6 @@
     -ms-user-select: none;
     user-select: none;
 
-    &.draco-button--pill {
-      // Override defaults
-      $button-border-radius: primitives.$draco-border-radius-full;
-      border-radius: $button-border-radius;
-    }
-
-    &.draco-button--square,
-    &.draco-button--rounded {
-      border-radius: $button-border-radius;
-    }
-
     // Allow users to specify their motions preferences
     @media (prefers-reduced-motion: no-preference) {
       $properties: background-color, border-color, box-shadow, color, transform;

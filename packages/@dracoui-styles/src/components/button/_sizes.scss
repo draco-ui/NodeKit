@@ -7,6 +7,7 @@
 
 @use 'sass:map';
 @use 'sass:list';
+@use 'tokens' as *;
 @use '@dracoui/primitives';
 
 $button-sizes: ( "xsmall", "small", "medium", "large" );
@@ -16,13 +17,15 @@ $button-size-props: (
     "gap": primitives.$draco-control-small-gap,
     "size": 24px,
     "font-size": primitives.$draco-text-size-body-tiny,
+    "border-radius": primitives.$draco-border-radius-medium,
     "padding-horizontal": primitives.$draco-control-small-padding-condensed
   ),
   "small": (
     "gap": primitives.$draco-control-small-gap,
     "size": primitives.$draco-control-small-size,
     "font-size": primitives.$draco-text-size-body-small,
-    "padding-horizontal": primitives.$draco-control-small-padding-condensed // TODO: see if condensed is too small.
+    "border-radius": primitives.$draco-border-radius-medium,
+    "padding-horizontal": primitives.$draco-control-small-padding-condensed
   ),
   "medium": (
     "gap": primitives.$draco-control-medium-gap,
@@ -44,6 +47,25 @@ $button-size-props: (
       gap: map.get($button-size-props, $size, "gap");
       font-size: map.get($button-size-props, $size, "font-size");
       height: map.get($button-size-props, $size, "size");
+
+      @if map.get($button-size-props, $size, "border-radius") != null {
+        $button-border-radius: map.get($button-size-props, $size, "border-radius");
+      }
+
+      &.draco-button--pill {
+        border-radius: primitives.$draco-border-radius-full;
+      }
+
+      &.draco-button--square,
+      &.draco-button--rounded {
+        $specific-radius: map.get($button-size-props, $size, "border-radius");
+
+        @if $specific-radius != null {
+          border-radius: $specific-radius;
+        } @else {
+          border-radius: $button-border-radius;
+        }
+      }
 
       &:not(.draco-button--icon-only) {
         padding: 0 map.get($button-size-props, $size, "padding-horizontal");

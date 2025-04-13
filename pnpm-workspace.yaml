@@ -2,3 +2,5 @@ packages:
   # The paps directory is strictly for testing please remove
   - apps/*
   - packages/*
+overrides:
+  "@dracoui/primitives": "0.2.42"

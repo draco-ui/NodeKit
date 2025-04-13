@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/styles",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "description": "Global configurable styles for Corinvo's Draco Design System",
   "scripts": {
@@ -13,11 +13,12 @@
     "draco-design-system"
   ],
   "files": [
-    "dist"
+    "dist",
+    "index.scss"
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@dracoui/primitives": "0.2.41"
+    "@dracoui/primitives": "0.2.42"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

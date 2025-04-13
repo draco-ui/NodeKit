@@ -1,6 +1,6 @@
 {
   "name": "@dracoui/ember",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Draco Design System for Ember",
   "keywords": [
     "corinvo",
@@ -112,7 +112,7 @@
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "@dracoui/primitives": "0.2.41",
+    "@dracoui/primitives": "0.2.42",
     "@dracoui/styles": "workspace:*",
     "ember-source": "^3.28.0 || ^4.0.0 || ^5.3.0"
   },
