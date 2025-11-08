@@ -1,5 +1,5 @@
+import '@dracoui/styles';
 import type { Preview } from '@storybook/react';
-import '@dracoui/styles/dist/css/styles.css';
 
 const preview: Preview = {
   parameters: {

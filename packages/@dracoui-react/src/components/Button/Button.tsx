@@ -1,7 +1,13 @@
-import React, { forwardRef } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/utils';
-import type { Size, Variant } from '@/types';
+import cn from 'clsx';
+import { If } from 'react-if';
+import { Ring } from 'ldrs/react';
+import { forwardRef } from 'react';
+import { cva } from 'class-variance-authority';
+// import { SprocketButton } from '@sprocketui-react/button';
+
+import type { ButtonProps } from './Button.types';
+import type { FC, ForwardedRef, ReactElement } from 'react';
+import type { VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva('draco-button', {
   variants: {
@@ -9,9 +15,14 @@ const buttonVariants = cva('draco-button', {
       primary: 'draco-button--primary',
       secondary: 'draco-button--secondary',
       tertiary: 'draco-button--tertiary',
-      success: 'draco-button--success',
-      warning: 'draco-button--warning',
+      ghost: 'draco-button--ghost',
+      amber: 'draco-button--amber',
       error: 'draco-button--error',
+    },
+    shape: {
+      pill: 'draco-button--pill',
+      square: 'draco-button--square',
+      rounded: 'draco-button--rounded',
     },
     size: {
       small: 'draco-button--small',
@@ -24,77 +35,57 @@ const buttonVariants = cva('draco-button', {
     loading: {
       true: 'draco-button--loading',
     },
+    elevated: {
+      true: 'draco-button--elevated',
+    },
   },
   defaultVariants: {
     variant: 'primary',
     size: 'medium',
+    shape: 'rounded'
   },
 });
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  /**
-   * Icon to display before the button text
-   */
-  startIcon?: React.ReactNode;
-
-  /**
-   * Icon to display after the button text
-   */
-  endIcon?: React.ReactNode;
-}
-
-/**
- * Button component for user interactions
- *
- * Uses the global @dracoui/styles package for styling
- *
- * @example
- * ```tsx
- * <Button variant="primary" size="medium">
- *   Click me
- * </Button>
- * ```
- */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps & VariantProps<typeof buttonVariants>>(
   (
-    {
-      variant,
-      size,
+    props: ButtonProps,
+    ref: ForwardedRef<HTMLButtonElement>
+  ): ReactElement => {
+    const {
+      variant = 'primary',
+      size = 'medium',
+      shape = 'rounded',
+      elevated = false,
       fullWidth,
       loading,
-      startIcon,
-      endIcon,
       children,
       className,
       disabled,
-      ...props
-    },
-    ref
-  ) => {
+      ...others
+    } = props;
     return (
       <button
         ref={ref}
-        className={cn(buttonVariants({ variant, size, fullWidth, loading }), className)}
-        disabled={disabled || loading}
-        {...props}
+        className={cn(buttonVariants({ variant, size, shape, fullWidth, loading, elevated }), className)}
+        disabled={disabled || loading || undefined}
+        {...others}
       >
-        {loading && <span className="draco-button__loader" />}
-        {!loading && startIcon && (
-          <span className="draco-button__icon draco-button__icon--start">
-            {startIcon}
-          </span>
-        )}
-        {children && <span className="draco-button__text">{children}</span>}
-        {!loading && endIcon && (
-          <span className="draco-button__icon draco-button__icon--end">
-            {endIcon}
-          </span>
-        )}
+        <If condition={loading}>
+          <Ring
+            size="10"
+            stroke="1"
+            bgOpacity="0"
+            speed="2"
+            color="black"
+          />
+        </If>
+
+        <If condition={!loading}>
+          {children}
+        </If>
       </button>
     );
   }
 );
 
-Button.displayName = 'Button';
+(Button as FC).displayName = 'Button';

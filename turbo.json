@@ -8,6 +8,9 @@
       ],
       "cache": false
     },
+    "dev": {
+      "cache": false
+    },
     "build:dracoui-ember": {
       "cache": false,
       "dependsOn": ["build:dracoui-styles"],

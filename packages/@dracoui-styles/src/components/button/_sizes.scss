@@ -16,7 +16,7 @@ $button-size-props: (
     "gap": primitives.$draco-control-small-gap,
     "size": primitives.$draco-control-small-size,
     "font-size": primitives.$draco-text-size-body-small,
-    "padding-horizontal": primitives.$draco-control-small-padding-condensed // TODO: see if condensed is too small.
+    "padding-horizontal": primitives.$draco-control-small-padding-condensed
     ),
   "medium": (
     "gap": primitives.$draco-control-medium-gap,
@@ -45,10 +45,10 @@ $button-size-props: (
 
       &.draco-button--icon-only {
         padding: 0;
-        width: map.get($button-size-props, $size, "size");
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        width: map.get($button-size-props, $size, "size");
       }
 
       // Overwrite padding for small button on 'pill' shape
@@ -58,5 +58,10 @@ $button-size-props: (
         }
       }
     }
+  }
+
+  &.draco-button--full-width {
+    width: 100%;
+    min-width: 100%;
   }
 }

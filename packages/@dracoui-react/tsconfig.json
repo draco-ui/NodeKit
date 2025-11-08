@@ -9,6 +9,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": false,
@@ -22,7 +23,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@dracoui/types": ["../@dracoui-types/src"]
     }
   },
   "include": ["src"],

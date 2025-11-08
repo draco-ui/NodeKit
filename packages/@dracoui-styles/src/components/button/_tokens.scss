@@ -18,3 +18,6 @@ $button-border-radius: primitives.$draco-border-radius-large !default;
 
 /// @type Number
 $button-border-width: primitives.$draco-border-width-thin !default;
+
+/// @type String
+$button-border-style: solid !default;
