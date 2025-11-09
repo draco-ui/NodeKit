@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-import '@dracoui/styles';
+import '../packages/@dracoui-styles/dist/css/styles.css';
 
 const preview: Preview = {
   globalTypes: {
@@ -27,29 +27,13 @@ const preview: Preview = {
       React.useEffect(() => {
         document.documentElement.style.background = theme === 'dark' ? '#1a1a1a' : '#ffffff';
         document.body.style.background = theme === 'dark' ? '#1a1a1a' : '#ffffff';
+        // Apply theme attributes to documentElement so portaled content (like Popover) can access CSS variables
+        document.documentElement.setAttribute('data-color-mode', theme);
+        document.documentElement.setAttribute('data-light-theme', 'light');
+        document.documentElement.setAttribute('data-dark-theme', 'dark');
       }, [theme]);
 
-      return React.createElement(
-        'div',
-        {
-          'data-color-mode': theme,
-          'data-light-theme': 'light',
-          'data-dark-theme': 'dark',
-          style: {
-            background: theme === 'dark' ? '#1a1a1a' : '#ffffff',
-            color: theme === 'dark' ? '#ffffff' : '#1a1a1a',
-            padding: layout === 'centered' ? '2rem' : layout === 'padded' ? '1rem' : '0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            height: '100%',
-            boxSizing: 'border-box',
-            fontFamily: "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-          },
-        },
-        React.createElement(Story)
-      );
+      return React.createElement(Story);
     },
   ],
   parameters: {
@@ -61,7 +45,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      disable: true, // We're handling background via theme decorator
+      disable: false, // We're handling background via theme decorator
     },
     layout: 'centered', // Make preview windows more compact by default
     viewport: {

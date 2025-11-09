@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { css } from '@emotion/css';
-import { cn } from '@/utils';
+import cn from 'clsx';
 
 const inputWrapperVariants = cva('draco-input-wrapper', {
   variants: {

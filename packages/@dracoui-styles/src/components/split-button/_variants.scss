@@ -1,0 +1,66 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'tokens' as *;
+@use '@dracoui/primitives';
+@use '../../utilities/variant-selector' as *;
+
+// Define variants that should show divider
+$split-button-divider-variants: (
+  'secondary',
+  'tertiary',
+  'ghost',
+  'amber',
+  'error'
+);
+
+// Define shape variants (using same primitives as button component)
+$split-button-shapes: (
+  'pill': primitives.$draco-border-radius-full,
+  'rounded': primitives.$draco-border-radius-large,
+  'square': primitives.$draco-border-radius-small
+);
+
+.draco-split-button {
+  // Add divider line for non-primary variants using list iteration
+  @each $variant in $split-button-divider-variants {
+    @include variant-selector($variant) {
+      .draco-split-button__menu::before {
+        content: '';
+        position: absolute;
+        left: -0.5px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: $split-button-divider-height;
+        background: currentColor;
+        opacity: $split-button-divider-opacity;
+      }
+    }
+  }
+
+  // Shape variants using map iteration
+  @each $shape, $radius in $split-button-shapes {
+    @include variant-selector($shape) {
+      .draco-split-button__primary {
+        @if $shape == 'pill' {
+          border-top-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+        }
+      }
+
+      .draco-split-button__menu {
+        @if $shape == 'pill' {
+          border-top-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,8 @@ export default defineConfig({
   plugins: [
     react(),
     cssInjectedByJsPlugin({
-      topExecutionPriority: false,
+      styleId: 'draco',
+      topExecutionPriority: true,
       jsAssetsFilterFunction: (outputChunk) => {
         return /index\.(js|cjs)$/.test(outputChunk.fileName);
       },

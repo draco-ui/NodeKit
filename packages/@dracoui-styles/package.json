@@ -8,12 +8,15 @@
     "./styles.css": "./dist/css/styles.css",
     "./styles": "./dist/css/styles.css",
     "./unminified": "./dist/css/styles.unminified.css",
-    "./scss": "./dist/scss/index.scss"
+    "./scss": "./dist/scss/index.scss",
+    "./button": "./dist/scss/components/button/_index.scss",
+    "./split-button": "./dist/scss/components/split-button/_index.scss",
+    "./popover": "./dist/scss/components/popover/_index.scss"
   },
   "main": "./dist/css/styles.css",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "pnpm clean && pnpm exec npm-run-all --parallel build:*",
+    "build": "pnpm clean && pnpm exec npm-run-all build:*",
     "build:css": "sass index.scss dist/css/styles.css --no-source-map --load-path=node_modules && postcss dist/css/styles.css --replace --no-map",
     "build:css:unminified": "sass index.scss dist/css/styles.unminified.css --no-source-map --load-path=node_modules",
     "build:scss": "cpx 'src/**/*.scss' dist/scss && cpx 'index.scss' dist",

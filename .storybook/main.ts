@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     // React components
-    '../packages/@dracoui-react/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../packages/@dracoui-react/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
@@ -37,7 +37,8 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@': resolve(__dirname, '../packages/@dracoui-react/src'),
-          '@dracoui/styles': resolve(__dirname, '../packages/@dracoui-styles'),
+          '@dracoui/styles': resolve(__dirname, '../packages/@dracoui-styles/dist/css/styles.css'),
+          '@dracoui/styles/styles.css': resolve(__dirname, '../packages/@dracoui-styles/dist/css/styles.css'),
         },
       },
     });

@@ -1,0 +1,40 @@
+@mixin Popover {
+  .draco-popover {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    outline: none;
+    z-index: 1000;
+
+    &[data-entering] {
+      animation: popover-slide-in 200ms;
+    }
+
+    &[data-exiting] {
+      animation: popover-slide-out 150ms;
+    }
+  }
+}
+
+@keyframes popover-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popover-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}

@@ -12,7 +12,6 @@
 
 @mixin Button {
   .draco-button {
-    // Disable unneeded selection
     @include disable-selection;
 
     display: flex;
@@ -35,9 +34,10 @@
     // GPU acceleration optimizations
     transform: translateZ(0);
     backface-visibility: hidden;
-    -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
 
+    &.draco-button--full,
     &.draco-button--pill {
       $button-border-radius: primitives.$draco-border-radius-full;
       border-radius: $button-border-radius;

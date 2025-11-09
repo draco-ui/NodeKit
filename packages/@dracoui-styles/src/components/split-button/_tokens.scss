@@ -1,0 +1,22 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/// @type Number
+/// Horizontal padding for split button menu (icon-only button on the right)
+$split-button-menu-padding-horizontal: 4px !default;
+
+/// @type Number
+/// Divider line height (as percentage of button height)
+$split-button-divider-height: 60% !default;
+
+/// @type Number
+/// Divider line opacity
+$split-button-divider-opacity: 0.25 !default;
+
+/// @type Number
+/// Margin between primary and menu buttons (negative overlap)
+$split-button-menu-margin-left: -1px !default;

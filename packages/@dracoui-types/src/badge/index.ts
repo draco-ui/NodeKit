@@ -5,6 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-@use 'badge';
-
-@include badge.Badge;
+export * from './badge.types';
