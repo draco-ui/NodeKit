@@ -12,11 +12,11 @@ import { BadgeAppearanceValues, BadgeSizeValues, BadgeShapeValues, BadgeColorVal
  * Shared between CVA defaultVariants and defu defaults
  */
 export const BADGE_DEFAULT_PROPS = {
-  appearance: BadgeAppearanceValues.Filled,
-  size: BadgeSizeValues.Medium,
-  shape: BadgeShapeValues.Circular,
-  color: BadgeColorValues.Brand,
   asChild: false,
+  size: BadgeSizeValues.Medium,
+  color: BadgeColorValues.Brand,
+  shape: BadgeShapeValues.Circular,
+  appearance: BadgeAppearanceValues.Filled,
 } as const;
 
 export const BADGE_DEFAULT_NAME: string = 'Badge' as const;

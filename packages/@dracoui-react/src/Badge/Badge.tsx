@@ -1,9 +1,7 @@
 import cn from 'clsx';
 import { defu } from 'defu';
 import { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import { Primitive } from '@necto-react/components';
-import { BadgeAppearanceValues, BadgeSizeValues, BadgeShapeValues, BadgeColorValues } from '@dracoui/types';
 
 import { badgeVariants } from './Badge.styles';
 import { BADGE_DEFAULT_PROPS, BADGE_DEFAULT_NAME } from './Badge.constants';
@@ -45,15 +43,5 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps & VariantProps<typeo
 );
 
 Badge.displayName = BADGE_DEFAULT_NAME;
-
-Badge.propTypes = {
-  appearance: PropTypes.oneOf(Object.values(BadgeAppearanceValues)),
-  size: PropTypes.oneOf(Object.values(BadgeSizeValues)),
-  shape: PropTypes.oneOf(Object.values(BadgeShapeValues)),
-  color: PropTypes.oneOf(Object.values(BadgeColorValues)),
-  className: PropTypes.string,
-  asChild: PropTypes.bool,
-  children: PropTypes.node,
-} as any;
 
 export type { BadgeProps };

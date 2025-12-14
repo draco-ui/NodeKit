@@ -1,0 +1,38 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as LabelStories from './Label.stories';
+
+<Meta of={LabelStories} />
+
+# Label
+
+Labels provide accessible text descriptions for form inputs and other interactive elements.
+
+## Props
+
+<Canvas of={LabelStories.Default} />
+
+<Controls of={LabelStories.Default} />
+
+## Size
+
+A label can have different text sizes.
+
+<Canvas of={LabelStories.Size} />
+
+## Weight
+
+A label can have different font weights.
+
+<Canvas of={LabelStories.Weight} />
+
+## Required
+
+A label can indicate that a field is required with an asterisk (*) indicator.
+
+<Canvas of={LabelStories.Required} />
+
+## Disabled
+
+A label can be disabled to indicate that the associated field is not interactive.
+
+<Canvas of={LabelStories.Disabled} />

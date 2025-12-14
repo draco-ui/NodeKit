@@ -1,0 +1,46 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as PopoverStories from './Popover.stories';
+
+<Meta of={PopoverStories} />
+
+# Popover
+
+A popover displays rich content in a portal that floats near a target element.
+
+## Props
+
+<Canvas of={PopoverStories.Default} />
+
+<Controls of={PopoverStories.Default} />
+
+## Styling
+
+The Popover component uses BEM (Block Element Modifier) class names for styling:
+
+### Base Classes
+- `.draco-popover-surface` - The popover surface element
+
+### Variant Modifiers
+- `.draco-popover-surface--normal` - Normal variant (default)
+- `.draco-popover-surface--inverted` - Inverted variant
+
+### Size Modifiers
+- `.draco-popover-surface--small` - Small size
+- `.draco-popover-surface--medium` - Medium size (default)
+- `.draco-popover-surface--large` - Large size
+
+### Example
+```tsx
+<Popover variant="inverted" size="large">
+  <PopoverTrigger asChild>
+    <Button>Open</Button>
+  </PopoverTrigger>
+  <PopoverSurface>
+    {/* Content with classes: draco-popover-surface draco-popover-surface--inverted draco-popover-surface--large */}
+  </PopoverSurface>
+</Popover>
+```
+
+## Portal Rendering
+
+The PopoverSurface component renders to `document.body` using React portals, ensuring it appears above all content with a high z-index (99999). This means it will break out of any overflow containers and position correctly relative to its trigger.

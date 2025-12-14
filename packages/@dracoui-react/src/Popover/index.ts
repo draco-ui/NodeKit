@@ -1,2 +1,4 @@
 export { Popover } from './Popover';
-export type { PopoverProps } from './Popover.types';
+export { PopoverTrigger } from './PopoverTrigger';
+export { PopoverSurface } from './PopoverSurface';
+

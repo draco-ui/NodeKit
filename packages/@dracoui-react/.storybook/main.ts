@@ -1,22 +1,49 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { join, dirname, resolve } from 'path';
+import { mergeConfig } from 'vite';
+
+/**
+ * This function is used to resolve the absolute path of a package.
+ */
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')));
+}
 
 const config: StorybookConfig = {
-  stories: ['../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../stories/**/*.mdx',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
-    '@storybook/addon-storysource',
-    '@storybook/addon-measure',
-    '@storybook/addon-outline',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-storysource'),
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   docs: {
     autodocs: 'tag',
+  },
+
+  staticDirs: ['./public'],
+
+  core: {
+    disableTelemetry: true,
+  },
+
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@': resolve(__dirname, '../src'),
+          '@dracoui/styles/dist/css/styles.css': resolve(__dirname, '../../@dracoui-styles/dist/css/styles.css'),
+        },
+      },
+    });
   },
 };
 

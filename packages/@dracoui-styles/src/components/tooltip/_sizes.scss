@@ -1,0 +1,47 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+@use '../../utilities/variant-selector' as *;
+
+$tooltip-sizes: (
+  'small': (
+    'radius': $tooltip-border-radius,
+    'padding-vertical': 3px,
+    'padding-horizontal': 7px,
+    'font-size': primitives.$draco-text-size-body-tiny,
+  ),
+  'medium': (
+    'radius': $tooltip-border-radius,
+    'padding-vertical': 5px,
+    'padding-horizontal': 10px,
+    'font-size': $tooltip-font-size,
+  )
+);
+
+// Override just the small radius so the updated value is visible in SCSS variables
+$tooltip-sizes: map.set(
+    $tooltip-sizes,
+    'small',
+    map.merge(
+        map.get($tooltip-sizes, 'small'),
+        ('radius': primitives.$draco-border-radius-large)
+    )
+);
+
+.draco-tooltip {
+  @each $name, $size in $tooltip-sizes {
+    @include variant-selector($name) {
+      padding: map.get($size, 'padding-vertical') map.get($size, 'padding-horizontal');
+      font-size: map.get($size, 'font-size');
+      // Output the overridden radius so you can verify it works:
+      border-radius: map.get($size, 'radius');
+    }
+  }
+}

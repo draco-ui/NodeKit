@@ -6,7 +6,7 @@
  */
 
 import { cva } from 'class-variance-authority';
-import { BUTTON_DEFAULT_PROPS } from './Button.constants';
+import { BUTTON_DEFAULT_PROPS } from './constants';
 
 export const buttonVariants = cva('draco-button', {
   variants: {
@@ -24,9 +24,15 @@ export const buttonVariants = cva('draco-button', {
       rounded: 'draco-button--rounded',
     },
     size: {
+      xsmall: 'draco-button--xsmall',
       small: 'draco-button--small',
       medium: 'draco-button--medium',
       large: 'draco-button--large',
+    },
+    alignment: {
+      start: 'draco-button--align-start',
+      center: 'draco-button--align-center',
+      end: 'draco-button--align-end',
     },
     fullWidth: {
       true: 'draco-button--full-width',
@@ -34,8 +40,12 @@ export const buttonVariants = cva('draco-button', {
     loading: {
       true: 'draco-button--loading',
     },
-    elevated: {
-      true: 'draco-button--elevated',
+    depth: {
+      true: 'draco-button--depth',
+    },
+    depthDirection: {
+      right: 'draco-button--depth-right',
+      center: 'draco-button--depth-center',
     },
     iconOnly: {
       true: 'draco-button--icon-only',
@@ -45,5 +55,7 @@ export const buttonVariants = cva('draco-button', {
     variant: BUTTON_DEFAULT_PROPS.variant,
     size: BUTTON_DEFAULT_PROPS.size,
     shape: BUTTON_DEFAULT_PROPS.shape,
+    alignment: BUTTON_DEFAULT_PROPS.alignment,
+    depthDirection: BUTTON_DEFAULT_PROPS.depthDirection,
   },
 });

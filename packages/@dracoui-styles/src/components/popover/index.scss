@@ -1,5 +1,16 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 @forward 'popover';
+@forward 'tokens';
 
 @use 'popover';
+@use 'tokens';
+@use 'sizes';
+@use 'variants';
 
 @include popover.Popover;

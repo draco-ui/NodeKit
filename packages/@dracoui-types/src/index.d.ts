@@ -3,6 +3,11 @@
  * Framework-agnostic TypeScript type definitions
  */
 
-// Re-export all button types from the main entry point
-export * from './badge';
-export * from './button';
+export * from './label/label.d';
+export * from './input/input.d';
+export * from './tooltip/tooltip.d';
+export * from './button/button.d';
+
+export * from './popover/popover.d';
+export * from './popover/popover-surface.d';
+export * from './popover/popover-trigger.d';

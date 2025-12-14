@@ -1,0 +1,63 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Buttons allow users to take actions and make choices with a single tap.
+
+## Props
+
+<Canvas of={ButtonStories.Default} />
+
+<Controls of={ButtonStories.Default} />
+
+## Variant
+
+A button can have different visual styles to indicate hierarchy and importance.
+
+- `primary`: emphasizes the button as a primary action
+- `secondary`: indicates a secondary action
+- `tertiary`: de-emphasizes the button for less important actions
+- `ghost`: minimal styling that blends into the background
+- `amber`: highlights the button with an amber color for warning actions
+- `error`: indicates a destructive or error action
+
+<Canvas of={ButtonStories.Variant} />
+
+## Size
+
+A button can have different sizes.
+
+<Canvas of={ButtonStories.Size} />
+
+## Shape
+
+A button can have different border radius styles.
+
+<Canvas of={ButtonStories.Shape} />
+
+## Loading
+
+A button can show a loading state to indicate an action is in progress.
+
+<Canvas of={ButtonStories.Loading} />
+
+## Disabled
+
+A button can be disabled.
+
+<Canvas of={ButtonStories.Disabled} />
+
+## Depth
+
+A button can have a 3D depth/shadow effect. The shadow can be offset to the right (default) or centered.
+
+<Canvas of={ButtonStories.Depth} />
+
+## Full Width
+
+A button can take the full width of its container.
+
+<Canvas of={ButtonStories.FullWidth} />

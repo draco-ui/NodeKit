@@ -19,7 +19,8 @@ export const SplitButton = forwardRef<HTMLDivElement, SplitButtonProps & Variant
       variant = SPLIT_BUTTON_DEFAULT_PROPS.variant,
       size = SPLIT_BUTTON_DEFAULT_PROPS.size,
       shape = SPLIT_BUTTON_DEFAULT_PROPS.shape,
-      elevated = SPLIT_BUTTON_DEFAULT_PROPS.elevated,
+      depth = SPLIT_BUTTON_DEFAULT_PROPS.depth,
+      depthDirection = SPLIT_BUTTON_DEFAULT_PROPS.depthDirection,
       children,
       className,
       primaryActionButton,
@@ -30,14 +31,15 @@ export const SplitButton = forwardRef<HTMLDivElement, SplitButtonProps & Variant
     return (
       <div
         ref={ref}
-        className={cn(splitButtonVariants({ variant, size, shape, elevated }), className)}
+        className={cn(splitButtonVariants({ variant, size, shape, depth, depthDirection }), className)}
       >
         <Button
           {...primaryActionButton}
           variant={variant}
           size={size}
           shape={shape}
-          elevated={elevated}
+          depth={depth}
+          depthDirection={depthDirection}
           disabled={disabled || primaryActionButton?.disabled}
           className={cn('draco-split-button__primary', primaryActionButton?.className)}
         >
@@ -48,7 +50,7 @@ export const SplitButton = forwardRef<HTMLDivElement, SplitButtonProps & Variant
           {...menuButton}
           disabled={disabled || menuButton?.disabled}
           className={cn(
-            buttonVariants({ variant, size, shape, elevated, iconOnly: true }),
+            buttonVariants({ variant, size, shape, depth, depthDirection, iconOnly: true }),
             'draco-split-button__menu',
             menuButton?.className
           )}
@@ -75,8 +77,11 @@ export const SplitButton = forwardRef<HTMLDivElement, SplitButtonProps & Variant
   // Border radius style of the split button
   shape: PropTypes.oneOf(Object.values(ButtonShapeValues)),
 
-  // Whether the split button has a shadow/elevation effect
-  elevated: PropTypes.bool,
+  // Whether the split button has a 3D depth/shadow effect
+  depth: PropTypes.bool,
+
+  // Direction of the depth shadow
+  depthDirection: PropTypes.oneOf(['right', 'center']),
 
   // Whether the split button is disabled
   disabled: PropTypes.bool,

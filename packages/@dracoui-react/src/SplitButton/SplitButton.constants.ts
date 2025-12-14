@@ -15,7 +15,8 @@ export const SPLIT_BUTTON_DEFAULT_PROPS = {
   variant: ButtonVariantValues.Primary,
   size: ButtonSizeValues.Medium,
   shape: ButtonShapeValues.Rounded,
-  elevated: false,
+  depth: false,
+  depthDirection: 'right',
 } as const;
 
 

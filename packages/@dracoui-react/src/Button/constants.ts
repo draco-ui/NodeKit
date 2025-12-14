@@ -5,18 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonVariantValues, ButtonSizeValues, ButtonShapeValues } from '@dracoui/types';
+import { ButtonVariantValues, ButtonSizeValues, ButtonShapeValues, ButtonAlignmentValues } from '@dracoui/types';
 
 /**
  * Default values for Button component
  * Shared between CVA defaultVariants and defu defaults
  */
 export const BUTTON_DEFAULT_PROPS = {
-  variant: ButtonVariantValues.Primary,
+  asChild: false,
+  depth: false,
+  depthDirection: 'right',
   size: ButtonSizeValues.Medium,
   shape: ButtonShapeValues.Rounded,
-  elevated: false,
-  asChild: false,
+  variant: ButtonVariantValues.Primary,
+  alignment: ButtonAlignmentValues.Center
 } as const;
 
 export const BUTTON_DEFAULT_NAME: string = 'Button' as const;

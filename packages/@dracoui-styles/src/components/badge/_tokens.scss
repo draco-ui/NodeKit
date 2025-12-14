@@ -7,11 +7,22 @@
 
 @use '@dracoui/primitives';
 
-/// @type Number
-$badge-font-weight: primitives.$draco-base-weight-normal !default;
+/// @type String
+/// Border style for all badge variants
+$badge-border-style: solid !default;
 
 /// @type Number
+/// Font weight for badge text
+$badge-font-weight: 600 !default;
+
+/// @type Number
+/// Default font size for badges (overridden per size variant)
 $badge-font-size: primitives.$draco-text-size-body-small !default;
 
 /// @type Number
+/// Default border radius for badges (overridden by shape variants: circular, rounded, square)
 $badge-border-radius: primitives.$draco-border-radius-full !default;
+
+/// @type Number
+/// Width of badge borders across all variants
+$badge-border-width: primitives.$draco-border-width-thin !default;

@@ -1,128 +1,95 @@
-import React, { forwardRef } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { css } from '@emotion/css';
-import cn from 'clsx';
-
-const inputWrapperVariants = cva('draco-input-wrapper', {
-  variants: {
-    size: {
-      small: 'draco-input-wrapper--small',
-      medium: 'draco-input-wrapper--medium',
-      large: 'draco-input-wrapper--large',
-    },
-    error: {
-      true: 'draco-input-wrapper--error',
-    },
-    disabled: {
-      true: 'draco-input-wrapper--disabled',
-    },
-    fullWidth: {
-      true: 'draco-input-wrapper--full-width',
-    },
-  },
-  defaultVariants: {
-    size: 'medium',
-  },
-});
-
-const inputVariants = cva('draco-input', {
-  variants: {
-    size: {
-      small: 'draco-input--small',
-      medium: 'draco-input--medium',
-      large: 'draco-input--large',
-    },
-  },
-  defaultVariants: {
-    size: 'medium',
-  },
-});
-
-// Use emotion for minor custom styling if needed
-const adornmentStyles = css`
-  display: inline-flex;
-  align-items: center;
-  color: #6b7280;
-  flex-shrink: 0;
-`;
-
-export interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
-    VariantProps<typeof inputVariants> {
-  /**
-   * Whether the input has an error
-   * @default false
-   */
-  error?: boolean;
-
-  /**
-   * Whether the input should take full width
-   * @default false
-   */
-  fullWidth?: boolean;
-
-  /**
-   * Icon or element to display at the start of the input
-   */
-  startAdornment?: React.ReactNode;
-
-  /**
-   * Icon or element to display at the end of the input
-   */
-  endAdornment?: React.ReactNode;
-}
-
 /**
- * Input component for text entry
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
  *
- * Uses the global @dracoui/styles package for styling, with @emotion/css for minor customizations
- *
- * @example
- * ```tsx
- * <Input placeholder="Enter text..." />
- * <Input size="small" error />
- * ```
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+
+import cn from 'clsx';
+import { defu } from 'defu';
+import { forwardRef, useState } from 'react';
+import { SprocketInput } from '@sprocketui/react';
+import { Primitive } from '@necto-react/components';
+
+import { inputVariants } from './Input.styles';
+import { INPUT_DEFAULT_PROPS, INPUT_DEFAULT_NAME } from './constants';
+
+import type { InputProps } from './Input.types';
+import type { ForwardedRef, ReactElement } from 'react';
+import type { VariantProps } from 'class-variance-authority';
+
+type InputComponentProps = InputProps & VariantProps<typeof inputVariants>;
+
+export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
   (
-    {
+    props: InputComponentProps,
+    ref: ForwardedRef<HTMLInputElement>
+  ): ReactElement => {
+    const {
       size,
-      error = false,
-      fullWidth = false,
-      startAdornment,
-      endAdornment,
+      variant,
+      fullWidth,
+      depth,
+      depthDirection,
       className,
       disabled,
-      ...props
-    },
-    ref
-  ) => {
-    const hasAdornments = startAdornment || endAdornment;
+      floatingLabel,
+      placeholder,
+      value,
+      defaultValue,
+      onFocus,
+      onBlur,
+      ...others
+    } = defu(props, INPUT_DEFAULT_PROPS);
 
-    if (hasAdornments) {
-      return (
-        <div className={cn(inputWrapperVariants({ size, error, disabled, fullWidth }))}>
-          {startAdornment && <span className={adornmentStyles}>{startAdornment}</span>}
-          <input
-            ref={ref}
-            className={cn(inputVariants({ size }), className)}
-            disabled={disabled}
-            {...props}
-          />
-          {endAdornment && <span className={adornmentStyles}>{endAdornment}</span>}
-        </div>
-      );
-    }
+    const [isFocused, setIsFocused] = useState(false);
+    const [hasValue, setHasValue] = useState(!!defaultValue || !!value);
+
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(true);
+      onFocus?.(e);
+    };
+
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(false);
+      setHasValue(!!e.target.value);
+      onBlur?.(e);
+    };
+
+    const isLabelFloating = isFocused || hasValue;
 
     return (
-      <input
-        ref={ref}
-        className={cn(inputVariants({ size }), className)}
-        disabled={disabled}
-        {...props}
-      />
+      <Primitive.Span
+        className={cn(
+          inputVariants({ size, variant, fullWidth, depth, depthDirection }),
+          floatingLabel && 'draco-input--floating-label',
+          className
+        )}
+      >
+        {floatingLabel && placeholder && (
+          <span
+            className={cn(
+              'draco-input__floating-label',
+              isLabelFloating && 'draco-input__floating-label--active'
+            )}
+          >
+            {placeholder}
+          </span>
+        )}
+        <SprocketInput.Root
+          ref={ref}
+          className="draco-input__element"
+          disabled={disabled}
+          placeholder={floatingLabel ? undefined : placeholder}
+          value={value}
+          defaultValue={defaultValue}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          {...others}
+        />
+      </Primitive.Span>
     );
   }
 );
 
-Input.displayName = 'Input';
+Input.displayName = INPUT_DEFAULT_NAME;

@@ -1,21 +1,21 @@
 import type { ReactNode } from 'react';
 import type { ButtonProps } from '../Button/Button.types';
-import type { BaseButtonProps } from '@dracoui/types';
+import type { ButtonOptions } from '@dracoui/types';
 
 /**
  * Props for the primary action button (left side)
  */
-export interface PrimaryActionButtonProps extends Partial<Omit<ButtonProps, 'children' | 'variant' | 'size' | 'shape' | 'elevated'>> {}
+export interface PrimaryActionButtonProps extends Partial<Omit<ButtonProps, 'children' | 'variant' | 'size' | 'shape' | 'depth' | 'depthDirection'>> {}
 
 /**
  * Props for the menu trigger button (right side)
  */
-export interface MenuButtonProps extends Partial<Omit<ButtonProps, 'children' | 'variant' | 'size' | 'shape' | 'elevated' | 'iconOnly'>> {}
+export interface MenuButtonProps extends Partial<Omit<ButtonProps, 'children' | 'variant' | 'size' | 'shape' | 'depth' | 'depthDirection' | 'iconOnly'>> {}
 
 /**
  * SplitButton component props
  */
-export interface SplitButtonProps extends BaseButtonProps {
+export interface SplitButtonProps extends ButtonOptions {
   /**
    * Content of the primary button (left side)
    */

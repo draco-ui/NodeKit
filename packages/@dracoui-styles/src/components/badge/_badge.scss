@@ -5,267 +5,58 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+@use 'sass:list';
+@use 'tokens' as *;
 @use '@dracoui/primitives';
+@use '../../utilities/disable-selection' as *;
 
 @mixin Badge {
   .draco-badge {
+    @include disable-selection;
+
     display: inline-flex;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    appearance: none;
+    font-family: primitives.$draco-font-sans-serif;
+    font-weight: $badge-font-weight;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    font-family: inherit;
-    font-weight: 600;
+    text-align: center;
     line-height: 1;
     white-space: nowrap;
     vertical-align: middle;
-    border-width: primitives.$draco-border-width-thin;
-    border-style: solid;
+    outline: none;
+    border-radius: $badge-border-radius;
+    border-width: $badge-border-width;
+    border-style: $badge-border-style;
+    contain: layout style paint;
 
-    // Sizes
-    &--tiny {
-      min-width: 6px;
-      height: 6px;
-      font-size: 0;
-      padding: 0;
-    }
+    // GPU acceleration optimizations
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
 
-    &--extra-small {
-      min-width: 10px;
-      height: 10px;
-      font-size: 9px;
-      padding: 0 4px;
-      gap: 2px;
-    }
-
-    &--small {
-      min-width: 16px;
-      height: 16px;
-      font-size: 10px;
-      padding: 0 4px;
-      gap: 4px;
-    }
-
-    &--medium {
-      min-width: 20px;
-      height: 20px;
-      font-size: 12px;
-      padding: 0 6px;
-      gap: 4px;
-    }
-
-    &--large {
-      min-width: 24px;
-      height: 24px;
-      font-size: 12px;
-      padding: 0 8px;
-      gap: 4px;
-    }
-
-    &--extra-large {
-      min-width: 32px;
-      height: 32px;
-      font-size: 14px;
-      padding: 0 12px;
-      gap: 6px;
-    }
-
-    // Shapes
-    &--circular {
+    // Shape variants
+    &.draco-badge--circular {
       border-radius: primitives.$draco-border-radius-full;
     }
 
-    &--rounded {
+    &.draco-badge--rounded {
       border-radius: primitives.$draco-border-radius-medium;
     }
 
-    &--square {
+    &.draco-badge--square {
       border-radius: 0;
     }
 
-    // Filled appearance (using non-subtle badge tokens)
-    &--filled {
-      &.draco-badge--brand {
-        background-color: var(--draco-badge-primary-background);
-        color: var(--draco-badge-primary-foreground);
-        border-color: transparent;
-      }
-
-      &.draco-badge--danger {
-        background-color: var(--draco-badge-danger-background);
-        color: var(--draco-badge-danger-foreground);
-        border-color: transparent;
-      }
-
-      &.draco-badge--important {
-        background-color: var(--draco-badge-secondary-background);
-        color: var(--draco-badge-secondary-foreground);
-        border-color: transparent;
-      }
-
-      &.draco-badge--informative {
-        background-color: var(--draco-badge-info-background);
-        color: var(--draco-badge-info-foreground);
-        border-color: transparent;
-      }
-
-      &.draco-badge--severe {
-        background-color: var(--draco-badge-amber-background);
-        color: var(--draco-badge-amber-foreground);
-        border-color: transparent;
-      }
-
-      &.draco-badge--subtle {
-        background-color: var(--draco-badge-secondary-subtle-background);
-        color: var(--draco-badge-secondary-subtle-foreground);
-        border-color: var(--draco-badge-secondary-subtle-background);
-      }
-
-      &.draco-badge--success {
-        background-color: var(--draco-badge-success-background);
-        color: var(--draco-badge-success-foreground);
-        border-color: transparent;
-      }
-
-      &.draco-badge--warning {
-        background-color: var(--draco-badge-amber-background);
-        color: var(--draco-badge-amber-foreground);
-        border-color: transparent;
-      }
-    }
-
-    // Ghost appearance (transparent background with border)
-    &--ghost {
-      background-color: transparent;
-
-      &.draco-badge--brand {
-        color: var(--draco-badge-primary-foreground);
-        border-color: var(--draco-badge-primary-background);
-      }
-
-      &.draco-badge--danger {
-        color: var(--draco-badge-danger-foreground);
-        border-color: var(--draco-badge-danger-background);
-      }
-
-      &.draco-badge--important {
-        color: var(--draco-badge-secondary-foreground);
-        border-color: var(--draco-badge-secondary-background);
-      }
-
-      &.draco-badge--informative {
-        color: var(--draco-badge-info-foreground);
-        border-color: var(--draco-badge-info-background);
-      }
-
-      &.draco-badge--severe {
-        color: var(--draco-badge-amber-foreground);
-        border-color: var(--draco-badge-amber-background);
-      }
-
-      &.draco-badge--subtle {
-        color: var(--draco-badge-secondary-subtle-foreground);
-        border-color: var(--draco-badge-secondary-subtle-background);
-      }
-
-      &.draco-badge--success {
-        color: var(--draco-badge-success-foreground);
-        border-color: var(--draco-badge-success-background);
-      }
-
-      &.draco-badge--warning {
-        color: var(--draco-badge-amber-foreground);
-        border-color: var(--draco-badge-amber-background);
-      }
-    }
-
-    // Outline appearance (background with border)
-    &--outline {
-      background-color: var(--draco-background-primary);
-
-      &.draco-badge--brand {
-        color: var(--draco-badge-primary-background);
-        border-color: var(--draco-badge-primary-background);
-      }
-
-      &.draco-badge--danger {
-        color: var(--draco-badge-danger-background);
-        border-color: var(--draco-badge-danger-background);
-      }
-
-      &.draco-badge--important {
-        color: var(--draco-badge-secondary-background);
-        border-color: var(--draco-badge-secondary-background);
-      }
-
-      &.draco-badge--informative {
-        color: var(--draco-badge-info-background);
-        border-color: var(--draco-badge-info-background);
-      }
-
-      &.draco-badge--severe {
-        color: var(--draco-badge-amber-background);
-        border-color: var(--draco-badge-amber-background);
-      }
-
-      &.draco-badge--subtle {
-        color: var(--draco-badge-secondary-subtle-foreground);
-        border-color: var(--draco-badge-secondary-subtle-background);
-      }
-
-      &.draco-badge--success {
-        color: var(--draco-badge-success-background);
-        border-color: var(--draco-badge-success-background);
-      }
-
-      &.draco-badge--warning {
-        color: var(--draco-badge-amber-background);
-        border-color: var(--draco-badge-amber-background);
-      }
-    }
-
-    // Tint appearance (using subtle badge tokens)
-    &--tint {
-      border-color: transparent;
-
-      &.draco-badge--brand {
-        background-color: var(--draco-badge-primary-background);
-        color: var(--draco-background-primary);
-      }
-
-      &.draco-badge--danger {
-        background-color: var(--draco-badge-danger-subtle-background);
-        color: var(--draco-badge-danger-subtle-foreground);
-      }
-
-      &.draco-badge--important {
-        background-color: var(--draco-badge-secondary-subtle-background);
-        color: var(--draco-badge-secondary-subtle-foreground);
-      }
-
-      &.draco-badge--informative {
-        background-color: var(--draco-badge-info-subtle-background);
-        color: var(--draco-badge-info-subtle-foreground);
-      }
-
-      &.draco-badge--severe {
-        background-color: var(--draco-badge-amber-subtle-background);
-        color: var(--draco-badge-amber-subtle-foreground);
-      }
-
-      &.draco-badge--subtle {
-        background-color: var(--draco-badge-secondary-subtle-background);
-        color: var(--draco-badge-secondary-subtle-foreground);
-      }
-
-      &.draco-badge--success {
-        background-color: var(--draco-badge-success-subtle-background);
-        color: var(--draco-badge-success-subtle-foreground);
-      }
-
-      &.draco-badge--warning {
-        background-color: var(--draco-badge-amber-subtle-background);
-        color: var(--draco-badge-amber-subtle-foreground);
-      }
+    // Optimized transitions for smooth animations
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out,
+        background-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+        border-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out;
     }
   }
 }

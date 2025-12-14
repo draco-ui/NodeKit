@@ -28,10 +28,10 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "pnpm clean && cp -r src/* dist/ && echo \"export * from './badge';\nexport * from './button';\" > dist/index.js",
-    "clean": "rm -rf dist && mkdir -p dist",
-    "typecheck": "echo 'Types only package - no typecheck needed'",
-    "dev": "echo 'Types only package - no dev mode needed'"
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsup --watch"
   },
   "devDependencies": {
     "tsup": "^8.5.0",

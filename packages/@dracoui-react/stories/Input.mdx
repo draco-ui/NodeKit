@@ -1,0 +1,48 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as InputStories from './Input.stories';
+
+<Meta of={InputStories} />
+
+# Input
+
+Input fields allow users to enter text into a UI.
+
+## Props
+
+<Canvas of={InputStories.Default} />
+
+<Controls of={InputStories.Default} />
+
+## Variant
+
+An input can have different visual styles.
+
+- `outline`: default style with a border
+- `filled`: filled background style
+- `underline`: minimal underline style
+
+<Canvas of={InputStories.Variant} />
+
+## Size
+
+An input can have different sizes.
+
+<Canvas of={InputStories.Size} />
+
+## Disabled
+
+An input can be disabled to prevent user interaction.
+
+<Canvas of={InputStories.Disabled} />
+
+## Full Width
+
+An input can take the full width of its container.
+
+<Canvas of={InputStories.FullWidth} />
+
+## Depth
+
+An input can have a 3D depth/shadow effect. The shadow can be offset to the right (default) or centered.
+
+<Canvas of={InputStories.Depth} />

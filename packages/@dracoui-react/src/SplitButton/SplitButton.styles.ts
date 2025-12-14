@@ -24,12 +24,17 @@ export const splitButtonVariants = cva('draco-split-button', {
       rounded: 'draco-split-button--rounded',
     },
     size: {
+      xsmall: 'draco-split-button--xsmall',
       small: 'draco-split-button--small',
       medium: 'draco-split-button--medium',
       large: 'draco-split-button--large',
     },
-    elevated: {
-      true: 'draco-split-button--elevated',
+    depth: {
+      true: 'draco-split-button--depth',
+    },
+    depthDirection: {
+      right: 'draco-split-button--depth-right',
+      center: 'draco-split-button--depth-center',
     },
   },
   defaultVariants: SPLIT_BUTTON_DEFAULT_PROPS,

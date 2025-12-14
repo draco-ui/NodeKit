@@ -29,8 +29,8 @@
         transform: translateZ(0) !important;
       }
 
-      // For elevated buttons, keep shadow but disable movement
-      &.draco-button--elevated {
+      // For depth buttons, keep shadow but disable movement
+      &.draco-button--depth {
         // Ensure base transform is set for GPU acceleration
         transform: translateZ(0) translate(0, 0) !important;
 
