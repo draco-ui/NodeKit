@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "index.scss",
+    "src",
+    "../../../../../Primitives/packaging/npm"
+  ],
+  "ext": "scss,css",
+  "exec": "sass index.scss dist/css/styles.css --no-source-map --load-path=node_modules"
+}

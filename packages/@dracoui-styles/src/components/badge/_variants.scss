@@ -6,36 +6,72 @@
  */
 
 @use 'sass:map';
-@use "sass:string";
+@use 'tokens' as *;
 @use '@dracoui/primitives';
 @use '../../utilities/variant-selector' as *;
 
-$button-variants: (
-  'primary',
-  'secondary',
-  'secondary-subtle',
-  'info',
-  'info-subtle',
-  'tier',
-  'tier-subtle',
-  'amber',
-  'amber-subtle',
+// Color variants that work across all appearances
+$badge-color-variants: (
+  'brand',
   'danger',
-  'danger-subtle',
-  'sponsor',
-  'sponsor-subtle',
+  'important',
+  'informative',
+  'severe',
+  'subtle',
   'success',
-  'success-subtle'
+  'warning'
+);
+
+// Appearance styles that define how the badge is displayed
+$badge-appearances: (
+  'filled': (
+    'uses-border': false,
+    'token-modifier': ''
+  ),
+  'ghost': (
+    'uses-border': true,
+    'token-modifier': ''
+  ),
+  'outline': (
+    'uses-border': true,
+    'token-modifier': ''
+  ),
+  'tint': (
+    'uses-border': false,
+    'token-modifier': '-subtle'
+  )
 );
 
 .draco-badge {
-  @each $name in $button-variants {
-    $is-subtle: string.index($name, '-subtle') != null;
-    $base-name: if($is-subtle, string.slice($name, 1, string.index($name, '-subtle') - 1), $name);
+  // Loop through each appearance type
+  @each $appearance, $appearance-props in $badge-appearances {
+    &--#{$appearance} {
+      // Loop through each color variant within the appearance
+      @each $color in $badge-color-variants {
+        &.draco-badge--#{$color} {
+          $token-modifier: map.get($appearance-props, 'token-modifier');
+          $uses-border: map.get($appearance-props, 'uses-border');
 
-    @include variant-selector($name) {
-      color: var(--draco-badge-#{$base-name}#{if($is-subtle, '-subtle', '')}-foreground);
-      background-color: var(--draco-badge-#{$base-name}#{if($is-subtle, '-subtle', '')}-background);
+          // Set color and background based on appearance
+          @if $appearance == 'filled' {
+            color: var(--draco-badge-#{$color}#{$token-modifier}-foreground);
+            background-color: var(--draco-badge-#{$color}#{$token-modifier}-background);
+            border-color: transparent;
+          } @else if $appearance == 'ghost' {
+            color: var(--draco-badge-#{$color}-foreground);
+            background-color: transparent;
+            border-color: var(--draco-badge-#{$color}-background);
+          } @else if $appearance == 'outline' {
+            color: var(--draco-badge-#{$color}-background);
+            background-color: var(--draco-background-primary);
+            border-color: var(--draco-badge-#{$color}-background);
+          } @else if $appearance == 'tint' {
+            color: var(--draco-badge-#{$color}#{$token-modifier}-foreground);
+            background-color: var(--draco-badge-#{$color}#{$token-modifier}-background);
+            border-color: transparent;
+          }
+        }
+      }
     }
   }
 }

@@ -10,35 +10,59 @@
 @use 'tokens' as *;
 @use '@dracoui/primitives';
 
-$badge-sizes: ( "small", "medium", "large" );
-
-$badge-size-props: (
+$badge-sizes: (
+  "tiny": (
+    "gap": 0,
+    "size": 6px,
+    "font-size": 0,
+    "padding-horizontal": 0,
+    "min-width": 6px
+  ),
+  "extra-small": (
+    "gap": 2px,
+    "size": 10px,
+    "font-size": 9px,
+    "padding-horizontal": 4px,
+    "min-width": 10px
+  ),
   "small": (
-    "font-size": primitives.$draco-text-size-body-tiny,
-    "size": primitives.$draco-badge-small-size,
-    "padding-horizontal": primitives.$draco-badge-small-padding-normal
-    ),
+    "gap": 4px,
+    "size": 16px,
+    "font-size": 10px,
+    "padding-horizontal": 4px,
+    "min-width": 16px
+  ),
   "medium": (
-    "size": primitives.$draco-badge-medium-size,
-    "padding-horizontal": primitives.$draco-badge-medium-padding-normal
+    "gap": 4px,
+    "size": 20px,
+    "font-size": 12px,
+    "padding-horizontal": 6px,
+    "min-width": 20px
   ),
   "large": (
-    "font-size": primitives.$draco-text-size-body-medium,
-    "size": primitives.$draco-control-medium-size,
-    "padding-horizontal": primitives.$draco-control-medium-padding-normal
+    "gap": 4px,
+    "size": 24px,
+    "font-size": 12px,
+    "padding-horizontal": 8px,
+    "min-width": 24px
+  ),
+  "extra-large": (
+    "gap": 6px,
+    "size": 32px,
+    "font-size": 14px,
+    "padding-horizontal": 12px,
+    "min-width": 32px
   ),
 );
 
 .draco-badge {
-  @each $size in $badge-sizes {
+  @each $size, $props in $badge-sizes {
     &.draco-badge--#{$size} {
-      font-size: if(
-        map.has-key($badge-size-props, $size) and map.has-key(map.get($badge-size-props, $size), "font-size"),
-        map.get($badge-size-props, $size, "font-size"),
-        $badge-font-size
-      );
-      height: map.get($badge-size-props, $size, "size");
-      padding: 0 map.get($badge-size-props, $size, "padding-horizontal");
+      gap: map.get($props, "gap");
+      font-size: map.get($props, "font-size");
+      height: map.get($props, "size");
+      min-width: map.get($props, "min-width");
+      padding: 0 map.get($props, "padding-horizontal");
     }
   }
 }

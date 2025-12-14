@@ -8,12 +8,15 @@
 @use 'sass:list';
 @use 'tokens' as *;
 @use '@dracoui/primitives';
+@use '../../utilities/disable-selection' as *;
 
 @mixin Button {
   .draco-button {
+    @include disable-selection;
+
     display: flex;
-    flex-direction: row;
     flex-shrink: 0;
+    flex-direction: row;
     box-sizing: border-box;
     min-width: max-content;
     appearance: none;
@@ -25,17 +28,17 @@
     text-decoration: none;
     outline: none;
     cursor: pointer;
-    -webkit-user-select: none;
-    user-select: none;
+    border-radius: $button-border-radius;
+    contain: layout style paint;
 
-    // Disable buttons selection
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    // GPU acceleration optimizations
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
 
+    &.draco-button--full,
     &.draco-button--pill {
-      // Override defaults
       $button-border-radius: primitives.$draco-border-radius-full;
       border-radius: $button-border-radius;
     }
@@ -45,17 +48,19 @@
       border-radius: $button-border-radius;
     }
 
-    // Allow users to specify their motions preferences
+    // Optimized transitions for smooth animations
     @media (prefers-reduced-motion: no-preference) {
-      $properties: background-color, border-color, box-shadow, color, transform;
-      $duration: primitives.$draco-base-duration-200;
+      transition:
+        transform primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out,
+        opacity primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out,
+        background-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+        border-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+        box-shadow primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out;
+    }
 
-      $transitions: ();
-      @each $prop in $properties {
-        $transitions: list.append($transitions, $prop $duration, comma);
-      }
-
-      transition: $transitions;
+    &:hover,
+    &:active {
+      will-change: transform, background-color;
     }
 
     // Reset intrinsic padding for Firefox

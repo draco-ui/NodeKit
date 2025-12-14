@@ -1,0 +1,62 @@
+{
+  "name": "@dracoui/uno",
+  "version": "1.0.0",
+  "description": "Draco UI tokens and presets for UnoCSS and Tailwind CSS",
+  "keywords": [
+    "dracoui",
+    "unocss",
+    "tailwind",
+    "design-tokens",
+    "preset"
+  ],
+  "author": "Draco UI Team",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./preset": {
+      "types": "./dist/preset.d.ts",
+      "import": "./dist/preset.js"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/build.js --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@dracoui/primitives": "workspace:*"
+  },
+  "devDependencies": {
+    "@unocss/core": "^0.62.4",
+    "sass": "^1.84.0",
+    "typescript": "^5.7.3"
+  },
+  "peerDependencies": {
+    "unocss": "^0.62.0"
+  },
+  "peerDependenciesMeta": {
+    "unocss": {
+      "optional": true
+    }
+  }
+}

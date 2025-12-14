@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives';
+
+/// @type Number
+/// Font weight for tooltip text
+$tooltip-font-weight: primitives.$draco-base-weight-normal !default;
+
+/// @type Number
+/// Default font size for tooltips
+$tooltip-font-size: primitives.$draco-text-size-body-tiny !default;
+
+/// @type Number
+/// Width of tooltip borders across all variants
+$tooltip-border-width: primitives.$draco-border-width-thin !default;
+
+/// @type String
+/// Border style for dark tooltip variants
+$tooltip-border-style: solid !default;
+
+/// @type Number
+/// Default border radius for tooltips
+$tooltip-border-radius: primitives.$draco-border-radius-medium !default;

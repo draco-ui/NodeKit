@@ -1,0 +1,12 @@
+# Cypress
+cypress/screenshots
+cypress/videos
+cypress/downloads
+
+# Visual snapshots - commit baseline snapshots
+# cypress/snapshots/**/__diff_output__
+# cypress/snapshots/**/__received_output__
+
+# Or exclude all snapshot artifacts (regenerate baselines when needed)
+cypress/snapshots/**/__diff_output__
+cypress/snapshots/**/__received_output__

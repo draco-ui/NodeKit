@@ -1,4 +1,4 @@
 packages:
-  # The paps directory is strictly for testing please remove
-  # - apps/*
   - packages/*
+  - storybook
+  - '../Primitives/packaging/npm'

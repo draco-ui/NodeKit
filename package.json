@@ -5,15 +5,31 @@
   "description": "",
   "scripts": {
     "changeset": "changeset",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "build:ember": "turbo run build --filter=@dracoui/ember",
-    "build:styles": "turbo run build --filter=@dracoui/styles"
+    "build:styles": "turbo run build --filter=@dracoui/styles",
+    "build:react": "turbo run build --filter=@dracoui/react",
+    "storybook:react": "pnpm --filter @dracoui/react storybook",
+    "storybook:ember": "pnpm --filter @dracoui/ember storybook",
+    "build-storybook:react": "pnpm --filter @dracoui/react build-storybook",
+    "build-storybook:ember": "pnpm --filter @dracoui/ember build-storybook",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write ."
   },
   "dependencies": {
+    "@necto-react/hooks": "^2.12.5",
+    "@necto/dom": "^1.4.5",
     "turbo": "^2.4.0"
   },
   "packageManager": "pnpm@9.15.3",
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.1.2",
+      "@types/react-dom": "19.1.2"
+    }
+  },
   "devDependencies": {
     "@changesets/cli": "^2.28.1"
   }

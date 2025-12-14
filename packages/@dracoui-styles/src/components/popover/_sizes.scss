@@ -1,0 +1,43 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+@use '../../utilities/variant-selector' as *;
+
+$popover-sizes: (
+  'small': (
+    'radius': primitives.$draco-border-radius-small,
+    'padding': 8px,
+    'font-size': primitives.$draco-text-size-body-tiny,
+    'max-width': 200px,
+  ),
+  'medium': (
+    'radius': $popover-border-radius,
+    'padding': 12px,
+    'font-size': $popover-font-size,
+    'max-width': 320px,
+  ),
+  'large': (
+    'radius': primitives.$draco-border-radius-large,
+    'padding': 16px,
+    'font-size': primitives.$draco-text-size-body-medium,
+    'max-width': 480px,
+  )
+);
+
+.draco-popover-surface {
+  @each $name, $size in $popover-sizes {
+    @include variant-selector($name) {
+      padding: map.get($size, 'padding');
+      font-size: map.get($size, 'font-size');
+      border-radius: map.get($size, 'radius');
+      max-width: map.get($size, 'max-width');
+    }
+  }
+}

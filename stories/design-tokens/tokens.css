@@ -1,0 +1,22 @@
+/**
+ * Design Tokens for Draco UI
+ * This file imports all design token files from @dracoui/primitives/dist/docs
+ */
+
+/* Base Tokens */
+@import url('../../node_modules/@dracoui/primitives/dist/docs/base/colors.tokens.css');
+@import url('../../node_modules/@dracoui/primitives/dist/docs/base/borders.tokens.css');
+@import url('../../node_modules/@dracoui/primitives/dist/docs/base/sizes.tokens.css');
+@import url('../../node_modules/@dracoui/primitives/dist/docs/base/motion.tokens.css');
+@import url('../../node_modules/@dracoui/primitives/dist/docs/base/typography.tokens.css');
+
+/* Product Tokens */
+@import url('../../node_modules/@dracoui/primitives/dist/docs/product/colors.tokens.css');
+
+/* Functional Tokens */
+@import url('../../node_modules/@dracoui/primitives/dist/docs/functional/typography.tokens.css');
+@import url('../../node_modules/@dracoui/primitives/dist/docs/functional/breakpoints.tokens.css');
+
+/* Theme Tokens */
+@import url('../../node_modules/@dracoui/primitives/dist/docs/functional/themes/light.tokens.css');
+@import url('../../node_modules/@dracoui/primitives/dist/docs/functional/themes/dark.tokens.css');
