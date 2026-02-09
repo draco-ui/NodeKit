@@ -180,3 +180,29 @@ export const DepthWithFloatingLabel: Story = {
     </div>
   ),
 };
+
+const SearchIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35" />
+  </svg>
+);
+
+const ClearIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+);
+
+/**
+ * Input with content before and/or after the input field
+ */
+export const ContentSlots: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+      <Input contentBefore={<SearchIcon />} placeholder="Search..." />
+      <Input contentAfter={<ClearIcon />} placeholder="With clear button" />
+      <Input contentBefore={<SearchIcon />} contentAfter={<ClearIcon />} placeholder="Both slots" />
+    </div>
+  ),
+};

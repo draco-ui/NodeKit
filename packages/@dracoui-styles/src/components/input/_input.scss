@@ -48,6 +48,16 @@
       &:disabled { cursor: not-allowed; opacity: 0.6; }
     }
 
+    &__content {
+      &-before,
+      &-after {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+    }
+
     &__floating-label {
       position: absolute;
       top: 37%;
@@ -60,6 +70,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       pointer-events: none;
+      -webkit-user-select: none;
       user-select: none;
       transform: translateY(-20%) translateZ(0);
       transform-origin: left center;

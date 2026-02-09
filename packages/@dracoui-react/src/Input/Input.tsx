@@ -37,6 +37,8 @@ export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
       placeholder,
       value,
       defaultValue,
+      contentBefore,
+      contentAfter,
       onFocus,
       onBlur,
       ...others
@@ -56,8 +58,6 @@ export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
       onBlur?.(e);
     };
 
-    const isLabelFloating = isFocused || hasValue;
-
     return (
       <Primitive.Span
         className={cn(
@@ -70,12 +70,19 @@ export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
           <span
             className={cn(
               'draco-input__floating-label',
-              isLabelFloating && 'draco-input__floating-label--active'
+              (isFocused || hasValue) && 'draco-input__floating-label--active'
             )}
           >
             {placeholder}
           </span>
         )}
+
+        {contentBefore && (
+          <span className='draco-input__content-before'>
+            {contentBefore}
+          </span>
+        )}
+
         <SprocketInput.Root
           ref={ref}
           className="draco-input__element"
@@ -87,6 +94,12 @@ export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
           onBlur={handleBlur}
           {...others}
         />
+
+         {contentAfter && (
+          <span className='draco-input__content-after'>
+            {contentAfter}
+          </span>
+        )}
       </Primitive.Span>
     );
   }

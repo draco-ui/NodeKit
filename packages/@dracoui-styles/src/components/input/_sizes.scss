@@ -38,9 +38,18 @@ $input-sizes: (
       gap: map.get($props, "gap");
       font-size: map.get($props, "font-size");
       height: map.get($props, "size");
+      padding-inline: map.get($props, "padding-horizontal");
+
+      &:has(.draco-input__content-before) {
+        padding-inline-start: calc(#{map.get($props, "padding-horizontal")} - 5px);
+      }
+
+      &:has(.draco-input__content-after) {
+        padding-inline-end: calc(#{map.get($props, "padding-horizontal")} - 5px);
+      }
 
       .draco-input__element {
-        padding: 0 map.get($props, "padding-horizontal");
+        padding: 0;
       }
 
       .draco-input__floating-label {
