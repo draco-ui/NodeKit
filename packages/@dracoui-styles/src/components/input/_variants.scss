@@ -75,33 +75,44 @@ $input-variants: (
         }
       }
 
-      // Depth effect - border-based inset (right direction - darker top-left)
+      // Depth effect - inset shadow (right direction - same as button but inset)
       &.draco-input--depth.draco-input--depth-right {
-        border-color: transparent;
-        border-top-color: var(--draco-input-#{$name}-depth-dark, rgba(0, 0, 0, 0.2));
-        border-left-color: var(--draco-input-#{$name}-depth-dark, rgba(0, 0, 0, 0.2));
-        border-bottom-color: var(--draco-input-#{$name}-depth-light, rgba(255, 255, 255, 0.1));
-        border-right-color: var(--draco-input-#{$name}-depth-light, rgba(255, 255, 255, 0.1));
+        box-shadow:
+          inset 2px 2px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.1)),
+          inset 3px 3px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.05));
 
         &:not(:disabled):not([disabled]) {
-          &:hover,
+          &:hover {
+            box-shadow:
+              inset 1px 1px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.1)),
+              inset 2px 2px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.05));
+          }
+
           &:focus-within {
-            border-top-color: var(--draco-input-#{$name}-depth-dark, rgba(0, 0, 0, 0.25));
-            border-left-color: var(--draco-input-#{$name}-depth-dark, rgba(0, 0, 0, 0.25));
+            box-shadow:
+              inset 2px 2px 0px 0px var(--draco-input-#{$name}-shadow-focused, var(--draco-input-#{$name}-border-focused)),
+              inset 3px 3px 0px 0px var(--draco-input-#{$name}-shadow-focused, var(--draco-input-#{$name}-border-focused));
           }
         }
       }
 
-      // Depth effect - border-based inset (center - darker top only)
+      // Depth effect - inset shadow (center - same as button but inset)
       &.draco-input--depth.draco-input--depth-center {
-        border-color: transparent;
-        border-top-color: var(--draco-input-#{$name}-depth-dark, rgba(0, 0, 0, 0.2));
-        border-bottom-color: var(--draco-input-#{$name}-depth-light, rgba(255, 255, 255, 0.1));
+        box-shadow:
+          inset 0px 2px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.1)),
+          inset 0px 3px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.05));
 
         &:not(:disabled):not([disabled]) {
-          &:hover,
+          &:hover {
+            box-shadow:
+              inset 0px 1px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.1)),
+              inset 0px 2px 0px 0px var(--draco-input-#{$name}-shadow, rgba(0, 0, 0, 0.05));
+          }
+
           &:focus-within {
-            border-top-color: var(--draco-input-#{$name}-depth-dark, rgba(0, 0, 0, 0.25));
+            box-shadow:
+              inset 0px 2px 0px 0px var(--draco-input-#{$name}-shadow-focused, var(--draco-input-#{$name}-border-focused)),
+              inset 0px 3px 0px 0px var(--draco-input-#{$name}-shadow-focused, var(--draco-input-#{$name}-border-focused));
           }
         }
       }

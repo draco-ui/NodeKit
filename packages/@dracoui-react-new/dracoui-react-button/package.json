@@ -1,0 +1,24 @@
+{
+  "name": "@dracoui-react/button",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draco-ui/NodeKit.git"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0"
+  },
+  "dependencies": {
+    "@necto-react/components": "^1.2.15",
+    "@sprocketui-react/button": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "defu": "^6.1.4",
+    "ldrs": "^1.1.9",
+    "react": "^18.3.1"
+  }
+}
