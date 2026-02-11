@@ -3,6 +3,7 @@
  * Framework-agnostic TypeScript type definitions
  */
 
+export * from './badge';
 export * from './label/label.d';
 export * from './input/input.d';
 export * from './tooltip/tooltip.d';

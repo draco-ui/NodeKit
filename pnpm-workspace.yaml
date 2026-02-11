@@ -2,3 +2,5 @@ packages:
   - packages/*
   - storybook
   - '../Primitives/packaging/npm'
+  - 'packages/@dracoui-react-new/*'
+  - 'packages/@dracoui-react-new/**/*'
