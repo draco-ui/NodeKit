@@ -11,8 +11,8 @@ import 'ldrs/react/Ring.css';
 import cn from 'clsx';
 import { defu } from 'defu';
 import { Ring } from 'ldrs/react';
-import { forwardRef } from 'react';
 import invariant from 'tiny-invariant';
+import { Fragment, forwardRef } from 'react';
 import { SprocketButton } from '@sprocketui/react';
 import { Primitive } from '@necto-react/components';
 
@@ -46,10 +46,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps & VariantProps<t
       ...others
     } = defu(props, BUTTON_DEFAULT_PROPS ?? {}) as typeof props;
 
-    // invariant(
-    //   !(children && label),
-    //   '[Draco UI] react.Button: Cannot use both "children" and "label" props. Use one or the other.'
-    // );
+    invariant(
+      !(children && label),
+      '[Draco UI] react.Button: Cannot use both "children" and "label" props. Use one or the other.'
+    );
 
     const loader: ReactElement | false | undefined = loading && (
       <Ring
@@ -73,11 +73,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps & VariantProps<t
         isDisabled={!asChild ? (disabled || loading || undefined) : undefined}
         {...others}
       >
-        {alignment !== 'end' && loader}
-
-        {children || label}
-
-        {alignment === 'end' && loader}
+        {asChild ? children : (
+          <Fragment>
+            {alignment !== 'end' && loader}
+            {children || label}
+            {alignment === 'end' && loader}
+          </Fragment>
+        )}
       </Primitive>
     );
   }
