@@ -1,6 +1,7 @@
 packages:
   - packages/*
+  - packages/**/*
+
+  # Dev Packages (These will be deleted)
   - storybook
   - '../Primitives/packaging/npm'
-  - 'packages/@dracoui-react-new/*'
-  - 'packages/@dracoui-react-new/**/*'

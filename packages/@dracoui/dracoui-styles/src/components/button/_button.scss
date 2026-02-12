@@ -1,0 +1,92 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:list';
+@use 'tokens' as *;
+@use '@dracoui/primitives/index' as primitives;
+@use '../../utilities/disable-selection' as *;
+
+@mixin Button {
+  .draco-button {
+    @include disable-selection;
+
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    box-sizing: border-box;
+    min-width: max-content;
+    appearance: none;
+    font-family: primitives.$draco-font-sans-serif;
+    font-weight: $button-font-weight;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: $button-border-radius;
+    contain: layout style paint;
+
+    // GPU acceleration optimizations
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    &.draco-button--full,
+    &.draco-button--pill {
+      $button-border-radius: primitives.$draco-border-radius-full;
+      border-radius: $button-border-radius;
+    }
+
+    &.draco-button--square,
+    &.draco-button--rounded {
+      border-radius: $button-border-radius;
+    }
+
+    // Optimized transitions for smooth animations
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out,
+        opacity primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out,
+        background-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+        border-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+        box-shadow primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out;
+    }
+
+    &:hover,
+    &:active {
+      will-change: transform, background-color;
+    }
+
+    // Reset intrinsic padding for Firefox
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+
+    .draco-button__text {
+      grid-area: text;
+      display: flex;
+    }
+
+    .draco-button__icon {
+      margin: 0;
+      display: flex;
+      line-height: 1;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+    }
+
+    &.draco-button--loading {
+      gap: 8px;
+      cursor: wait;
+      pointer-events: none;
+    }
+  }
+}
