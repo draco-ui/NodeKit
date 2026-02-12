@@ -1,0 +1,40 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:list';
+@use 'tokens' as *;
+@use '@dracoui/primitives/index' as primitives;
+@use '../../utilities/disable-selection' as *;
+
+@mixin Label {
+  .draco-label {
+    @include disable-selection;
+
+    display: block;
+    font-family: primitives.$draco-font-sans-serif;
+    font-weight: $label-font-weight;
+    font-size: $label-font-size;
+    // line-height: primitives.$draco-line-height-base;
+    // color: var(--draco-label-color, primitives.$draco-color-neutral-800);
+    margin-bottom: $label-margin-bottom;
+    cursor: default;
+    contain: layout style paint;
+
+    // GPU acceleration optimizations
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    // Optimized transitions for smooth animations
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+        color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out;
+    }
+  }
+}

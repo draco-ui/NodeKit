@@ -1,0 +1,21 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives/index' as primitives;
+
+/// @type String
+/// Border style for all button variants
+$input-border-style: solid !default;
+
+/// @type Number
+/// Width of button borders across all variants
+$input-border-width: primitives.$draco-border-width-thin !default;
+
+
+$input-border-radius: 7px;
+$input-font-weight: 400;
+$input-font-size: 12px;

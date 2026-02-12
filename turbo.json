@@ -1,33 +1,20 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "daemon": false,
   "tasks": {
     "build": {
-      "dependsOn": [
-        "build:dracoui-styles",
-        "build:dracoui-react",
-        "build:dracoui-ember"
-      ],
-      "cache": false
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "build:dracoui-styles": {
-      "cache": false,
-      "outputs": ["packages/@dracoui-styles/dist/**", "packages/@dracoui-styles/dist/css/**"]
+    "test": {
+      "dependsOn": ["build"],
+      "cache": false
     },
-    "build:dracoui-react": {
-      "cache": false,
-      "dependsOn": ["build:dracoui-styles"],
-      "outputs": ["packages/@dracoui-react/dist/**"]
-    },
-    "build:dracoui-ember": {
-      "cache": false,
-      "dependsOn": ["build:dracoui-styles"],
-      "outputs": ["dist/**"]
+    "lint": {
+      "dependsOn": ["^build"]
     }
-  },
-  "globalDependencies": ["!apps/**"]
+  }
 }

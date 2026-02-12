@@ -1,0 +1,58 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/// Depth effect mixin - adds a 3D shadow effect with hover/active states
+/// @param {String} $shadow-color - The CSS variable or color for the shadow
+/// @param {String} $prefix - Class name prefix for depth modifiers (e.g., 'draco-button')
+/// @example
+///   @include depth-effect(var(--draco-button-primary-shadow), 'draco-button');
+@mixin depth-effect($shadow-color, $prefix) {
+  // Depth effect - right direction (default)
+  &.#{$prefix}--depth.#{$prefix}--depth-right {
+    box-shadow:
+      2px 2px 0px 0px $shadow-color,
+      3px 3px 0px 0px $shadow-color;
+    transform: translateZ(0) translate(0, 0);
+
+    &:not(:disabled):not([disabled]):not(.mock-disabled) {
+      &:hover {
+        transform: translateZ(0) translate(1px, 1px);
+        box-shadow:
+          1px 1px 0px 0px $shadow-color,
+          2px 2px 0px 0px $shadow-color;
+      }
+
+      &:active {
+        transform: translateZ(0) translate(2px, 2px);
+        box-shadow: 0px 0px 0px 0px $shadow-color;
+      }
+    }
+  }
+
+  // Depth effect - center direction
+  &.#{$prefix}--depth.#{$prefix}--depth-center {
+    box-shadow:
+      0px 2px 0px 0px $shadow-color,
+      0px 3px 0px 0px $shadow-color;
+    transform: translateZ(0) translate(0, 0);
+
+    &:not(:disabled):not([disabled]):not(.mock-disabled) {
+      &:hover {
+        transform: translateZ(0) translate(0, 1px);
+        box-shadow:
+          0px 1px 0px 0px $shadow-color,
+          0px 2px 0px 0px $shadow-color;
+      }
+
+      &:active {
+        transform: translateZ(0) translate(0, 2px);
+        box-shadow: 0px 0px 0px 0px $shadow-color;
+      }
+    }
+  }
+}
+ 
