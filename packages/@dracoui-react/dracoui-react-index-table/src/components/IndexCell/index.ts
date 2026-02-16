@@ -6,4 +6,5 @@
  *
  */
 
-export * from './components/Button';
+export { IndexCell } from './IndexCell';
+export type { IndexCellProps } from './IndexCell.types';

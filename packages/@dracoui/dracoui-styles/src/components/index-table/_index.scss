@@ -5,4 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './components/Input';
+@forward 'index-table';
+@forward 'tokens';
+
+@use 'index-table';
+@use 'tokens';
+
+@include index-table.IndexTable;

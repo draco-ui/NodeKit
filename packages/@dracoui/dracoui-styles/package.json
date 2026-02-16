@@ -11,7 +11,8 @@
     "./scss": "./dist/scss/index.scss",
     "./button": "./dist/scss/components/button/_index.scss",
     "./split-button": "./dist/scss/components/split-button/_index.scss",
-    "./popover": "./dist/scss/components/popover/_index.scss"
+    "./popover": "./dist/scss/components/popover/_index.scss",
+    "./index-table": "./dist/scss/components/index-table/_index.scss"
   },
   "main": "dist/css/styles.css",
   "scripts": {

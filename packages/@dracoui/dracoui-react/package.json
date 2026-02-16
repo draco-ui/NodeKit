@@ -56,8 +56,10 @@
   },
   "dependencies": {
     "@dracoui-react/button": "workspace:*",
+    "@dracoui-react/index-table": "workspace:*",
     "@dracoui-react/input": "workspace:*",
     "@dracoui-react/popover": "workspace:*",
+    "@dracoui-react/tabs": "workspace:*",
     "@dracoui-react/tooltip": "workspace:*",
     "@dracoui/styles": "workspace:*"
   },

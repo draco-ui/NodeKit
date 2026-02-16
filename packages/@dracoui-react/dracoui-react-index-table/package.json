@@ -1,0 +1,49 @@
+{
+  "name": "@dracoui-react/index-table",
+  "version": "0.0.1",
+  "description": "Draco UI React IndexTable component",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draco-ui/NodeKit.git"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@dracoui-types/index-table": "workspace:*",
+    "@tanstack/react-table": "^8.21.3",
+    "clsx": "^2.1.1",
+    "defu": "^6.1.4",
+    "tiny-invariant": "^1.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}

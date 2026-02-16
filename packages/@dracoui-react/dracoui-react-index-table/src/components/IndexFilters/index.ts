@@ -6,4 +6,5 @@
  *
  */
 
-export * from './components/Button';
+export { IndexFilters } from './IndexFilters';
+export type { IndexFiltersProps } from './IndexFilters.types';
