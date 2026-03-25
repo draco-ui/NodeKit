@@ -9,11 +9,11 @@
 
 /// @type Number
 /// Font weight for tooltip text
-$tooltip-font-weight: primitives.$draco-base-weight-normal !default;
+$tooltip-font-weight: primitives.$draco-base-weight-regular !default;
 
 /// @type Number
 /// Default font size for tooltips
-$tooltip-font-size: primitives.$draco-text-size-body-tiny !default;
+$tooltip-font-size: primitives.$draco-text-size-body-extra-small !default;
 
 /// @type Number
 /// Width of tooltip borders across all variants

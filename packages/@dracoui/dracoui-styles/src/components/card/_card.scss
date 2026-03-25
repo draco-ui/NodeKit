@@ -1,0 +1,32 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+@use '../../utilities/depth-effect' as *;
+
+@mixin Card {
+  .draco-card {
+    width: 100%;
+    font-size: primitives.$draco-text-size-body-small;
+    font-family: primitives.$draco-font-sans-serif;
+
+    @include depth-effect(var(--draco-card-shadow, #303030), 'draco-card');
+
+    &--hoverable {
+      cursor: pointer;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: background-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out;
+      }
+
+      &:hover {
+        background-color: #E8E8E8;
+      }
+    }
+  }
+}

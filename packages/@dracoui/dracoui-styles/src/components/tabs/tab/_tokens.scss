@@ -1,0 +1,16 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives' as primitives;
+
+/// @type Number
+/// Font weight for tab text
+$tab-font-weight: primitives.$draco-base-weight-regular !default;
+
+/// @type Number
+/// Default border radius for tab
+$tab-border-radius: primitives.$draco-border-radius-medium !default;

@@ -1,0 +1,138 @@
+@use '@dracoui/primitives';
+
+:host {
+  display: inline-block;
+}
+
+:host([fullwidth]) {
+  display: block;
+}
+
+button {
+  appearance: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  gap: primitives.$draco-base-size-8;
+  font-family: 'IBM Plex Mono', monospace;
+  border: primitives.$draco-base-border-width-1 solid transparent;
+  border-radius: primitives.$draco-base-border-radius-8;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    box-shadow primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out,
+    border-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out,
+    background-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out;
+
+  &:focus-visible {
+    outline: primitives.$draco-base-border-width-2 solid primitives.$draco-base-color-lime-400;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.size-small {
+    font-size: 11px;
+    height: primitives.$draco-base-size-32;
+    padding: 0 primitives.$draco-base-size-12;
+    font-weight: primitives.$draco-base-weight-light;
+  }
+
+  &.size-medium {
+    font-size: 12px;
+    height: primitives.$draco-base-size-40;
+    padding: 0 primitives.$draco-base-size-16;
+    font-weight: primitives.$draco-base-weight-light;
+  }
+
+  &.size-large {
+    font-size: 16px;
+    height: 3rem;
+    padding: 0 primitives.$draco-base-size-24;
+  }
+
+  &.shape-rounded {
+    border-radius: primitives.$draco-base-border-radius-8;
+  }
+
+  &.shape-pill {
+    border-radius: primitives.$draco-base-border-radius-full;
+  }
+
+  &.variant-primary {
+    color: black;
+    letter-spacing: 0.05em;
+    background-color: primitives.$draco-product-color-brand-primary;
+    border: primitives.$draco-base-border-width-1 solid primitives.$draco-base-color-neutral-950;
+  }
+
+  &.variant-secondary {
+    background-color: primitives.$draco-base-color-neutral-600;
+    color: primitives.$draco-base-color-neutral-100;
+    border-color: primitives.$draco-base-color-neutral-950;
+
+    &:hover:not(:disabled) {
+      background-color: primitives.$draco-base-color-neutral-500;
+    }
+
+    &:active:not(:disabled) {
+      background-color: primitives.$draco-base-color-neutral-700;
+    }
+  }
+
+  &.variant-outline {
+    background: transparent;
+    color: primitives.$draco-base-color-neutral-950;
+    border-color: primitives.$draco-base-color-neutral-950;
+
+    &:hover:not(:disabled) {
+      background-color: primitives.$draco-base-color-neutral-100;
+    }
+
+    &:active:not(:disabled) {
+      background-color: primitives.$draco-base-color-neutral-200;
+    }
+  }
+
+  &.variant-ghost {
+    background: transparent;
+    border-color: transparent;
+    color: primitives.$draco-base-color-neutral-950;
+    text-decoration: none;
+
+    &:hover:not(:disabled) {
+      text-decoration: underline;
+    }
+
+    &.size-small {
+      text-underline-offset: 3px;
+    }
+  }
+
+  &.elevated-hover:not(.variant-ghost) {
+    box-shadow: 0 0 0 0 transparent;
+
+    &:hover:not(:disabled) {
+      box-shadow: 4px 4px 0 0 primitives.$draco-base-color-neutral-950;
+    }
+  }
+
+  &.elevated-always:not(.variant-ghost) {
+    box-shadow: 4px 4px 0 0 primitives.$draco-base-color-neutral-950;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.text {
+  display: inline-flex;
+  align-items: center;
+}

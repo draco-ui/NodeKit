@@ -1,4 +1,4 @@
-import { Button } from "@dracoui-react/button";
+import { Button } from "@dracoui-react/buttons";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -18,21 +18,19 @@ const meta: Meta<typeof Button> = {
         "outline",
         "tertiary",
         "ghost",
-        "amber",
-        "error",
       ],
       description: "A button can have different visual styles to indicate hierarchy and importance.",
       table: {
-        type: { summary: "primary | secondary | tertiary | ghost | outline | amber | error" },
+        type: { summary: "primary | secondary | tertiary | ghost | outline "},
         defaultValue: { summary: "primary" },
       },
     },
     size: {
       control: "radio",
-      options: ["xsmall", "small", "medium", "large"],
+      options: ["small", "medium", "large"],
       description: "A button can have different sizes.",
       table: {
-        type: { summary: "xsmall | small | medium | large" },
+        type: { summary: "small | medium | large" },
         defaultValue: { summary: "medium" },
       },
     },
@@ -109,6 +107,14 @@ const meta: Meta<typeof Button> = {
         type: { summary: "string" },
       },
     },
+    iconOnly: {
+      control: "boolean",
+      description: "Renders the button as a square icon-only button (equal width and height, no horizontal padding).",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
     asChild: {
       control: "boolean",
       description: "Change the default rendered element for the one passed as a child, merging their props and behavior.",
@@ -140,8 +146,6 @@ export const Variant: Story = {
       <Button variant="outline">Outline</Button>
       <Button variant="tertiary">Tertiary</Button>
       <Button variant="ghost">Ghost</Button>
-      <Button variant="amber">Amber</Button>
-      <Button variant="error">Error</Button>
     </div>
   )
 };
@@ -149,7 +153,6 @@ export const Variant: Story = {
 export const Size: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-      <Button size="xsmall">XSmall</Button>
       <Button size="small">Small</Button>
       <Button size="medium">Medium</Button>
       <Button size="large">Large</Button>
@@ -210,4 +213,55 @@ export const Label: Story = {
   args: {
     label: 'Button with label prop',
   }
+};
+
+const PlusIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="7" cy="7" r="4" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M10 10l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+const SettingsIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="8" cy="8" r="2" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+export const IconOnly: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Button iconOnly variant="primary"><PlusIcon /></Button>
+      <Button iconOnly variant="secondary"><SearchIcon /></Button>
+      <Button iconOnly variant="outline"><SettingsIcon /></Button>
+      <Button iconOnly variant="tertiary"><PlusIcon /></Button>
+      <Button iconOnly variant="ghost"><SearchIcon /></Button>
+    </div>
+  )
+};
+
+export const IconOnlySizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Button iconOnly size="small"><PlusIcon /></Button>
+      <Button iconOnly size="medium"><PlusIcon /></Button>
+      <Button iconOnly size="large"><PlusIcon /></Button>
+    </div>
+  )
+};
+
+export const IconOnlyDepth: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Button iconOnly depth depthDirection="right"><PlusIcon /></Button>
+      <Button iconOnly depth depthDirection="center"><PlusIcon /></Button>
+    </div>
+  )
 };

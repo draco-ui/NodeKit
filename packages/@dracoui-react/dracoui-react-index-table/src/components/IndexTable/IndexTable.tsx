@@ -111,17 +111,17 @@ export const IndexTable = forwardRef<HTMLDivElement, IndexTableProps>(
       >
         <div
           ref={ref}
-          className={cn('draco-index-table', className)}
+          className={cn('DracoIndexTable', className)}
           {...others}
         >
           {filterChildren}
 
-          <div className="draco-index-table__container">
-            <table className="draco-index-table__table">
-              <thead className="draco-index-table__thead">
-                <tr className="draco-index-table__header-row">
+          <div className="DracoIndexTable__Container">
+            <table className="DracoIndexTable__Table">
+              <thead className="DracoIndexTable__Thead">
+                <tr className="DracoIndexTable__HeaderRow">
                   {selectable && (
-                    <th className="draco-index-table__checkbox-cell">
+                    <th className="DracoIndexTable__CheckboxCell">
                       <input
                         type="checkbox"
                         checked={selectedItemsCount === 'All' || selectedItemsCount === itemCount}
@@ -133,17 +133,17 @@ export const IndexTable = forwardRef<HTMLDivElement, IndexTableProps>(
                   {headings.map((heading, index) => (
                     <th
                       key={heading.id || index}
-                      className="draco-index-table__header-cell"
+                      className="DracoIndexTable__HeaderCell"
                       data-alignment={heading.alignment || 'start'}
                       data-hidden={heading.hidden}
                       data-sticky={lastColumnSticky && index === headings.length - 1}
                       onClick={() => handleSort(index)}
                     >
-                      <span className="draco-index-table__header-content">
+                      <span className="DracoIndexTable__HeaderContent">
                         {heading.title}
                         {sortColumnIndex === index && (
                           <span
-                            className="draco-index-table__sort-indicator"
+                            className="DracoIndexTable__SortIndicator"
                             data-direction={sortDirection}
                           />
                         )}
@@ -152,13 +152,13 @@ export const IndexTable = forwardRef<HTMLDivElement, IndexTableProps>(
                   ))}
                 </tr>
               </thead>
-              <tbody className="draco-index-table__tbody">
+              <tbody className="DracoIndexTable__Tbody">
                 {rowChildren}
               </tbody>
             </table>
           </div>
 
-          {loading && <div className="draco-index-table__loading-overlay" />}
+          {loading && <div className="DracoIndexTable__LoadingOverlay" />}
         </div>
       </IndexTableContext.Provider>
     );

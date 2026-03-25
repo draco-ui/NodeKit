@@ -1,0 +1,154 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'tokens' as *;
+@use '@dracoui/primitives/index' as primitives;
+
+@use '../../../utilities/depth-effect' as *;
+@use '../../../utilities/disabled-state' as *;
+@use '../../../utilities/variant-selector' as *;
+
+$alignments: (start: flex-start, center: center, end: flex-end);
+
+$button-variants: (
+  'primary': (
+    'background': var(--draco-button-primary-background),
+    'foreground': var(--draco-button-primary-foreground),
+    'border': $button-border-width $button-border-style var(--draco-button-primary-border)
+  ),
+  'secondary': (
+    'background': var(--draco-button-secondary-background),
+    'foreground': var(--draco-button-secondary-foreground),
+    'border': none
+  ),
+  'tertiary': (
+    'background': var(--draco-button-tertiary-background),
+    'foreground': var(--draco-button-tertiary-foreground),
+    'border': $button-border-width $button-border-style transparent,
+    'border-hover': $button-border-width $button-border-style var(--draco-button-tertiary-border-hovered)
+  ),
+  'outline': (
+    'background': var(--draco-button-outline-background),
+    'foreground': var(--draco-button-outline-foreground),
+    'border': $button-border-width $button-border-style var(--draco-button-outline-border)
+  ),
+  'ghost': (
+    'background': var(--draco-button-ghost-background),
+    'foreground': var(--draco-button-ghost-foreground),
+  )
+);
+
+.draco-button {
+  @each $name, $variant in $button-variants {
+    @include variant-selector($name) {
+      color: map.get($variant, 'foreground');
+      background-color: map.get($variant, 'background');
+
+      @if $name == 'secondary' {
+        box-shadow:
+          inset 0px -1px 0px 0px #b5b5b5,
+          inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1),
+          inset 0px 0.5px 0px 1.5px #fff;
+      }
+
+      @if $name == 'primary' {
+        &:not(.draco-button--depth) {
+          box-shadow:
+            inset 0px -1px 0px 0px #9aa000,
+            inset 0px 0px 0px 1px rgba(0, 0, 0, 0.12),
+            inset 0px 0.5px 0px 1.5px rgba(255, 255, 255, 0.35);
+
+          &:not(:disabled):not([disabled]):not(.mock-disabled):active {
+            box-shadow:
+              inset 0px 2px 0px 0px rgba(0, 0, 0, 0.32),
+              inset 0px 1px 5px 0px rgba(0, 0, 0, 0.38),
+              inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15);
+            padding-top: 1px;
+          }
+        }
+      }
+
+      &:not(:disabled):not([disabled]):not(.mock-disabled) {
+        &:hover {
+          @if $name == 'tertiary' or $name == 'secondary' {
+            :root[data-color-mode="dark"] & {
+              color: primitives.$draco-product-color-brand-primary;
+            }
+          }
+        }
+      }
+
+      @include disabled-state {
+        box-shadow: none;
+        cursor: not-allowed;
+        border: none !important;
+        color: var(--draco-button-#{$name}-text-disabled);
+        border-color: var(--draco-button-#{$name}-border-disabled);
+        background-color: var(--draco-button-#{$name}-background-disabled);
+
+        transform: none !important;
+        will-change: none !important;
+      }
+
+      @include depth-effect(var(--draco-button-#{$name}-shadow), 'draco-button');
+
+      &.draco-button--loading {
+        color: map.get($variant, 'foreground');
+        background-color: map.get($variant, 'background');
+        cursor: wait;
+      }
+
+      @if map.get($variant, 'border') {
+        border: map.get($variant, 'border');
+      } @else {
+        border: primitives.$draco-border-width-thin solid transparent;
+      }
+
+      &:not(:disabled):not([disabled]):not(.mock-disabled) {
+        &:hover {
+          background-color: var(--draco-button-#{$name}-background-hovered);
+          @if map.get($variant, 'border-hover') {
+            border: map.get($variant, 'border-hover');
+          } @else if map.get($variant, 'border') {
+            border: map.get($variant, 'border');
+          }
+        }
+
+        &:active {
+          will-change: transform, box-shadow;
+          background-color: var(--draco-button-#{$name}-background-active, var(--draco-button-#{$name}-background-hovered));
+
+          @if $name == 'primary' or $name == 'secondary' or $name == 'ghost' {
+            &:not(.draco-button--depth) {
+              box-shadow:
+                inset -1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+                inset 1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+                inset 0px 2px 1px 0px rgba(26, 26, 26, 0.2);
+              transform: translateZ(0);
+              padding-top: 1px;
+            }
+          } @else {
+            box-shadow: none;
+            transform: translateZ(0) scale(0.96);
+          }
+          @if map.get($variant, 'border-hover') {
+            border: map.get($variant, 'border-hover');
+          } @else if map.get($variant, 'border') {
+            border: map.get($variant, 'border');
+          }
+        }
+      }
+    }
+  }
+
+  @each $name, $value in $alignments {
+    &.draco-button--align-#{$name} {
+      justify-content: $value;
+    }
+  }
+}

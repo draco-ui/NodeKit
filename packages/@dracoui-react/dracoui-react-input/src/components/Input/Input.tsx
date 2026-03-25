@@ -62,15 +62,15 @@ export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
       <Primitive.Span
         className={cn(
           inputVariants({ size, variant, fullWidth, depth, depthDirection }),
-          floatingLabel && 'draco-input--floating-label',
+          floatingLabel && 'DracoInput--FloatingLabel',
           className
         )}
       >
         {floatingLabel && placeholder && (
           <span
             className={cn(
-              'draco-input__floating-label',
-              (isFocused || hasValue) && 'draco-input__floating-label--active'
+              'DracoInput__FloatingLabel',
+              (isFocused || hasValue) && 'DracoInput__FloatingLabel--Active'
             )}
           >
             {placeholder}
@@ -78,14 +78,14 @@ export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
         )}
 
         {contentBefore && (
-          <span className='draco-input__content-before'>
+          <span className='DracoInput__ContentBefore'>
             {contentBefore}
           </span>
         )}
 
         <SprocketInput.Root
           ref={ref}
-          className="draco-input__element"
+          className="DracoInput__Element"
           disabled={disabled}
           placeholder={floatingLabel ? undefined : placeholder}
           value={value}
@@ -96,7 +96,7 @@ export const Input = forwardRef<HTMLInputElement, InputComponentProps>(
         />
 
          {contentAfter && (
-          <span className='draco-input__content-after'>
+          <span className='DracoInput__ContentAfter'>
             {contentAfter}
           </span>
         )}

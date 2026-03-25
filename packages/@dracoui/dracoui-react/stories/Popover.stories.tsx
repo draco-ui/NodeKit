@@ -1,4 +1,4 @@
-import { Button } from '@dracoui-react/button';
+import { Button } from '@dracoui-react/buttons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@dracoui-react/popover';
 
@@ -101,13 +101,13 @@ export const Default: Story = {
               minWidth: 220,
             }}
           >
-            <Button variant="secondary" fullWidth>
+            <Button variant="ghost" fullWidth>
               Project 1
             </Button>
-            <Button variant="secondary" fullWidth>
+            <Button variant="ghost" fullWidth>
               Option 2
             </Button>
-            <Button variant="secondary" fullWidth>
+            <Button variant="ghost" fullWidth>
               Option 3
             </Button>
           </div>

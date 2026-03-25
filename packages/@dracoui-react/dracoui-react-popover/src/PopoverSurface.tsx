@@ -1,8 +1,20 @@
-// PopoverSurface.tsx
-import { forwardRef, useContext, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { forwardRef, useContext, useLayoutEffect, useMemo } from 'react';
 import cn from 'clsx';
-import { FocusScope } from 'react-aria';
+import {
+  flip,
+  shift,
+  autoUpdate,
+  offset as offsetMiddleware,
+} from '@necto/popper';
+import {
+  usePopper,
+  useDismiss,
+  useRole,
+  useInteractions,
+  useTransitionStyles,
+  PopperPortal,
+} from '@necto-react/popper';
+
 import { PopoverContext } from './Popover';
 import { popoverStyles } from './Popover.styles';
 
@@ -18,87 +30,90 @@ export const PopoverSurface = forwardRef<HTMLDivElement, PopoverSurfaceProps>(
     if (!ctx) throw new Error('PopoverSurface must be used within Popover');
 
     const {
-      state,
-      overlayRef,
-      overlayProps,
+      isOpen,
+      close,
+      triggerRef,
       withArrow,
       closeOnClickOutside,
-      triggerRef,
+      placement,
+      offset,
       variant = 'normal',
       size = 'medium',
-      placement,
     } = ctx;
 
-    const [isAnimating, setIsAnimating] = useState(false);
-    const [shouldRender, setShouldRender] = useState(false);
+    const middleware = useMemo(
+      () => [offsetMiddleware(offset), flip(), shift({ padding: 8 })],
+      [offset]
+    );
 
-    // Manage animation state for smooth open/close transitions
-    useEffect(() => {
-      if (state.isOpen) {
-        // Opening: render immediately and start animation
-        setShouldRender(true);
-        requestAnimationFrame(() => setIsAnimating(true));
-      } else {
-        // Closing: start exit animation, then unmount after animation completes
-        setIsAnimating(false);
-        const timer = setTimeout(() => setShouldRender(false), 250); // Match animation duration
-        return () => clearTimeout(timer);
+    const { refs, floatingStyles, placement: finalPlacement, isPositioned } = usePopper({
+      open: isOpen,
+      placement,
+      whileElementsMounted: autoUpdate,
+      middleware,
+    });
+
+    // Sync the trigger element as the popper reference
+    useLayoutEffect(() => {
+      if (triggerRef?.current) {
+        refs.setReference(triggerRef.current);
       }
-    }, [state.isOpen]);
+    }, [triggerRef, refs, isOpen]);
 
-    const setRef = (node: HTMLDivElement | null) => {
-      if (typeof ref === 'function') ref(node);
-      else if (ref && 'current' in ref) (ref as any).current = node;
-      overlayRef.current = node;
-    };
+    const dismiss = useDismiss({
+      open: isOpen,
+      onOpenChange: (open) => {
+        if (!open && closeOnClickOutside) close();
+      },
+    });
 
-    // Handle clicks outside the popover - manual implementation to avoid scroll issues
-    useEffect(() => {
-      if (!state.isOpen || !closeOnClickOutside) return;
+    // Sync the trigger element to useDismiss's internal reference ref
+    // so it correctly ignores clicks on the trigger (referencePress=false).
+    // Without this, clicks on the trigger are treated as "outside" clicks,
+    // causing dismiss to close and then toggle to immediately reopen.
+    useLayoutEffect(() => {
+      if (triggerRef?.current && dismiss.reference?.ref) {
+        (dismiss.reference.ref as (node: Element | null) => void)(triggerRef.current);
+      }
+    }, [triggerRef, dismiss.reference, isOpen]);
 
-      const handleClickOutside = (event: MouseEvent) => {
-        const target = event.target as Node;
+    const role = useRole({
+      open: isOpen,
+      role: 'dialog',
+    });
 
-        // Don't close if clicking inside the popover surface
-        if (overlayRef.current && overlayRef.current.contains(target)) {
-          return;
-        }
+    const { getFloatingProps } = useInteractions([dismiss, role]);
 
-        // Don't close if clicking the trigger
-        if (triggerRef.current && triggerRef.current.contains(target)) {
-          return;
-        }
+    const { isMounted, styles: transitionStyles } = useTransitionStyles({
+      open: isOpen,
+      duration: 200,
+      initial: { opacity: 0 },
+      openStyles: { opacity: 1 },
+    });
 
-        // Close the popover
-        state.close();
-      };
-
-      // Add listener on next tick to avoid immediate closing
-      const timeoutId = setTimeout(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-      }, 0);
-
-      return () => {
-        clearTimeout(timeoutId);
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [state.isOpen, closeOnClickOutside, state, overlayRef, triggerRef]);
-
+    const shouldRender = isMounted || isOpen;
     if (!shouldRender) return null;
 
-    const content = (
-      <FocusScope restoreFocus autoFocus>
+    return (
+      <PopperPortal>
         <div
-          ref={setRef}
+          ref={(node) => {
+            refs.setFloating(node);
+            if (typeof ref === 'function') ref(node);
+            else if (ref) ref.current = node;
+          }}
           data-popover-surface
-          data-open={isAnimating ? 'true' : 'false'}
-          data-placement={placement ?? ''}
+          data-open={isOpen ? 'true' : 'false'}
+          data-placement={finalPlacement ?? ''}
           className={cn(popoverStyles({ variant, size }), className)}
           tabIndex={tabIndex}
-          {...overlayProps}
+          {...getFloatingProps()}
           {...rest}
           style={{
-            ...overlayProps.style,
+            ...floatingStyles,
+            ...transitionStyles,
+            // Hide until positioned to prevent flash at (0, 0)
+            visibility: isPositioned ? 'visible' : 'hidden',
             zIndex: 99999,
             ...style,
           }}
@@ -108,7 +123,7 @@ export const PopoverSurface = forwardRef<HTMLDivElement, PopoverSurfaceProps>(
           {withArrow && (
             <span
               aria-hidden="true"
-              className={cn('draco-popover-arrow')}
+              className={cn('DracoPopoverArrow')}
               style={{
                 position: 'absolute',
                 width: 12,
@@ -117,10 +132,8 @@ export const PopoverSurface = forwardRef<HTMLDivElement, PopoverSurfaceProps>(
             />
           )}
         </div>
-      </FocusScope>
+      </PopperPortal>
     );
-
-    return createPortal(content, document.body);
   }
 );
 

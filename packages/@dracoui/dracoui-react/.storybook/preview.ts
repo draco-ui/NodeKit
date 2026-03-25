@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { OverlayProvider } from 'react-aria';
 import '@dracoui/styles/dist/css/styles.css';
 import type { Preview } from '@storybook/react';
 
@@ -43,7 +42,7 @@ const preview: Preview = {
         });
       }, [theme]);
 
-      return React.createElement(OverlayProvider, null, React.createElement(Story));
+      return React.createElement(Story);
     },
   ],
   parameters: {

@@ -5,11 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-/// Depth effect mixin - adds a 3D shadow effect with hover/active states
-/// @param {String} $shadow-color - The CSS variable or color for the shadow
-/// @param {String} $prefix - Class name prefix for depth modifiers (e.g., 'draco-button')
-/// @example
-///   @include depth-effect(var(--draco-button-primary-shadow), 'draco-button');
+@use '@dracoui/primitives' as primitives;
+
 @mixin depth-effect($shadow-color, $prefix) {
   // Depth effect - right direction (default)
   &.#{$prefix}--depth.#{$prefix}--depth-right {
@@ -17,6 +14,13 @@
       2px 2px 0px 0px $shadow-color,
       3px 3px 0px 0px $shadow-color;
     transform: translateZ(0) translate(0, 0);
+    -webkit-backface-visibility: hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform primitives.$draco-base-duration-100 primitives.$draco-base-easing-ease-in-out,
+        box-shadow primitives.$draco-base-duration-100 primitives.$draco-base-easing-ease-in-out;
+    }
 
     &:not(:disabled):not([disabled]):not(.mock-disabled) {
       &:hover {
@@ -39,6 +43,13 @@
       0px 2px 0px 0px $shadow-color,
       0px 3px 0px 0px $shadow-color;
     transform: translateZ(0) translate(0, 0);
+    -webkit-backface-visibility: hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform primitives.$draco-base-duration-100 primitives.$draco-base-easing-ease-in-out,
+        box-shadow primitives.$draco-base-duration-100 primitives.$draco-base-easing-ease-in-out;
+    }
 
     &:not(:disabled):not([disabled]):not(.mock-disabled) {
       &:hover {
@@ -55,4 +66,3 @@
     }
   }
 }
- 

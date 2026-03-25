@@ -1,6 +1,5 @@
 import cn from 'clsx';
-import { forwardRef, useContext, cloneElement, isValidElement, useRef as useReactRef } from 'react';
-import { useButton } from 'react-aria';
+import { forwardRef, useContext, cloneElement, isValidElement } from 'react';
 
 import { PopoverContext } from './Popover';
 import type { ForwardedRef, ReactElement, ReactNode, MouseEventHandler } from 'react';
@@ -8,13 +7,13 @@ import type { PopoverTriggerProps } from './PopoverTrigger.types';
 
 export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
   (
-    { className, children, asChild = false, onMouseEnter, onMouseLeave, ...rest },
+    { className, children, asChild = false, onMouseEnter, onMouseLeave, onClick, ...rest },
     ref: ForwardedRef<HTMLElement>
   ): ReactElement => {
     const ctx = useContext(PopoverContext);
     if (!ctx) throw new Error('PopoverTrigger must be used within Popover');
 
-    const { state, triggerRef, onTriggerMouseEnter, onTriggerMouseLeave } = ctx;
+    const { toggle, open, close, triggerRef, openOnHover } = ctx;
 
     const setRef = (node: HTMLElement | null) => {
       if (typeof ref === 'function') ref(node);
@@ -24,21 +23,13 @@ export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
 
     const handleMouseEnter: MouseEventHandler<HTMLElement> = (e) => {
       onMouseEnter?.(e);
-      onTriggerMouseEnter();
+      if (openOnHover) open();
     };
 
     const handleMouseLeave: MouseEventHandler<HTMLElement> = (e) => {
       onMouseLeave?.(e);
-      onTriggerMouseLeave();
+      if (openOnHover) close();
     };
-
-    const buttonRef = useReactRef<HTMLButtonElement>(null);
-    const { buttonProps } = useButton(
-      {
-        onPress: () => state.toggle(),
-      },
-      buttonRef
-    );
 
     if (asChild && isValidElement(children)) {
       const child = children as ReactElement<any>;
@@ -52,40 +43,38 @@ export const PopoverTrigger = forwardRef<HTMLElement, PopoverTriggerProps>(
 
       return cloneElement(child, {
         ref: attachRef,
-        className: cn('draco-popover-trigger', child.props.className, className),
+        className: cn('DracoPopoverTrigger', child.props.className, className),
         onClick: (e: any) => {
           child.props.onClick?.(e);
-          state.toggle();
+          toggle();
         },
-        onMouseEnter: (...args: any[]) => {
-          child.props.onMouseEnter?.(...args);
-          handleMouseEnter(args[0]);
+        onMouseEnter: (e: any) => {
+          child.props.onMouseEnter?.(e);
+          handleMouseEnter(e);
         },
-        onMouseLeave: (...args: any[]) => {
-          child.props.onMouseLeave?.(...args);
-          handleMouseLeave(args[0]);
+        onMouseLeave: (e: any) => {
+          child.props.onMouseLeave?.(e);
+          handleMouseLeave(e);
         },
         'aria-haspopup': 'dialog',
-        'aria-expanded': state.isOpen || false,
+        'aria-expanded': ctx.isOpen || false,
       });
     }
 
-    const mergeRefs = (node: HTMLButtonElement | null) => {
-      setRef(node);
-      buttonRef.current = node;
-    };
-
     return (
       <button
-        ref={mergeRefs}
+        ref={setRef as any}
         data-popover-trigger
         aria-haspopup="dialog"
-        aria-expanded={state.isOpen || false}
-        className={cn('draco-popover-trigger', className)}
+        aria-expanded={ctx.isOpen || false}
+        className={cn('DracoPopoverTrigger', className)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={(e) => {
+          onClick?.(e as any);
+          toggle();
+        }}
         {...rest}
-        {...buttonProps}
       >
         {children as ReactNode}
       </button>

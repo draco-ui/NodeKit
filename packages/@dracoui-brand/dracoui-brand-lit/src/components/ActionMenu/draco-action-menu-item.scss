@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives';
+
+:host {
+  display: block;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: primitives.$draco-base-weight-light;
+  padding: primitives.$draco-base-size-8 primitives.$draco-base-size-16;
+  font-size: 14px;
+  line-height: 1.4;
+  color: primitives.$draco-base-color-neutral-950;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out;
+
+  &:hover {
+    text-underline-offset: 5px;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: primitives.$draco-base-border-width-2 solid primitives.$draco-base-color-lime-400;
+    outline-offset: -2px;
+  }
+
+  &[aria-disabled='true'] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}

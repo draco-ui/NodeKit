@@ -8,27 +8,27 @@
 import { cva } from 'class-variance-authority';
 import { INPUT_DEFAULT_PROPS } from '../../constants';
 
-export const inputVariants = cva('draco-input', {
+export const inputVariants = cva('DracoInput', {
   variants: {
     size: {
-      small: 'draco-input--small',
-      medium: 'draco-input--medium',
-      large: 'draco-input--large',
+      small: 'DracoInput--Small',
+      medium: 'DracoInput--Medium',
+      large: 'DracoInput--Large',
     },
     variant: {
-      outline: 'draco-input--outline',
-      filled: 'draco-input--filled',
-      underline: 'draco-input--underline',
+      outline: 'DracoInput--Outline',
+      filled: 'DracoInput--Filled',
+      underline: 'DracoInput--Underline',
     },
     fullWidth: {
-      true: 'draco-input--full-width',
+      true: 'DracoInput--FullWidth',
     },
     depth: {
-      true: 'draco-input--depth',
+      true: 'DracoInput--Depth',
     },
     depthDirection: {
-      right: 'draco-input--depth-right',
-      center: 'draco-input--depth-center',
+      right: 'DracoInput--DepthRight',
+      center: 'DracoInput--DepthCenter',
     },
   },
   defaultVariants: {

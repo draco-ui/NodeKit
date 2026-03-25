@@ -1,0 +1,65 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'tokens' as *;
+@use '@dracoui/primitives/index' as primitives;
+@use '../../../utilities/variant-selector' as *;
+
+$tab-variants: (
+  'default': (
+    'background': var(--draco-tabs-default-background),
+    'foreground': var(--draco-tabs-default-foreground),
+  ),
+  'underline': (
+    'background': var(--draco-tabs-underline-background),
+    'foreground': var(--draco-tabs-underline-foreground),
+    'border': var(--draco-tabs-underline-border),
+  )
+);
+
+@mixin TabVariants {
+  .draco-tab {
+    @each $name, $variant in $tab-variants {
+      @include variant-selector($name) {
+        color: map.get($variant, 'foreground');
+        background-color: map.get($variant, 'background');
+
+        @if map.get($variant, 'border') {
+          border-bottom: 2px solid map.get($variant, 'border');
+        }
+
+        &[data-selected],
+        &.draco-tab--selected,
+        &[data-sprocket-state~="selected"] {
+          color: var(--draco-tabs-#{$name}-foreground-active);
+          background-color: var(--draco-tabs-#{$name}-background-active);
+        }
+
+        &:not(:disabled):not([disabled]):not(.mock-disabled) {
+          &:hover {
+            @if map.get($variant, 'border') {
+              &:not([data-selected]):not(.draco-tab--selected):not([data-sprocket-state~="selected"]) {
+                border-bottom-color: var(--draco-tabs-#{$name}-border-hovered);
+              }
+            } @else {
+              background-color: var(--draco-tabs-#{$name}-background-hovered);
+            }
+          }
+
+          &:active {
+            background-color: var(--draco-tabs-#{$name}-background-active);
+          }
+        }
+      }
+    }
+
+    &--underline {
+      border-radius: 0;
+    }
+  }
+}

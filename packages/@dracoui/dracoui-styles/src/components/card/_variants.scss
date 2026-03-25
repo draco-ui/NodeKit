@@ -1,0 +1,41 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+
+@use '../../utilities/variant-selector' as *;
+
+$card-variants: (
+  'default': (
+    'background': white,
+    'foreground': #303030,
+    'border': $card-border-width $card-border-style #E5E5E5
+  ),
+  'borderless': (
+    'background': white,
+    'foreground': #303030
+  ),
+  'elevated': (
+    'background': white,
+    'foreground': #303030
+  ),
+);
+
+.draco-card {
+  @each $name, $variant in $card-variants {
+    @include variant-selector($name) {
+      color: map.get($variant, 'foreground');
+      background-color: map.get($variant, 'background');
+
+      @if map.get($variant, 'border') {
+        border: map.get($variant, 'border');
+      }
+    }
+  }
+}

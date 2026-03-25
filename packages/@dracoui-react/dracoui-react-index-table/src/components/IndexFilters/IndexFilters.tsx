@@ -38,13 +38,13 @@ export const IndexFilters = forwardRef<HTMLDivElement, IndexFiltersProps>(
     return (
       <div
         ref={ref}
-        className={cn('draco-index-table__filters', className)}
+        className={cn('DracoIndexTable__Filters', className)}
         {...others}
       >
-        <div className="draco-index-table__search-wrapper">
+        <div className="DracoIndexTable__SearchWrapper">
           <input
             type="text"
-            className="draco-index-table__search-input"
+            className="DracoIndexTable__SearchInput"
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder={placeholder}
@@ -52,7 +52,7 @@ export const IndexFilters = forwardRef<HTMLDivElement, IndexFiltersProps>(
           {query && onQueryClear && (
             <button
               type="button"
-              className="draco-index-table__clear-button"
+              className="DracoIndexTable__ClearButton"
               onClick={onQueryClear}
             >
               ×

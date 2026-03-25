@@ -1,0 +1,32 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives/index' as primitives;
+
+/// @type Number
+/// Gap between tabs in the tab list
+$tabs-gap: 4px !default;
+
+/// @type Number
+/// Bottom border width for the tab list
+$tabs-border-width: primitives.$draco-border-width-thin !default;
+
+/// @type Number
+/// Height of the selection indicator
+$tabs-indicator-height: 2px !default;
+
+/// @type Number
+/// Border radius of the selection indicator
+$tabs-indicator-radius: 2px !default;
+
+/// @type Number
+/// Horizontal padding for the tab list
+$tabs-list-padding-inline: 12px !default;
+
+/// @type Number
+/// Padding for the tab content panel
+$tabs-content-padding: 16px !default;

@@ -1,4 +1,4 @@
-import type { PopoverOptions } from '@dracoui/types';
+import type { PopoverOptions } from '@dracoui-types/popover';
 import type { MouseEvent, KeyboardEvent, FocusEvent, ComponentPropsWithoutRef, ReactNode } from 'react';
 
 /**

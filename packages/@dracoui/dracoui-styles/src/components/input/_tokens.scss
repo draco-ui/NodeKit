@@ -16,6 +16,6 @@ $input-border-style: solid !default;
 $input-border-width: primitives.$draco-border-width-thin !default;
 
 
-$input-border-radius: 7px;
+$input-border-radius: primitives.$draco-border-radius-medium;
 $input-font-weight: 400;
 $input-font-size: 12px;

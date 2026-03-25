@@ -40,7 +40,7 @@
   "dependencies": {
     "@dracoui-types/input": "workspace:*",
     "@dracoui-types/label": "workspace:*",
-    "@dracoui-types/button": "workspace:*",
+    "@dracoui-types/buttons": "workspace:*",
     "@dracoui-types/tooltip": "workspace:*",
     "@dracoui-types/popover": "workspace:*"
   },

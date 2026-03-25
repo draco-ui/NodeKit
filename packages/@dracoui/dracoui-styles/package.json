@@ -21,8 +21,8 @@
     "build:css": "sass index.scss dist/css/styles.css --no-source-map --load-path=node_modules && postcss dist/css/styles.css --replace --no-map",
     "build:css:unminified": "sass index.scss dist/css/styles.unminified.css --no-source-map --load-path=node_modules",
     "build:scss": "cpx 'src/**/*.scss' dist/scss && cpx 'index.scss' dist",
-    "dev": "pnpm clean && pnpm exec npm-run-all --parallel dev:*",
-    "dev:css": "nodemon",
+    "dev": "pnpm build:css && pnpm exec npm-run-all --parallel dev:*",
+    "dev:css": "nodemon --watch src --watch index.scss -e scss --exec 'pnpm build:css'",
     "dev:scss": "cpx 'src/**/*.scss' dist/scss --watch"
   },
   "keywords": [
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "change-case": "^5.4.4",
     "cpx2": "^8.0.0",
     "cssnano": "^7.0.6",
     "nodemon": "^3.1.11",
@@ -48,10 +49,12 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^16.1.0",
     "postcss-normalize-charset": "^7.0.0",
+    "postcss-rename": "^0.8.0",
     "rimraf": "^6.0.1",
     "sass": "^1.83.0"
   },
   "dependencies": {
+    "include-media": "^2.0.0",
     "ldrs": "^1.1.9",
     "normalize.css": "^8.0.1"
   }

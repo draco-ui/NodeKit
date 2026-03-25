@@ -5,6 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export { Tooltip, Tooltip as DracoTooltip} from './Tooltip';
+export { Tooltip, Tooltip as DracoTooltip } from './components/Tooltip';
 
-export type { TooltipProps, TooltipProps as DracoTooltipProps } from './Tooltip.types';
+export type { TooltipProps, TooltipProps as DracoTooltipProps } from './components/Tooltip';

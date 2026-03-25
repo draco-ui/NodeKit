@@ -1,0 +1,20 @@
+@use '@dracoui/primitives';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: white;
+  border-bottom: primitives.$draco-base-border-width-1 solid primitives.$draco-base-color-neutral-300;
+  padding: 0 primitives.$draco-base-size-24;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}

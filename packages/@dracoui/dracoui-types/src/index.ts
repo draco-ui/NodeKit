@@ -7,6 +7,6 @@
 
 export * from '@dracoui-types/label';
 export * from '@dracoui-types/input';
-export * from '@dracoui-types/button';
+export * from '@dracoui-types/buttons';
 export * from '@dracoui-types/tooltip';
 export * from '@dracoui-types/popover';

@@ -52,11 +52,11 @@ export const IndexRow = forwardRef<HTMLTableRowElement, IndexRowProps>(
         data-row-type={rowType}
         aria-label={accessibilityLabel}
         data-zebra={hasZebraStriping && position % 2 === 1}
-        className={cn('draco-index-table__row', className)}
+        className={cn('DracoIndexTable__Row', className)}
         {...others}
       >
         {selectable && (
-          <td className="draco-index-table__row-checkbox-cell">
+          <td className="DracoIndexTable__RowCheckboxCell">
             <input
               type="checkbox"
               checked={selected === true}

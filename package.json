@@ -5,7 +5,9 @@
   "description": "",
   "scripts": {
     "changeset": "changeset",
-    "dev": "turbo run dev --parallel",
+    "predev": "lsof -ti :6007 -ti :6008 -ti :6009 | xargs kill -9 2>/dev/null || true",
+    "dev": "turbo run build && pnpm --filter @dracoui/react storybook",
+    "dev:all": "turbo run build && turbo run dev --parallel",
     "build": "turbo run build",
     "build:ember": "turbo run build --filter=@dracoui/ember",
     "build:styles": "turbo run build --filter=@dracoui/styles",
@@ -14,6 +16,9 @@
     "storybook:ember": "pnpm --filter @dracoui/ember storybook",
     "build-storybook:react": "pnpm --filter @dracoui/react build-storybook",
     "build-storybook:ember": "pnpm --filter @dracoui/ember build-storybook",
+    "storybook:brand-react": "pnpm --filter @dracoui-brand/react storybook",
+    "build-storybook:brand-react": "pnpm --filter @dracoui-brand/react build-storybook",
+    "build:brand-react": "turbo run build --filter=@dracoui-brand/react",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write ."

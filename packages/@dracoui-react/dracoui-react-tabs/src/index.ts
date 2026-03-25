@@ -6,18 +6,5 @@
  *
  */
 
-export {
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-} from '@sprocketui-react/tabs';
-
-export type {
-  TabsProps,
-  TabListProps,
-  TabProps,
-  TabPanelsProps,
-  TabPanelProps,
-} from '@sprocketui-react/tabs';
+export * from './components/Tab';
+export * from './components/Tabs';

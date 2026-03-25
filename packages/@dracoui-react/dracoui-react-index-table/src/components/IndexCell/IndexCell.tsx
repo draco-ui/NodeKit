@@ -36,7 +36,7 @@ export const IndexCell = forwardRef<HTMLTableCellElement, IndexCellProps>(
     return (
       <td
         ref={ref}
-        className={cn('draco-index-table__cell', className)}
+        className={cn('DracoIndexTable__Cell', className)}
         data-flush={flush}
         colSpan={colSpan}
         {...others}
