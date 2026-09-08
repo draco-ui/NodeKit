@@ -1,0 +1,235 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// Self-contained (no @dracoui/primitives dependency) so the switch renders
+// while the primitives -> Terrazzo migration is in progress. Classes are
+// authored in PascalCase so they survive postcss-rename and match the
+// component's class names in both the global build and a direct import.
+//
+// A real 3D see-saw flip switch, themed to match the design system's
+// Polaris-style buttons: soft light caps (subtle border + white top sheen +
+// darker bottom edge), a recessed neutral-gray track, and an active cap that
+// pops upward as a raised button, a hint darker than the rest. Supports
+// horizontal/vertical orientation and scales off font-size.
+
+@mixin Switch {
+  .DracoSwitch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 15px; // medium; the control scales off this
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .DracoSwitch__Input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  // ---- Recessed neutral-gray track ----
+  .DracoSwitch__Frame {
+    position: relative;
+    box-sizing: border-box;
+    width: 3.4em;
+    height: 1.7em;
+    padding: 0.16em;
+    border-radius: 0.42em;
+    background: linear-gradient(180deg, #e2e2e3 0%, #d4d4d6 100%);
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.9),
+      0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  // ---- Caps container (3D) ----
+  .DracoSwitch__Toggle {
+    position: absolute;
+    inset: 0.16em;
+    border-radius: 0.3em;
+    overflow: hidden;
+    perspective: 15em; // tighter perspective = more pronounced 3D
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  // ---- The two caps (Polaris-style button surface) ----
+  // Inner corners are square and carry no inner border, so the two halves meet
+  // as one continuous rocker (a fold at the center pivot), not two buttons.
+  .DracoSwitch__Left,
+  .DracoSwitch__Right {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    bottom: 0;
+    font-size: 0.46em;
+    letter-spacing: 0.02em;
+    background: linear-gradient(180deg, #ffffff 0%, #f6f6f7 100%);
+    transform-style: preserve-3d;
+    // Only animate the flip. The background is a multi-layer gradient (radial +
+    // linear) that can't tween cleanly against the plain cap, so transitioning
+    // it glitches — let color/background swap instantly under the motion.
+    transition:
+      transform 170ms cubic-bezier(0.2, 0.8, 0.25, 1),
+      color 120ms ease;
+    backface-visibility: hidden;
+  }
+
+  // Tactile press: while held, the flip snaps faster so it feels like a real
+  // switch clicking over (rather than the whole control bouncing).
+  .DracoSwitch:active .DracoSwitch__Left,
+  .DracoSwitch:active .DracoSwitch__Right {
+    transition-duration: 90ms;
+  }
+
+  // side (::before) + bottom (::after) faces give each cap real, lit thickness.
+  .DracoSwitch__Left::before,
+  .DracoSwitch__Right::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #e0e0df 0%, #b6b6b4 100%);
+  }
+  .DracoSwitch__Left::after,
+  .DracoSwitch__Right::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #9c9c9a 0%, #828287 100%);
+  }
+
+  // ---- Left cap ----
+  .DracoSwitch__Left {
+    left: 0;
+    color: #5f5f5f;
+    // rounded outer (left) corners only; inner (right) stays square to join.
+    border-radius: 0.3em 0 0 0.3em;
+    // Polaris edges on outer/top/bottom, none on the inner seam.
+    box-shadow:
+      inset 0 -1px 0 0 #b5b5b5,
+      inset 1px 0 0 0 rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 0 rgba(0, 0, 0, 0.08),
+      inset 0 0.5px 0 1.5px #ffffff;
+    transform-origin: right;
+    // OFF: raised, tilted toward viewer and popped forward.
+    transform: rotateX(11deg) rotateY(0deg) translateZ(0.1em);
+  }
+  .DracoSwitch__Left::before {
+    transform-origin: center left;
+    transform: rotateY(90deg);
+  }
+  .DracoSwitch__Left::after {
+    transform-origin: center bottom;
+    transform: rotateX(90deg);
+  }
+
+  // ---- Right cap ----
+  .DracoSwitch__Right {
+    right: 0;
+    color: #adadab;
+    border-radius: 0 0.3em 0.3em 0;
+    box-shadow:
+      inset 0 -1px 0 0 #b5b5b5,
+      inset -1px 0 0 0 rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 0 rgba(0, 0, 0, 0.08),
+      inset 0 0.5px 0 1.5px #ffffff;
+    transform-origin: left;
+    transform: rotateX(11deg) rotateY(-34deg); // OFF: pressed back
+  }
+  .DracoSwitch__Right::before {
+    transform-origin: center right;
+    transform: rotateY(-90deg);
+  }
+  .DracoSwitch__Right::after {
+    transform-origin: center bottom;
+    transform: rotateX(90deg);
+  }
+
+  // ---- ON: flip + brand-primary cap with a glossy glass top ----
+  .DracoSwitch--Checked .DracoSwitch__Left {
+    transform: rotateX(11deg) rotateY(34deg);
+    color: #adadab;
+  }
+  .DracoSwitch--Checked .DracoSwitch__Right {
+    // Pops upward — a raised button, a hint darker than the off cap.
+    transform: rotateX(11deg) rotateY(0deg) translateZ(0.15em);
+    color: #565658;
+    background: linear-gradient(180deg, #ececef 0%, #dedee1 100%);
+    box-shadow:
+      inset 0 -1px 0 0 #a6a6aa, // darker bottom edge (raised)
+      inset -1px 0 0 0 rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 0 rgba(0, 0, 0, 0.07),
+      inset 0 0.5px 0 1.5px #ffffff; // top sheen
+  }
+
+  // ---- Sizes (scale everything via font-size) ----
+  // small ~41x20, medium ~51x25, large ~65x32.
+  .DracoSwitch--Small {
+    font-size: 12px;
+  }
+  .DracoSwitch--Medium {
+    font-size: 15px;
+  }
+  .DracoSwitch--Large {
+    font-size: 19px;
+  }
+
+  // ---- Focus / disabled / label ----
+  .DracoSwitch__Input:focus-visible + .DracoSwitch__Frame {
+    outline: 2px solid #4a5568;
+    outline-offset: 3px;
+  }
+
+  // ---- Vertical orientation: stand the switch on end (flips up/down) ----
+  .DracoSwitch--Vertical {
+    position: relative;
+    width: 1.7em;
+    height: 3.4em;
+  }
+  .DracoSwitch--Vertical .DracoSwitch__Frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // rotate so ON is up; centered within the reserved vertical footprint.
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  // Drop the rotateX lean for vertical (it reads as a side-tilt once rotated);
+  // keep only the up/down flip.
+  .DracoSwitch--Vertical .DracoSwitch__Left {
+    transform: rotateY(0deg) translateZ(0.1em);
+  }
+  .DracoSwitch--Vertical .DracoSwitch__Right {
+    transform: rotateY(-34deg);
+  }
+  .DracoSwitch--Vertical.DracoSwitch--Checked .DracoSwitch__Left {
+    transform: rotateY(34deg);
+  }
+  .DracoSwitch--Vertical.DracoSwitch--Checked .DracoSwitch__Right {
+    transform: rotateY(0deg) translateZ(0.15em);
+  }
+
+  .DracoSwitch--Disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .DracoSwitch__Label {
+    font: 500 14px/1.2 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #323130;
+  }
+}

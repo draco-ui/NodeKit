@@ -1,7 +1,7 @@
 {
-  "name": "@dracoui-react/popover",
+  "name": "@dracoui-react/switch",
   "version": "0.0.1",
-  "description": "Draco UI React Popover component",
+  "description": "Draco UI React Switch (flip / rocker) component",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -33,25 +33,12 @@
     "url": "https://github.com/draco-ui/NodeKit.git"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.1.0",
     "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "jsdom": "^26.0.0",
     "tsup": "^8.5.0",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.5"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@dracoui-types/popover": "workspace:*",
-    "@necto/popper": "^0.5.11",
-    "@necto-react/popper": "^0.10.13",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "defu": "^6.1.4",
-    "react-aria": "^3.38.1",
-    "react-stately": "^3.35.1"
+    "clsx": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

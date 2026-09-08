@@ -6,8 +6,6 @@
  *
  */
 
-import 'ldrs/react/Ring.css';
-
 import cn from 'clsx';
 import { defu } from 'defu';
 import { Ring } from 'ldrs/react';

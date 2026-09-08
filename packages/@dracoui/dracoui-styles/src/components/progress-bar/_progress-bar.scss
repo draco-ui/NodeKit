@@ -70,6 +70,12 @@
       }
     }
 
+    // Default variant: candy stripes are always visible, but they only
+    // start moving once sprocketui reports the hung state (below).
+    &--default &__fill::after {
+      opacity: 1;
+    }
+
     &[data-hung] &__fill::after,
     &[data-sprocketstate="hung"] &__fill::after {
       opacity: 1;

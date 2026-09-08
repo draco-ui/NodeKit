@@ -8,13 +8,31 @@
 
 import type { ButtonOptions } from '@dracoui-types/buttons';
 import type { Interpolation, Theme } from '@emotion/react';
+import type { VariantProps } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
+import { buttonVariants } from './Button.styles';
+
 /**
- * React-specific Button props
- * Extends the framework-agnostic BaseButtonProps with React-specific features
+ * cva's VariantProps types every variant as `T | null | undefined`, while
+ * ButtonOptions (framework-agnostic) types the same props as `T | undefined`
+ * (no null). Extending both directly triggers TS2320 ("not identical") purely
+ * because of that `| null`. Stripping cva's null makes the shared keys identical,
+ * so ButtonProps can extend both — and if the two ever drift (a key/union differs
+ * between the types package and the cva config), TS2320 returns as a sync check.
  */
-export interface ButtonProps extends ButtonOptions, ComponentPropsWithoutRef<'button'> {
+type ButtonVariantProps = {
+  [K in keyof VariantProps<typeof buttonVariants>]?: NonNullable<
+    VariantProps<typeof buttonVariants>[K]
+  >;
+};
+
+/**
+ * React-specific Button props.
+ * Extends the framework-agnostic ButtonOptions plus the (null-stripped) cva
+ * variant props and the native button attributes.
+ */
+export interface ButtonProps extends ButtonOptions, ButtonVariantProps, ComponentPropsWithoutRef<'button'> {
   /**
    * Emotion CSS prop for custom styling
    * Supports both object and template literal syntax
