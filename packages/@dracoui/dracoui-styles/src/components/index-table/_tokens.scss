@@ -1,0 +1,78 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/// @type Color
+/// Background color for the table
+$index-table-bg: #ffffff !default;
+
+/// @type Color
+/// Background color for table header
+$index-table-header-bg: #f9fafb !default;
+
+/// @type Color
+/// Border color for table
+$index-table-border-color: #e5e7eb !default;
+
+/// @type Color
+/// Text color for table header
+$index-table-header-text-color: #374151 !default;
+
+/// @type Color
+/// Background color for zebra striping (odd rows)
+$index-table-zebra-bg: #f9fafb !default;
+
+/// @type Color
+/// Background color for selected rows
+$index-table-selected-bg: #eff6ff !default;
+
+/// @type Color
+/// Background color for hovered rows
+$index-table-hover-bg: #f3f4f6 !default;
+
+/// @type Color
+/// Background color for success tone
+$index-table-success-bg: #f0fdf4 !default;
+
+/// @type Color
+/// Background color for warning tone
+$index-table-warning-bg: #fefce8 !default;
+
+/// @type Color
+/// Background color for critical tone
+$index-table-critical-bg: #fef2f2 !default;
+
+/// @type Number
+/// Default cell padding
+$index-table-cell-padding: 12px !default;
+
+/// @type Number
+/// Condensed cell padding
+$index-table-cell-padding-condensed: 8px !default;
+
+/// @type Number
+/// Font size for table content
+$index-table-font-size: 14px !default;
+
+/// @type Number
+/// Font size for table header
+$index-table-header-font-size: 14px !default;
+
+/// @type Number
+/// Font weight for table header
+$index-table-header-font-weight: 500 !default;
+
+/// @type Number
+/// Border width for table
+$index-table-border-width: 1px !default;
+
+/// @type Number
+/// Border radius for table container
+$index-table-border-radius: 8px !default;
+
+/// @type Number
+/// Checkbox size
+$index-table-checkbox-size: 18px !default;

@@ -1,0 +1,30 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use '@dracoui/primitives/index' as primitives;
+@use '../../utilities/variant-selector' as *;
+
+$text-variants: (
+  'default': (
+    'foreground': var(--draco-foreground-primary),
+  ),
+  'success': (
+    'foreground': var(--draco-text-success-foreground),
+  ),
+  'error': (
+    'foreground': var(--draco-text-error-foreground),
+  ),
+);
+
+.draco-text {
+  @each $name, $variant in $text-variants {
+    @include variant-selector($name) {
+      color: map.get($variant, 'foreground');
+    }
+  }
+}

@@ -1,0 +1,61 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as IndexTableStories from './IndexTable.stories';
+
+<Meta of={IndexTableStories} />
+
+# IndexTable
+
+IndexTable is used to display tabular data with support for selection, sorting, filtering, and more.
+
+## Props
+
+<Canvas of={IndexTableStories.Default} />
+
+<Controls of={IndexTableStories.Default} />
+
+## With Filters
+
+IndexTable can include a filters section for searching and filtering data.
+
+- Use `IndexTable.Filters` as a child to add search functionality
+- Pass `query`, `onQueryChange`, and `onQueryClear` props to control the search
+
+<Canvas of={IndexTableStories.WithFilters} />
+
+## With Sorting
+
+Columns can be made sortable by providing the `onSort` callback.
+
+- `sortColumnIndex`: The index of the currently sorted column
+- `sortDirection`: Either `ascending` or `descending`
+- `onSort`: Callback when a column header is clicked
+
+<Canvas of={IndexTableStories.WithSorting} />
+
+## Zebra Striping
+
+Alternate row backgrounds can be enabled with `hasZebraStriping`.
+
+<Canvas of={IndexTableStories.ZebraStriping} />
+
+## Condensed
+
+A more compact layout can be achieved with the `condensed` prop.
+
+<Canvas of={IndexTableStories.Condensed} />
+
+## Loading
+
+A loading overlay can be shown with the `loading` prop.
+
+<Canvas of={IndexTableStories.Loading} />
+
+## Row Tones
+
+Rows can have different tones to indicate status.
+
+- `success`: Green background for successful/completed items
+- `warning`: Yellow background for items needing attention
+- `critical`: Red background for errors or critical items
+
+<Canvas of={IndexTableStories.RowTones} />

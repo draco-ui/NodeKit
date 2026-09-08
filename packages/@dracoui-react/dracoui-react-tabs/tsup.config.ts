@@ -1,0 +1,18 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import { defineConfig } from 'tsup';
+
+export default defineConfig({
+  entry: ['src/index.ts'],
+  format: ['cjs', 'esm'],
+  dts: false, // Disabled until sprocketui types are properly linked
+  sourcemap: true,
+  clean: true,
+  external: ['react', 'react-dom', '@sprocketui-react/sprocketui-react-tabs'],
+  tsconfig: './tsconfig.json',
+});

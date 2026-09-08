@@ -1,0 +1,106 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+
+// Per-size geometry for the discrete segments.
+$_sizes: (
+  'small': (
+    'height': 16px,
+    'width': 8px,
+    'gap': 3px,
+  ),
+  'medium': (
+    'height': 24px,
+    'width': 12px,
+    'gap': 4px,
+  ),
+  'large': (
+    'height': 32px,
+    'width': 16px,
+    'gap': 5px,
+  ),
+);
+
+@mixin Indicator {
+  .draco-indicator {
+    display: inline-flex;
+    align-items: stretch;
+    box-sizing: border-box;
+    padding: $indicator-frame-padding;
+    border-radius: $indicator-frame-radius;
+
+    // Recessed frame: subtle top-lit gradient + inner shadow so the
+    // segments sit "inside" a well, plus a bright bottom edge for depth.
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.22) 0%,
+      rgba(0, 0, 0, 0.08) 55%,
+      rgba(0, 0, 0, 0.16) 100%
+    );
+    box-shadow:
+      inset 0 2px 4px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px 0 rgba(0, 0, 0, 0.25),
+      0 1px 0 0 rgba(255, 255, 255, 0.35);
+
+    @each $name, $props in $_sizes {
+      &--#{$name} {
+        gap: map.get($props, 'gap');
+
+        .draco-indicator__segment {
+          width: map.get($props, 'width');
+          height: map.get($props, 'height');
+        }
+      }
+    }
+
+    &__segment {
+      position: relative;
+      flex: 0 0 auto;
+      border-radius: $indicator-segment-radius;
+
+      // Inactive / track look: a dark recessed pill.
+      background-color: rgba(0, 0, 0, 0.32);
+      box-shadow:
+        inset 0 1px 2px 0 rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          background-color 160ms primitives.$draco-base-easing-ease-out,
+          box-shadow 160ms primitives.$draco-base-easing-ease-out;
+      }
+
+      // Glossy highlight overlay, revealed when the segment is active.
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        background-image: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.55) 0%,
+          rgba(255, 255, 255, 0.12) 42%,
+          rgba(0, 0, 0, 0) 60%,
+          rgba(0, 0, 0, 0.18) 100%
+        );
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: opacity 160ms primitives.$draco-base-easing-ease-out;
+        }
+      }
+
+      &[data-active='true']::after {
+        opacity: 1;
+      }
+    }
+  }
+}

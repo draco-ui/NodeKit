@@ -1,0 +1,202 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// Self-contained (no @dracoui/primitives dependency) so the knob renders while
+// the primitives -> Terrazzo migration is in progress. Classes are authored in
+// PascalCase so they survive postcss-rename and match the component's classes.
+//
+// A pro-audio knob: a satin-black fluted cap seated in a brushed metal ring,
+// with a slim brand-lime pointer and a tick ring that lights up (lime) as the
+// value rises.
+
+@mixin Knob {
+  .DracoKnob {
+    --dial: 74px;
+    --tick-r: 64px;
+    --num-r: 82px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 186px;
+    height: 186px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: none;
+    perspective: 460px; // view the knob from a slight angle
+  }
+
+  // ---- Tick ring ----
+  .DracoKnob__Ticks,
+  .DracoKnob__Numbers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .DracoKnob__Tick {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5px;
+    height: 9px;
+    border-radius: 1px;
+    background: #8a8d93;
+    transform: translate(-50%, -50%) rotate(var(--a)) translateY(calc(var(--tick-r) * -1));
+  }
+  .DracoKnob__Tick--Major {
+    width: 2px;
+    height: 13px;
+    background: #babcc1;
+  }
+  .DracoKnob__Tick--Active {
+    background: #f0fb28;
+    box-shadow: 0 0 4px rgba(240, 251, 40, 0.65);
+  }
+
+  // ---- Numeric labels ----
+  .DracoKnob__Number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(var(--a)) translateY(calc(var(--num-r) * -1))
+      rotate(calc(var(--a) * -1));
+  }
+  .DracoKnob__NumberText {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b6e74;
+  }
+
+  // ---- Dial: brushed-metal ring the cap sits in ----
+  .DracoKnob__Dial {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--dial);
+    height: var(--dial);
+    // tilt back so the top face reads at an angle
+    transform: translate(-50%, -50%) rotateX(26deg);
+    transform-style: preserve-3d;
+    border-radius: 50%;
+    outline: none;
+    cursor: grab;
+    background: radial-gradient(circle at 50% 30%, #f6f6f8 0%, #dcdde1 44%, #babbc1 78%, #a1a2a8 100%);
+    box-shadow:
+      inset 0 1.5px 1px rgba(255, 255, 255, 0.9),
+      inset 0 -3px 5px rgba(0, 0, 0, 0.22),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+      // thin cohesive metal side (a continuation of the knob body)
+      0 2px 0 #b6b7bc,
+      0 4px 0 #a9aab0,
+      0 6px 0 #9d9ea4,
+      0 12px 15px rgba(12, 14, 20, 0.4), // ground shadow
+      0 0 0 1px rgba(0, 0, 0, 0.2);
+  }
+  .DracoKnob__Dial:active {
+    cursor: grabbing;
+  }
+  .DracoKnob__Dial:focus-visible {
+    box-shadow:
+      inset 0 1.5px 1px rgba(255, 255, 255, 0.9),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.3),
+      0 9px 17px rgba(16, 18, 26, 0.42),
+      0 0 0 3px rgba(240, 251, 40, 0.6);
+  }
+
+  // Clearly visible flutes around the outer part of the knob.
+  .DracoKnob__Grip {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    // ~60 distinct grooves (wide enough to avoid a moiré shimmer)
+    background: repeating-conic-gradient(
+      from -1.5deg,
+      rgba(255, 255, 255, 0.7) 0deg 2.6deg,
+      rgba(112, 114, 120, 0.62) 2.6deg 6deg
+    );
+    -webkit-mask: radial-gradient(circle, transparent 0 52%, #000 57% 94%, transparent 99%);
+    mask: radial-gradient(circle, transparent 0 52%, #000 57% 94%, transparent 99%);
+  }
+
+  // ---- Slim rotating pointer ----
+  .DracoKnob__Indicator {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+  }
+  .DracoKnob__Indicator::before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    width: 2.5px;
+    height: 22%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    background: linear-gradient(180deg, #f6ff66 0%, #e4ef14 100%);
+    box-shadow:
+      0 0 5px rgba(240, 251, 40, 0.85),
+      0 1px 1px rgba(0, 0, 0, 0.5);
+  }
+
+  // ---- Center value read-out ----
+  .DracoKnob__Value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+    font-weight: 700;
+    color: #3a3b40;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+  }
+
+  // ---- Sizes ----
+  .DracoKnob--Small {
+    --dial: 56px;
+    --tick-r: 46px;
+    --num-r: 60px;
+    width: 138px;
+    height: 138px;
+  }
+  .DracoKnob--Small .DracoKnob__NumberText {
+    font-size: 11px;
+  }
+
+  .DracoKnob--Medium {
+    --dial: 74px;
+    --tick-r: 64px;
+    --num-r: 82px;
+    width: 186px;
+    height: 186px;
+  }
+
+  .DracoKnob--Large {
+    --dial: 96px;
+    --tick-r: 84px;
+    --num-r: 106px;
+    width: 236px;
+    height: 236px;
+  }
+  .DracoKnob--Large .DracoKnob__NumberText {
+    font-size: 15px;
+  }
+  .DracoKnob--Large .DracoKnob__Value {
+    font-size: 16px;
+  }
+
+  // ---- Disabled ----
+  .DracoKnob--Disabled {
+    opacity: 0.55;
+  }
+  .DracoKnob--Disabled .DracoKnob__Dial {
+    cursor: not-allowed;
+  }
+}

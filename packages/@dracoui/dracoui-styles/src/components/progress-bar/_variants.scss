@@ -1,0 +1,62 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'sass:color';
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+
+$_stripe-width: $progress-bar-stripe-width;
+$_double-stripe: $_stripe-width * 2;
+
+@function _stripe-gradient($foreground) {
+  $is-dark: color.channel($foreground, 'lightness', $space: hsl) < 50%;
+  $stripe-color: if($is-dark,
+    color.scale($foreground, $lightness: 30%, $alpha: -70%),
+    color.scale($foreground, $lightness: -40%, $alpha: -65%)
+  );
+
+  @return repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent $_stripe-width,
+    $stripe-color $_stripe-width,
+    $stripe-color $_double-stripe
+  );
+}
+
+$progress-bar-variants: (
+  'default': (
+    'background': var(--draco-progress-default-background),
+    'foreground': var(--draco-progress-default-foreground),
+  ),
+  'secondary': (
+    'background': var(--draco-progress-secondary-background),
+    'foreground': var(--draco-progress-secondary-foreground),
+  )
+);
+
+$_stripe-sources: (
+  'default': primitives.$draco-product-color-brand-primary,
+  'secondary': #303030,
+);
+
+.draco-progress-bar {
+  @each $name, $variant in $progress-bar-variants {
+    &--#{$name} {
+      background-color: map.get($variant, 'background');
+    }
+
+    &--#{$name} &__fill {
+      background-color: map.get($variant, 'foreground');
+
+      &::after {
+        background-image: _stripe-gradient(map.get($_stripe-sources, $name));
+      }
+    }
+  }
+}

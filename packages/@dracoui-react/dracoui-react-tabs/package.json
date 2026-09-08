@@ -1,0 +1,53 @@
+{
+  "name": "@dracoui-react/tabs",
+  "version": "0.0.1",
+  "description": "Draco UI React Tabs component",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/draco-ui/NodeKit.git"
+  },
+  "dependencies": {
+    "@dracoui-types/tabs": "workspace:*",
+    "@sprocketui-react/button": "link:../../../../../sprocketui/NodeKit/packages/@sprocketui-react/sprocketui-react-button",
+    "@sprocketui-react/tabs": "link:../../../../../sprocketui/NodeKit/packages/@sprocketui-react/sprocketui-react-tabs",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "defu": "^6.1.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}

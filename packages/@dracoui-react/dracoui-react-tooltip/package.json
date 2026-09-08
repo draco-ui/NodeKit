@@ -45,12 +45,12 @@
   },
   "dependencies": {
     "@dracoui-types/tooltip": "workspace:*",
-    "@emotion/react": "^11.14.0",
+    "@necto/popper": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-popper",
+    "@necto-react/components": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components",
+    "@necto-react/popper": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-popper",
+    "@sprocketui-react/tooltip": "link:../../../../../sprocketui/NodeKit/packages/@sprocketui-react/sprocketui-react-tooltip",
     "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "defu": "^6.1.4",
-    "react-aria": "^3.38.1",
-    "react-stately": "^3.35.1"
+    "clsx": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

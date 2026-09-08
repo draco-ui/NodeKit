@@ -5,6 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export { Input, Input as DracoInput } from './Input';
-
-export type { InputProps, InputProps as DracoInputProps } from './Input.types';
+export * from './components/Input';

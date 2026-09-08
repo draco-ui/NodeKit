@@ -4,4 +4,4 @@ packages:
 
   # Dev Packages (These will be deleted)
   - storybook
-  - '../Primitives/packaging/npm'
+  - '../Primitives'

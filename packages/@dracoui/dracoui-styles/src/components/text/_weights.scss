@@ -1,0 +1,24 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use '@dracoui/primitives/index' as primitives;
+
+$_text-weights: (
+  'regular': primitives.$draco-base-weight-regular,
+  'medium': primitives.$draco-base-weight-medium,
+  'semibold': primitives.$draco-base-weight-semi-bold,
+  'bold': primitives.$draco-base-weight-bold,
+);
+
+.draco-text {
+  @each $name, $weight in $_text-weights {
+    &--weight-#{$name} {
+      font-weight: $weight;
+    }
+  }
+}

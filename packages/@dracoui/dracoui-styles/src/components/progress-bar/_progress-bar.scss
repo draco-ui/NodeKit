@@ -1,0 +1,97 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+
+@mixin ProgressBar {
+  .draco-progress-bar {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: $progress-bar-border-radius;
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.04) 40%,
+      rgba(0, 0, 0, 0.06) 60%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    box-shadow:
+      inset 0px 2px 3px 0px rgba(0, 0, 0, 0.2),
+      inset 0px 1px 1px 0px rgba(0, 0, 0, 0.15),
+      0px 1px 0px 0px rgba(255, 255, 255, 0.6);
+
+    &--small {
+      height: 12px;
+    }
+
+    &--medium {
+      height: 20px;
+    }
+
+    &--large {
+      height: 28px;
+    }
+
+    &__fill {
+      position: relative;
+      height: 100%;
+      border-radius: $progress-bar-border-radius;
+      min-width: 0;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+
+      box-shadow:
+        inset 0px 2px 2px 0px rgba(255, 255, 255, 0.45),
+        inset 0px -2px 2px 0px rgba(0, 0, 0, 0.12),
+        inset 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: width primitives.$draco-base-duration-300 primitives.$draco-base-easing-ease-out;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background-size: $progress-bar-stripe-size $progress-bar-stripe-size;
+        will-change: background-position, opacity;
+        opacity: 0;
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: opacity primitives.$draco-base-duration-300 primitives.$draco-base-easing-ease-out;
+        }
+      }
+    }
+
+    // Default variant: candy stripes are always visible, but they only
+    // start moving once sprocketui reports the hung state (below).
+    &--default &__fill::after {
+      opacity: 1;
+    }
+
+    &[data-hung] &__fill::after,
+    &[data-sprocketstate="hung"] &__fill::after {
+      opacity: 1;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: draco-progress-bar-stripes 1s linear infinite;
+      }
+    }
+  }
+
+  @keyframes draco-progress-bar-stripes {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: $progress-bar-stripe-size 0;
+    }
+  }
+}

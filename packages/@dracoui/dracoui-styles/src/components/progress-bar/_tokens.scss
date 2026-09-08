@@ -1,0 +1,14 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives' as primitives;
+
+$progress-bar-border-radius: primitives.$draco-border-radius-medium !default;
+
+$progress-bar-stripe-size: 19.8px !default;
+
+$progress-bar-stripe-width: 7px !default;

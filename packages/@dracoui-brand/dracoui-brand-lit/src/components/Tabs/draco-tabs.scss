@@ -1,0 +1,35 @@
+@use '@dracoui/primitives';
+
+:host {
+  display: block;
+}
+
+.tablist {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: primitives.$draco-base-size-4;
+  padding: primitives.$draco-base-size-4 primitives.$draco-base-size-8;
+  border: primitives.$draco-base-border-width-1 solid primitives.$draco-base-color-neutral-300;
+  border-radius: primitives.$draco-base-border-radius-full;
+  background: white;
+}
+
+.indicator {
+  position: absolute;
+  top: primitives.$draco-base-size-4;
+  bottom: primitives.$draco-base-size-4;
+  left: 0;
+  width: 0;
+  border-radius: primitives.$draco-base-border-radius-full;
+  background-color: primitives.$draco-product-color-brand-primary;
+  border: primitives.$draco-base-border-width-1 solid primitives.$draco-base-color-neutral-950;
+  pointer-events: none;
+  transition:
+    transform primitives.$draco-base-duration-500 primitives.$draco-base-easing-ease-in-out,
+    width primitives.$draco-base-duration-500 primitives.$draco-base-easing-ease-in-out;
+}
+
+.panels {
+  margin-top: primitives.$draco-base-size-12;
+}

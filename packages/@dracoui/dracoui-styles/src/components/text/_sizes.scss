@@ -1,0 +1,59 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use '@dracoui/primitives/index' as primitives;
+
+$text-sizes: (
+  'xs': (
+    'body': primitives.$draco-text-size-body-extra-small,
+    'heading': primitives.$draco-text-size-heading-extra-small,
+  ),
+  'sm': (
+    'body': primitives.$draco-text-size-body-small,
+    'heading': primitives.$draco-text-size-heading-small,
+  ),
+  'md': (
+    'body': primitives.$draco-text-size-body-medium,
+    'heading': primitives.$draco-text-size-heading-medium,
+  ),
+  'lg': (
+    'body': primitives.$draco-text-size-body-large,
+    'heading': primitives.$draco-text-size-heading-large,
+  ),
+  'xl': (
+    'heading': primitives.$draco-text-size-heading-extra-large,
+  ),
+  'xxl': (
+    'heading': primitives.$draco-text-size-heading-extra-extra-large,
+  ),
+);
+
+.draco-text {
+  @each $size, $props in $text-sizes {
+    &.draco-text--#{$size} {
+      @if map.has-key($props, 'body') {
+        &.draco-text--body {
+          font-size: map.get($props, 'body');
+          font-weight: primitives.$draco-base-weight-regular;
+        }
+      }
+
+      @if map.has-key($props, 'heading') {
+        &.draco-text--heading {
+          font-size: map.get($props, 'heading');
+
+          @if $size == 'lg' or $size == 'xl' or $size == 'xxl' {
+            font-weight: primitives.$draco-base-weight-bold;
+          } @else {
+            font-weight: primitives.$draco-base-weight-semi-bold;
+          }
+        }
+      }
+    }
+  }
+}

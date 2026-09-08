@@ -1,0 +1,37 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+@use 'tokens' as *;
+
+$tabs-indicator-variants: (
+  'underline': (
+    'color': #0F6CBD,
+    'top': calc(
+      var(--sprocketui-selection-indicator-y, 0px) +
+      var(--sprocketui-selection-indicator-height, 0px) -
+      #{$tabs-indicator-height}
+    ),
+    'height': $tabs-indicator-height,
+    'border-radius': $tabs-indicator-radius $tabs-indicator-radius 0 0,
+  ),
+);
+
+@mixin TabsVariants {
+  .draco-tabs {
+    &__selection-indicator {
+      @each $name, $variant in $tabs-indicator-variants {
+        .draco-tabs--#{$name} & {
+          background-color: map.get($variant, 'color');
+          top: map.get($variant, 'top');
+          height: map.get($variant, 'height');
+          border-radius: map.get($variant, 'border-radius');
+        }
+      }
+    }
+  }
+}

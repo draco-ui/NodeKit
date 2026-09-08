@@ -55,9 +55,18 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@dracoui-react/button": "workspace:*",
+    "@dracoui-react/buttons": "workspace:*",
+    "@dracoui-react/card": "workspace:*",
+    "@dracoui-react/progress-bar": "workspace:*",
+    "@dracoui-react/checkbox": "workspace:*",
+    "@dracoui-react/index-table": "workspace:*",
+    "@dracoui-react/indicator": "workspace:*",
     "@dracoui-react/input": "workspace:*",
+    "@dracoui-react/knob": "workspace:*",
     "@dracoui-react/popover": "workspace:*",
+    "@dracoui-react/switch": "workspace:*",
+    "@dracoui-react/tabs": "workspace:*",
+    "@dracoui-react/text": "workspace:*",
     "@dracoui-react/tooltip": "workspace:*",
     "@dracoui/styles": "workspace:*"
   },

@@ -1,0 +1,7 @@
+:host(:not([active])) {
+  display: none;
+}
+
+:host([active]) {
+  display: block;
+}

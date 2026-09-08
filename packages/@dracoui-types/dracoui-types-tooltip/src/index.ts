@@ -8,11 +8,9 @@
 
 import { TooltipSizeValues } from './sizes';
 import { TooltipVariantValues } from './variants';
-import { TooltipPositionValues } from './positions';
 
 import type { TooltipSizes } from './sizes';
 import type { TooltipVariants } from './variants';
-import type { TooltipPositions } from './positions';
 
 /**
  * Base Tooltip properties (framework-agnostic)
@@ -39,9 +37,9 @@ interface TooltipOptions {
 
   /**
    * The position of tooltip relative to mount element.
-   * @default 'above'
+   * @default 'top'
    */
-  position?: TooltipPositions;
+  position?: 'top' | 'bottom' | 'left' | 'right';
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
@@ -68,5 +66,5 @@ interface TooltipOptions {
   offset?: number;
 }
 
-export { TooltipSizeValues, TooltipVariantValues, TooltipPositionValues };
-export type { TooltipOptions, TooltipSizes, TooltipVariants, TooltipPositions };
+export { TooltipSizeValues, TooltipVariantValues };
+export type { TooltipOptions, TooltipSizes, TooltipVariants };

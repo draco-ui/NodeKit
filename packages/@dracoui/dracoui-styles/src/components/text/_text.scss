@@ -1,0 +1,58 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use '@dracoui/primitives/index' as primitives;
+
+@mixin Text {
+  .draco-text {
+    margin: 0;
+    font-family: primitives.$draco-font-sans-serif;
+
+    &--break-word {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    &--truncate {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &--numeric {
+      font-variant-numeric: tabular-nums;
+    }
+
+    &--align-start {
+      display: block;
+      text-align: start;
+    }
+
+    &--align-center {
+      display: block;
+      text-align: center;
+    }
+
+    &--align-end {
+      display: block;
+      text-align: end;
+    }
+
+    &--align-justify {
+      display: block;
+      text-align: justify;
+    }
+
+    &--decoration-underline {
+      text-decoration-line: underline;
+    }
+
+    &--decoration-line-through {
+      text-decoration-line: line-through;
+    }
+  }
+}

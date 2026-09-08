@@ -1,0 +1,65 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:math';
+@use 'tokens' as *;
+@use '@dracoui/primitives' as primitives;
+
+@mixin Tabs {
+  .draco-tabs {
+    display: flex;
+    flex-direction: column;
+    width: math.percentage(1);
+
+    &__list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+      gap: $tabs-gap;
+      padding: 0 $tabs-list-padding-inline;
+
+      &[aria-orientation='vertical'] {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    &__selection-indicator {
+      position: absolute;
+      left: 0;
+      width: var(--sprocketui-selection-indicator-width, 0);
+      transform: translateX(var(--sprocketui-selection-indicator-x, 0));
+      pointer-events: none;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          top primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+          height primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+          width primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+          transform primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out;
+      }
+    }
+
+    &__content {
+      width: 0;
+      min-width: math.percentage(1);
+      flex-basis: math.percentage(1);
+      padding: $tabs-content-padding;
+    }
+  }
+
+  .draco-tab {
+    &__container {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}

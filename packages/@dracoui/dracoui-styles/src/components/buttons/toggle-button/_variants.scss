@@ -1,0 +1,69 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'sass:map';
+
+$_selected-shadows: (
+  'primary': (
+    'rest': (
+      inset -1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+      inset 1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+      inset 0px 2px 1px 0px rgba(26, 26, 26, 0.2)
+    ),
+    'hover': (
+      inset -1px 0px 1px 0px rgba(26, 26, 26, 0.1),
+      inset 1px 0px 1px 0px rgba(26, 26, 26, 0.1),
+      inset 0px 2px 1px 0px rgba(26, 26, 26, 0.16)
+    )
+  ),
+  'secondary': (
+    'rest': (
+      inset -1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+      inset 1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+      inset 0px 2px 1px 0px rgba(26, 26, 26, 0.2)
+    ),
+    'hover': (
+      inset -1px 0px 1px 0px rgba(26, 26, 26, 0.1),
+      inset 1px 0px 1px 0px rgba(26, 26, 26, 0.1),
+      inset 0px 2px 1px 0px rgba(26, 26, 26, 0.16)
+    )
+  ),
+  'ghost': (
+    'rest': (
+      inset -1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+      inset 1px 0px 1px 0px rgba(26, 26, 26, 0.122),
+      inset 0px 2px 1px 0px rgba(26, 26, 26, 0.2)
+    ),
+    'hover': (
+      inset -1px 0px 1px 0px rgba(26, 26, 26, 0.1),
+      inset 1px 0px 1px 0px rgba(26, 26, 26, 0.1),
+      inset 0px 2px 1px 0px rgba(26, 26, 26, 0.16)
+    )
+  )
+);
+
+.draco-toggle-button {
+  @each $name, $shadows in $_selected-shadows {
+    &.draco-button--#{$name} {
+      &[data-selected='true'],
+      &[aria-pressed='true'] {
+        will-change: transform, box-shadow;
+        background-color: var(--draco-button-#{$name}-background-active, var(--draco-button-#{$name}-background-hovered));
+        box-shadow: map.get($shadows, 'rest');
+        padding-top: 1px;
+
+        &:not(:disabled):not([disabled]):not(.mock-disabled):hover {
+          box-shadow: map.get($shadows, 'hover');
+        }
+
+        &:not(:disabled):not([disabled]):not(.mock-disabled):active {
+          transform: translateZ(0);
+        }
+      }
+    }
+  }
+}

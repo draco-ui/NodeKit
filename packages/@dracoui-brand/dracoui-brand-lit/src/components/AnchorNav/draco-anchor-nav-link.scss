@@ -1,0 +1,55 @@
+@use '@dracoui/primitives';
+
+:host {
+  display: inline-block;
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: primitives.$draco-base-size-12 primitives.$draco-base-size-16;
+  color: primitives.$draco-base-color-neutral-600;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  font-weight: primitives.$draco-base-weight-medium;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-in-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform primitives.$draco-base-duration-300 primitives.$draco-base-easing-ease-in-out;
+  }
+
+  &:hover:not(.active) {
+    color: primitives.$draco-base-color-neutral-950;
+
+    &::after {
+      background-color: primitives.$draco-base-color-neutral-400;
+      transform: scaleX(1);
+    }
+  }
+
+  &.active {
+    color: primitives.$draco-base-color-neutral-950;
+
+    &::after {
+      background-color: primitives.$draco-product-color-brand-primary;
+      transform: scaleX(1);
+    }
+  }
+
+  &:focus-visible {
+    outline: primitives.$draco-base-border-width-2 solid primitives.$draco-base-color-lime-400;
+    outline-offset: 2px;
+  }
+}

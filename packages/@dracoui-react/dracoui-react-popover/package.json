@@ -45,6 +45,8 @@
   },
   "dependencies": {
     "@dracoui-types/popover": "workspace:*",
+    "@necto/popper": "^0.5.11",
+    "@necto-react/popper": "^0.10.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "defu": "^6.1.4",

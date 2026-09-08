@@ -1,0 +1,259 @@
+/**
+ * Copyright (c) Corinvo, LLC. and its partners and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@use 'tokens' as *;
+
+@mixin IndexTable {
+  .draco-index-table {
+    position: relative;
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: $index-table-font-size;
+  }
+
+  // Filters section
+  .draco-index-table__filters {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    border-bottom: $index-table-border-width solid $index-table-border-color;
+  }
+
+  .draco-index-table__search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .draco-index-table__search-input {
+    flex: 1;
+    height: 36px;
+    padding: 8px 12px;
+    font-size: $index-table-font-size;
+    font-family: inherit;
+    border: $index-table-border-width solid $index-table-border-color;
+    border-radius: 6px;
+    outline: none;
+
+    &:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 1px #3b82f6;
+    }
+
+    &::placeholder {
+      color: #6b7280;
+    }
+  }
+
+  .draco-index-table__clear-button {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1;
+    color: #6b7280;
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: 50%;
+
+    &:hover {
+      color: #374151;
+      background-color: #f3f4f6;
+    }
+  }
+
+  // Table container with scroll
+  .draco-index-table__container {
+    overflow-x: auto;
+    border: $index-table-border-width solid $index-table-border-color;
+    border-radius: $index-table-border-radius;
+    background-color: $index-table-bg;
+  }
+
+  // Table element
+  .draco-index-table__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: auto;
+  }
+
+  // Table header
+  .draco-index-table__thead {
+    background-color: $index-table-header-bg;
+  }
+
+  .draco-index-table__header-row {
+    border-bottom: $index-table-border-width solid $index-table-border-color;
+  }
+
+  .draco-index-table__header-cell {
+    padding: $index-table-cell-padding;
+    font-size: $index-table-header-font-size;
+    font-weight: $index-table-header-font-weight;
+    color: $index-table-header-text-color;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &[data-alignment='center'] {
+      text-align: center;
+    }
+
+    &[data-alignment='end'] {
+      text-align: right;
+    }
+
+    &[data-hidden='true'] {
+      display: none;
+    }
+
+    &[data-sticky='true'] {
+      position: sticky;
+      right: 0;
+      background-color: $index-table-header-bg;
+      box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
+    }
+
+    &:hover {
+      background-color: #f3f4f6;
+    }
+  }
+
+  .draco-index-table__header-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .draco-index-table__sort-indicator {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+
+    &[data-direction='ascending'] {
+      border-bottom: 5px solid currentColor;
+    }
+
+    &[data-direction='descending'] {
+      border-top: 5px solid currentColor;
+    }
+  }
+
+  // Checkbox cells
+  .draco-index-table__checkbox-cell,
+  .draco-index-table__row-checkbox-cell {
+    width: 40px;
+    padding: $index-table-cell-padding;
+    text-align: center;
+
+    input[type='checkbox'] {
+      width: $index-table-checkbox-size;
+      height: $index-table-checkbox-size;
+      margin: 0;
+      cursor: pointer;
+      accent-color: #3b82f6;
+    }
+  }
+
+  // Table body
+  .draco-index-table__tbody {
+    background-color: $index-table-bg;
+  }
+
+  // Table rows
+  .draco-index-table__row {
+    border-bottom: $index-table-border-width solid $index-table-border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $index-table-hover-bg;
+    }
+
+    &[data-selected='true'] {
+      background-color: $index-table-selected-bg;
+    }
+
+    &[data-disabled='true'] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    &[data-zebra='true'] {
+      background-color: $index-table-zebra-bg;
+    }
+
+    &[data-tone='success'] {
+      background-color: $index-table-success-bg;
+    }
+
+    &[data-tone='warning'] {
+      background-color: $index-table-warning-bg;
+    }
+
+    &[data-tone='critical'] {
+      background-color: $index-table-critical-bg;
+    }
+  }
+
+  // Table cells
+  .draco-index-table__cell {
+    padding: $index-table-cell-padding;
+    text-align: left;
+    vertical-align: middle;
+
+    &[data-flush='true'] {
+      padding: 0;
+    }
+  }
+
+  // Loading overlay
+  .draco-index-table__loading-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+  }
+
+  // Condensed variant
+  .draco-index-table[data-condensed='true'] {
+    .draco-index-table__header-cell,
+    .draco-index-table__cell,
+    .draco-index-table__checkbox-cell,
+    .draco-index-table__row-checkbox-cell {
+      padding: $index-table-cell-padding-condensed;
+    }
+  }
+
+  // Loading state
+  .draco-index-table[data-loading='true'] {
+    pointer-events: none;
+
+    .draco-index-table__container {
+      opacity: 0.6;
+    }
+  }
+}

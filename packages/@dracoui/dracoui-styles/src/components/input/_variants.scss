@@ -40,7 +40,7 @@ $input-variants: (
         background-color: transparent;
 
         &--active {
-          background-color: map.get($variant, 'background');
+          background-color: var(--draco-background-primary);
         }
       }
 

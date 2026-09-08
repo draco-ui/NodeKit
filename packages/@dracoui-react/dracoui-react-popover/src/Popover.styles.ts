@@ -8,16 +8,16 @@
 import { cva } from 'class-variance-authority';
 import { POPOVER_DEFAULT_PROPS } from './constants';
 
-export const popoverStyles = cva('draco-popover-surface', {
+export const popoverStyles = cva('DracoPopoverSurface', {
   variants: {
     variant: {
-      normal: 'draco-popover-surface--normal',
-      inverted: 'draco-popover-surface--inverted'
+      normal: 'DracoPopoverSurface--Normal',
+      inverted: 'DracoPopoverSurface--Inverted'
     },
     size: {
-      small: 'draco-popover-surface--small',
-      medium: 'draco-popover-surface--medium',
-      large: 'draco-popover-surface--large'
+      small: 'DracoPopoverSurface--Small',
+      medium: 'DracoPopoverSurface--Medium',
+      large: 'DracoPopoverSurface--Large'
     }
   },
   defaultVariants: {

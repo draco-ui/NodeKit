@@ -1,0 +1,41 @@
+@use '@dracoui/primitives';
+
+:host {
+  display: contents;
+}
+
+.popover {
+  position: fixed;
+  inset: unset;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+  min-width: 180px;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+
+  &:popover-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition:
+      opacity primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out,
+      transform primitives.$draco-base-duration-200 primitives.$draco-base-easing-ease-out;
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: primitives.$draco-base-size-4 0;
+  background-color: white;
+  border: primitives.$draco-base-border-width-1 solid primitives.$draco-base-color-neutral-950;
+  border-radius: primitives.$draco-base-border-radius-8;
+
+  &.depth {
+    box-shadow: 4px 4px 0 0 primitives.$draco-base-color-neutral-950;
+  }
+}
